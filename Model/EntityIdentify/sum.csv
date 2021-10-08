@@ -1,0 +1,96 @@
+,title,similarity
+0,About precompiled binaries,7.0
+1,Alignment class,5.4
+2,Analysis Results,5.800000000000001
+3,Ascertainment bias correction,1.0
+4,Assessing branch supports with single branch tests,2.0
+5,Assessing branch supports with standard nonparametric bootstrap,1.0
+6,Assessing branch supports with ultrafast bootstrap approximation,5.800000000000001
+7,Binary and morphological models,3.6
+8,"Binary, morphological and SNP data",1.6
+9,Bootstrap branch support,2.0
+10,Calibrating tree using ancestral dates,4.2
+11,Can I mix DNA and protein data in a partitioned analysis?,5.800000000000001
+12,Choosing the right partitioning scheme,3.8000000000000003
+13,Choosing the right substitution model,11.799999999999999
+14,Codon models,11.600000000000001
+15,Compiling 32-bit version,2.8
+16,Compiling MPI version,5.800000000000001
+17,Compiling Xeon Phi Knights Landing version,0.0
+18,Compiling under Linux,3.2
+19,Compiling under Mac OS X,5.2
+20,Compiling under Windows,1.0
+21,Consensus construction and bootstrap value assignment,1.0
+22,Constrained tree search,9.8
+23,Counts files,5.2
+24,Credits and acknowledgements,0.0
+25,DNA models,8.399999999999999
+26,Dating an existing tree,1.6
+27,Development team,1.0
+28,Documentation,1.8
+29,Downloading source code,0.0
+30,Excluding outlier taxa/nodes,2.0
+31,First running example,26.799999999999997
+32,For Mac OS X users,2.8
+33,For Windows users,4.800000000000001
+34,Free web server,0.0
+35,Full list of LSD2 options,1.0
+36,Gene concordance factor (gCF),6.0
+37,General requirements,1.6
+38,Heterotachy models,5.2
+39,How do I get help?,1.0
+40,How do I interpret ultrafast bootstrap (UFBoot) support values?,1.0
+41,How do I report bug?,1.0
+42,How do I save time for standard bootstrap?,2.2
+43,How does IQ-TREE treat gap/missing/ambiguous characters?,2.0
+44,How does IQ-TREE treat identical sequences?,1.0
+45,How to cite IQ-TREE?,5.2
+46,IQ-TREE web server,1.0
+47,Inferring gene/locus trees,5.4
+48,Inferring rooted trees without outgroup,12.799999999999999
+49,Inferring site-specific rates,12.799999999999999
+50,Inferring species tree,5.2
+51,Inferring time tree with tip dates,11.4
+52,Inferring unrooted tree with outgroup,5.4
+53,Input data,7.800000000000001
+54,Installation,3.6
+55,Interpretation of branch lengths,5.0
+56,Key features,2.0
+57,Level of polymorphism,4.0
+58,Minimal command-line examples,4.2
+59,Mixture models,11.6
+60,Model Selection,2.6
+61,Model of substitution,4.4
+62,Obtaining confidence intervals,2.2
+63,Partition models,27.000000000000004
+64,Partitioned analysis for multi-gene alignments,20.0
+65,Partitioned analysis with mixed data,7.800000000000001
+66,PhyloTree class (phylogenetic tree),2.0
+67,Protein models,8.0
+68,Putting it all together,4.2
+69,Rate heterogeneity,1.0
+70,Rate heterogeneity across sites,4.2
+71,Reducing impact of severe model violations with UFBoot,1.0
+72,Sampling method,4.2
+73,Setup an Xcode project in MacOS,3.0
+74,Site concordance factor (sCF),6.6
+75,Site-specific frequency models,10.2
+76,State frequency type,1.0
+77,Substitution models,1.0
+78,Testing constrained tree,5.800000000000001
+79,Testing root positions,4.6
+80,Tree Inference,4.800000000000001
+81,Tree topology tests,10.2
+82,Ultrafast bootstrapping with partition model,2.6
+83,User support,0.0
+84,User-defined substitution models,8.2
+85,Using codon models,2.0
+86,Utilizing multi-core CPUs,7.2
+87,Virtual population size,1.0
+88,What are the differences between alignment columns/sites and patterns?,10.000000000000002
+89,What is the good number of CPU cores to use?,2.6
+90,What is the interpretation of branch lengths when mixing codon and DNA data?,1.6
+91,What is the purpose of composition test?,3.6
+92,Where to go from here?,0.0
+93,Why IQ-TREE?,1.0
+94,Why does IQ-TREE complain about the use of +ASC model?,4.2

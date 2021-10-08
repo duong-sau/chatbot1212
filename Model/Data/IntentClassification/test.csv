@@ -1,0 +1,133 @@
+intent,intent_group,intent_group_index,intent_index,sentence,sentence_index
+Partitioned analysis for multi-gene alignments,Advanced tutorial,1.0,1.0,"Here, IQ-TREE partitions the alignment example.phy into 2 sub-alignments named part1 and part2 containing sites (columns) 1-100 and 101-384, respectively. Moreover, IQ-TREE applies the subtitution models HKY+G and GTR+I+G to part1 and part2, respectively. Substitution model parameters and trees with branch lengths can be found in the result file example.nex.iqtree.",15.0
+Utilizing multi-core CPUs,Beginner’s tutorial,2.0,21.0,"iqtree -s example.phy -m TIM2+I+G -T 2
+# for version 1.x change -T to -nt
+",222.0
+Choosing the right substitution model,Beginner’s tutorial,2.0,14.0,"If you now look at example.phy.iqtree you will see that IQ-TREE selected TIM2+I+G4 as the best-fit model for this example data. Thus, for additional analyses you do not have to perform the model test again and can use the selected model:",161.0
+"Binary, morphological and SNP data",Beginner’s tutorial,2.0,16.0,You can explicitly tell model testing to only include +ASC model with:,192.0
+Assessing branch supports with ultrafast bootstrap approximation,Beginner’s tutorial,2.0,17.0,"iqtree -s example.phy -m TIM2+I+G -B 1000
+# for version 1.x change -B to -bb
+",198.0
+Tree topology tests,Advanced tutorial,1.0,6.0,"iqtree -s example.phy -z example.treels -n 0 -zb 1000 -zw
+",74.0
+Assessing branch supports with single branch tests,Beginner’s tutorial,2.0,20.0,"IQ-TREE provides an implementation of the SH-like approximate likelihood ratio test (Guindon et al., 2010). To perform this test, run:",211.0
+Assessing branch supports with standard nonparametric bootstrap,Beginner’s tutorial,2.0,19.0,The standard nonparametric bootstrap is invoked by the -b option:,207.0
+Tree topology tests,Advanced tutorial,1.0,6.0,"iqtree -s example.phy -z example.treels -m GTR+G
+",66.0
+Input data,Beginner’s tutorial,2.0,12.0,"TIP: From version 2 you can input a directory of alignment files. IQ-TREE 2 will load and concatenate all alignments within the directory, eliminating the need for users to manually perform this step.",134.0
+Assessing branch supports with ultrafast bootstrap approximation,Beginner’s tutorial,2.0,17.0,"D.T. Hoang, O. Chernomor, A. von Haeseler, B.Q. Minh, and L.S. Vinh (2018) UFBoot2: Improving the ultrafast bootstrap approximation. Mol. Biol. Evol., 35:518–522. https://doi.org/10.1093/molbev/msx281",196.0
+Assessing branch supports with ultrafast bootstrap approximation,Beginner’s tutorial,2.0,17.0,NOTE: UFBoot support values have a different interpretation to the standard bootstrap. Refer to FAQ: UFBoot support values interpretation for more information.,201.0
+Partitioned analysis for multi-gene alignments,Advanced tutorial,1.0,1.0,"If your partition file is called example.partitions, the partition analysis can be run with:",9.0
+"Binary, morphological and SNP data",Beginner’s tutorial,2.0,16.0,"iqtree -s morphology.phy
+",183.0
+Choosing the right partitioning scheme,Advanced tutorial,1.0,3.0,"To reduce the computational burden IQ-TREE implements the relaxed hierarchical clustering algorithm (Lanfear et al., 2014), which is invoked via -rcluster option:",38.0
+Constrained tree search,Advanced tutorial,1.0,5.0,The resulting part of the tree is then:,60.0
+Partitioned analysis for multi-gene alignments,Advanced tutorial,1.0,1.0,"DNA, part1 = 1-100
+DNA, part2 = 101-384
+",8.0
+Ultrafast bootstrapping with partition model,Advanced tutorial,1.0,4.0,"iqtree -s example.phy -p example.nex -B 1000
+# for version 1.x change -p to -spp and -B to -bb
+",43.0
+Consensus construction and bootstrap value assignment,Advanced tutorial,1.0,8.0,"Finally, a useful feature is to read in an input tree and a set of trees, then IQ-TREE can assign the support value onto the input tree (number of times each branch in the input tree occurs in the set of trees). This option is useful if you want to compute the support values for an ML tree based on alternative topologies.",96.0
+Input data,Beginner’s tutorial,2.0,12.0,The input alignment can be in various common formats. For example the PHYLIP format which may look like:,130.0
+Choosing the right substitution model,Beginner’s tutorial,2.0,14.0,"-m is the option to specify the model name to use during the analysis. The special MFP key word stands for ModelFinder Plus, which tells IQ-TREE to perform ModelFinder and the remaining analysis using the selected model. ModelFinder computes the log-likelihoods of an initial parsimony tree for many different models and the Akaike information criterion (AIC), corrected Akaike information criterion (AICc), and the Bayesian information criterion (BIC). Then ModelFinder chooses the model that minimizes the BIC score (you can also change to AIC or AICc by adding the option -AIC or -AICc, respectively).",157.0
+Utilizing multi-core CPUs,Beginner’s tutorial,2.0,21.0,Note that the parallel efficiency is only good for long alignments. A good practice is to use -T AUTO to determine the best number of cores:,224.0
+Tree topology tests,Advanced tutorial,1.0,6.0,"Here, the number of search iterations is set to 0 (-n 0), such that model parameters are quickly estimated from an initial parsimony tree, which is normally accurate enough for our purpose. If you, however, prefer to estimate model parameters based on a tree (e.g. reconstructed previously), use -te <treefile> option.",69.0
+Inferring site-specific rates,Advanced tutorial,1.0,10.0,"Site    Rate    Category        Categorized_rate
+1       0.26625 2       0.24393
+2       0.99345 3       0.81124
+3       2.69275 4       2.91367
+4       0.25822 2       0.24393
+5       0.25822 2       0.24393
+6       0.42589 2       0.24393
+7       0.30194 2       0.24393
+8       0.72790 3       0.81124
+9       0.25822 2       0.24393
+10      0.09177 1       0.03116
+",115.0
+Inferring site-specific rates,Advanced tutorial,1.0,10.0,Inferring site-specific rates,111.0
+Testing constrained tree,Advanced tutorial,1.0,7.0,"USER TREES
+----------
+
+See example.phy.trees for trees with branch lengths.
+
+Tree      logL    deltaL  bp-RELL    p-KH     p-SH    c-ELW     p-AU
+-------------------------------------------------------------------------
+  1   -21152.617   0.000  0.7110 + 0.7400 + 1.0000 + 0.6954 + 0.7939 + 
+  2   -21156.802   4.185  0.2220 + 0.2600 + 0.5910 + 0.2288 + 0.3079 + 
+  3   -21158.579   5.962  0.0670 + 0.1330 + 0.5130 + 0.0758 + 0.1452 + 
+  4   -21339.596 186.980  0.0000 - 0.0000 - 0.0000 - 0.0000 - 0.0000 - 
+
+deltaL  : logL difference from the maximal logl in the set.
+bp-RELL : bootstrap proportion using RELL method (Kishino et al. 1990).
+p-KH    : p-value of one sided Kishino-Hasegawa test (1989).
+p-SH    : p-value of Shimodaira-Hasegawa test (2000).
+c-ELW   : Expected Likelihood Weight (Strimmer & Rambaut 2002).
+p-AU    : p-value of approximately unbiased (AU) test (Shimodaira, 2002).
+
+Plus signs denote the 95% confidence sets.
+Minus signs denote significant exclusion.
+All tests performed 1000 resamplings using the RELL method.
+",84.0
+Assessing branch supports with ultrafast bootstrap approximation,Beginner’s tutorial,2.0,17.0,"To overcome the computational burden required by the nonparametric bootstrap, IQ-TREE introduces an ultrafast bootstrap approximation (UFBoot) (Minh et al., 2013; Hoang et al., 2018) that is orders of magnitude faster than the standard procedure and provides relatively unbiased branch support values. Citation for UFBoot:",195.0
+"Binary, morphological and SNP data",Beginner’s tutorial,2.0,16.0,You can again select the best-fit binary/morphological model:,188.0
+Consensus construction and bootstrap value assignment,Advanced tutorial,1.0,8.0,IQ-TREE can also compute a consensus network and print it into a NEXUS file by:,94.0
+Tree topology tests,Advanced tutorial,1.0,6.0,"iqtree -s example.phy -z example.treels -n 0 -zb 1000 -zw -au
+",76.0
+Assessing branch supports with single branch tests,Beginner’s tutorial,2.0,20.0,Assessing branch supports with single branch tests,210.0
+Choosing the right partitioning scheme,Advanced tutorial,1.0,3.0,"ModelFinder implements a greedy strategy (Lanfear et al., 2012) that starts with the full partition model and subsequentially merges two genes until the model fit does not increase any further:",30.0
+Choosing the right substitution model,Beginner’s tutorial,2.0,14.0,"If you have enough computational resource, you can perform a thorough and more accurate analysis that invokes a full tree search for each model considered via the -mtree option:",169.0
+Inferring site-specific rates,Advanced tutorial,1.0,10.0,"If you already know the best-fit model for the alignment, you can use specify it via -m option to omit model selection and hence speed it up:",120.0
+Assessing branch supports with ultrafast bootstrap approximation,Beginner’s tutorial,2.0,17.0,Assessing branch supports with ultrafast bootstrap approximation,194.0
+Assessing branch supports with single branch tests,Beginner’s tutorial,2.0,20.0,"IQ-TREE also supports other tests such as the aBayes test (Anisimova et al., 2011) and the local bootstrap test (Adachi and Hasegawa, 1996b). See single branch tests for more details.",214.0
+Choosing the right substitution model,Beginner’s tutorial,2.0,14.0,"IQ-TREE supports a wide range of substitution models for DNA, protein, codon, binary and morphological alignments. If you do not know which model is appropriate for your data, you can use ModelFinder to determine the best-fit model:",155.0
+Choosing the right partitioning scheme,Advanced tutorial,1.0,3.0,To resemble PartitionFinder and save time:,36.0
+First running example,Beginner’s tutorial,2.0,13.0,"This prevents lost of data if you accidentally re-run IQ-TREE. However, if you really want to re-run the analysis and overwrite all previous output files, use -redo option:",147.0
+Where to go from here?,Beginner’s tutorial,2.0,22.0,"Once confident enough you can go on with a more advanced tutorial, which covers topics like phylogenomic (multi-gene) analyses using partition models or mixture models.",233.0
+Constrained tree search,Advanced tutorial,1.0,5.0,which shows the desired effect.,62.0
+First running example,Beginner’s tutorial,2.0,13.0,"ERROR: Checkpoint (example.phy.ckp.gz) indicates that a previous run successfully finished
+Use `-redo` option if you really want to redo the analysis and overwrite all output files.
+",146.0
+First running example,Beginner’s tutorial,2.0,13.0,"NOTE: Tree is UNROOTED although outgroup taxon 'LngfishAu' is drawn at root
+
++--------------LngfishAu
+|
+|        +--------------LngfishSA
++--------|
+|        +--------------LngfishAf
+|
+|      +-------------------Frog
++------|
+       |               +-----------------Turtle
+       |         +-----|
+       |         |     |      +-----------------------Sphenodon
+       |         |     |   +--|
+       |         |     |   |  +--------------------------Lizard
+       |         |     +---|
+       |         |         |      +---------------------Crocodile
+       |         |         +------|
+       |         |                +------------------Bird
+       +---------|
+                 |                  +----------------Human
+                 |               +--|
+                 |               |  |  +--------Seal
+                 |               |  +--|
+                 |               |     |   +-------Cow
+                 |               |     +---|
+                 |               |         +---------Whale
+                 |          +----|
+                 |          |    |         +------Mouse
+                 |          |    +---------|
+                 |          |              +--------Rat
+                 +----------|
+                            |   +----------------Platypus
+                            +---|
+                                +-------------Opossum
+",142.0
+First running example,Beginner’s tutorial,2.0,13.0,For this example data the resulting maximum-likelihood tree may look like this (extracted from .iqtree file):,141.0
+User-defined substitution models,Advanced tutorial,1.0,9.0,"iqtree -s example.phy -m GTR+G+Fo
+",107.0
+Testing constrained tree,Advanced tutorial,1.0,7.0,"We now illustrate an example to use the AU test (see above) to test trees from unconstrained versus constrained search, which is helpful to know if a constrained search is sensible or not. Thus:",81.0
+Ultrafast bootstrapping with partition model,Advanced tutorial,1.0,4.0,"iqtree -s example.phy -p example.nex -B 1000 --sampling GENESITE
+# for version 1.x change -p to -spp and -B to -bb and --sampling to -bsam
+",48.0
