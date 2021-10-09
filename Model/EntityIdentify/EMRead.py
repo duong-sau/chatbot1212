@@ -3,6 +3,7 @@ from tqdm import tqdm
 import pandas as pd
 from Static.Define import path_common
 import numpy as np
+
 bert_embedding = BertEmbedding()
 
 
@@ -10,6 +11,8 @@ def getEM(sentence: str):
     sentences = sentence.split('\n')
     result = bert_embedding(sentences)
     return result[0][1]
+
+
 # read data to compare
 validate_df = pd.read_csv("tensor.csv")
 # read intent list to merge
@@ -25,7 +28,7 @@ for index, row in tqdm(test_df.iterrows(), leave=False):
     test_tensor = np.array(getEM(test_sentence)).astype(float)
     for i, s in validate_df.iterrows():
         validate_tensor = s['tensor'][1]
-        #validate_tensor = s["tensor"]
+        # validate_tensor = s["tensor"]
         similarity = np.dot(test_tensor, validate_tensor)
         validate_df.loc[i, "similarity"] = similarity
     validate_df['similarity'] = pd.to_numeric(validate_df['similarity'], errors='coerce')

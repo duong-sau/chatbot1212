@@ -5,15 +5,14 @@ import pandas as pd
 from Static.Define import path_common
 
 tokenizer = T5Tokenizer.from_pretrained('t5-small')
-model = T5ForConditionalGeneration.from_pretrained(path_common.model.value + "\\Save\\T5STS-B")
+model = T5ForConditionalGeneration.from_pretrained(path_common.model.value + "\\Save\\T5STS-POS")
 #model = T5ForConditionalGeneration.from_pretrained("t5-small")
 # when generating, we will use the logits of right-most token to predict the next token
 # so the padding should be on the left
 tokenizer.padding_side = "left"
-tokenizer.pad_token = tokenizer.eos_token  # to avoid an error
+#tokenizer.pad_token = tokenizer.eos_token  # to avoid an error
 # read data to compare
-test_df = pd.read_csv(path_common.sentence.value, header=0)
-test_df = test_df.sample(n=30)
+test_df = pd.read_csv(path_common.test_pos.value, header=0)
 columns = ["test_id", "expected", "actual"]
 result_df = pd.DataFrame(columns=columns)
 task_prefix = 'stsb '

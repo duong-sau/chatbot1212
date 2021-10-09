@@ -48,3 +48,5 @@ learn_data_df.to_csv(path_common.learn_data_pos.value, index=False)
 train.to_csv(path_common.train_pos.value, index=False)
 test.to_csv(path_common.test_pos.value, index=False)
 exit()
+
+

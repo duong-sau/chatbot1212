@@ -2,7 +2,7 @@ from enum import Enum
 
 
 class path_common(Enum):
-    work = "C:\\Users\\DuongSau\\Sau\\Chatboot1212"
+    work = "C:\\Users\\DuongSau\\Sau\\chatbot1212"
     # work = "W:\\Sau\\Chatboot1211"
     model = work + "\\Model"
     data = model + "\\Data"
