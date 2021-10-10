@@ -4,8 +4,8 @@ from enum import Enum
 class path_common(Enum):
     work = "C:\\Users\\DuongSau\\Sau\\chatbot1212"
     # work = "W:\\Sau\\Chatboot1211"
-    model = work + "\\Model"
-    data = model + "\\Data"
+    model = work + "\\Model\\Save"
+    data = work + "\\Model\\Data"
     mining = data + "\\Mining"
     classification = data + "\\IntentClassification"
 
@@ -16,14 +16,12 @@ class path_common(Enum):
     intent = classification + "\\intent_list.csv"
     sentence = classification + "\\sentence_list.csv"
     intent_group = classification + "\\intent_group_list.csv"
+    test = classification + "\\test.csv"
+    train = classification + "\\train.csv"
 
     learn_data_pos = classification + "\\POS\\learn_data.csv"
-    train_pos = classification + "\\POS\\train.csv"
-    test_pos = classification + "\\POS\\test.csv"
-
     learn_data_neg = classification + "\\NEG\\learn_data.csv"
-    train_neg = classification + "\\NEG\\train.csv"
-    test_neg = classification + "\\NEG\\test.csv"
+
 
 class tag(Enum):
     sau = "@id1211"
