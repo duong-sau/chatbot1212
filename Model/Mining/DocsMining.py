@@ -43,7 +43,7 @@ if __name__ == '__main__':
                             sentence = e.text
                             sentence_new = {'sentence_index': sentence_index, 'intent': intent, 'sentence': sentence,
                                             'intent_index': intent_index, "intent_group": intent_group,
-                                            "intent_group_index": intent_group_index, 'sub_index':sub_index}
+                                            "intent_group_index": intent_group_index, 'sub_i':sub_index}
                             sentence_df = sentence_df.append(sentence_new, ignore_index=True)
         break
     intent_df.to_csv(path_common.intent_list.value, index=False, mode='w')
