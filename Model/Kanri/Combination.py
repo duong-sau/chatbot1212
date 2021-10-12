@@ -13,7 +13,9 @@ train, test = train_validate_test_split(sentence_df)
 test.to_csv(path_common.test.value, index=False)
 train.to_csv(path_common.train.value, index=False)
 """
-train = pd.read_csv(path_common.test.value, header=0)
+train = pd.read_csv(path_common.train.value, header=0)
+
+"""
 learn_data_df = pd.DataFrame()
 for first_index, first_row in tqdm(train.iterrows(), total=len(train.index)):
     for second_index, second_row in train.iterrows():
@@ -49,6 +51,7 @@ for first_index, first_row in tqdm(train.iterrows(), total=len(train.index)):
     new = {"source": source, 'target': '5.0'}
     learn_data_df = learn_data_df.append(new, ignore_index=True)
 learn_data_df.to_csv(path_common.learn_data_neg.value, index=False)
+"""
 
 learn_data_df = pd.DataFrame()
 for first_index, first_row in tqdm(train.iterrows(), total=len(train.index)):
@@ -64,11 +67,11 @@ for first_index, first_row in tqdm(train.iterrows(), total=len(train.index)):
         source = toT5sentence(sentence1=first_row["sentence"], sentence2=second_row["sentence"])
         new = {"source": source, 'target': str(stsb)}
         learn_data_df = learn_data_df.append(new, ignore_index=True)
-    source = toT5sentence(sentence1=first_row["sentence"], sentence2=("header" + first_row["intent"]))
+    source = toT5sentence(sentence1=first_row["sentence"], sentence2=("header: " + first_row["intent"]))
     new = {"source": source, 'target': '5.0'}
     learn_data_df = learn_data_df.append(new, ignore_index=True)
-    source = toT5sentence(sentence1=first_row["sentence"], sentence2=("title" + first_row["intent_group"]))
+    source = toT5sentence(sentence1=first_row["sentence"], sentence2=("title: " + first_row["intent_group"]))
     new = {"source": source, 'target': '3.8'}
     learn_data_df = learn_data_df.append(new, ignore_index=True)
-learn_data_df.to_csv(path_common.learn_data_pos.value, index=False)
+learn_data_df.to_csv(path_common.learn_data_hed.value, index=False)
 exit()
