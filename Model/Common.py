@@ -16,6 +16,15 @@ def toT5sentence(sentence1, sentence2):
     return T5Sentence
 
 
+def getSimilarity(tokenizer, model, test_sentence, compare_sentences):
+    T5_format_sentence = toT5sentence(sentence1=test_sentence, sentence2=compare_sentences)
+    inputs = tokenizer(T5_format_sentence, return_tensors="pt", padding=True)
+    output_sequences = model.generate(input_ids=inputs['input_ids'], attention_mask=inputs['attention_mask'],
+                                      do_sample=False)
+    similarity = tokenizer.batch_decode(output_sequences, skip_special_tokens=True)
+    return float(similarity[0])
+
+
 def seed():
     torch.device("cuda")
     random.seed(SEED)
