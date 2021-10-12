@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 
 from Static.Define import path_common, Colors
 
-result_df = pd.read_csv('./positive-5e.csv', header=0)
+result_df = pd.read_csv('./positive-freeze/test_identity_result.csv', header=0)
 match = 0
 not_match = 0
 for i, row in result_df.iterrows():
@@ -17,7 +17,7 @@ print(f"{Colors.WARNING}not match case: {not_match} \n")
 
 intent_df = pd.read_csv(path_common.intent_list.value, header=0)
 
-result_df = pd.read_csv('./positive-5e.csv', header=0)
+result_df = pd.read_csv('./positive-freeze/test_identity_result.csv', header=0)
 match = 0
 not_match = 0
 for i, row in result_df.iterrows():
