@@ -10,5 +10,6 @@ if __name__ == '__main__':
     tokenizer = T5Tokenizer.from_pretrained('t5-small')
     model = T5ForConditionalGeneration.from_pretrained(path_common.model.value + "\\Save\\T5STS-POS")
     sentence_df = pd.read_csv(path_common.sentence_list.value, header = 0)
+
     pass_sentence = sentence_df[sentence_df['sentence_index'] == list_pass[0]].iloc[0]
 

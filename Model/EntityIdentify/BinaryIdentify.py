@@ -1,12 +1,10 @@
 from tqdm import tqdm
 from transformers import T5Tokenizer, T5ForConditionalGeneration
 import pandas as pd
-
-from Model.Common import toT5sentence, getSimilarity
 from Model.EntityIdentify.MeanSum import MeanSum
 from Model.FineTurn.Define import MODEL, tokenConfig
 from Static.Define import path_common
-import time
+
 model = T5ForConditionalGeneration.from_pretrained(path_common.model.value + '\\' + MODEL['name'] + "\\POS")
 model.to('cpu')
 tokenizer = T5Tokenizer.from_pretrained(MODEL['name'])
@@ -20,10 +18,14 @@ temp_df['similarity'] = float('NaN')
 test_df = pd.read_csv(test_link, header=0)
 columns = ["test_id", "expected", "actual"]
 result_df = pd.DataFrame(columns=columns)
-start_time = time.time()
-temp_df = MeanSum(test_sentence="To reduce computational burden, one can use the option -mset to restrict the testing procedure to a subset of base models instead of testing the entire set of all available models. For example, -mset WAG,LG will test only models like WAG+... or LG+.... Another useful option in this respect is -msub for AA dat", tokenizer=tokenizer, model=model,temp_df=temp_df, depth=2, return_max=False)
-temp_df = MeanSum(test_sentence="To reduce computational burden, one can use the option -mset to restrict the testing procedure to a subset of base models instead of testing the entire set of all available models. For example, -mset WAG,LG will test only models like WAG+... or LG+.... Another useful option in this respect is -msub for AA dat", tokenizer=tokenizer, model=model,temp_df=temp_df, depth=4, return_max=False)
-i = MeanSum(test_sentence="To reduce computational burden, one can use the option -mset to restrict the testing procedure to a subset of base models instead of testing the entire set of all available models. For example, -mset WAG,LG will test only models like WAG+... or LG+.... Another useful option in this respect is -msub for AA dat", tokenizer=tokenizer, model=model,temp_df=temp_df, depth=2, return_max=True)
-end_time = time.time()
-print(start_time - end_time)
-
+for i, r in tqdm(test_df.iterrows()):
+    test_sentence = r['sentence']
+    sub_df = MeanSum(test_sentence=test_sentence, tokenizer=tokenizer, model=model, temp_df=temp_df, depth=3,
+                     return_max=False)
+    sub_df = MeanSum(test_sentence=test_sentence, tokenizer=tokenizer, model=model, temp_df=sub_df, depth=5,
+                     return_max=False)
+    intent_id = MeanSum(test_sentence=test_sentence, tokenizer=tokenizer, model=model, temp_df=sub_df, depth=2,
+                        return_max=True)
+    new_row = {'test_id': r["sentence_index"], 'expected': intent_id, 'actual': r["intent_index"]}
+    result_df = result_df.append(new_row, ignore_index=True)
+result_df.to_csv(path_or_buf='../Result/positive-freeze/test_identity_result.csv', mode='w', index=False)
