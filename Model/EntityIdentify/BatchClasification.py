@@ -6,7 +6,7 @@ from Model.Common import toT5sentence, getSimilarity
 from Model.FineTurn.Define import MODEL, tokenConfig
 from Static.Define import path_common
 
-model = T5ForConditionalGeneration.from_pretrained(path_common.model.value + '\\' + MODEL['name'] + "\\1Layer")
+model = T5ForConditionalGeneration.from_pretrained(path_common.model.value + '\\' + MODEL['name'] + "\\2Layer")
 model.to('cpu')
 tokenizer = T5Tokenizer.from_pretrained(MODEL['name'])
 tokenConfig(tokenizer=tokenizer)
@@ -33,7 +33,7 @@ for index, row in tqdm(test_df.iterrows(), leave=False, total=len(result_df)):
         input_ids = tokenizer.batch_encode_plus(compare_sentences, return_tensors='pt', padding=True)
         similaritys = model.generate(**input_ids)
         similaritys = tokenizer.batch_decode(similaritys, skip_special_tokens=True)
-        new_ = {'intent_index': groups[0]['intent_index'], 'mean': sum(similaritys) / len(similaritys)}
+        new_ = {'intent_index': groups[0]['intent_index'], 'mean': sum(int(similaritys)) / len(similaritys)}
         temp_df = temp_df.append(new_)
     mean_df = temp_df.sort_values("mean")
     max1 = mean_df.iloc[-1]

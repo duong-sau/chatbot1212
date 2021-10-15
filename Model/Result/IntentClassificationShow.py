@@ -3,11 +3,11 @@ import matplotlib.pyplot as plt
 
 from Static.Define import path_common, Colors
 
-result_df = pd.read_csv('1-layer-test_identity_result.csv', header=0)
+result_df = pd.read_csv('./AClass/test_identity_result.csv', header=0)
 match = 0
 not_match = 0
 for i, row in result_df.iterrows():
-    if int(row['expected'] == row['actual']):
+    if int(row['expected'] == row['max1']):
         match = match + 1
     else:
         not_match += 1
@@ -17,7 +17,7 @@ print(f"{Colors.WARNING}not match case: {not_match} \n")
 
 intent_df = pd.read_csv(path_common.intent_list.value, header=0)
 
-result_df = pd.read_csv('1-layer-test_identity_result.csv', header=0)
+result_df = pd.read_csv('./AClass/test_identity_result.csv', header=0)
 match = 0
 not_match = 0
 for i, row in result_df.iterrows():
