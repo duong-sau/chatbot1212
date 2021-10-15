@@ -1,4 +1,4 @@
-intent,intent_group,intent_group_index,intent_index,sentence,sentence_index,sub_i
+intent,intent_group,target,intent_index,source,sentence_index,sub_i
 Partitioned analysis for multi-gene alignments,Advanced tutorial,11.0,1.0,text classification: Partitioned analysis for multi-gene alignments,1.0,1.0
 Partitioned analysis for multi-gene alignments,Advanced tutorial,11.0,1.0,text classification: If you used partition model in a publication please cite:,2.0,2.0
 Partitioned analysis for multi-gene alignments,Advanced tutorial,11.0,1.0,"text classification: O. Chernomor, A. von Haeseler, and B.Q. Minh (2016) Terrace aware data structure for phylogenomic inference from supermatrices. Syst. Biol., 65:997-1008. https://doi.org/10.1093/sysbio/syw037",3.0,3.0
