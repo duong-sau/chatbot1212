@@ -6,9 +6,7 @@ from Model.Common import toT5sentence, getSimilarity
 from Model.FineTurn.Define import MODEL, tokenConfig
 from Static.Define import path_common
 
-config = T5Config.from_pretrained('t5-base')
-config.num_decoder_layers = 2
-model = T5ForConditionalGeneration.from_pretrained('t5-base', config=config )
+model = T5ForConditionalGeneration.from_pretrained(path_common.model.value + '\\' + MODEL['name'] + "\\1Layer")
 model.to('cpu')
 tokenizer = T5Tokenizer.from_pretrained(MODEL['name'])
 tokenConfig(tokenizer=tokenizer)
@@ -19,20 +17,29 @@ test_df = pd.read_csv(test_link, header=0)
 columns = ["test_id", "expected", "actual"]
 result_df = pd.DataFrame(columns=columns)
 tqdm.pandas()
+sentence_df = pd.read_csv(
+    "https://raw.githubusercontent.com/duong-sau/chatbot1212/master/Model/Data/IntentClassification/sentence_list.csv",
+    header=0)
+temp_df = pd.DataFrame()
+groups = list()
+for g, data in sentence_df.groupby('intent_index'):
+    print(g, data)
+    groups.append(data)
+
 for index, row in tqdm(test_df.iterrows(), leave=False, total=len(result_df)):
-    temp_df = pd.read_csv(
-        "https://raw.githubusercontent.com/duong-sau/chatbot1212/master/Model/Data/IntentClassification/sentence_list.csv",
-        header=0)
     test_sentence = row["sentence"]
-    for i, r in temp_df.iterrows():
-        compare_sentences = r["sentence"]
-        similarity = getSimilarity(tokenizer=tokenizer, model=model, test_sentence=test_sentence,compare_sentences=compare_sentences)
-        temp_df.loc[i, "similarity"] = similarity
-    temp_df['similarity'] = pd.to_numeric(temp_df['similarity'], errors='coerce')
-    mean_df = temp_df.groupby(["intent_index"])["similarity"].mean().reset_index().sort_values("similarity")
+    for sentences in groups:
+        compare_sentences = sentences["sentence"]
+        input_ids = tokenizer.batch_encode_plus(compare_sentences, return_tensors='pt', padding=True)
+        similaritys = model.generate(**input_ids)
+        similaritys = tokenizer.batch_decode(similaritys, skip_special_tokens=True)
+        new_ = {'intent_index': groups[0]['intent_index'], 'mean': sum(similaritys) / len(similaritys)}
+        temp_df = temp_df.append(new_)
+    mean_df = temp_df.sort_values("mean")
     max1 = mean_df.iloc[-1]
     max2 = mean_df.iloc[-2]
     max3 = mean_df.iloc[-3]
-    new_row = {'test_id': row["sentence_index"], 'expected': row["intent_index"], 'max1': max1["intent_index"], 'max2': max2["intent_index"], 'max3':max3["intent_index"]}
+    new_row = {'test_id': row["sentence_index"], 'expected': row["intent_index"], 'max1': max1["intent_index"],
+               'max2': max2["intent_index"], 'max3': max3["intent_index"]}
     result_df = result_df.append(new_row, ignore_index=True)
-result_df.to_csv(path_or_buf='../Result/positive-freeze/test_identity_result.csv', mode='w', index=False)
+result_df.to_csv(path_or_buf='../Result/Batch_/test_identity_result.csv', mode='w', index=False)

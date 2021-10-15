@@ -5,7 +5,7 @@ from Model.EntityIdentify.MeanSum import MeanSum
 from Model.FineTurn.Define import MODEL, tokenConfig
 from Static.Define import path_common
 
-model = T5ForConditionalGeneration.from_pretrained(path_common.model.value + '\\' + MODEL['name'] + "\\POS")
+model = T5ForConditionalGeneration.from_pretrained(path_common.model.value + '\\' + MODEL['name'] + "\\1Layer")
 model.to('cpu')
 tokenizer = T5Tokenizer.from_pretrained(MODEL['name'])
 tokenConfig(tokenizer=tokenizer)
@@ -20,7 +20,7 @@ columns = ["test_id", "expected", "actual"]
 result_df = pd.DataFrame(columns=columns)
 for i, r in tqdm(test_df.iterrows()):
     test_sentence = r['sentence']
-    sub_df = MeanSum(test_sentence=test_sentence, tokenizer=tokenizer, model=model, temp_df=temp_df, depth=3,
+    sub_df = MeanSum(test_sentence=test_sentence, tokenizer=tokenizer, model=model, temp_df=temp_df, depth=2,
                      return_max=False)
     sub_df = MeanSum(test_sentence=test_sentence, tokenizer=tokenizer, model=model, temp_df=sub_df, depth=5,
                      return_max=False)
@@ -28,4 +28,4 @@ for i, r in tqdm(test_df.iterrows()):
                         return_max=True)
     new_row = {'test_id': r["sentence_index"], 'expected': intent_id, 'actual': r["intent_index"]}
     result_df = result_df.append(new_row, ignore_index=True)
-result_df.to_csv(path_or_buf='../Result/positive-freeze/test_identity_result.csv', mode='w', index=False)
+result_df.to_csv(path_or_buf='../Result/1-layer-test_identity_result.csv', mode='w', index=False)
