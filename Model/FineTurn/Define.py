@@ -1,11 +1,12 @@
 from transformers import TrainingArguments
 
 MODEL = {
-    'name': 't5-small'
+    'name': 't5-small',
+    'data_link': "https://raw.githubusercontent.com/duong-sau/chatbot1212/master/Model/Data/IntentClassification/POS/learn_data.csv",
+    'num_decoder_layers': 6,
+    'num_freeze': 1
 }
-
 strategy = 'epoch'
-
 training_args = TrainingArguments(
     output_dir="/content/",
     overwrite_output_dir=True,
