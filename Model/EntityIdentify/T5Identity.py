@@ -8,7 +8,7 @@ from Static.Define import path_common
 import time
 
 # define
-name = 'base'
+name = 'T5-Small'
 
 tokenizer = T5Tokenizer.from_pretrained(MODEL['name'])
 tokenConfig(tokenizer=tokenizer)
