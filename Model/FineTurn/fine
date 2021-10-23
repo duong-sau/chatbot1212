@@ -1,0 +1,1894 @@
+/usr/local/lib/python3.7/dist-packages/transformers/trainer.py:318: FutureWarning: `Trainer` requires either a `model` or `model_init` argument, but not both. `model_init` will overwrite your model when calling the `train` method. This will become a fatal error in the next release.
+  FutureWarning,
+[I 2021-10-21 15:53:13,034] A new study created in memory with name: no-name-9f433a0b-1fa8-4ead-a858-fc459c8803df
+Trial:
+loading configuration file https://huggingface.co/t5-small/resolve/main/config.json from cache at /root/.cache/huggingface/transformers/fe501e8fd6425b8ec93df37767fcce78ce626e34cc5edc859c662350cf712e41.406701565c0afd9899544c1cb8b93185a76f00b31e5ce7f6e18bbaef02241985
+Model config T5Config {
+  "architectures": [
+    "T5WithLMHeadModel"
+  ],
+  "d_ff": 2048,
+  "d_kv": 64,
+  "d_model": 512,
+  "decoder_start_token_id": 0,
+  "dropout_rate": 0.1,
+  "eos_token_id": 1,
+  "feed_forward_proj": "relu",
+  "initializer_factor": 1.0,
+  "is_encoder_decoder": true,
+  "layer_norm_epsilon": 1e-06,
+  "model_type": "t5",
+  "n_positions": 512,
+  "num_decoder_layers": 6,
+  "num_heads": 8,
+  "num_layers": 6,
+  "output_past": true,
+  "pad_token_id": 0,
+  "relative_attention_num_buckets": 32,
+  "task_specific_params": {
+    "summarization": {
+      "early_stopping": true,
+      "length_penalty": 2.0,
+      "max_length": 200,
+      "min_length": 30,
+      "no_repeat_ngram_size": 3,
+      "num_beams": 4,
+      "prefix": "summarize: "
+    },
+    "translation_en_to_de": {
+      "early_stopping": true,
+      "max_length": 300,
+      "num_beams": 4,
+      "prefix": "translate English to German: "
+    },
+    "translation_en_to_fr": {
+      "early_stopping": true,
+      "max_length": 300,
+      "num_beams": 4,
+      "prefix": "translate English to French: "
+    },
+    "translation_en_to_ro": {
+      "early_stopping": true,
+      "max_length": 300,
+      "num_beams": 4,
+      "prefix": "translate English to Romanian: "
+    }
+  },
+  "transformers_version": "4.11.3",
+  "use_cache": true,
+  "vocab_size": 32128
+}
+
+loading weights file https://huggingface.co/t5-small/resolve/main/pytorch_model.bin from cache at /root/.cache/huggingface/transformers/fee5a3a0ae379232608b6eed45d2d7a0d2966b9683728838412caccc41b4b0ed.ddacdc89ec88482db20c676f0861a336f3d0409f94748c209847b49529d73885
+All model checkpoint weights were used when initializing T5ForConditionalGeneration.
+
+All the weights of T5ForConditionalGeneration were initialized from the model checkpoint at t5-small.
+If your task is similar to the task the model of the checkpoint was trained on, you can already use T5ForConditionalGeneration for predictions without further training.
+***** Running training *****
+  Num examples = 148
+  Num Epochs = 6
+  Instantaneous batch size per device = 16
+  Total train batch size (w. parallel, distributed & accumulation) = 512
+  Gradient Accumulation steps = 32
+  Total optimization steps = 6
+/usr/local/lib/python3.7/dist-packages/transformers/tokenization_utils_base.py:2217: FutureWarning:
+
+The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+
+ [6/6 01:10, Epoch 6/6]
+Epoch	Training Loss	Validation Loss
+1	No log	4.891287
+2	No log	4.790714
+3	No log	4.611403
+4	No log	4.391479
+5	No log	4.138895
+6	No log	3.851914
+***** Running Evaluation *****
+  Num examples = 38
+  Batch size = 4
+Saving model checkpoint to /content/run-0/checkpoint-1
+Configuration saved in /content/run-0/checkpoint-1/config.json
+Model weights saved in /content/run-0/checkpoint-1/pytorch_model.bin
+tokenizer config file saved in /content/run-0/checkpoint-1/tokenizer_config.json
+Special tokens file saved in /content/run-0/checkpoint-1/special_tokens_map.json
+Copy vocab file to /content/run-0/checkpoint-1/spiece.model
+/usr/local/lib/python3.7/dist-packages/transformers/tokenization_utils_base.py:2217: FutureWarning:
+
+The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+
+***** Running Evaluation *****
+  Num examples = 38
+  Batch size = 4
+Saving model checkpoint to /content/run-0/checkpoint-2
+Configuration saved in /content/run-0/checkpoint-2/config.json
+Model weights saved in /content/run-0/checkpoint-2/pytorch_model.bin
+tokenizer config file saved in /content/run-0/checkpoint-2/tokenizer_config.json
+Special tokens file saved in /content/run-0/checkpoint-2/special_tokens_map.json
+Copy vocab file to /content/run-0/checkpoint-2/spiece.model
+Deleting older checkpoint [/content/run-0/checkpoint-1] due to args.save_total_limit
+/usr/local/lib/python3.7/dist-packages/transformers/tokenization_utils_base.py:2217: FutureWarning:
+
+The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+
+***** Running Evaluation *****
+  Num examples = 38
+  Batch size = 4
+Saving model checkpoint to /content/run-0/checkpoint-3
+Configuration saved in /content/run-0/checkpoint-3/config.json
+Model weights saved in /content/run-0/checkpoint-3/pytorch_model.bin
+tokenizer config file saved in /content/run-0/checkpoint-3/tokenizer_config.json
+Special tokens file saved in /content/run-0/checkpoint-3/special_tokens_map.json
+Copy vocab file to /content/run-0/checkpoint-3/spiece.model
+Deleting older checkpoint [/content/run-0/checkpoint-2] due to args.save_total_limit
+/usr/local/lib/python3.7/dist-packages/transformers/tokenization_utils_base.py:2217: FutureWarning:
+
+The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+
+***** Running Evaluation *****
+  Num examples = 38
+  Batch size = 4
+Saving model checkpoint to /content/run-0/checkpoint-4
+Configuration saved in /content/run-0/checkpoint-4/config.json
+Model weights saved in /content/run-0/checkpoint-4/pytorch_model.bin
+tokenizer config file saved in /content/run-0/checkpoint-4/tokenizer_config.json
+Special tokens file saved in /content/run-0/checkpoint-4/special_tokens_map.json
+Copy vocab file to /content/run-0/checkpoint-4/spiece.model
+Deleting older checkpoint [/content/run-0/checkpoint-3] due to args.save_total_limit
+/usr/local/lib/python3.7/dist-packages/transformers/tokenization_utils_base.py:2217: FutureWarning:
+
+The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+
+***** Running Evaluation *****
+  Num examples = 38
+  Batch size = 4
+Saving model checkpoint to /content/run-0/checkpoint-5
+Configuration saved in /content/run-0/checkpoint-5/config.json
+Model weights saved in /content/run-0/checkpoint-5/pytorch_model.bin
+tokenizer config file saved in /content/run-0/checkpoint-5/tokenizer_config.json
+Special tokens file saved in /content/run-0/checkpoint-5/special_tokens_map.json
+Copy vocab file to /content/run-0/checkpoint-5/spiece.model
+Deleting older checkpoint [/content/run-0/checkpoint-4] due to args.save_total_limit
+/usr/local/lib/python3.7/dist-packages/transformers/tokenization_utils_base.py:2217: FutureWarning:
+
+The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+
+***** Running Evaluation *****
+  Num examples = 38
+  Batch size = 4
+Saving model checkpoint to /content/run-0/checkpoint-6
+Configuration saved in /content/run-0/checkpoint-6/config.json
+Model weights saved in /content/run-0/checkpoint-6/pytorch_model.bin
+tokenizer config file saved in /content/run-0/checkpoint-6/tokenizer_config.json
+Special tokens file saved in /content/run-0/checkpoint-6/special_tokens_map.json
+Copy vocab file to /content/run-0/checkpoint-6/spiece.model
+Deleting older checkpoint [/content/run-0/checkpoint-5] due to args.save_total_limit
+
+
+Training completed. Do not forget to share your model on huggingface.co/models =)
+
+
+Loading best model from /content/run-0/checkpoint-6 (score: 3.8519139289855957).
+[I 2021-10-21 15:54:29,144] Trial 0 finished with value: 3.8519139289855957 and parameters: {'learning_rate': 0.0006000204614700263, 'weight_decay': 0.023543697964482774, 'num_train_epochs': 6, 'per_device_train_batch_size': 16}. Best is trial 0 with value: 3.8519139289855957.
+Trial:
+loading configuration file https://huggingface.co/t5-small/resolve/main/config.json from cache at /root/.cache/huggingface/transformers/fe501e8fd6425b8ec93df37767fcce78ce626e34cc5edc859c662350cf712e41.406701565c0afd9899544c1cb8b93185a76f00b31e5ce7f6e18bbaef02241985
+Model config T5Config {
+  "architectures": [
+    "T5WithLMHeadModel"
+  ],
+  "d_ff": 2048,
+  "d_kv": 64,
+  "d_model": 512,
+  "decoder_start_token_id": 0,
+  "dropout_rate": 0.1,
+  "eos_token_id": 1,
+  "feed_forward_proj": "relu",
+  "initializer_factor": 1.0,
+  "is_encoder_decoder": true,
+  "layer_norm_epsilon": 1e-06,
+  "model_type": "t5",
+  "n_positions": 512,
+  "num_decoder_layers": 6,
+  "num_heads": 8,
+  "num_layers": 6,
+  "output_past": true,
+  "pad_token_id": 0,
+  "relative_attention_num_buckets": 32,
+  "task_specific_params": {
+    "summarization": {
+      "early_stopping": true,
+      "length_penalty": 2.0,
+      "max_length": 200,
+      "min_length": 30,
+      "no_repeat_ngram_size": 3,
+      "num_beams": 4,
+      "prefix": "summarize: "
+    },
+    "translation_en_to_de": {
+      "early_stopping": true,
+      "max_length": 300,
+      "num_beams": 4,
+      "prefix": "translate English to German: "
+    },
+    "translation_en_to_fr": {
+      "early_stopping": true,
+      "max_length": 300,
+      "num_beams": 4,
+      "prefix": "translate English to French: "
+    },
+    "translation_en_to_ro": {
+      "early_stopping": true,
+      "max_length": 300,
+      "num_beams": 4,
+      "prefix": "translate English to Romanian: "
+    }
+  },
+  "transformers_version": "4.11.3",
+  "use_cache": true,
+  "vocab_size": 32128
+}
+
+loading weights file https://huggingface.co/t5-small/resolve/main/pytorch_model.bin from cache at /root/.cache/huggingface/transformers/fee5a3a0ae379232608b6eed45d2d7a0d2966b9683728838412caccc41b4b0ed.ddacdc89ec88482db20c676f0861a336f3d0409f94748c209847b49529d73885
+All model checkpoint weights were used when initializing T5ForConditionalGeneration.
+
+All the weights of T5ForConditionalGeneration were initialized from the model checkpoint at t5-small.
+If your task is similar to the task the model of the checkpoint was trained on, you can already use T5ForConditionalGeneration for predictions without further training.
+***** Running training *****
+  Num examples = 148
+  Num Epochs = 8
+  Instantaneous batch size per device = 16
+  Total train batch size (w. parallel, distributed & accumulation) = 512
+  Gradient Accumulation steps = 32
+  Total optimization steps = 8
+/usr/local/lib/python3.7/dist-packages/transformers/tokenization_utils_base.py:2217: FutureWarning:
+
+The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+
+ [8/8 02:01, Epoch 8/8]
+Epoch	Training Loss	Validation Loss
+1	No log	4.891287
+2	No log	4.807135
+3	No log	4.653227
+4	No log	4.455224
+5	No log	4.238359
+6	No log	3.993872
+7	No log	3.709261
+8	No log	3.491792
+***** Running Evaluation *****
+  Num examples = 38
+  Batch size = 4
+Saving model checkpoint to /content/run-1/checkpoint-1
+Configuration saved in /content/run-1/checkpoint-1/config.json
+Model weights saved in /content/run-1/checkpoint-1/pytorch_model.bin
+tokenizer config file saved in /content/run-1/checkpoint-1/tokenizer_config.json
+Special tokens file saved in /content/run-1/checkpoint-1/special_tokens_map.json
+Copy vocab file to /content/run-1/checkpoint-1/spiece.model
+/usr/local/lib/python3.7/dist-packages/transformers/tokenization_utils_base.py:2217: FutureWarning:
+
+The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+
+***** Running Evaluation *****
+  Num examples = 38
+  Batch size = 4
+Saving model checkpoint to /content/run-1/checkpoint-2
+Configuration saved in /content/run-1/checkpoint-2/config.json
+Model weights saved in /content/run-1/checkpoint-2/pytorch_model.bin
+tokenizer config file saved in /content/run-1/checkpoint-2/tokenizer_config.json
+Special tokens file saved in /content/run-1/checkpoint-2/special_tokens_map.json
+Copy vocab file to /content/run-1/checkpoint-2/spiece.model
+Deleting older checkpoint [/content/run-1/checkpoint-1] due to args.save_total_limit
+/usr/local/lib/python3.7/dist-packages/transformers/tokenization_utils_base.py:2217: FutureWarning:
+
+The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+
+***** Running Evaluation *****
+  Num examples = 38
+  Batch size = 4
+Saving model checkpoint to /content/run-1/checkpoint-3
+Configuration saved in /content/run-1/checkpoint-3/config.json
+Model weights saved in /content/run-1/checkpoint-3/pytorch_model.bin
+tokenizer config file saved in /content/run-1/checkpoint-3/tokenizer_config.json
+Special tokens file saved in /content/run-1/checkpoint-3/special_tokens_map.json
+Copy vocab file to /content/run-1/checkpoint-3/spiece.model
+Deleting older checkpoint [/content/run-1/checkpoint-2] due to args.save_total_limit
+/usr/local/lib/python3.7/dist-packages/transformers/tokenization_utils_base.py:2217: FutureWarning:
+
+The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+
+***** Running Evaluation *****
+  Num examples = 38
+  Batch size = 4
+Saving model checkpoint to /content/run-1/checkpoint-4
+Configuration saved in /content/run-1/checkpoint-4/config.json
+Model weights saved in /content/run-1/checkpoint-4/pytorch_model.bin
+tokenizer config file saved in /content/run-1/checkpoint-4/tokenizer_config.json
+Special tokens file saved in /content/run-1/checkpoint-4/special_tokens_map.json
+Copy vocab file to /content/run-1/checkpoint-4/spiece.model
+Deleting older checkpoint [/content/run-1/checkpoint-3] due to args.save_total_limit
+/usr/local/lib/python3.7/dist-packages/transformers/tokenization_utils_base.py:2217: FutureWarning:
+
+The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+
+***** Running Evaluation *****
+  Num examples = 38
+  Batch size = 4
+Saving model checkpoint to /content/run-1/checkpoint-5
+Configuration saved in /content/run-1/checkpoint-5/config.json
+Model weights saved in /content/run-1/checkpoint-5/pytorch_model.bin
+tokenizer config file saved in /content/run-1/checkpoint-5/tokenizer_config.json
+Special tokens file saved in /content/run-1/checkpoint-5/special_tokens_map.json
+Copy vocab file to /content/run-1/checkpoint-5/spiece.model
+Deleting older checkpoint [/content/run-1/checkpoint-4] due to args.save_total_limit
+/usr/local/lib/python3.7/dist-packages/transformers/tokenization_utils_base.py:2217: FutureWarning:
+
+The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+
+***** Running Evaluation *****
+  Num examples = 38
+  Batch size = 4
+Saving model checkpoint to /content/run-1/checkpoint-6
+Configuration saved in /content/run-1/checkpoint-6/config.json
+Model weights saved in /content/run-1/checkpoint-6/pytorch_model.bin
+tokenizer config file saved in /content/run-1/checkpoint-6/tokenizer_config.json
+Special tokens file saved in /content/run-1/checkpoint-6/special_tokens_map.json
+Copy vocab file to /content/run-1/checkpoint-6/spiece.model
+Deleting older checkpoint [/content/run-1/checkpoint-5] due to args.save_total_limit
+/usr/local/lib/python3.7/dist-packages/transformers/tokenization_utils_base.py:2217: FutureWarning:
+
+The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+
+***** Running Evaluation *****
+  Num examples = 38
+  Batch size = 4
+Saving model checkpoint to /content/run-1/checkpoint-7
+Configuration saved in /content/run-1/checkpoint-7/config.json
+Model weights saved in /content/run-1/checkpoint-7/pytorch_model.bin
+tokenizer config file saved in /content/run-1/checkpoint-7/tokenizer_config.json
+Special tokens file saved in /content/run-1/checkpoint-7/special_tokens_map.json
+Copy vocab file to /content/run-1/checkpoint-7/spiece.model
+Deleting older checkpoint [/content/run-1/checkpoint-6] due to args.save_total_limit
+/usr/local/lib/python3.7/dist-packages/transformers/tokenization_utils_base.py:2217: FutureWarning:
+
+The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+
+***** Running Evaluation *****
+  Num examples = 38
+  Batch size = 4
+Saving model checkpoint to /content/run-1/checkpoint-8
+Configuration saved in /content/run-1/checkpoint-8/config.json
+Model weights saved in /content/run-1/checkpoint-8/pytorch_model.bin
+tokenizer config file saved in /content/run-1/checkpoint-8/tokenizer_config.json
+Special tokens file saved in /content/run-1/checkpoint-8/special_tokens_map.json
+Copy vocab file to /content/run-1/checkpoint-8/spiece.model
+Deleting older checkpoint [/content/run-1/checkpoint-7] due to args.save_total_limit
+
+
+Training completed. Do not forget to share your model on huggingface.co/models =)
+
+
+Loading best model from /content/run-1/checkpoint-8 (score: 3.4917919635772705).
+[I 2021-10-21 15:56:36,370] Trial 1 finished with value: 3.4917919635772705 and parameters: {'learning_rate': 0.0005025319814340198, 'weight_decay': 0.022354965719613554, 'num_train_epochs': 8, 'per_device_train_batch_size': 16}. Best is trial 0 with value: 3.8519139289855957.
+Trial:
+loading configuration file https://huggingface.co/t5-small/resolve/main/config.json from cache at /root/.cache/huggingface/transformers/fe501e8fd6425b8ec93df37767fcce78ce626e34cc5edc859c662350cf712e41.406701565c0afd9899544c1cb8b93185a76f00b31e5ce7f6e18bbaef02241985
+Model config T5Config {
+  "architectures": [
+    "T5WithLMHeadModel"
+  ],
+  "d_ff": 2048,
+  "d_kv": 64,
+  "d_model": 512,
+  "decoder_start_token_id": 0,
+  "dropout_rate": 0.1,
+  "eos_token_id": 1,
+  "feed_forward_proj": "relu",
+  "initializer_factor": 1.0,
+  "is_encoder_decoder": true,
+  "layer_norm_epsilon": 1e-06,
+  "model_type": "t5",
+  "n_positions": 512,
+  "num_decoder_layers": 6,
+  "num_heads": 8,
+  "num_layers": 6,
+  "output_past": true,
+  "pad_token_id": 0,
+  "relative_attention_num_buckets": 32,
+  "task_specific_params": {
+    "summarization": {
+      "early_stopping": true,
+      "length_penalty": 2.0,
+      "max_length": 200,
+      "min_length": 30,
+      "no_repeat_ngram_size": 3,
+      "num_beams": 4,
+      "prefix": "summarize: "
+    },
+    "translation_en_to_de": {
+      "early_stopping": true,
+      "max_length": 300,
+      "num_beams": 4,
+      "prefix": "translate English to German: "
+    },
+    "translation_en_to_fr": {
+      "early_stopping": true,
+      "max_length": 300,
+      "num_beams": 4,
+      "prefix": "translate English to French: "
+    },
+    "translation_en_to_ro": {
+      "early_stopping": true,
+      "max_length": 300,
+      "num_beams": 4,
+      "prefix": "translate English to Romanian: "
+    }
+  },
+  "transformers_version": "4.11.3",
+  "use_cache": true,
+  "vocab_size": 32128
+}
+
+loading weights file https://huggingface.co/t5-small/resolve/main/pytorch_model.bin from cache at /root/.cache/huggingface/transformers/fee5a3a0ae379232608b6eed45d2d7a0d2966b9683728838412caccc41b4b0ed.ddacdc89ec88482db20c676f0861a336f3d0409f94748c209847b49529d73885
+All model checkpoint weights were used when initializing T5ForConditionalGeneration.
+
+All the weights of T5ForConditionalGeneration were initialized from the model checkpoint at t5-small.
+If your task is similar to the task the model of the checkpoint was trained on, you can already use T5ForConditionalGeneration for predictions without further training.
+***** Running training *****
+  Num examples = 148
+  Num Epochs = 6
+  Instantaneous batch size per device = 16
+  Total train batch size (w. parallel, distributed & accumulation) = 512
+  Gradient Accumulation steps = 32
+  Total optimization steps = 6
+/usr/local/lib/python3.7/dist-packages/transformers/tokenization_utils_base.py:2217: FutureWarning:
+
+The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+
+ [6/6 01:32, Epoch 6/6]
+Epoch	Training Loss	Validation Loss
+1	No log	4.891287
+2	No log	4.865202
+3	No log	4.818452
+4	No log	4.747492
+5	No log	4.656726
+6	No log	4.551810
+***** Running Evaluation *****
+  Num examples = 38
+  Batch size = 4
+Saving model checkpoint to /content/run-2/checkpoint-1
+Configuration saved in /content/run-2/checkpoint-1/config.json
+Model weights saved in /content/run-2/checkpoint-1/pytorch_model.bin
+tokenizer config file saved in /content/run-2/checkpoint-1/tokenizer_config.json
+Special tokens file saved in /content/run-2/checkpoint-1/special_tokens_map.json
+Copy vocab file to /content/run-2/checkpoint-1/spiece.model
+/usr/local/lib/python3.7/dist-packages/transformers/tokenization_utils_base.py:2217: FutureWarning:
+
+The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+
+***** Running Evaluation *****
+  Num examples = 38
+  Batch size = 4
+Saving model checkpoint to /content/run-2/checkpoint-2
+Configuration saved in /content/run-2/checkpoint-2/config.json
+Model weights saved in /content/run-2/checkpoint-2/pytorch_model.bin
+tokenizer config file saved in /content/run-2/checkpoint-2/tokenizer_config.json
+Special tokens file saved in /content/run-2/checkpoint-2/special_tokens_map.json
+Copy vocab file to /content/run-2/checkpoint-2/spiece.model
+Deleting older checkpoint [/content/run-2/checkpoint-1] due to args.save_total_limit
+/usr/local/lib/python3.7/dist-packages/transformers/tokenization_utils_base.py:2217: FutureWarning:
+
+The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+
+***** Running Evaluation *****
+  Num examples = 38
+  Batch size = 4
+Saving model checkpoint to /content/run-2/checkpoint-3
+Configuration saved in /content/run-2/checkpoint-3/config.json
+Model weights saved in /content/run-2/checkpoint-3/pytorch_model.bin
+tokenizer config file saved in /content/run-2/checkpoint-3/tokenizer_config.json
+Special tokens file saved in /content/run-2/checkpoint-3/special_tokens_map.json
+Copy vocab file to /content/run-2/checkpoint-3/spiece.model
+Deleting older checkpoint [/content/run-2/checkpoint-2] due to args.save_total_limit
+/usr/local/lib/python3.7/dist-packages/transformers/tokenization_utils_base.py:2217: FutureWarning:
+
+The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+
+***** Running Evaluation *****
+  Num examples = 38
+  Batch size = 4
+Saving model checkpoint to /content/run-2/checkpoint-4
+Configuration saved in /content/run-2/checkpoint-4/config.json
+Model weights saved in /content/run-2/checkpoint-4/pytorch_model.bin
+tokenizer config file saved in /content/run-2/checkpoint-4/tokenizer_config.json
+Special tokens file saved in /content/run-2/checkpoint-4/special_tokens_map.json
+Copy vocab file to /content/run-2/checkpoint-4/spiece.model
+Deleting older checkpoint [/content/run-2/checkpoint-3] due to args.save_total_limit
+/usr/local/lib/python3.7/dist-packages/transformers/tokenization_utils_base.py:2217: FutureWarning:
+
+The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+
+***** Running Evaluation *****
+  Num examples = 38
+  Batch size = 4
+Saving model checkpoint to /content/run-2/checkpoint-5
+Configuration saved in /content/run-2/checkpoint-5/config.json
+Model weights saved in /content/run-2/checkpoint-5/pytorch_model.bin
+tokenizer config file saved in /content/run-2/checkpoint-5/tokenizer_config.json
+Special tokens file saved in /content/run-2/checkpoint-5/special_tokens_map.json
+Copy vocab file to /content/run-2/checkpoint-5/spiece.model
+Deleting older checkpoint [/content/run-2/checkpoint-4] due to args.save_total_limit
+/usr/local/lib/python3.7/dist-packages/transformers/tokenization_utils_base.py:2217: FutureWarning:
+
+The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+
+***** Running Evaluation *****
+  Num examples = 38
+  Batch size = 4
+Saving model checkpoint to /content/run-2/checkpoint-6
+Configuration saved in /content/run-2/checkpoint-6/config.json
+Model weights saved in /content/run-2/checkpoint-6/pytorch_model.bin
+tokenizer config file saved in /content/run-2/checkpoint-6/tokenizer_config.json
+Special tokens file saved in /content/run-2/checkpoint-6/special_tokens_map.json
+Copy vocab file to /content/run-2/checkpoint-6/spiece.model
+Deleting older checkpoint [/content/run-2/checkpoint-5] due to args.save_total_limit
+
+
+Training completed. Do not forget to share your model on huggingface.co/models =)
+
+
+Loading best model from /content/run-2/checkpoint-6 (score: 4.551809787750244).
+[I 2021-10-21 15:58:13,723] Trial 2 finished with value: 4.551809787750244 and parameters: {'learning_rate': 0.000149354064347908, 'weight_decay': 0.015931345171312946, 'num_train_epochs': 6, 'per_device_train_batch_size': 16}. Best is trial 2 with value: 4.551809787750244.
+Trial:
+loading configuration file https://huggingface.co/t5-small/resolve/main/config.json from cache at /root/.cache/huggingface/transformers/fe501e8fd6425b8ec93df37767fcce78ce626e34cc5edc859c662350cf712e41.406701565c0afd9899544c1cb8b93185a76f00b31e5ce7f6e18bbaef02241985
+Model config T5Config {
+  "architectures": [
+    "T5WithLMHeadModel"
+  ],
+  "d_ff": 2048,
+  "d_kv": 64,
+  "d_model": 512,
+  "decoder_start_token_id": 0,
+  "dropout_rate": 0.1,
+  "eos_token_id": 1,
+  "feed_forward_proj": "relu",
+  "initializer_factor": 1.0,
+  "is_encoder_decoder": true,
+  "layer_norm_epsilon": 1e-06,
+  "model_type": "t5",
+  "n_positions": 512,
+  "num_decoder_layers": 6,
+  "num_heads": 8,
+  "num_layers": 6,
+  "output_past": true,
+  "pad_token_id": 0,
+  "relative_attention_num_buckets": 32,
+  "task_specific_params": {
+    "summarization": {
+      "early_stopping": true,
+      "length_penalty": 2.0,
+      "max_length": 200,
+      "min_length": 30,
+      "no_repeat_ngram_size": 3,
+      "num_beams": 4,
+      "prefix": "summarize: "
+    },
+    "translation_en_to_de": {
+      "early_stopping": true,
+      "max_length": 300,
+      "num_beams": 4,
+      "prefix": "translate English to German: "
+    },
+    "translation_en_to_fr": {
+      "early_stopping": true,
+      "max_length": 300,
+      "num_beams": 4,
+      "prefix": "translate English to French: "
+    },
+    "translation_en_to_ro": {
+      "early_stopping": true,
+      "max_length": 300,
+      "num_beams": 4,
+      "prefix": "translate English to Romanian: "
+    }
+  },
+  "transformers_version": "4.11.3",
+  "use_cache": true,
+  "vocab_size": 32128
+}
+
+loading weights file https://huggingface.co/t5-small/resolve/main/pytorch_model.bin from cache at /root/.cache/huggingface/transformers/fee5a3a0ae379232608b6eed45d2d7a0d2966b9683728838412caccc41b4b0ed.ddacdc89ec88482db20c676f0861a336f3d0409f94748c209847b49529d73885
+All model checkpoint weights were used when initializing T5ForConditionalGeneration.
+
+All the weights of T5ForConditionalGeneration were initialized from the model checkpoint at t5-small.
+If your task is similar to the task the model of the checkpoint was trained on, you can already use T5ForConditionalGeneration for predictions without further training.
+***** Running training *****
+  Num examples = 148
+  Num Epochs = 8
+  Instantaneous batch size per device = 8
+  Total train batch size (w. parallel, distributed & accumulation) = 256
+  Gradient Accumulation steps = 32
+  Total optimization steps = 8
+/usr/local/lib/python3.7/dist-packages/transformers/tokenization_utils_base.py:2217: FutureWarning:
+
+The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+
+ [8/8 02:06, Epoch 8/8]
+Epoch	Training Loss	Validation Loss
+1	No log	4.891287
+2	No log	4.845398
+3	No log	4.756891
+4	No log	4.629014
+5	No log	4.479708
+6	No log	4.323685
+7	No log	4.147606
+8	No log	3.955734
+***** Running Evaluation *****
+  Num examples = 38
+  Batch size = 4
+Saving model checkpoint to /content/run-3/checkpoint-1
+Configuration saved in /content/run-3/checkpoint-1/config.json
+Model weights saved in /content/run-3/checkpoint-1/pytorch_model.bin
+tokenizer config file saved in /content/run-3/checkpoint-1/tokenizer_config.json
+Special tokens file saved in /content/run-3/checkpoint-1/special_tokens_map.json
+Copy vocab file to /content/run-3/checkpoint-1/spiece.model
+/usr/local/lib/python3.7/dist-packages/transformers/tokenization_utils_base.py:2217: FutureWarning:
+
+The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+
+***** Running Evaluation *****
+  Num examples = 38
+  Batch size = 4
+Saving model checkpoint to /content/run-3/checkpoint-2
+Configuration saved in /content/run-3/checkpoint-2/config.json
+Model weights saved in /content/run-3/checkpoint-2/pytorch_model.bin
+tokenizer config file saved in /content/run-3/checkpoint-2/tokenizer_config.json
+Special tokens file saved in /content/run-3/checkpoint-2/special_tokens_map.json
+Copy vocab file to /content/run-3/checkpoint-2/spiece.model
+Deleting older checkpoint [/content/run-3/checkpoint-1] due to args.save_total_limit
+/usr/local/lib/python3.7/dist-packages/transformers/tokenization_utils_base.py:2217: FutureWarning:
+
+The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+
+***** Running Evaluation *****
+  Num examples = 38
+  Batch size = 4
+Saving model checkpoint to /content/run-3/checkpoint-3
+Configuration saved in /content/run-3/checkpoint-3/config.json
+Model weights saved in /content/run-3/checkpoint-3/pytorch_model.bin
+tokenizer config file saved in /content/run-3/checkpoint-3/tokenizer_config.json
+Special tokens file saved in /content/run-3/checkpoint-3/special_tokens_map.json
+Copy vocab file to /content/run-3/checkpoint-3/spiece.model
+Deleting older checkpoint [/content/run-3/checkpoint-2] due to args.save_total_limit
+/usr/local/lib/python3.7/dist-packages/transformers/tokenization_utils_base.py:2217: FutureWarning:
+
+The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+
+***** Running Evaluation *****
+  Num examples = 38
+  Batch size = 4
+Saving model checkpoint to /content/run-3/checkpoint-4
+Configuration saved in /content/run-3/checkpoint-4/config.json
+Model weights saved in /content/run-3/checkpoint-4/pytorch_model.bin
+tokenizer config file saved in /content/run-3/checkpoint-4/tokenizer_config.json
+Special tokens file saved in /content/run-3/checkpoint-4/special_tokens_map.json
+Copy vocab file to /content/run-3/checkpoint-4/spiece.model
+Deleting older checkpoint [/content/run-3/checkpoint-3] due to args.save_total_limit
+/usr/local/lib/python3.7/dist-packages/transformers/tokenization_utils_base.py:2217: FutureWarning:
+
+The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+
+***** Running Evaluation *****
+  Num examples = 38
+  Batch size = 4
+Saving model checkpoint to /content/run-3/checkpoint-5
+Configuration saved in /content/run-3/checkpoint-5/config.json
+Model weights saved in /content/run-3/checkpoint-5/pytorch_model.bin
+tokenizer config file saved in /content/run-3/checkpoint-5/tokenizer_config.json
+Special tokens file saved in /content/run-3/checkpoint-5/special_tokens_map.json
+Copy vocab file to /content/run-3/checkpoint-5/spiece.model
+Deleting older checkpoint [/content/run-3/checkpoint-4] due to args.save_total_limit
+/usr/local/lib/python3.7/dist-packages/transformers/tokenization_utils_base.py:2217: FutureWarning:
+
+The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+
+***** Running Evaluation *****
+  Num examples = 38
+  Batch size = 4
+Saving model checkpoint to /content/run-3/checkpoint-6
+Configuration saved in /content/run-3/checkpoint-6/config.json
+Model weights saved in /content/run-3/checkpoint-6/pytorch_model.bin
+tokenizer config file saved in /content/run-3/checkpoint-6/tokenizer_config.json
+Special tokens file saved in /content/run-3/checkpoint-6/special_tokens_map.json
+Copy vocab file to /content/run-3/checkpoint-6/spiece.model
+Deleting older checkpoint [/content/run-3/checkpoint-5] due to args.save_total_limit
+/usr/local/lib/python3.7/dist-packages/transformers/tokenization_utils_base.py:2217: FutureWarning:
+
+The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+
+***** Running Evaluation *****
+  Num examples = 38
+  Batch size = 4
+Saving model checkpoint to /content/run-3/checkpoint-7
+Configuration saved in /content/run-3/checkpoint-7/config.json
+Model weights saved in /content/run-3/checkpoint-7/pytorch_model.bin
+tokenizer config file saved in /content/run-3/checkpoint-7/tokenizer_config.json
+Special tokens file saved in /content/run-3/checkpoint-7/special_tokens_map.json
+Copy vocab file to /content/run-3/checkpoint-7/spiece.model
+Deleting older checkpoint [/content/run-3/checkpoint-6] due to args.save_total_limit
+/usr/local/lib/python3.7/dist-packages/transformers/tokenization_utils_base.py:2217: FutureWarning:
+
+The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+
+***** Running Evaluation *****
+  Num examples = 38
+  Batch size = 4
+Saving model checkpoint to /content/run-3/checkpoint-8
+Configuration saved in /content/run-3/checkpoint-8/config.json
+Model weights saved in /content/run-3/checkpoint-8/pytorch_model.bin
+tokenizer config file saved in /content/run-3/checkpoint-8/tokenizer_config.json
+Special tokens file saved in /content/run-3/checkpoint-8/special_tokens_map.json
+Copy vocab file to /content/run-3/checkpoint-8/spiece.model
+Deleting older checkpoint [/content/run-3/checkpoint-7] due to args.save_total_limit
+
+
+Training completed. Do not forget to share your model on huggingface.co/models =)
+
+
+Loading best model from /content/run-3/checkpoint-8 (score: 3.9557337760925293).
+[I 2021-10-21 16:00:25,260] Trial 3 finished with value: 3.9557337760925293 and parameters: {'learning_rate': 0.00027481170366928714, 'weight_decay': 0.02150128074588801, 'num_train_epochs': 8, 'per_device_train_batch_size': 8}. Best is trial 2 with value: 4.551809787750244.
+Trial:
+loading configuration file https://huggingface.co/t5-small/resolve/main/config.json from cache at /root/.cache/huggingface/transformers/fe501e8fd6425b8ec93df37767fcce78ce626e34cc5edc859c662350cf712e41.406701565c0afd9899544c1cb8b93185a76f00b31e5ce7f6e18bbaef02241985
+Model config T5Config {
+  "architectures": [
+    "T5WithLMHeadModel"
+  ],
+  "d_ff": 2048,
+  "d_kv": 64,
+  "d_model": 512,
+  "decoder_start_token_id": 0,
+  "dropout_rate": 0.1,
+  "eos_token_id": 1,
+  "feed_forward_proj": "relu",
+  "initializer_factor": 1.0,
+  "is_encoder_decoder": true,
+  "layer_norm_epsilon": 1e-06,
+  "model_type": "t5",
+  "n_positions": 512,
+  "num_decoder_layers": 6,
+  "num_heads": 8,
+  "num_layers": 6,
+  "output_past": true,
+  "pad_token_id": 0,
+  "relative_attention_num_buckets": 32,
+  "task_specific_params": {
+    "summarization": {
+      "early_stopping": true,
+      "length_penalty": 2.0,
+      "max_length": 200,
+      "min_length": 30,
+      "no_repeat_ngram_size": 3,
+      "num_beams": 4,
+      "prefix": "summarize: "
+    },
+    "translation_en_to_de": {
+      "early_stopping": true,
+      "max_length": 300,
+      "num_beams": 4,
+      "prefix": "translate English to German: "
+    },
+    "translation_en_to_fr": {
+      "early_stopping": true,
+      "max_length": 300,
+      "num_beams": 4,
+      "prefix": "translate English to French: "
+    },
+    "translation_en_to_ro": {
+      "early_stopping": true,
+      "max_length": 300,
+      "num_beams": 4,
+      "prefix": "translate English to Romanian: "
+    }
+  },
+  "transformers_version": "4.11.3",
+  "use_cache": true,
+  "vocab_size": 32128
+}
+
+loading weights file https://huggingface.co/t5-small/resolve/main/pytorch_model.bin from cache at /root/.cache/huggingface/transformers/fee5a3a0ae379232608b6eed45d2d7a0d2966b9683728838412caccc41b4b0ed.ddacdc89ec88482db20c676f0861a336f3d0409f94748c209847b49529d73885
+All model checkpoint weights were used when initializing T5ForConditionalGeneration.
+
+All the weights of T5ForConditionalGeneration were initialized from the model checkpoint at t5-small.
+If your task is similar to the task the model of the checkpoint was trained on, you can already use T5ForConditionalGeneration for predictions without further training.
+***** Running training *****
+  Num examples = 148
+  Num Epochs = 10
+  Instantaneous batch size per device = 4
+  Total train batch size (w. parallel, distributed & accumulation) = 128
+  Gradient Accumulation steps = 32
+  Total optimization steps = 10
+/usr/local/lib/python3.7/dist-packages/transformers/tokenization_utils_base.py:2217: FutureWarning:
+
+The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+
+ [10/10 02:35, Epoch 9/10]
+Epoch	Training Loss	Validation Loss
+0	No log	4.891287
+1	No log	4.888640
+2	No log	4.883245
+3	No log	4.875537
+4	No log	4.866451
+5	No log	4.855081
+6	No log	4.841113
+7	No log	4.824264
+8	No log	4.804663
+9	No log	4.783031
+***** Running Evaluation *****
+  Num examples = 38
+  Batch size = 4
+Saving model checkpoint to /content/run-4/checkpoint-1
+Configuration saved in /content/run-4/checkpoint-1/config.json
+Model weights saved in /content/run-4/checkpoint-1/pytorch_model.bin
+tokenizer config file saved in /content/run-4/checkpoint-1/tokenizer_config.json
+Special tokens file saved in /content/run-4/checkpoint-1/special_tokens_map.json
+Copy vocab file to /content/run-4/checkpoint-1/spiece.model
+/usr/local/lib/python3.7/dist-packages/transformers/tokenization_utils_base.py:2217: FutureWarning:
+
+The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+
+***** Running Evaluation *****
+  Num examples = 38
+  Batch size = 4
+Saving model checkpoint to /content/run-4/checkpoint-2
+Configuration saved in /content/run-4/checkpoint-2/config.json
+Model weights saved in /content/run-4/checkpoint-2/pytorch_model.bin
+tokenizer config file saved in /content/run-4/checkpoint-2/tokenizer_config.json
+Special tokens file saved in /content/run-4/checkpoint-2/special_tokens_map.json
+Copy vocab file to /content/run-4/checkpoint-2/spiece.model
+Deleting older checkpoint [/content/run-4/checkpoint-1] due to args.save_total_limit
+/usr/local/lib/python3.7/dist-packages/transformers/tokenization_utils_base.py:2217: FutureWarning:
+
+The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+
+***** Running Evaluation *****
+  Num examples = 38
+  Batch size = 4
+Saving model checkpoint to /content/run-4/checkpoint-3
+Configuration saved in /content/run-4/checkpoint-3/config.json
+Model weights saved in /content/run-4/checkpoint-3/pytorch_model.bin
+tokenizer config file saved in /content/run-4/checkpoint-3/tokenizer_config.json
+Special tokens file saved in /content/run-4/checkpoint-3/special_tokens_map.json
+Copy vocab file to /content/run-4/checkpoint-3/spiece.model
+Deleting older checkpoint [/content/run-4/checkpoint-2] due to args.save_total_limit
+/usr/local/lib/python3.7/dist-packages/transformers/tokenization_utils_base.py:2217: FutureWarning:
+
+The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+
+***** Running Evaluation *****
+  Num examples = 38
+  Batch size = 4
+Saving model checkpoint to /content/run-4/checkpoint-4
+Configuration saved in /content/run-4/checkpoint-4/config.json
+Model weights saved in /content/run-4/checkpoint-4/pytorch_model.bin
+tokenizer config file saved in /content/run-4/checkpoint-4/tokenizer_config.json
+Special tokens file saved in /content/run-4/checkpoint-4/special_tokens_map.json
+Copy vocab file to /content/run-4/checkpoint-4/spiece.model
+Deleting older checkpoint [/content/run-4/checkpoint-3] due to args.save_total_limit
+/usr/local/lib/python3.7/dist-packages/transformers/tokenization_utils_base.py:2217: FutureWarning:
+
+The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+
+***** Running Evaluation *****
+  Num examples = 38
+  Batch size = 4
+Saving model checkpoint to /content/run-4/checkpoint-5
+Configuration saved in /content/run-4/checkpoint-5/config.json
+Model weights saved in /content/run-4/checkpoint-5/pytorch_model.bin
+tokenizer config file saved in /content/run-4/checkpoint-5/tokenizer_config.json
+Special tokens file saved in /content/run-4/checkpoint-5/special_tokens_map.json
+Copy vocab file to /content/run-4/checkpoint-5/spiece.model
+Deleting older checkpoint [/content/run-4/checkpoint-4] due to args.save_total_limit
+/usr/local/lib/python3.7/dist-packages/transformers/tokenization_utils_base.py:2217: FutureWarning:
+
+The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+
+***** Running Evaluation *****
+  Num examples = 38
+  Batch size = 4
+Saving model checkpoint to /content/run-4/checkpoint-6
+Configuration saved in /content/run-4/checkpoint-6/config.json
+Model weights saved in /content/run-4/checkpoint-6/pytorch_model.bin
+tokenizer config file saved in /content/run-4/checkpoint-6/tokenizer_config.json
+Special tokens file saved in /content/run-4/checkpoint-6/special_tokens_map.json
+Copy vocab file to /content/run-4/checkpoint-6/spiece.model
+Deleting older checkpoint [/content/run-4/checkpoint-5] due to args.save_total_limit
+/usr/local/lib/python3.7/dist-packages/transformers/tokenization_utils_base.py:2217: FutureWarning:
+
+The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+
+***** Running Evaluation *****
+  Num examples = 38
+  Batch size = 4
+Saving model checkpoint to /content/run-4/checkpoint-7
+Configuration saved in /content/run-4/checkpoint-7/config.json
+Model weights saved in /content/run-4/checkpoint-7/pytorch_model.bin
+tokenizer config file saved in /content/run-4/checkpoint-7/tokenizer_config.json
+Special tokens file saved in /content/run-4/checkpoint-7/special_tokens_map.json
+Copy vocab file to /content/run-4/checkpoint-7/spiece.model
+Deleting older checkpoint [/content/run-4/checkpoint-6] due to args.save_total_limit
+/usr/local/lib/python3.7/dist-packages/transformers/tokenization_utils_base.py:2217: FutureWarning:
+
+The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+
+***** Running Evaluation *****
+  Num examples = 38
+  Batch size = 4
+Saving model checkpoint to /content/run-4/checkpoint-8
+Configuration saved in /content/run-4/checkpoint-8/config.json
+Model weights saved in /content/run-4/checkpoint-8/pytorch_model.bin
+tokenizer config file saved in /content/run-4/checkpoint-8/tokenizer_config.json
+Special tokens file saved in /content/run-4/checkpoint-8/special_tokens_map.json
+Copy vocab file to /content/run-4/checkpoint-8/spiece.model
+Deleting older checkpoint [/content/run-4/checkpoint-7] due to args.save_total_limit
+/usr/local/lib/python3.7/dist-packages/transformers/tokenization_utils_base.py:2217: FutureWarning:
+
+The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+
+***** Running Evaluation *****
+  Num examples = 38
+  Batch size = 4
+Saving model checkpoint to /content/run-4/checkpoint-9
+Configuration saved in /content/run-4/checkpoint-9/config.json
+Model weights saved in /content/run-4/checkpoint-9/pytorch_model.bin
+tokenizer config file saved in /content/run-4/checkpoint-9/tokenizer_config.json
+Special tokens file saved in /content/run-4/checkpoint-9/special_tokens_map.json
+Copy vocab file to /content/run-4/checkpoint-9/spiece.model
+Deleting older checkpoint [/content/run-4/checkpoint-8] due to args.save_total_limit
+/usr/local/lib/python3.7/dist-packages/transformers/tokenization_utils_base.py:2217: FutureWarning:
+
+The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+
+***** Running Evaluation *****
+  Num examples = 38
+  Batch size = 4
+Saving model checkpoint to /content/run-4/checkpoint-10
+Configuration saved in /content/run-4/checkpoint-10/config.json
+Model weights saved in /content/run-4/checkpoint-10/pytorch_model.bin
+tokenizer config file saved in /content/run-4/checkpoint-10/tokenizer_config.json
+Special tokens file saved in /content/run-4/checkpoint-10/special_tokens_map.json
+Copy vocab file to /content/run-4/checkpoint-10/spiece.model
+Deleting older checkpoint [/content/run-4/checkpoint-9] due to args.save_total_limit
+
+
+Training completed. Do not forget to share your model on huggingface.co/models =)
+
+
+Loading best model from /content/run-4/checkpoint-10 (score: 4.7830305099487305).
+[I 2021-10-21 16:03:06,062] Trial 4 finished with value: 4.7830305099487305 and parameters: {'learning_rate': 1.5107975556238944e-05, 'weight_decay': 0.012110735720899128, 'num_train_epochs': 10, 'per_device_train_batch_size': 4}. Best is trial 4 with value: 4.7830305099487305.
+Trial:
+loading configuration file https://huggingface.co/t5-small/resolve/main/config.json from cache at /root/.cache/huggingface/transformers/fe501e8fd6425b8ec93df37767fcce78ce626e34cc5edc859c662350cf712e41.406701565c0afd9899544c1cb8b93185a76f00b31e5ce7f6e18bbaef02241985
+Model config T5Config {
+  "architectures": [
+    "T5WithLMHeadModel"
+  ],
+  "d_ff": 2048,
+  "d_kv": 64,
+  "d_model": 512,
+  "decoder_start_token_id": 0,
+  "dropout_rate": 0.1,
+  "eos_token_id": 1,
+  "feed_forward_proj": "relu",
+  "initializer_factor": 1.0,
+  "is_encoder_decoder": true,
+  "layer_norm_epsilon": 1e-06,
+  "model_type": "t5",
+  "n_positions": 512,
+  "num_decoder_layers": 6,
+  "num_heads": 8,
+  "num_layers": 6,
+  "output_past": true,
+  "pad_token_id": 0,
+  "relative_attention_num_buckets": 32,
+  "task_specific_params": {
+    "summarization": {
+      "early_stopping": true,
+      "length_penalty": 2.0,
+      "max_length": 200,
+      "min_length": 30,
+      "no_repeat_ngram_size": 3,
+      "num_beams": 4,
+      "prefix": "summarize: "
+    },
+    "translation_en_to_de": {
+      "early_stopping": true,
+      "max_length": 300,
+      "num_beams": 4,
+      "prefix": "translate English to German: "
+    },
+    "translation_en_to_fr": {
+      "early_stopping": true,
+      "max_length": 300,
+      "num_beams": 4,
+      "prefix": "translate English to French: "
+    },
+    "translation_en_to_ro": {
+      "early_stopping": true,
+      "max_length": 300,
+      "num_beams": 4,
+      "prefix": "translate English to Romanian: "
+    }
+  },
+  "transformers_version": "4.11.3",
+  "use_cache": true,
+  "vocab_size": 32128
+}
+
+loading weights file https://huggingface.co/t5-small/resolve/main/pytorch_model.bin from cache at /root/.cache/huggingface/transformers/fee5a3a0ae379232608b6eed45d2d7a0d2966b9683728838412caccc41b4b0ed.ddacdc89ec88482db20c676f0861a336f3d0409f94748c209847b49529d73885
+All model checkpoint weights were used when initializing T5ForConditionalGeneration.
+
+All the weights of T5ForConditionalGeneration were initialized from the model checkpoint at t5-small.
+If your task is similar to the task the model of the checkpoint was trained on, you can already use T5ForConditionalGeneration for predictions without further training.
+***** Running training *****
+  Num examples = 148
+  Num Epochs = 9
+  Instantaneous batch size per device = 8
+  Total train batch size (w. parallel, distributed & accumulation) = 256
+  Gradient Accumulation steps = 32
+  Total optimization steps = 9
+/usr/local/lib/python3.7/dist-packages/transformers/tokenization_utils_base.py:2217: FutureWarning:
+
+The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+
+ [9/9 02:20, Epoch 9/9]
+Epoch	Training Loss	Validation Loss
+1	No log	4.891287
+2	No log	4.888324
+3	No log	4.882401
+4	No log	4.873739
+5	No log	4.862955
+6	No log	4.851241
+7	No log	4.836329
+8	No log	4.817773
+9	No log	4.796168
+***** Running Evaluation *****
+  Num examples = 38
+  Batch size = 4
+Saving model checkpoint to /content/run-5/checkpoint-1
+Configuration saved in /content/run-5/checkpoint-1/config.json
+Model weights saved in /content/run-5/checkpoint-1/pytorch_model.bin
+tokenizer config file saved in /content/run-5/checkpoint-1/tokenizer_config.json
+Special tokens file saved in /content/run-5/checkpoint-1/special_tokens_map.json
+Copy vocab file to /content/run-5/checkpoint-1/spiece.model
+/usr/local/lib/python3.7/dist-packages/transformers/tokenization_utils_base.py:2217: FutureWarning:
+
+The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+
+***** Running Evaluation *****
+  Num examples = 38
+  Batch size = 4
+Saving model checkpoint to /content/run-5/checkpoint-2
+Configuration saved in /content/run-5/checkpoint-2/config.json
+Model weights saved in /content/run-5/checkpoint-2/pytorch_model.bin
+tokenizer config file saved in /content/run-5/checkpoint-2/tokenizer_config.json
+Special tokens file saved in /content/run-5/checkpoint-2/special_tokens_map.json
+Copy vocab file to /content/run-5/checkpoint-2/spiece.model
+Deleting older checkpoint [/content/run-5/checkpoint-1] due to args.save_total_limit
+/usr/local/lib/python3.7/dist-packages/transformers/tokenization_utils_base.py:2217: FutureWarning:
+
+The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+
+***** Running Evaluation *****
+  Num examples = 38
+  Batch size = 4
+Saving model checkpoint to /content/run-5/checkpoint-3
+Configuration saved in /content/run-5/checkpoint-3/config.json
+Model weights saved in /content/run-5/checkpoint-3/pytorch_model.bin
+tokenizer config file saved in /content/run-5/checkpoint-3/tokenizer_config.json
+Special tokens file saved in /content/run-5/checkpoint-3/special_tokens_map.json
+Copy vocab file to /content/run-5/checkpoint-3/spiece.model
+Deleting older checkpoint [/content/run-5/checkpoint-2] due to args.save_total_limit
+/usr/local/lib/python3.7/dist-packages/transformers/tokenization_utils_base.py:2217: FutureWarning:
+
+The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+
+***** Running Evaluation *****
+  Num examples = 38
+  Batch size = 4
+Saving model checkpoint to /content/run-5/checkpoint-4
+Configuration saved in /content/run-5/checkpoint-4/config.json
+Model weights saved in /content/run-5/checkpoint-4/pytorch_model.bin
+tokenizer config file saved in /content/run-5/checkpoint-4/tokenizer_config.json
+Special tokens file saved in /content/run-5/checkpoint-4/special_tokens_map.json
+Copy vocab file to /content/run-5/checkpoint-4/spiece.model
+Deleting older checkpoint [/content/run-5/checkpoint-3] due to args.save_total_limit
+/usr/local/lib/python3.7/dist-packages/transformers/tokenization_utils_base.py:2217: FutureWarning:
+
+The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+
+***** Running Evaluation *****
+  Num examples = 38
+  Batch size = 4
+Saving model checkpoint to /content/run-5/checkpoint-5
+Configuration saved in /content/run-5/checkpoint-5/config.json
+Model weights saved in /content/run-5/checkpoint-5/pytorch_model.bin
+tokenizer config file saved in /content/run-5/checkpoint-5/tokenizer_config.json
+Special tokens file saved in /content/run-5/checkpoint-5/special_tokens_map.json
+Copy vocab file to /content/run-5/checkpoint-5/spiece.model
+Deleting older checkpoint [/content/run-5/checkpoint-4] due to args.save_total_limit
+/usr/local/lib/python3.7/dist-packages/transformers/tokenization_utils_base.py:2217: FutureWarning:
+
+The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+
+***** Running Evaluation *****
+  Num examples = 38
+  Batch size = 4
+Saving model checkpoint to /content/run-5/checkpoint-6
+Configuration saved in /content/run-5/checkpoint-6/config.json
+Model weights saved in /content/run-5/checkpoint-6/pytorch_model.bin
+tokenizer config file saved in /content/run-5/checkpoint-6/tokenizer_config.json
+Special tokens file saved in /content/run-5/checkpoint-6/special_tokens_map.json
+Copy vocab file to /content/run-5/checkpoint-6/spiece.model
+Deleting older checkpoint [/content/run-5/checkpoint-5] due to args.save_total_limit
+/usr/local/lib/python3.7/dist-packages/transformers/tokenization_utils_base.py:2217: FutureWarning:
+
+The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+
+***** Running Evaluation *****
+  Num examples = 38
+  Batch size = 4
+Saving model checkpoint to /content/run-5/checkpoint-7
+Configuration saved in /content/run-5/checkpoint-7/config.json
+Model weights saved in /content/run-5/checkpoint-7/pytorch_model.bin
+tokenizer config file saved in /content/run-5/checkpoint-7/tokenizer_config.json
+Special tokens file saved in /content/run-5/checkpoint-7/special_tokens_map.json
+Copy vocab file to /content/run-5/checkpoint-7/spiece.model
+Deleting older checkpoint [/content/run-5/checkpoint-6] due to args.save_total_limit
+/usr/local/lib/python3.7/dist-packages/transformers/tokenization_utils_base.py:2217: FutureWarning:
+
+The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+
+***** Running Evaluation *****
+  Num examples = 38
+  Batch size = 4
+Saving model checkpoint to /content/run-5/checkpoint-8
+Configuration saved in /content/run-5/checkpoint-8/config.json
+Model weights saved in /content/run-5/checkpoint-8/pytorch_model.bin
+tokenizer config file saved in /content/run-5/checkpoint-8/tokenizer_config.json
+Special tokens file saved in /content/run-5/checkpoint-8/special_tokens_map.json
+Copy vocab file to /content/run-5/checkpoint-8/spiece.model
+Deleting older checkpoint [/content/run-5/checkpoint-7] due to args.save_total_limit
+/usr/local/lib/python3.7/dist-packages/transformers/tokenization_utils_base.py:2217: FutureWarning:
+
+The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+
+***** Running Evaluation *****
+  Num examples = 38
+  Batch size = 4
+Saving model checkpoint to /content/run-5/checkpoint-9
+Configuration saved in /content/run-5/checkpoint-9/config.json
+Model weights saved in /content/run-5/checkpoint-9/pytorch_model.bin
+tokenizer config file saved in /content/run-5/checkpoint-9/tokenizer_config.json
+Special tokens file saved in /content/run-5/checkpoint-9/special_tokens_map.json
+Copy vocab file to /content/run-5/checkpoint-9/spiece.model
+Deleting older checkpoint [/content/run-5/checkpoint-8] due to args.save_total_limit
+
+
+Training completed. Do not forget to share your model on huggingface.co/models =)
+
+
+Loading best model from /content/run-5/checkpoint-9 (score: 4.796168327331543).
+[I 2021-10-21 16:05:31,514] Trial 5 finished with value: 4.796168327331543 and parameters: {'learning_rate': 1.6355757089025676e-05, 'weight_decay': 0.028967772504306398, 'num_train_epochs': 9, 'per_device_train_batch_size': 8}. Best is trial 5 with value: 4.796168327331543.
+Trial:
+loading configuration file https://huggingface.co/t5-small/resolve/main/config.json from cache at /root/.cache/huggingface/transformers/fe501e8fd6425b8ec93df37767fcce78ce626e34cc5edc859c662350cf712e41.406701565c0afd9899544c1cb8b93185a76f00b31e5ce7f6e18bbaef02241985
+Model config T5Config {
+  "architectures": [
+    "T5WithLMHeadModel"
+  ],
+  "d_ff": 2048,
+  "d_kv": 64,
+  "d_model": 512,
+  "decoder_start_token_id": 0,
+  "dropout_rate": 0.1,
+  "eos_token_id": 1,
+  "feed_forward_proj": "relu",
+  "initializer_factor": 1.0,
+  "is_encoder_decoder": true,
+  "layer_norm_epsilon": 1e-06,
+  "model_type": "t5",
+  "n_positions": 512,
+  "num_decoder_layers": 6,
+  "num_heads": 8,
+  "num_layers": 6,
+  "output_past": true,
+  "pad_token_id": 0,
+  "relative_attention_num_buckets": 32,
+  "task_specific_params": {
+    "summarization": {
+      "early_stopping": true,
+      "length_penalty": 2.0,
+      "max_length": 200,
+      "min_length": 30,
+      "no_repeat_ngram_size": 3,
+      "num_beams": 4,
+      "prefix": "summarize: "
+    },
+    "translation_en_to_de": {
+      "early_stopping": true,
+      "max_length": 300,
+      "num_beams": 4,
+      "prefix": "translate English to German: "
+    },
+    "translation_en_to_fr": {
+      "early_stopping": true,
+      "max_length": 300,
+      "num_beams": 4,
+      "prefix": "translate English to French: "
+    },
+    "translation_en_to_ro": {
+      "early_stopping": true,
+      "max_length": 300,
+      "num_beams": 4,
+      "prefix": "translate English to Romanian: "
+    }
+  },
+  "transformers_version": "4.11.3",
+  "use_cache": true,
+  "vocab_size": 32128
+}
+
+loading weights file https://huggingface.co/t5-small/resolve/main/pytorch_model.bin from cache at /root/.cache/huggingface/transformers/fee5a3a0ae379232608b6eed45d2d7a0d2966b9683728838412caccc41b4b0ed.ddacdc89ec88482db20c676f0861a336f3d0409f94748c209847b49529d73885
+All model checkpoint weights were used when initializing T5ForConditionalGeneration.
+
+All the weights of T5ForConditionalGeneration were initialized from the model checkpoint at t5-small.
+If your task is similar to the task the model of the checkpoint was trained on, you can already use T5ForConditionalGeneration for predictions without further training.
+***** Running training *****
+  Num examples = 148
+  Num Epochs = 7
+  Instantaneous batch size per device = 8
+  Total train batch size (w. parallel, distributed & accumulation) = 256
+  Gradient Accumulation steps = 32
+  Total optimization steps = 7
+/usr/local/lib/python3.7/dist-packages/transformers/tokenization_utils_base.py:2217: FutureWarning:
+
+The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+
+ [7/7 01:45, Epoch 7/7]
+Epoch	Training Loss	Validation Loss
+1	No log	4.891287
+2	No log	4.852342
+3	No log	4.778038
+4	No log	4.668855
+5	No log	4.533785
+6	No log	4.398369
+7	No log	4.245207
+***** Running Evaluation *****
+  Num examples = 38
+  Batch size = 4
+Saving model checkpoint to /content/run-6/checkpoint-1
+Configuration saved in /content/run-6/checkpoint-1/config.json
+Model weights saved in /content/run-6/checkpoint-1/pytorch_model.bin
+tokenizer config file saved in /content/run-6/checkpoint-1/tokenizer_config.json
+Special tokens file saved in /content/run-6/checkpoint-1/special_tokens_map.json
+Copy vocab file to /content/run-6/checkpoint-1/spiece.model
+/usr/local/lib/python3.7/dist-packages/transformers/tokenization_utils_base.py:2217: FutureWarning:
+
+The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+
+***** Running Evaluation *****
+  Num examples = 38
+  Batch size = 4
+Saving model checkpoint to /content/run-6/checkpoint-2
+Configuration saved in /content/run-6/checkpoint-2/config.json
+Model weights saved in /content/run-6/checkpoint-2/pytorch_model.bin
+tokenizer config file saved in /content/run-6/checkpoint-2/tokenizer_config.json
+Special tokens file saved in /content/run-6/checkpoint-2/special_tokens_map.json
+Copy vocab file to /content/run-6/checkpoint-2/spiece.model
+Deleting older checkpoint [/content/run-6/checkpoint-1] due to args.save_total_limit
+/usr/local/lib/python3.7/dist-packages/transformers/tokenization_utils_base.py:2217: FutureWarning:
+
+The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+
+***** Running Evaluation *****
+  Num examples = 38
+  Batch size = 4
+Saving model checkpoint to /content/run-6/checkpoint-3
+Configuration saved in /content/run-6/checkpoint-3/config.json
+Model weights saved in /content/run-6/checkpoint-3/pytorch_model.bin
+tokenizer config file saved in /content/run-6/checkpoint-3/tokenizer_config.json
+Special tokens file saved in /content/run-6/checkpoint-3/special_tokens_map.json
+Copy vocab file to /content/run-6/checkpoint-3/spiece.model
+Deleting older checkpoint [/content/run-6/checkpoint-2] due to args.save_total_limit
+/usr/local/lib/python3.7/dist-packages/transformers/tokenization_utils_base.py:2217: FutureWarning:
+
+The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+
+***** Running Evaluation *****
+  Num examples = 38
+  Batch size = 4
+Saving model checkpoint to /content/run-6/checkpoint-4
+Configuration saved in /content/run-6/checkpoint-4/config.json
+Model weights saved in /content/run-6/checkpoint-4/pytorch_model.bin
+tokenizer config file saved in /content/run-6/checkpoint-4/tokenizer_config.json
+Special tokens file saved in /content/run-6/checkpoint-4/special_tokens_map.json
+Copy vocab file to /content/run-6/checkpoint-4/spiece.model
+Deleting older checkpoint [/content/run-6/checkpoint-3] due to args.save_total_limit
+/usr/local/lib/python3.7/dist-packages/transformers/tokenization_utils_base.py:2217: FutureWarning:
+
+The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+
+***** Running Evaluation *****
+  Num examples = 38
+  Batch size = 4
+Saving model checkpoint to /content/run-6/checkpoint-5
+Configuration saved in /content/run-6/checkpoint-5/config.json
+Model weights saved in /content/run-6/checkpoint-5/pytorch_model.bin
+tokenizer config file saved in /content/run-6/checkpoint-5/tokenizer_config.json
+Special tokens file saved in /content/run-6/checkpoint-5/special_tokens_map.json
+Copy vocab file to /content/run-6/checkpoint-5/spiece.model
+Deleting older checkpoint [/content/run-6/checkpoint-4] due to args.save_total_limit
+/usr/local/lib/python3.7/dist-packages/transformers/tokenization_utils_base.py:2217: FutureWarning:
+
+The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+
+***** Running Evaluation *****
+  Num examples = 38
+  Batch size = 4
+Saving model checkpoint to /content/run-6/checkpoint-6
+Configuration saved in /content/run-6/checkpoint-6/config.json
+Model weights saved in /content/run-6/checkpoint-6/pytorch_model.bin
+tokenizer config file saved in /content/run-6/checkpoint-6/tokenizer_config.json
+Special tokens file saved in /content/run-6/checkpoint-6/special_tokens_map.json
+Copy vocab file to /content/run-6/checkpoint-6/spiece.model
+Deleting older checkpoint [/content/run-6/checkpoint-5] due to args.save_total_limit
+/usr/local/lib/python3.7/dist-packages/transformers/tokenization_utils_base.py:2217: FutureWarning:
+
+The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+
+***** Running Evaluation *****
+  Num examples = 38
+  Batch size = 4
+Saving model checkpoint to /content/run-6/checkpoint-7
+Configuration saved in /content/run-6/checkpoint-7/config.json
+Model weights saved in /content/run-6/checkpoint-7/pytorch_model.bin
+tokenizer config file saved in /content/run-6/checkpoint-7/tokenizer_config.json
+Special tokens file saved in /content/run-6/checkpoint-7/special_tokens_map.json
+Copy vocab file to /content/run-6/checkpoint-7/spiece.model
+Deleting older checkpoint [/content/run-6/checkpoint-6] due to args.save_total_limit
+
+
+Training completed. Do not forget to share your model on huggingface.co/models =)
+
+
+Loading best model from /content/run-6/checkpoint-7 (score: 4.2452073097229).
+[I 2021-10-21 16:07:24,676] Trial 6 finished with value: 4.2452073097229 and parameters: {'learning_rate': 0.0002310832660398146, 'weight_decay': 0.027644882361354525, 'num_train_epochs': 7, 'per_device_train_batch_size': 8}. Best is trial 5 with value: 4.796168327331543.
+Trial:
+loading configuration file https://huggingface.co/t5-small/resolve/main/config.json from cache at /root/.cache/huggingface/transformers/fe501e8fd6425b8ec93df37767fcce78ce626e34cc5edc859c662350cf712e41.406701565c0afd9899544c1cb8b93185a76f00b31e5ce7f6e18bbaef02241985
+Model config T5Config {
+  "architectures": [
+    "T5WithLMHeadModel"
+  ],
+  "d_ff": 2048,
+  "d_kv": 64,
+  "d_model": 512,
+  "decoder_start_token_id": 0,
+  "dropout_rate": 0.1,
+  "eos_token_id": 1,
+  "feed_forward_proj": "relu",
+  "initializer_factor": 1.0,
+  "is_encoder_decoder": true,
+  "layer_norm_epsilon": 1e-06,
+  "model_type": "t5",
+  "n_positions": 512,
+  "num_decoder_layers": 6,
+  "num_heads": 8,
+  "num_layers": 6,
+  "output_past": true,
+  "pad_token_id": 0,
+  "relative_attention_num_buckets": 32,
+  "task_specific_params": {
+    "summarization": {
+      "early_stopping": true,
+      "length_penalty": 2.0,
+      "max_length": 200,
+      "min_length": 30,
+      "no_repeat_ngram_size": 3,
+      "num_beams": 4,
+      "prefix": "summarize: "
+    },
+    "translation_en_to_de": {
+      "early_stopping": true,
+      "max_length": 300,
+      "num_beams": 4,
+      "prefix": "translate English to German: "
+    },
+    "translation_en_to_fr": {
+      "early_stopping": true,
+      "max_length": 300,
+      "num_beams": 4,
+      "prefix": "translate English to French: "
+    },
+    "translation_en_to_ro": {
+      "early_stopping": true,
+      "max_length": 300,
+      "num_beams": 4,
+      "prefix": "translate English to Romanian: "
+    }
+  },
+  "transformers_version": "4.11.3",
+  "use_cache": true,
+  "vocab_size": 32128
+}
+
+loading weights file https://huggingface.co/t5-small/resolve/main/pytorch_model.bin from cache at /root/.cache/huggingface/transformers/fee5a3a0ae379232608b6eed45d2d7a0d2966b9683728838412caccc41b4b0ed.ddacdc89ec88482db20c676f0861a336f3d0409f94748c209847b49529d73885
+All model checkpoint weights were used when initializing T5ForConditionalGeneration.
+
+All the weights of T5ForConditionalGeneration were initialized from the model checkpoint at t5-small.
+If your task is similar to the task the model of the checkpoint was trained on, you can already use T5ForConditionalGeneration for predictions without further training.
+***** Running training *****
+  Num examples = 148
+  Num Epochs = 5
+  Instantaneous batch size per device = 16
+  Total train batch size (w. parallel, distributed & accumulation) = 512
+  Gradient Accumulation steps = 32
+  Total optimization steps = 5
+/usr/local/lib/python3.7/dist-packages/transformers/tokenization_utils_base.py:2217: FutureWarning:
+
+The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+
+ [5/5 01:11, Epoch 5/5]
+Epoch	Training Loss	Validation Loss
+1	No log	4.891287
+2	No log	3.961105
+3	No log	3.265037
+4	No log	2.863947
+5	No log	2.069334
+***** Running Evaluation *****
+  Num examples = 38
+  Batch size = 4
+Saving model checkpoint to /content/run-7/checkpoint-1
+Configuration saved in /content/run-7/checkpoint-1/config.json
+Model weights saved in /content/run-7/checkpoint-1/pytorch_model.bin
+tokenizer config file saved in /content/run-7/checkpoint-1/tokenizer_config.json
+Special tokens file saved in /content/run-7/checkpoint-1/special_tokens_map.json
+Copy vocab file to /content/run-7/checkpoint-1/spiece.model
+/usr/local/lib/python3.7/dist-packages/transformers/tokenization_utils_base.py:2217: FutureWarning:
+
+The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+
+***** Running Evaluation *****
+  Num examples = 38
+  Batch size = 4
+Saving model checkpoint to /content/run-7/checkpoint-2
+Configuration saved in /content/run-7/checkpoint-2/config.json
+Model weights saved in /content/run-7/checkpoint-2/pytorch_model.bin
+tokenizer config file saved in /content/run-7/checkpoint-2/tokenizer_config.json
+Special tokens file saved in /content/run-7/checkpoint-2/special_tokens_map.json
+Copy vocab file to /content/run-7/checkpoint-2/spiece.model
+Deleting older checkpoint [/content/run-7/checkpoint-1] due to args.save_total_limit
+/usr/local/lib/python3.7/dist-packages/transformers/tokenization_utils_base.py:2217: FutureWarning:
+
+The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+
+***** Running Evaluation *****
+  Num examples = 38
+  Batch size = 4
+Saving model checkpoint to /content/run-7/checkpoint-3
+Configuration saved in /content/run-7/checkpoint-3/config.json
+Model weights saved in /content/run-7/checkpoint-3/pytorch_model.bin
+tokenizer config file saved in /content/run-7/checkpoint-3/tokenizer_config.json
+Special tokens file saved in /content/run-7/checkpoint-3/special_tokens_map.json
+Copy vocab file to /content/run-7/checkpoint-3/spiece.model
+Deleting older checkpoint [/content/run-7/checkpoint-2] due to args.save_total_limit
+/usr/local/lib/python3.7/dist-packages/transformers/tokenization_utils_base.py:2217: FutureWarning:
+
+The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+
+***** Running Evaluation *****
+  Num examples = 38
+  Batch size = 4
+Saving model checkpoint to /content/run-7/checkpoint-4
+Configuration saved in /content/run-7/checkpoint-4/config.json
+Model weights saved in /content/run-7/checkpoint-4/pytorch_model.bin
+tokenizer config file saved in /content/run-7/checkpoint-4/tokenizer_config.json
+Special tokens file saved in /content/run-7/checkpoint-4/special_tokens_map.json
+Copy vocab file to /content/run-7/checkpoint-4/spiece.model
+Deleting older checkpoint [/content/run-7/checkpoint-3] due to args.save_total_limit
+/usr/local/lib/python3.7/dist-packages/transformers/tokenization_utils_base.py:2217: FutureWarning:
+
+The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+
+***** Running Evaluation *****
+  Num examples = 38
+  Batch size = 4
+Saving model checkpoint to /content/run-7/checkpoint-5
+Configuration saved in /content/run-7/checkpoint-5/config.json
+Model weights saved in /content/run-7/checkpoint-5/pytorch_model.bin
+tokenizer config file saved in /content/run-7/checkpoint-5/tokenizer_config.json
+Special tokens file saved in /content/run-7/checkpoint-5/special_tokens_map.json
+Copy vocab file to /content/run-7/checkpoint-5/spiece.model
+Deleting older checkpoint [/content/run-7/checkpoint-4] due to args.save_total_limit
+
+
+Training completed. Do not forget to share your model on huggingface.co/models =)
+
+
+Loading best model from /content/run-7/checkpoint-5 (score: 2.069334030151367).
+[I 2021-10-21 16:08:42,150] Trial 7 finished with value: 2.069334030151367 and parameters: {'learning_rate': 0.007644478085514126, 'weight_decay': 0.014994775609487105, 'num_train_epochs': 5, 'per_device_train_batch_size': 16}. Best is trial 5 with value: 4.796168327331543.
+Trial:
+loading configuration file https://huggingface.co/t5-small/resolve/main/config.json from cache at /root/.cache/huggingface/transformers/fe501e8fd6425b8ec93df37767fcce78ce626e34cc5edc859c662350cf712e41.406701565c0afd9899544c1cb8b93185a76f00b31e5ce7f6e18bbaef02241985
+Model config T5Config {
+  "architectures": [
+    "T5WithLMHeadModel"
+  ],
+  "d_ff": 2048,
+  "d_kv": 64,
+  "d_model": 512,
+  "decoder_start_token_id": 0,
+  "dropout_rate": 0.1,
+  "eos_token_id": 1,
+  "feed_forward_proj": "relu",
+  "initializer_factor": 1.0,
+  "is_encoder_decoder": true,
+  "layer_norm_epsilon": 1e-06,
+  "model_type": "t5",
+  "n_positions": 512,
+  "num_decoder_layers": 6,
+  "num_heads": 8,
+  "num_layers": 6,
+  "output_past": true,
+  "pad_token_id": 0,
+  "relative_attention_num_buckets": 32,
+  "task_specific_params": {
+    "summarization": {
+      "early_stopping": true,
+      "length_penalty": 2.0,
+      "max_length": 200,
+      "min_length": 30,
+      "no_repeat_ngram_size": 3,
+      "num_beams": 4,
+      "prefix": "summarize: "
+    },
+    "translation_en_to_de": {
+      "early_stopping": true,
+      "max_length": 300,
+      "num_beams": 4,
+      "prefix": "translate English to German: "
+    },
+    "translation_en_to_fr": {
+      "early_stopping": true,
+      "max_length": 300,
+      "num_beams": 4,
+      "prefix": "translate English to French: "
+    },
+    "translation_en_to_ro": {
+      "early_stopping": true,
+      "max_length": 300,
+      "num_beams": 4,
+      "prefix": "translate English to Romanian: "
+    }
+  },
+  "transformers_version": "4.11.3",
+  "use_cache": true,
+  "vocab_size": 32128
+}
+
+loading weights file https://huggingface.co/t5-small/resolve/main/pytorch_model.bin from cache at /root/.cache/huggingface/transformers/fee5a3a0ae379232608b6eed45d2d7a0d2966b9683728838412caccc41b4b0ed.ddacdc89ec88482db20c676f0861a336f3d0409f94748c209847b49529d73885
+All model checkpoint weights were used when initializing T5ForConditionalGeneration.
+
+All the weights of T5ForConditionalGeneration were initialized from the model checkpoint at t5-small.
+If your task is similar to the task the model of the checkpoint was trained on, you can already use T5ForConditionalGeneration for predictions without further training.
+***** Running training *****
+  Num examples = 148
+  Num Epochs = 6
+  Instantaneous batch size per device = 8
+  Total train batch size (w. parallel, distributed & accumulation) = 256
+  Gradient Accumulation steps = 32
+  Total optimization steps = 6
+/usr/local/lib/python3.7/dist-packages/transformers/tokenization_utils_base.py:2217: FutureWarning:
+
+The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+
+ [6/6 01:31, Epoch 6/6]
+Epoch	Training Loss	Validation Loss
+1	No log	4.891287
+2	No log	4.791852
+3	No log	4.607420
+4	No log	4.385344
+5	No log	4.126621
+6	No log	3.828849
+***** Running Evaluation *****
+  Num examples = 38
+  Batch size = 4
+Saving model checkpoint to /content/run-8/checkpoint-1
+Configuration saved in /content/run-8/checkpoint-1/config.json
+Model weights saved in /content/run-8/checkpoint-1/pytorch_model.bin
+tokenizer config file saved in /content/run-8/checkpoint-1/tokenizer_config.json
+Special tokens file saved in /content/run-8/checkpoint-1/special_tokens_map.json
+Copy vocab file to /content/run-8/checkpoint-1/spiece.model
+/usr/local/lib/python3.7/dist-packages/transformers/tokenization_utils_base.py:2217: FutureWarning:
+
+The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+
+***** Running Evaluation *****
+  Num examples = 38
+  Batch size = 4
+Saving model checkpoint to /content/run-8/checkpoint-2
+Configuration saved in /content/run-8/checkpoint-2/config.json
+Model weights saved in /content/run-8/checkpoint-2/pytorch_model.bin
+tokenizer config file saved in /content/run-8/checkpoint-2/tokenizer_config.json
+Special tokens file saved in /content/run-8/checkpoint-2/special_tokens_map.json
+Copy vocab file to /content/run-8/checkpoint-2/spiece.model
+Deleting older checkpoint [/content/run-8/checkpoint-1] due to args.save_total_limit
+/usr/local/lib/python3.7/dist-packages/transformers/tokenization_utils_base.py:2217: FutureWarning:
+
+The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+
+***** Running Evaluation *****
+  Num examples = 38
+  Batch size = 4
+Saving model checkpoint to /content/run-8/checkpoint-3
+Configuration saved in /content/run-8/checkpoint-3/config.json
+Model weights saved in /content/run-8/checkpoint-3/pytorch_model.bin
+tokenizer config file saved in /content/run-8/checkpoint-3/tokenizer_config.json
+Special tokens file saved in /content/run-8/checkpoint-3/special_tokens_map.json
+Copy vocab file to /content/run-8/checkpoint-3/spiece.model
+Deleting older checkpoint [/content/run-8/checkpoint-2] due to args.save_total_limit
+/usr/local/lib/python3.7/dist-packages/transformers/tokenization_utils_base.py:2217: FutureWarning:
+
+The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+
+***** Running Evaluation *****
+  Num examples = 38
+  Batch size = 4
+Saving model checkpoint to /content/run-8/checkpoint-4
+Configuration saved in /content/run-8/checkpoint-4/config.json
+Model weights saved in /content/run-8/checkpoint-4/pytorch_model.bin
+tokenizer config file saved in /content/run-8/checkpoint-4/tokenizer_config.json
+Special tokens file saved in /content/run-8/checkpoint-4/special_tokens_map.json
+Copy vocab file to /content/run-8/checkpoint-4/spiece.model
+Deleting older checkpoint [/content/run-8/checkpoint-3] due to args.save_total_limit
+/usr/local/lib/python3.7/dist-packages/transformers/tokenization_utils_base.py:2217: FutureWarning:
+
+The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+
+***** Running Evaluation *****
+  Num examples = 38
+  Batch size = 4
+Saving model checkpoint to /content/run-8/checkpoint-5
+Configuration saved in /content/run-8/checkpoint-5/config.json
+Model weights saved in /content/run-8/checkpoint-5/pytorch_model.bin
+tokenizer config file saved in /content/run-8/checkpoint-5/tokenizer_config.json
+Special tokens file saved in /content/run-8/checkpoint-5/special_tokens_map.json
+Copy vocab file to /content/run-8/checkpoint-5/spiece.model
+Deleting older checkpoint [/content/run-8/checkpoint-4] due to args.save_total_limit
+/usr/local/lib/python3.7/dist-packages/transformers/tokenization_utils_base.py:2217: FutureWarning:
+
+The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+
+***** Running Evaluation *****
+  Num examples = 38
+  Batch size = 4
+Saving model checkpoint to /content/run-8/checkpoint-6
+Configuration saved in /content/run-8/checkpoint-6/config.json
+Model weights saved in /content/run-8/checkpoint-6/pytorch_model.bin
+tokenizer config file saved in /content/run-8/checkpoint-6/tokenizer_config.json
+Special tokens file saved in /content/run-8/checkpoint-6/special_tokens_map.json
+Copy vocab file to /content/run-8/checkpoint-6/spiece.model
+Deleting older checkpoint [/content/run-8/checkpoint-5] due to args.save_total_limit
+
+
+Training completed. Do not forget to share your model on huggingface.co/models =)
+
+
+Loading best model from /content/run-8/checkpoint-6 (score: 3.8288490772247314).
+[I 2021-10-21 16:10:19,236] Trial 8 finished with value: 3.8288490772247314 and parameters: {'learning_rate': 0.0006086449718259734, 'weight_decay': 0.020107116417166795, 'num_train_epochs': 6, 'per_device_train_batch_size': 8}. Best is trial 5 with value: 4.796168327331543.
+Trial:
+loading configuration file https://huggingface.co/t5-small/resolve/main/config.json from cache at /root/.cache/huggingface/transformers/fe501e8fd6425b8ec93df37767fcce78ce626e34cc5edc859c662350cf712e41.406701565c0afd9899544c1cb8b93185a76f00b31e5ce7f6e18bbaef02241985
+Model config T5Config {
+  "architectures": [
+    "T5WithLMHeadModel"
+  ],
+  "d_ff": 2048,
+  "d_kv": 64,
+  "d_model": 512,
+  "decoder_start_token_id": 0,
+  "dropout_rate": 0.1,
+  "eos_token_id": 1,
+  "feed_forward_proj": "relu",
+  "initializer_factor": 1.0,
+  "is_encoder_decoder": true,
+  "layer_norm_epsilon": 1e-06,
+  "model_type": "t5",
+  "n_positions": 512,
+  "num_decoder_layers": 6,
+  "num_heads": 8,
+  "num_layers": 6,
+  "output_past": true,
+  "pad_token_id": 0,
+  "relative_attention_num_buckets": 32,
+  "task_specific_params": {
+    "summarization": {
+      "early_stopping": true,
+      "length_penalty": 2.0,
+      "max_length": 200,
+      "min_length": 30,
+      "no_repeat_ngram_size": 3,
+      "num_beams": 4,
+      "prefix": "summarize: "
+    },
+    "translation_en_to_de": {
+      "early_stopping": true,
+      "max_length": 300,
+      "num_beams": 4,
+      "prefix": "translate English to German: "
+    },
+    "translation_en_to_fr": {
+      "early_stopping": true,
+      "max_length": 300,
+      "num_beams": 4,
+      "prefix": "translate English to French: "
+    },
+    "translation_en_to_ro": {
+      "early_stopping": true,
+      "max_length": 300,
+      "num_beams": 4,
+      "prefix": "translate English to Romanian: "
+    }
+  },
+  "transformers_version": "4.11.3",
+  "use_cache": true,
+  "vocab_size": 32128
+}
+
+loading weights file https://huggingface.co/t5-small/resolve/main/pytorch_model.bin from cache at /root/.cache/huggingface/transformers/fee5a3a0ae379232608b6eed45d2d7a0d2966b9683728838412caccc41b4b0ed.ddacdc89ec88482db20c676f0861a336f3d0409f94748c209847b49529d73885
+All model checkpoint weights were used when initializing T5ForConditionalGeneration.
+
+All the weights of T5ForConditionalGeneration were initialized from the model checkpoint at t5-small.
+If your task is similar to the task the model of the checkpoint was trained on, you can already use T5ForConditionalGeneration for predictions without further training.
+***** Running training *****
+  Num examples = 148
+  Num Epochs = 9
+  Instantaneous batch size per device = 8
+  Total train batch size (w. parallel, distributed & accumulation) = 256
+  Gradient Accumulation steps = 32
+  Total optimization steps = 9
+/usr/local/lib/python3.7/dist-packages/transformers/tokenization_utils_base.py:2217: FutureWarning:
+
+The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+
+ [9/9 02:22, Epoch 9/9]
+Epoch	Training Loss	Validation Loss
+1	No log	4.891287
+2	No log	4.876661
+3	No log	4.850155
+4	No log	4.810937
+5	No log	4.757814
+6	No log	4.695059
+7	No log	4.621520
+8	No log	4.539541
+9	No log	4.456272
+***** Running Evaluation *****
+  Num examples = 38
+  Batch size = 4
+Saving model checkpoint to /content/run-9/checkpoint-1
+Configuration saved in /content/run-9/checkpoint-1/config.json
+Model weights saved in /content/run-9/checkpoint-1/pytorch_model.bin
+tokenizer config file saved in /content/run-9/checkpoint-1/tokenizer_config.json
+Special tokens file saved in /content/run-9/checkpoint-1/special_tokens_map.json
+Copy vocab file to /content/run-9/checkpoint-1/spiece.model
+/usr/local/lib/python3.7/dist-packages/transformers/tokenization_utils_base.py:2217: FutureWarning:
+
+The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+
+***** Running Evaluation *****
+  Num examples = 38
+  Batch size = 4
+Saving model checkpoint to /content/run-9/checkpoint-2
+Configuration saved in /content/run-9/checkpoint-2/config.json
+Model weights saved in /content/run-9/checkpoint-2/pytorch_model.bin
+tokenizer config file saved in /content/run-9/checkpoint-2/tokenizer_config.json
+Special tokens file saved in /content/run-9/checkpoint-2/special_tokens_map.json
+Copy vocab file to /content/run-9/checkpoint-2/spiece.model
+Deleting older checkpoint [/content/run-9/checkpoint-1] due to args.save_total_limit
+/usr/local/lib/python3.7/dist-packages/transformers/tokenization_utils_base.py:2217: FutureWarning:
+
+The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+
+***** Running Evaluation *****
+  Num examples = 38
+  Batch size = 4
+Saving model checkpoint to /content/run-9/checkpoint-3
+Configuration saved in /content/run-9/checkpoint-3/config.json
+Model weights saved in /content/run-9/checkpoint-3/pytorch_model.bin
+tokenizer config file saved in /content/run-9/checkpoint-3/tokenizer_config.json
+Special tokens file saved in /content/run-9/checkpoint-3/special_tokens_map.json
+Copy vocab file to /content/run-9/checkpoint-3/spiece.model
+Deleting older checkpoint [/content/run-9/checkpoint-2] due to args.save_total_limit
+/usr/local/lib/python3.7/dist-packages/transformers/tokenization_utils_base.py:2217: FutureWarning:
+
+The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+
+***** Running Evaluation *****
+  Num examples = 38
+  Batch size = 4
+Saving model checkpoint to /content/run-9/checkpoint-4
+Configuration saved in /content/run-9/checkpoint-4/config.json
+Model weights saved in /content/run-9/checkpoint-4/pytorch_model.bin
+tokenizer config file saved in /content/run-9/checkpoint-4/tokenizer_config.json
+Special tokens file saved in /content/run-9/checkpoint-4/special_tokens_map.json
+Copy vocab file to /content/run-9/checkpoint-4/spiece.model
+Deleting older checkpoint [/content/run-9/checkpoint-3] due to args.save_total_limit
+/usr/local/lib/python3.7/dist-packages/transformers/tokenization_utils_base.py:2217: FutureWarning:
+
+The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+
+***** Running Evaluation *****
+  Num examples = 38
+  Batch size = 4
+Saving model checkpoint to /content/run-9/checkpoint-5
+Configuration saved in /content/run-9/checkpoint-5/config.json
+Model weights saved in /content/run-9/checkpoint-5/pytorch_model.bin
+tokenizer config file saved in /content/run-9/checkpoint-5/tokenizer_config.json
+Special tokens file saved in /content/run-9/checkpoint-5/special_tokens_map.json
+Copy vocab file to /content/run-9/checkpoint-5/spiece.model
+Deleting older checkpoint [/content/run-9/checkpoint-4] due to args.save_total_limit
+/usr/local/lib/python3.7/dist-packages/transformers/tokenization_utils_base.py:2217: FutureWarning:
+
+The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+
+***** Running Evaluation *****
+  Num examples = 38
+  Batch size = 4
+Saving model checkpoint to /content/run-9/checkpoint-6
+Configuration saved in /content/run-9/checkpoint-6/config.json
+Model weights saved in /content/run-9/checkpoint-6/pytorch_model.bin
+tokenizer config file saved in /content/run-9/checkpoint-6/tokenizer_config.json
+Special tokens file saved in /content/run-9/checkpoint-6/special_tokens_map.json
+Copy vocab file to /content/run-9/checkpoint-6/spiece.model
+Deleting older checkpoint [/content/run-9/checkpoint-5] due to args.save_total_limit
+/usr/local/lib/python3.7/dist-packages/transformers/tokenization_utils_base.py:2217: FutureWarning:
+
+The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+
+***** Running Evaluation *****
+  Num examples = 38
+  Batch size = 4
+Saving model checkpoint to /content/run-9/checkpoint-7
+Configuration saved in /content/run-9/checkpoint-7/config.json
+Model weights saved in /content/run-9/checkpoint-7/pytorch_model.bin
+tokenizer config file saved in /content/run-9/checkpoint-7/tokenizer_config.json
+Special tokens file saved in /content/run-9/checkpoint-7/special_tokens_map.json
+Copy vocab file to /content/run-9/checkpoint-7/spiece.model
+Deleting older checkpoint [/content/run-9/checkpoint-6] due to args.save_total_limit
+/usr/local/lib/python3.7/dist-packages/transformers/tokenization_utils_base.py:2217: FutureWarning:
+
+The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+
+***** Running Evaluation *****
+  Num examples = 38
+  Batch size = 4
+Saving model checkpoint to /content/run-9/checkpoint-8
+Configuration saved in /content/run-9/checkpoint-8/config.json
+Model weights saved in /content/run-9/checkpoint-8/pytorch_model.bin
+tokenizer config file saved in /content/run-9/checkpoint-8/tokenizer_config.json
+Special tokens file saved in /content/run-9/checkpoint-8/special_tokens_map.json
+Copy vocab file to /content/run-9/checkpoint-8/spiece.model
+Deleting older checkpoint [/content/run-9/checkpoint-7] due to args.save_total_limit
+/usr/local/lib/python3.7/dist-packages/transformers/tokenization_utils_base.py:2217: FutureWarning:
+
+The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+
+***** Running Evaluation *****
+  Num examples = 38
+  Batch size = 4
+Saving model checkpoint to /content/run-9/checkpoint-9
+Configuration saved in /content/run-9/checkpoint-9/config.json
+Model weights saved in /content/run-9/checkpoint-9/pytorch_model.bin
+tokenizer config file saved in /content/run-9/checkpoint-9/tokenizer_config.json
+Special tokens file saved in /content/run-9/checkpoint-9/special_tokens_map.json
+Copy vocab file to /content/run-9/checkpoint-9/spiece.model
+Deleting older checkpoint [/content/run-9/checkpoint-8] due to args.save_total_limit
+
+
+Training completed. Do not forget to share your model on huggingface.co/models =)
+
+
+Loading best model from /content/run-9/checkpoint-9 (score: 4.456272125244141).
+[I 2021-10-21 16:12:46,752] Trial 9 finished with value: 4.456272125244141 and parameters: {'learning_rate': 8.136892850865451e-05, 'weight_decay': 0.029073987238879155, 'num_train_epochs': 9, 'per_device_train_batch_size': 8}. Best is trial 5 with value: 4.796168327331543.
+BestRun(run_id='5', objective=4.796168327331543, hyperparameters={'learning_rate': 1.6355757089025676e-05, 'weight_decay': 0.028967772504306398, 'num_train_epochs': 9, 'per_device_train_batch_size': 8})

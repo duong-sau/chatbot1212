@@ -8,11 +8,12 @@ from Static.Define import path_common
 import time
 
 # define
-#names = ['freeze1', 'freeze2', 'freeze3', 'freeze4', 'freeze5']
-names= ['freeze0', 'freeze6']
+# names = ['freeze1', 'freeze2', 'freeze3', 'freeze4', 'freeze5']
+names = ['Constrative']
 for name in names:
     tokenizer = T5Tokenizer.from_pretrained(MODEL['name'])
-    tokenConfig(tokenizer=tokenizer)
+    tokenConfig(
+        tokenizer=tokenizer)
     config = T5Config.from_pretrained(MODEL['name'])
     # config.num_decoder_layers = MODEL['num_decoder_layers']
     model = T5ForConditionalGeneration.from_pretrained('../Save/Try/' + name + "/", config=config)

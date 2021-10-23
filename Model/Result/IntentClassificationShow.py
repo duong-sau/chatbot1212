@@ -2,8 +2,10 @@ import pandas as pd
 import numpy as np
 from Static.Define import path_common, Colors
 from matplotlib.pyplot import plot
-layer = [1, 2, 3, 4, 5, 7, 8]
-y = np.array([[]])
+import matplotlib
+
+layer = [1, 2, 3, 4, 5, 6, 7, 8]
+y = np.empty(shape=[1, 2])
 for x in layer:
     name = 'freeze' + str(x)
     print('number of freeze:', name, '==========')
@@ -18,14 +20,15 @@ for x in layer:
     # print(f"for negative method")
     print(f" {Colors.OKGREEN}match case    :{match}")
     print(f"{Colors.WARNING}not match case: {not_match} \n")
-    n = np.array([[x,match]])
-    y = np.append(y,n, axis=0)
+    n = np.array([[x, match]])
+    y = np.append(y, n, axis=0)
     print('==================================')
+y = np.delete(y, 0, 0)
+y[0:, 1] = y[0:, 1] / 47*100
 plot(y)
-import matplotlib
 matplotlib.pyplot.show()
 """
-for name in ['freeze8']:
+for name in ['Constrative']:
     print('number of freeze:', name, '==========')
     result_df = pd.read_csv(name + '/test_identity_result.csv', header=0)
     intent_df = pd.read_csv(path_common.intent_list.value, header=0)
@@ -39,4 +42,5 @@ for name in ['freeze8']:
     print(f"{Colors.ENDC}for positive method")
     print(f"{Colors.OKGREEN}match case    :{match}")
     print(f"{Colors.WARNING}not match case: {not_match} \n")
+
 """
