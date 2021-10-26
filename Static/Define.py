@@ -23,6 +23,7 @@ class path_common(Enum):
     learn_data_neg = classification + "\\NEG\\learn_data.csv"
     learn_data_hed = classification + "\\HED\\learn_data.csv"
     learn_data_a =   classification + "\\A\\learn_data.csv"
+    learn_data_han = classification + "\\HAN\\learn_data.csv"
 
 class tag(Enum):
     sau = "@id1211"

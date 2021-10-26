@@ -1,6 +1,10 @@
+from pytorch_lightning.utilities import warnings
+from torch import nn
+from torch.nn import CrossEntropyLoss
 from tqdm import tqdm
 from transformers import T5Tokenizer, T5ForConditionalGeneration, AutoTokenizer, T5Config
 import pandas as pd
+from transformers.modeling_outputs import SequenceClassifierOutput, BaseModelOutput
 
 from Model.Common import toT5sentence, getSimilarity
 from Model.FineTurn.Define import MODEL, tokenConfig
@@ -8,15 +12,14 @@ from Static.Define import path_common
 import time
 
 # define
-# names = ['freeze1', 'freeze2', 'freeze3', 'freeze4', 'freeze5']
-names = ['Constrative']
+names = ["freeze'1", "freeze'2", "freeze'3", "freeze'4", "freeze'5", "freeze'6"]
+# names = ['freeze1']
+
 for name in names:
     tokenizer = T5Tokenizer.from_pretrained(MODEL['name'])
     tokenConfig(
         tokenizer=tokenizer)
-    config = T5Config.from_pretrained(MODEL['name'])
-    # config.num_decoder_layers = MODEL['num_decoder_layers']
-    model = T5ForConditionalGeneration.from_pretrained('../Save/Try/' + name + "/", config=config)
+    model = T5ForConditionalGeneration.from_pretrained('../Save/Try/' + name + "/")
     model.cpu()
 
     test_link = "https://raw.githubusercontent.com/duong-sau/chatbot1212/master/Model/Data/IntentClassification/test.csv"
