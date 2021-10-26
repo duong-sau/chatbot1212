@@ -12,6 +12,7 @@ class path_common(Enum):
     intent_list = mining + "\\intent_list.csv"
     sentence_list = mining + "\\sentence_list.csv"
     intent_group_list = mining + "\\intent_group_list.csv"
+    answer = mining + "\\answer_list.csv"
 
     intent = classification + "\\intent_list.csv"
     sentence = classification + "\\sentence_list.csv"

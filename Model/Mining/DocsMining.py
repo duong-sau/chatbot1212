@@ -7,6 +7,7 @@ from tqdm import tqdm
 from Model.Mining.Common import groupSoupByTag
 from Static.Define import path_common, tag
 
+"""
 if __name__ == '__main__':
     sentence_df = pd.DataFrame()
     intent_df = pd.DataFrame()
@@ -49,4 +50,29 @@ if __name__ == '__main__':
     intent_df.to_csv(path_common.intent_list.value, index=False, mode='w')
     sentence_df.to_csv(path_common.sentence_list.value, index=False, mode='w')
     intent_group_df.to_csv(path_common.intent_group_list.value, index=False, mode='w')
+    exit()
+"""
+if __name__ == '__main__':
+    answer_df = pd.DataFrame()
+    sentence_index = 0
+    intent_index = 0
+    intent_group_index = 0
+    for root, dirs, files in os.walk(path_common.data.value + "\\Document", topdown=True):
+        for file in tqdm(files):
+            path = root + "\\" + file
+            with open(file=path, mode='r', encoding='utf-8') as f:
+                content = f.read()
+                html = BeautifulSoup(content.strip("\n"), 'html.parser')
+                groupSoupByTag(html, tag.h2, tag.classify1, tag.sau)
+                head = html.find_all(tag.classify1.value)
+                for h in head:
+                    sub_index = 0
+                    elements = h.find_all(recursive=False)
+                    h2 = h.h2
+                    intent_index = intent_index + 1
+                    intent = h2.text
+                    new = {'answer': h, 'intent': intent, 'answer_index': intent_index, 'intent_index': intent_index, }
+                    answer_df = answer_df.append(new, ignore_index=True)
+        break
+    answer_df.to_csv(path_common.answer.value, index=False, mode='w')
     exit()
