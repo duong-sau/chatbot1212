@@ -20,11 +20,12 @@ result_df = pd.DataFrame(columns=columns)
 tqdm.pandas()
 for index, row in tqdm(test_df.iterrows(), leave=False, total=len(result_df)):
     test_sentence = row["sentence"]
-    sentence = "text classification: " + test_sentence
+    sentence = "multilabel classification " + test_sentence
     sentence_ids = tokenizer(sentence, return_tensors='pt', padding=True)
     out_ids = model.generate(input_ids=sentence_ids['input_ids'], attention_mask=sentence_ids['attention_mask'],
                              do_sample=False)
     intent_group = tokenizer.batch_decode(out_ids, skip_special_tokens=True)[0]
+    print(intent_group)
     try:
         actual = float(intent_group)
     except:
