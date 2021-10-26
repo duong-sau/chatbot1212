@@ -1,11 +1,10 @@
 import pandas as pd
-from tqdm import tqdm
-
-from Model.Common import toT5sentence, train_validate_test_split
+import numpy as np
 from Static.Define import path_common
 
 
 sentence_df = pd.read_csv(path_common.train.value)
+sentence_df.intent_group_index = pd.to_numeric(sentence_df.intent_group_index).fillna(0).astype(np.int64)
 
 sentence_df['sentence'] = 'text classification: ' + sentence_df['sentence']
 sentence_df['intent_group_index'] = sentence_df['intent_group_index']
