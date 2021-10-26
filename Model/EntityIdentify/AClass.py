@@ -7,7 +7,7 @@ from Model.FineTurn.Define import MODEL, tokenConfig
 from Static.Define import path_common
 import time
 
-model = T5ForConditionalGeneration.from_pretrained(path_common.model.value + '\\' + MODEL['name'] + "\\A2")
+model = T5ForConditionalGeneration.from_pretrained('../Save/Try/A/')
 model.to('cpu')
 tokenizer = T5Tokenizer.from_pretrained(MODEL['name'])
 tokenConfig(tokenizer=tokenizer)
