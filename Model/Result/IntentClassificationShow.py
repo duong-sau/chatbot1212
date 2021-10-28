@@ -28,12 +28,12 @@ y[0:, 1] = y[0:, 1] / 47*100
 plot(y)
 matplotlib.pyplot.show()
 """
-result_df = pd.read_csv('./freeze1235/test_identity_result.csv', header=0)
+result_df = pd.read_csv('./A2/test_identity_result.csv', header=0)
 intent_df = pd.read_csv(path_common.intent_list.value, header=0)
 match = 0
 not_match = 0
 for i, row in result_df.iterrows():
-    if row['expected'] == row['actual']:
+    if row['expected'] == row['max1']:
         match = match + 1
     else:
         not_match += 1
