@@ -426,7 +426,7 @@ S4   4230120340
 "Binary, morphological and SNP data",Beginner’s tutorial,2.0,16.0,"IQ-TREE implements to two morphological ML models: MK and ORDERED. Morphological data typically do not have constant (uninformative) sites. In such cases, you should apply ascertainment bias correction model by e.g.:",186.0,10.0,0.0
 "Binary, morphological and SNP data",Beginner’s tutorial,2.0,16.0,"iqtree -s morphology.phy -st MORPH -m MK+ASC
 ",187.0,11.0,0.0
-"Binary, morphological and SNP data",Beginner’s tutorial,2.0,16.0,You can again select the best-fit binary/morphological model:,188.0,12.0,5.0
+"Binary, morphological and SNP data",Beginner’s tutorial,2.0,16.0,You can again select the best-fit binary/morphological model:,188.0,12.0,0.0
 "Binary, morphological and SNP data",Beginner’s tutorial,2.0,16.0,"iqtree -s morphology.phy -st MORPH
 ",189.0,13.0,0.0
 "Binary, morphological and SNP data",Beginner’s tutorial,2.0,16.0,"For SNP data (DNA) that typically do not contain constant sites, you can explicitly tell the model to include ascertainment bias correction:",190.0,14.0,0.0

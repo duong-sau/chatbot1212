@@ -91,7 +91,7 @@ Ultrafast bootstrapping with partition model,Advanced tutorial,1.0,4.0,"iqtree -
 Constrained tree search,Advanced tutorial,1.0,5.0,Constrained tree search,49.0,1.0,0.0
 Constrained tree search,Advanced tutorial,1.0,5.0,"IQ-TREE supports constrained tree search via -g option, so that the resulting tree must obey a constraint tree topology. The constraint tree can be multifurcating and need not to contain all species. To illustrate, let’s return to the first running example, where we want to force Human grouping with Seal whereas Cow with Whale. If you use the following constraint tree (NEWICK format):",50.0,2.0,0.0
 Constrained tree search,Advanced tutorial,1.0,5.0,"((Human,Seal),(Cow,Whale));
-",51.0,3.0,0.5
+",51.0,3.0,0.0
 Constrained tree search,Advanced tutorial,1.0,5.0,Save this to a file example.constr0 and run:,52.0,4.0,0.0
 Constrained tree search,Advanced tutorial,1.0,5.0,"iqtree -s example.phy -m TIM2+I+G -g example.constr0 --prefix example.constr0
 # for version 1.x change --prefix to -pre
@@ -510,7 +510,7 @@ Utilizing multi-core CPUs,Beginner’s tutorial,2.0,21.0,IQ-TREE can utilize mul
 Utilizing multi-core CPUs,Beginner’s tutorial,2.0,21.0,"iqtree -s example.phy -m TIM2+I+G -T 2
 # for version 1.x change -T to -nt
 ",222.0,3.0,0.0
-Utilizing multi-core CPUs,Beginner’s tutorial,2.0,21.0,"Here, IQ-TREE will use 2 CPU cores to perform the analysis.",223.0,4.0,0.5
+Utilizing multi-core CPUs,Beginner’s tutorial,2.0,21.0,"Here, IQ-TREE will use 2 CPU cores to perform the analysis.",223.0,4.0,0.0
 Utilizing multi-core CPUs,Beginner’s tutorial,2.0,21.0,Note that the parallel efficiency is only good for long alignments. A good practice is to use -T AUTO to determine the best number of cores:,224.0,5.0,0.0
 Utilizing multi-core CPUs,Beginner’s tutorial,2.0,21.0,"iqtree -s example.phy -m TIM2+I+G -T AUTO
 # for version 1.x change -T to -nt
