@@ -5,7 +5,7 @@ from Model.EntityIdentify.MeanSum import MeanSum
 from Model.FineTurn.Define import MODEL, tokenConfig
 from Static.Define import path_common
 
-model = T5ForConditionalGeneration.from_pretrained(path_common.model.value + '\\' + MODEL['name'] + "\\1Layer")
+model = T5ForConditionalGeneration.from_pretrained("../Save/Try/freeze3/")
 model.to('cpu')
 tokenizer = T5Tokenizer.from_pretrained(MODEL['name'])
 tokenConfig(tokenizer=tokenizer)

@@ -3,4 +3,4 @@ venv
 SDK
 *.pyc
 .idea/
-Model/Save/
+Model/CheckPoint/

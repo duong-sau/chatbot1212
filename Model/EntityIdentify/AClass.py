@@ -50,7 +50,7 @@ for index, row in tqdm(test_df.iterrows(), leave=False, total=len(result_df)):
     max1 = actual
     max2 = actual
     max3 = actual
-    new_row = {'test_id': row["sentence_index"], 'expected': row["intent_group_index"], 'max1': max1, 'max2': max2,
+    new_row = {'test_id': row["test_index"], 'expected': row["intent_group_index"], 'max1': max1, 'max2': max2,
                'max3': max3}
     result_df = result_df.append(new_row, ignore_index=True)
 result_df.to_csv(path_or_buf='../Result/A2/test_identity_result.csv', mode='w', index=False)
