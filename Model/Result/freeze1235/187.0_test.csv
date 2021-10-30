@@ -423,7 +423,7 @@ S4   4230120340
 "Binary, morphological and SNP data",Beginner’s tutorial,2.0,16.0,or,184.0,8.0,0.0
 "Binary, morphological and SNP data",Beginner’s tutorial,2.0,16.0,"iqtree -s morphology.phy -st MORPH
 ",185.0,9.0,0.5
-"Binary, morphological and SNP data",Beginner’s tutorial,2.0,16.0,"IQ-TREE implements to two morphological ML models: MK and ORDERED. Morphological data typically do not have constant (uninformative) sites. In such cases, you should apply ascertainment bias correction model by e.g.:",186.0,10.0,0.0
+"Binary, morphological and SNP data",Beginner’s tutorial,2.0,16.0,"IQ-TREE implements to two morphological ML models: MK and ORDERED. Morphological data typically do not have constant (uninformative) sites. In such cases, you should apply ascertainment bias correction model by e.g.:",186.0,10.0,0.5
 "Binary, morphological and SNP data",Beginner’s tutorial,2.0,16.0,"iqtree -s morphology.phy -st MORPH -m MK+ASC
 ",187.0,11.0,5.0
 "Binary, morphological and SNP data",Beginner’s tutorial,2.0,16.0,You can again select the best-fit binary/morphological model:,188.0,12.0,0.0
@@ -432,7 +432,7 @@ S4   4230120340
 "Binary, morphological and SNP data",Beginner’s tutorial,2.0,16.0,"For SNP data (DNA) that typically do not contain constant sites, you can explicitly tell the model to include ascertainment bias correction:",190.0,14.0,0.0
 "Binary, morphological and SNP data",Beginner’s tutorial,2.0,16.0,"iqtree -s SNP_data.phy -m GTR+ASC
 ",191.0,15.0,0.0
-"Binary, morphological and SNP data",Beginner’s tutorial,2.0,16.0,You can explicitly tell model testing to only include +ASC model with:,192.0,16.0,0.0
+"Binary, morphological and SNP data",Beginner’s tutorial,2.0,16.0,You can explicitly tell model testing to only include +ASC model with:,192.0,16.0,0.5
 "Binary, morphological and SNP data",Beginner’s tutorial,2.0,16.0,"iqtree -s SNP_data.phy -m MFP+ASC
 ",193.0,17.0,0.0
 Assessing branch supports with ultrafast bootstrap approximation,Beginner’s tutorial,2.0,17.0,Assessing branch supports with ultrafast bootstrap approximation,194.0,1.0,0.0

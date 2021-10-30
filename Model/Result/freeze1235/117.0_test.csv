@@ -3,7 +3,7 @@ Partitioned analysis for multi-gene alignments,Advanced tutorial,1.0,1.0,Partiti
 Partitioned analysis for multi-gene alignments,Advanced tutorial,1.0,1.0,If you used partition model in a publication please cite:,2.0,2.0,0.0
 Partitioned analysis for multi-gene alignments,Advanced tutorial,1.0,1.0,"O. Chernomor, A. von Haeseler, and B.Q. Minh (2016) Terrace aware data structure for phylogenomic inference from supermatrices. Syst. Biol., 65:997-1008. https://doi.org/10.1093/sysbio/syw037",3.0,3.0,0.0
 Partitioned analysis for multi-gene alignments,Advanced tutorial,1.0,1.0,"In the partition model, you can specify a substitution model for each gene/character set. IQ-TREE will then estimate the model parameters separately for every partition. Moreover, IQ-TREE provides edge-linked or edge-unlinked branch lengths between partitions:",4.0,4.0,0.0
-Partitioned analysis for multi-gene alignments,Advanced tutorial,1.0,1.0,"-q partition_file: all partitions share the same set of branch lengths (like -q option of RAxML).-p partition_file (-spp in version 1.x): like above but allowing each partition to have its own evolution rate.-Q partition_file (-sp in version 1.x): each partition has its own set of branch lengths (like combination of -q and -M options in RAxML) to account for, e.g. heterotachy (Lopez et al., 2002).",5.0,5.0,0.0
+Partitioned analysis for multi-gene alignments,Advanced tutorial,1.0,1.0,"-q partition_file: all partitions share the same set of branch lengths (like -q option of RAxML).-p partition_file (-spp in version 1.x): like above but allowing each partition to have its own evolution rate.-Q partition_file (-sp in version 1.x): each partition has its own set of branch lengths (like combination of -q and -M options in RAxML) to account for, e.g. heterotachy (Lopez et al., 2002).",5.0,5.0,0.5
 Partitioned analysis for multi-gene alignments,Advanced tutorial,1.0,1.0,NOTE: -p is recommended for typical analysis. -q is unrealistic and -Q is very parameter-rich. One can also perform all three analyses and compare e.g. the BIC scores to determine the best-fit partition model.,6.0,6.0,0.0
 Partitioned analysis for multi-gene alignments,Advanced tutorial,1.0,1.0,IQ-TREE supports RAxML-style and NEXUS partition input file. The RAxML-style partition file may look like:,7.0,7.0,0.0
 Partitioned analysis for multi-gene alignments,Advanced tutorial,1.0,1.0,"DNA, part1 = 1-100
@@ -130,7 +130,7 @@ Constrained tree search,Advanced tutorial,1.0,5.0,"           +---------------Hu
 |              +------Rat
 ",61.0,13.0,0.0
 Constrained tree search,Advanced tutorial,1.0,5.0,which shows the desired effect.,62.0,14.0,0.0
-Constrained tree search,Advanced tutorial,1.0,5.0,"NOTE: While this option helps to enforce the tree based on prior knowledge, it is advised to always perform tree topology tests to make sure that the resulting constrained tree is NOT significantly worse than an unconstrained tree! See tree topology tests and testing constrained tree below for a guide how to check this.",63.0,15.0,0.0
+Constrained tree search,Advanced tutorial,1.0,5.0,"NOTE: While this option helps to enforce the tree based on prior knowledge, it is advised to always perform tree topology tests to make sure that the resulting constrained tree is NOT significantly worse than an unconstrained tree! See tree topology tests and testing constrained tree below for a guide how to check this.",63.0,15.0,0.5
 Tree topology tests,Advanced tutorial,1.0,6.0,Tree topology tests,64.0,1.0,0.0
 Tree topology tests,Advanced tutorial,1.0,6.0,IQ-TREE can compute log-likelihoods of a set of trees passed via the -z option:,65.0,2.0,0.0
 Tree topology tests,Advanced tutorial,1.0,6.0,"iqtree -s example.phy -z example.treels -m GTR+G
@@ -143,7 +143,7 @@ Tree topology tests,Advanced tutorial,1.0,6.0,"IQ-TREE also supports several tre
 Tree topology tests,Advanced tutorial,1.0,6.0,"iqtree -s example.phy -z example.treels -n 0 -zb 1000
 ",71.0,8.0,0.0
 Tree topology tests,Advanced tutorial,1.0,6.0,"Here, -zb specifies the number of RELL replicates, where 1000 is the recommended minimum number. The USER TREES section of example.phy.iqtree will list the results of BP, KH, SH, and ELW methods.",72.0,9.0,0.0
-Tree topology tests,Advanced tutorial,1.0,6.0,"If you also want to perform the weighted KH and weighted SH tests, simply add -zw option:",73.0,10.0,0.0
+Tree topology tests,Advanced tutorial,1.0,6.0,"If you also want to perform the weighted KH and weighted SH tests, simply add -zw option:",73.0,10.0,0.5
 Tree topology tests,Advanced tutorial,1.0,6.0,"iqtree -s example.phy -z example.treels -n 0 -zb 1000 -zw
 ",74.0,11.0,0.0
 Tree topology tests,Advanced tutorial,1.0,6.0,"Starting with version 1.4.0 IQ-TREE supports approximately unbiased (AU) test (Shimodaira, 2002) via -au option:",75.0,12.0,0.0
@@ -151,7 +151,7 @@ Tree topology tests,Advanced tutorial,1.0,6.0,"iqtree -s example.phy -z example.
 ",76.0,13.0,0.0
 Tree topology tests,Advanced tutorial,1.0,6.0,This will perform all above tests plus the AU test.,77.0,14.0,0.0
 Tree topology tests,Advanced tutorial,1.0,6.0,"Finally, note that IQ-TREE will automatically detect duplicated tree topologies and omit them during the evaluation.",78.0,15.0,0.0
-Tree topology tests,Advanced tutorial,1.0,6.0,"HINTS:The KH, SH and AU tests return p-values, thus a tree is rejected if its p-value < 0.05 (marked with a - sign).bp-RELL and c-ELW return posterior weights which are not p-value. The weights sum up to 1 across the trees tested.The KH test (Kishino and Hasegawa, 1989) was designed to test 2 trees and thus has no correction for multiple testing. The SH test (Shimodaira and Hasegawa, 1999) fixes this problem.However, the SH test becomes too conservative (i.e., rejecting fewer trees than expected) when testing many trees. The AU test (Shimodaira, 2002) fixes this problem and is thus recommended as replacement for both KH and SH tests.",79.0,16.0,0.0
+Tree topology tests,Advanced tutorial,1.0,6.0,"HINTS:The KH, SH and AU tests return p-values, thus a tree is rejected if its p-value < 0.05 (marked with a - sign).bp-RELL and c-ELW return posterior weights which are not p-value. The weights sum up to 1 across the trees tested.The KH test (Kishino and Hasegawa, 1989) was designed to test 2 trees and thus has no correction for multiple testing. The SH test (Shimodaira and Hasegawa, 1999) fixes this problem.However, the SH test becomes too conservative (i.e., rejecting fewer trees than expected) when testing many trees. The AU test (Shimodaira, 2002) fixes this problem and is thus recommended as replacement for both KH and SH tests.",79.0,16.0,0.5
 Testing constrained tree,Advanced tutorial,1.0,7.0,Testing constrained tree,80.0,1.0,0.5
 Testing constrained tree,Advanced tutorial,1.0,7.0,"We now illustrate an example to use the AU test (see above) to test trees from unconstrained versus constrained search, which is helpful to know if a constrained search is sensible or not. Thus:",81.0,2.0,0.0
 Testing constrained tree,Advanced tutorial,1.0,7.0,"Perform an unconstrained search: iqtree -s example.phy -m TIM2+I+G --prefix example.unconstr

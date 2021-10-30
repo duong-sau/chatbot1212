@@ -505,7 +505,7 @@ Numbers in parentheses are SH-aLRT support (%) / ultrafast bootstrap support (%)
                                 +-----------Opossum
 ",218.0,9.0,0.0
 Assessing branch supports with single branch tests,Beginner’s tutorial,2.0,20.0,"From this figure, the branching patterns within reptiles are poorly supported (e.g. Sphenodon with SH-aLRT: 39%, UFBoot: 51% and Turtle with SH-aLRT: 85%, UFBoot: 72%) as well as the phylogenetic position of Seal within mammals (SH-aLRT: 68.3%, UFBoot: 75%). Other branches appear to be well supported.",219.0,10.0,0.0
-Utilizing multi-core CPUs,Beginner’s tutorial,2.0,21.0,Utilizing multi-core CPUs,220.0,1.0,0.5
+Utilizing multi-core CPUs,Beginner’s tutorial,2.0,21.0,Utilizing multi-core CPUs,220.0,1.0,0.0
 Utilizing multi-core CPUs,Beginner’s tutorial,2.0,21.0,IQ-TREE can utilize multiple CPU cores to speed up the analysis. A complement option -T (or -nt for version 1.x) allows specifying the number of CPU cores to use. For example:,221.0,2.0,0.5
 Utilizing multi-core CPUs,Beginner’s tutorial,2.0,21.0,"iqtree -s example.phy -m TIM2+I+G -T 2
 # for version 1.x change -T to -nt

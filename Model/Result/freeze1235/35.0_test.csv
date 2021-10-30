@@ -60,7 +60,7 @@ Choosing the right partitioning scheme,Advanced tutorial,1.0,3.0,"iqtree -s exam
 Choosing the right partitioning scheme,Advanced tutorial,1.0,3.0,"Note that this command considers the FreeRate heterogeneity model (see model selection tutorial). If you want to resemble PartitionFinder by just considering the invariable site and Gamma rate heterogeneity (thus saving computation times), then run:",32.0,4.0,0.0
 Choosing the right partitioning scheme,Advanced tutorial,1.0,3.0,"iqtree -s example.phy -p example.nex -m TESTMERGE
 # for version 1.x change -p to -spp
-",33.0,5.0,0.5
+",33.0,5.0,5.0
 Choosing the right partitioning scheme,Advanced tutorial,1.0,3.0,"After ModelFinder found the best partition, IQ-TREE will immediately start the tree reconstruction under the best-fit partition model. Sometimes you only want to find the best-fit partition model without doing tree reconstruction, then run:",34.0,6.0,0.0
 Choosing the right partitioning scheme,Advanced tutorial,1.0,3.0,"iqtree -s example.phy -p example.nex -m MF+MERGE
 # for version 1.x change -p to -spp
@@ -83,11 +83,11 @@ Ultrafast bootstrapping with partition model,Advanced tutorial,1.0,4.0,"Here, IQ
 Ultrafast bootstrapping with partition model,Advanced tutorial,1.0,4.0,"IQ-TREE supports the partition-resampling strategy as suggested by (Nei et al., 2001):",45.0,5.0,0.0
 Ultrafast bootstrapping with partition model,Advanced tutorial,1.0,4.0,"iqtree -s example.phy -p example.nex -B 1000 --sampling GENE
 # for version 1.x change -p to -spp and -B to -bb and --sampling to -bsam
-",46.0,6.0,0.0
+",46.0,6.0,0.5
 Ultrafast bootstrapping with partition model,Advanced tutorial,1.0,4.0,"to resample partitions instead of sites. Moreover, IQ-TREE allows an even more complicated strategy: resampling partitions and then sites within resampled partitions (Gadagkar et al., 2005; Seo et al., 2005). This may help to reduce false positives (i.e. wrong branch receiving 100% support):",47.0,7.0,0.0
 Ultrafast bootstrapping with partition model,Advanced tutorial,1.0,4.0,"iqtree -s example.phy -p example.nex -B 1000 --sampling GENESITE
 # for version 1.x change -p to -spp and -B to -bb and --sampling to -bsam
-",48.0,8.0,0.0
+",48.0,8.0,0.5
 Constrained tree search,Advanced tutorial,1.0,5.0,Constrained tree search,49.0,1.0,0.0
 Constrained tree search,Advanced tutorial,1.0,5.0,"IQ-TREE supports constrained tree search via -g option, so that the resulting tree must obey a constraint tree topology. The constraint tree can be multifurcating and need not to contain all species. To illustrate, let’s return to the first running example, where we want to force Human grouping with Seal whereas Cow with Whale. If you use the following constraint tree (NEWICK format):",50.0,2.0,0.0
 Constrained tree search,Advanced tutorial,1.0,5.0,"((Human,Seal),(Cow,Whale));
@@ -130,7 +130,7 @@ Constrained tree search,Advanced tutorial,1.0,5.0,"           +---------------Hu
 |              +------Rat
 ",61.0,13.0,0.0
 Constrained tree search,Advanced tutorial,1.0,5.0,which shows the desired effect.,62.0,14.0,0.0
-Constrained tree search,Advanced tutorial,1.0,5.0,"NOTE: While this option helps to enforce the tree based on prior knowledge, it is advised to always perform tree topology tests to make sure that the resulting constrained tree is NOT significantly worse than an unconstrained tree! See tree topology tests and testing constrained tree below for a guide how to check this.",63.0,15.0,0.0
+Constrained tree search,Advanced tutorial,1.0,5.0,"NOTE: While this option helps to enforce the tree based on prior knowledge, it is advised to always perform tree topology tests to make sure that the resulting constrained tree is NOT significantly worse than an unconstrained tree! See tree topology tests and testing constrained tree below for a guide how to check this.",63.0,15.0,0.5
 Tree topology tests,Advanced tutorial,1.0,6.0,Tree topology tests,64.0,1.0,0.0
 Tree topology tests,Advanced tutorial,1.0,6.0,IQ-TREE can compute log-likelihoods of a set of trees passed via the -z option:,65.0,2.0,0.0
 Tree topology tests,Advanced tutorial,1.0,6.0,"iqtree -s example.phy -z example.treels -m GTR+G
@@ -233,7 +233,7 @@ Inferring site-specific rates,Advanced tutorial,1.0,10.0,Inferring site-specific
 Inferring site-specific rates,Advanced tutorial,1.0,10.0,"IQ-TREE allows to infer site-specific evolutionary rates if a site-rate heterogeneity model such as Gamma or FreeRate is the best model. Here, IQ-TREE will estimate model parameters and then apply an empirical Bayesian approach to assign site-rates as the mean over rate categories, weighted by the posterior probability of the site falling into each category. This approach is provided in IQ-TREE because such empirical Bayesian approach was shown to be most accurate (Mayrose et al., 2004). An example run:",112.0,2.0,0.0
 Inferring site-specific rates,Advanced tutorial,1.0,10.0,"iqtree -s example.phy --rate
 # for version 1.x change --rate to -wsr
-",113.0,3.0,0.0
+",113.0,3.0,0.5
 Inferring site-specific rates,Advanced tutorial,1.0,10.0,IQ-TREE will write an output file example.phy.rate that looks like:,114.0,4.0,0.0
 Inferring site-specific rates,Advanced tutorial,1.0,10.0,"Site    Rate    Category        Categorized_rate
 1       0.26625 2       0.24393
@@ -465,7 +465,7 @@ Assessing branch supports with single branch tests,Beginner’s tutorial,2.0,20.
 Assessing branch supports with single branch tests,Beginner’s tutorial,2.0,20.0,You can also perform both SH-aLRT and the ultrafast bootstrap within one single run:,215.0,6.0,0.0
 Assessing branch supports with single branch tests,Beginner’s tutorial,2.0,20.0,"iqtree -s example.phy -m TIM2+I+G -alrt 1000 -B 1000
 # for version 1.x change -B to -bb
-",216.0,7.0,0.0
+",216.0,7.0,0.5
 Assessing branch supports with single branch tests,Beginner’s tutorial,2.0,20.0,"The branches of the resulting .treefile will be assigned with both SH-aLRT and UFBoot support values, which are readable by any tree viewer program like FigTree, Dendroscope or ETE. You can also look at the textual tree figure in .iqtree file:",217.0,8.0,0.0
 Assessing branch supports with single branch tests,Beginner’s tutorial,2.0,20.0,"NOTE: Tree is UNROOTED although outgroup taxon 'LngfishAu' is drawn at root
 Numbers in parentheses are SH-aLRT support (%) / ultrafast bootstrap support (%)

@@ -13,10 +13,11 @@ import time
 
 # define
 # names = ["freeze'1", "freeze'2", "freeze'3", "freeze'4", "freeze'5", "freeze'6"]
-names = ['New folder']
+names = ['freeze135', 'freeze1345']
 
 for name in names:
     tokenizer = T5Tokenizer.from_pretrained(MODEL['name'])
+
     tokenConfig(
         tokenizer=tokenizer)
     model = T5ForConditionalGeneration.from_pretrained('../Save/Try/' + name + "/")

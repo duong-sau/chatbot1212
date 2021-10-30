@@ -84,7 +84,7 @@ Ultrafast bootstrapping with partition model,Advanced tutorial,1.0,4.0,"IQ-TREE 
 Ultrafast bootstrapping with partition model,Advanced tutorial,1.0,4.0,"iqtree -s example.phy -p example.nex -B 1000 --sampling GENE
 # for version 1.x change -p to -spp and -B to -bb and --sampling to -bsam
 ",46.0,6.0,0.0
-Ultrafast bootstrapping with partition model,Advanced tutorial,1.0,4.0,"to resample partitions instead of sites. Moreover, IQ-TREE allows an even more complicated strategy: resampling partitions and then sites within resampled partitions (Gadagkar et al., 2005; Seo et al., 2005). This may help to reduce false positives (i.e. wrong branch receiving 100% support):",47.0,7.0,0.5
+Ultrafast bootstrapping with partition model,Advanced tutorial,1.0,4.0,"to resample partitions instead of sites. Moreover, IQ-TREE allows an even more complicated strategy: resampling partitions and then sites within resampled partitions (Gadagkar et al., 2005; Seo et al., 2005). This may help to reduce false positives (i.e. wrong branch receiving 100% support):",47.0,7.0,0.0
 Ultrafast bootstrapping with partition model,Advanced tutorial,1.0,4.0,"iqtree -s example.phy -p example.nex -B 1000 --sampling GENESITE
 # for version 1.x change -p to -spp and -B to -bb and --sampling to -bsam
 ",48.0,8.0,0.0
@@ -208,7 +208,7 @@ Consensus construction and bootstrap value assignment,Advanced tutorial,1.0,8.0,
 Consensus construction and bootstrap value assignment,Advanced tutorial,1.0,8.0,IQ-TREE can also compute a consensus network and print it into a NEXUS file by:,94.0,9.0,0.0
 Consensus construction and bootstrap value assignment,Advanced tutorial,1.0,8.0,"iqtree -net mytrees
 ",95.0,10.0,0.0
-Consensus construction and bootstrap value assignment,Advanced tutorial,1.0,8.0,"Finally, a useful feature is to read in an input tree and a set of trees, then IQ-TREE can assign the support value onto the input tree (number of times each branch in the input tree occurs in the set of trees). This option is useful if you want to compute the support values for an ML tree based on alternative topologies.",96.0,11.0,0.5
+Consensus construction and bootstrap value assignment,Advanced tutorial,1.0,8.0,"Finally, a useful feature is to read in an input tree and a set of trees, then IQ-TREE can assign the support value onto the input tree (number of times each branch in the input tree occurs in the set of trees). This option is useful if you want to compute the support values for an ML tree based on alternative topologies.",96.0,11.0,0.0
 Consensus construction and bootstrap value assignment,Advanced tutorial,1.0,8.0,"iqtree -sup input_tree set_of_trees
 ",97.0,12.0,0.0
 User-defined substitution models,Advanced tutorial,1.0,9.0,User-defined substitution models,98.0,1.0,0.0

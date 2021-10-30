@@ -61,7 +61,7 @@ Choosing the right partitioning scheme,Advanced tutorial,1.0,3.0,"Note that this
 Choosing the right partitioning scheme,Advanced tutorial,1.0,3.0,"iqtree -s example.phy -p example.nex -m TESTMERGE
 # for version 1.x change -p to -spp
 ",33.0,5.0,0.0
-Choosing the right partitioning scheme,Advanced tutorial,1.0,3.0,"After ModelFinder found the best partition, IQ-TREE will immediately start the tree reconstruction under the best-fit partition model. Sometimes you only want to find the best-fit partition model without doing tree reconstruction, then run:",34.0,6.0,0.0
+Choosing the right partitioning scheme,Advanced tutorial,1.0,3.0,"After ModelFinder found the best partition, IQ-TREE will immediately start the tree reconstruction under the best-fit partition model. Sometimes you only want to find the best-fit partition model without doing tree reconstruction, then run:",34.0,6.0,0.5
 Choosing the right partitioning scheme,Advanced tutorial,1.0,3.0,"iqtree -s example.phy -p example.nex -m MF+MERGE
 # for version 1.x change -p to -spp
 ",35.0,7.0,0.0
@@ -139,7 +139,7 @@ Tree topology tests,Advanced tutorial,1.0,6.0,"assuming that example.treels is a
 Tree topology tests,Advanced tutorial,1.0,6.0,"iqtree -s example.phy -z example.treels -n 0
 ",68.0,5.0,0.0
 Tree topology tests,Advanced tutorial,1.0,6.0,"Here, the number of search iterations is set to 0 (-n 0), such that model parameters are quickly estimated from an initial parsimony tree, which is normally accurate enough for our purpose. If you, however, prefer to estimate model parameters based on a tree (e.g. reconstructed previously), use -te <treefile> option.",69.0,6.0,0.0
-Tree topology tests,Advanced tutorial,1.0,6.0,"IQ-TREE also supports several tree topology tests using the RELL approximation (Kishino et al., 1990). This includes bootstrap proportion (BP), Kishino-Hasegawa test (Kishino and Hasegawa, 1989), Shimodaira-Hasegawa test (Shimodaira and Hasegawa, 1999), expected likelihood weights (Strimmer and Rambaut, 2002):",70.0,7.0,0.0
+Tree topology tests,Advanced tutorial,1.0,6.0,"IQ-TREE also supports several tree topology tests using the RELL approximation (Kishino et al., 1990). This includes bootstrap proportion (BP), Kishino-Hasegawa test (Kishino and Hasegawa, 1989), Shimodaira-Hasegawa test (Shimodaira and Hasegawa, 1999), expected likelihood weights (Strimmer and Rambaut, 2002):",70.0,7.0,0.5
 Tree topology tests,Advanced tutorial,1.0,6.0,"iqtree -s example.phy -z example.treels -n 0 -zb 1000
 ",71.0,8.0,0.0
 Tree topology tests,Advanced tutorial,1.0,6.0,"Here, -zb specifies the number of RELL replicates, where 1000 is the recommended minimum number. The USER TREES section of example.phy.iqtree will list the results of BP, KH, SH, and ELW methods.",72.0,9.0,0.0
@@ -152,7 +152,7 @@ Tree topology tests,Advanced tutorial,1.0,6.0,"iqtree -s example.phy -z example.
 Tree topology tests,Advanced tutorial,1.0,6.0,This will perform all above tests plus the AU test.,77.0,14.0,0.0
 Tree topology tests,Advanced tutorial,1.0,6.0,"Finally, note that IQ-TREE will automatically detect duplicated tree topologies and omit them during the evaluation.",78.0,15.0,0.0
 Tree topology tests,Advanced tutorial,1.0,6.0,"HINTS:The KH, SH and AU tests return p-values, thus a tree is rejected if its p-value < 0.05 (marked with a - sign).bp-RELL and c-ELW return posterior weights which are not p-value. The weights sum up to 1 across the trees tested.The KH test (Kishino and Hasegawa, 1989) was designed to test 2 trees and thus has no correction for multiple testing. The SH test (Shimodaira and Hasegawa, 1999) fixes this problem.However, the SH test becomes too conservative (i.e., rejecting fewer trees than expected) when testing many trees. The AU test (Shimodaira, 2002) fixes this problem and is thus recommended as replacement for both KH and SH tests.",79.0,16.0,0.0
-Testing constrained tree,Advanced tutorial,1.0,7.0,Testing constrained tree,80.0,1.0,0.0
+Testing constrained tree,Advanced tutorial,1.0,7.0,Testing constrained tree,80.0,1.0,0.5
 Testing constrained tree,Advanced tutorial,1.0,7.0,"We now illustrate an example to use the AU test (see above) to test trees from unconstrained versus constrained search, which is helpful to know if a constrained search is sensible or not. Thus:",81.0,2.0,0.0
 Testing constrained tree,Advanced tutorial,1.0,7.0,"Perform an unconstrained search: iqtree -s example.phy -m TIM2+I+G --prefix example.unconstr
  # for version 1.x change --prefix to -pre
@@ -192,7 +192,7 @@ p-AU    : p-value of approximately unbiased (AU) test (Shimodaira, 2002).
 Plus signs denote the 95% confidence sets.
 Minus signs denote significant exclusion.
 All tests performed 1000 resamplings using the RELL method.
-",84.0,5.0,0.0
+",84.0,5.0,0.5
 Testing constrained tree,Advanced tutorial,1.0,7.0,"One sees that the AU test does not reject the first 3 trees (denoted by + sign below the p-AU column), whereas the last tree is significantly excluded (- sign). All other tests also agree with this. Therefore, groupings of (Human,Mouse) and (Cow,Rat) do not make sense. Whereas the phylogenetic position of Seal based on 3 first trees is still undecidable. This is in agreement with the SH-aLRT and ultrafast bootstrap supports done in the Tutorial.",85.0,6.0,0.5
 Consensus construction and bootstrap value assignment,Advanced tutorial,1.0,8.0,Consensus construction and bootstrap value assignment,86.0,1.0,0.5
 Consensus construction and bootstrap value assignment,Advanced tutorial,1.0,8.0,"IQ-TREE can construct an extended majority-rule consensus tree from a set of trees written in NEWICK or NEXUS format (e.g., produced by MrBayes):",87.0,2.0,0.0
@@ -436,7 +436,7 @@ S4   4230120340
 "Binary, morphological and SNP data",Beginner’s tutorial,2.0,16.0,"iqtree -s SNP_data.phy -m MFP+ASC
 ",193.0,17.0,0.0
 Assessing branch supports with ultrafast bootstrap approximation,Beginner’s tutorial,2.0,17.0,Assessing branch supports with ultrafast bootstrap approximation,194.0,1.0,0.5
-Assessing branch supports with ultrafast bootstrap approximation,Beginner’s tutorial,2.0,17.0,"To overcome the computational burden required by the nonparametric bootstrap, IQ-TREE introduces an ultrafast bootstrap approximation (UFBoot) (Minh et al., 2013; Hoang et al., 2018) that is orders of magnitude faster than the standard procedure and provides relatively unbiased branch support values. Citation for UFBoot:",195.0,2.0,0.0
+Assessing branch supports with ultrafast bootstrap approximation,Beginner’s tutorial,2.0,17.0,"To overcome the computational burden required by the nonparametric bootstrap, IQ-TREE introduces an ultrafast bootstrap approximation (UFBoot) (Minh et al., 2013; Hoang et al., 2018) that is orders of magnitude faster than the standard procedure and provides relatively unbiased branch support values. Citation for UFBoot:",195.0,2.0,0.5
 Assessing branch supports with ultrafast bootstrap approximation,Beginner’s tutorial,2.0,17.0,"D.T. Hoang, O. Chernomor, A. von Haeseler, B.Q. Minh, and L.S. Vinh (2018) UFBoot2: Improving the ultrafast bootstrap approximation. Mol. Biol. Evol., 35:518–522. https://doi.org/10.1093/molbev/msx281",196.0,3.0,0.0
 Assessing branch supports with ultrafast bootstrap approximation,Beginner’s tutorial,2.0,17.0,To run UFBoot:,197.0,4.0,0.0
 Assessing branch supports with ultrafast bootstrap approximation,Beginner’s tutorial,2.0,17.0,"iqtree -s example.phy -m TIM2+I+G -B 1000
@@ -460,8 +460,8 @@ Assessing branch supports with single branch tests,Beginner’s tutorial,2.0,20.
 Assessing branch supports with single branch tests,Beginner’s tutorial,2.0,20.0,"IQ-TREE provides an implementation of the SH-like approximate likelihood ratio test (Guindon et al., 2010). To perform this test, run:",211.0,2.0,0.0
 Assessing branch supports with single branch tests,Beginner’s tutorial,2.0,20.0,"iqtree -s example.phy -m TIM2+I+G -alrt 1000
 ",212.0,3.0,0.0
-Assessing branch supports with single branch tests,Beginner’s tutorial,2.0,20.0,-alrt specifies the number of bootstrap replicates for SH-aLRT where 1000 is the minimum number recommended.,213.0,4.0,0.5
-Assessing branch supports with single branch tests,Beginner’s tutorial,2.0,20.0,"IQ-TREE also supports other tests such as the aBayes test (Anisimova et al., 2011) and the local bootstrap test (Adachi and Hasegawa, 1996b). See single branch tests for more details.",214.0,5.0,0.0
+Assessing branch supports with single branch tests,Beginner’s tutorial,2.0,20.0,-alrt specifies the number of bootstrap replicates for SH-aLRT where 1000 is the minimum number recommended.,213.0,4.0,0.0
+Assessing branch supports with single branch tests,Beginner’s tutorial,2.0,20.0,"IQ-TREE also supports other tests such as the aBayes test (Anisimova et al., 2011) and the local bootstrap test (Adachi and Hasegawa, 1996b). See single branch tests for more details.",214.0,5.0,0.5
 Assessing branch supports with single branch tests,Beginner’s tutorial,2.0,20.0,You can also perform both SH-aLRT and the ultrafast bootstrap within one single run:,215.0,6.0,0.5
 Assessing branch supports with single branch tests,Beginner’s tutorial,2.0,20.0,"iqtree -s example.phy -m TIM2+I+G -alrt 1000 -B 1000
 # for version 1.x change -B to -bb

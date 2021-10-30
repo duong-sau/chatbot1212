@@ -1,6 +1,6 @@
 intent,intent_group,intent_group_index,intent_index,sentence,sentence_index,sub_i,similarity
-Partitioned analysis for multi-gene alignments,Advanced tutorial,1.0,1.0,Partitioned analysis for multi-gene alignments,1.0,1.0,0.5
-Partitioned analysis for multi-gene alignments,Advanced tutorial,1.0,1.0,If you used partition model in a publication please cite:,2.0,2.0,0.5
+Partitioned analysis for multi-gene alignments,Advanced tutorial,1.0,1.0,Partitioned analysis for multi-gene alignments,1.0,1.0,0.0
+Partitioned analysis for multi-gene alignments,Advanced tutorial,1.0,1.0,If you used partition model in a publication please cite:,2.0,2.0,0.0
 Partitioned analysis for multi-gene alignments,Advanced tutorial,1.0,1.0,"O. Chernomor, A. von Haeseler, and B.Q. Minh (2016) Terrace aware data structure for phylogenomic inference from supermatrices. Syst. Biol., 65:997-1008. https://doi.org/10.1093/sysbio/syw037",3.0,3.0,0.0
 Partitioned analysis for multi-gene alignments,Advanced tutorial,1.0,1.0,"In the partition model, you can specify a substitution model for each gene/character set. IQ-TREE will then estimate the model parameters separately for every partition. Moreover, IQ-TREE provides edge-linked or edge-unlinked branch lengths between partitions:",4.0,4.0,0.0
 Partitioned analysis for multi-gene alignments,Advanced tutorial,1.0,1.0,"-q partition_file: all partitions share the same set of branch lengths (like -q option of RAxML).-p partition_file (-spp in version 1.x): like above but allowing each partition to have its own evolution rate.-Q partition_file (-sp in version 1.x): each partition has its own set of branch lengths (like combination of -q and -M options in RAxML) to account for, e.g. heterotachy (Lopez et al., 2002).",5.0,5.0,0.0
@@ -9,7 +9,7 @@ Partitioned analysis for multi-gene alignments,Advanced tutorial,1.0,1.0,IQ-TREE
 Partitioned analysis for multi-gene alignments,Advanced tutorial,1.0,1.0,"DNA, part1 = 1-100
 DNA, part2 = 101-384
 ",8.0,8.0,0.0
-Partitioned analysis for multi-gene alignments,Advanced tutorial,1.0,1.0,"If your partition file is called example.partitions, the partition analysis can be run with:",9.0,9.0,0.5
+Partitioned analysis for multi-gene alignments,Advanced tutorial,1.0,1.0,"If your partition file is called example.partitions, the partition analysis can be run with:",9.0,9.0,0.0
 Partitioned analysis for multi-gene alignments,Advanced tutorial,1.0,1.0,"iqtree -s example.phy -p example.partitions -m GTR+I+G
 # for version 1.x change -p to -spp
 ",10.0,10.0,0.0
@@ -57,7 +57,7 @@ Choosing the right partitioning scheme,Advanced tutorial,1.0,3.0,"ModelFinder im
 Choosing the right partitioning scheme,Advanced tutorial,1.0,3.0,"iqtree -s example.phy -p example.nex -m MFP+MERGE
 # for version 1.x change -p to -spp
 ",31.0,3.0,0.0
-Choosing the right partitioning scheme,Advanced tutorial,1.0,3.0,"Note that this command considers the FreeRate heterogeneity model (see model selection tutorial). If you want to resemble PartitionFinder by just considering the invariable site and Gamma rate heterogeneity (thus saving computation times), then run:",32.0,4.0,0.5
+Choosing the right partitioning scheme,Advanced tutorial,1.0,3.0,"Note that this command considers the FreeRate heterogeneity model (see model selection tutorial). If you want to resemble PartitionFinder by just considering the invariable site and Gamma rate heterogeneity (thus saving computation times), then run:",32.0,4.0,0.0
 Choosing the right partitioning scheme,Advanced tutorial,1.0,3.0,"iqtree -s example.phy -p example.nex -m TESTMERGE
 # for version 1.x change -p to -spp
 ",33.0,5.0,0.0
@@ -228,7 +228,7 @@ User-defined substitution models,Advanced tutorial,1.0,9.0,"iqtree -s example.ph
 User-defined substitution models,Advanced tutorial,1.0,9.0,"For amino-acid alignments, IQ-TREE use the empirical frequencies specified in the model. If you want frequencies as counted from the alignment, use +F, for example:",108.0,11.0,0.0
 User-defined substitution models,Advanced tutorial,1.0,9.0,"iqtree -s myprotein_alignment -m WAG+G+F
 ",109.0,12.0,0.0
-User-defined substitution models,Advanced tutorial,1.0,9.0,Note that all model specifications above can be used in the partition model NEXUS file.,110.0,13.0,0.5
+User-defined substitution models,Advanced tutorial,1.0,9.0,Note that all model specifications above can be used in the partition model NEXUS file.,110.0,13.0,0.0
 Inferring site-specific rates,Advanced tutorial,1.0,10.0,Inferring site-specific rates,111.0,1.0,0.0
 Inferring site-specific rates,Advanced tutorial,1.0,10.0,"IQ-TREE allows to infer site-specific evolutionary rates if a site-rate heterogeneity model such as Gamma or FreeRate is the best model. Here, IQ-TREE will estimate model parameters and then apply an empirical Bayesian approach to assign site-rates as the mean over rate categories, weighted by the posterior probability of the site falling into each category. This approach is provided in IQ-TREE because such empirical Bayesian approach was shown to be most accurate (Mayrose et al., 2004). An example run:",112.0,2.0,0.0
 Inferring site-specific rates,Advanced tutorial,1.0,10.0,"iqtree -s example.phy --rate

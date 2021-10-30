@@ -386,7 +386,7 @@ Choosing the right substitution model,Beginner’s tutorial,2.0,14.0,"Sometimes 
 Choosing the right substitution model,Beginner’s tutorial,2.0,14.0,"iqtree -s example.phy -m MF
 # change -m MF to -m TESTONLY to resemble jModelTest/ProtTest
 ",164.0,13.0,0.0
-Choosing the right substitution model,Beginner’s tutorial,2.0,14.0,"By default, the maximum number of categories is limitted to 10 due to computational reasons. If your sequence alignment is long enough, then you can increase this upper limit with the cmax option:",165.0,14.0,0.5
+Choosing the right substitution model,Beginner’s tutorial,2.0,14.0,"By default, the maximum number of categories is limitted to 10 due to computational reasons. If your sequence alignment is long enough, then you can increase this upper limit with the cmax option:",165.0,14.0,0.0
 Choosing the right substitution model,Beginner’s tutorial,2.0,14.0,"iqtree -s example.phy -m MF -cmax 15
 ",166.0,15.0,0.0
 Choosing the right substitution model,Beginner’s tutorial,2.0,14.0,will test +R2 to +R15 instead of at most +R10.,167.0,16.0,0.0
@@ -522,7 +522,7 @@ Threads: 2 / Time: 4.346 sec / Speedup: 1.841 / Efficiency: 92% / LogL: -22217
 Threads: 3 / Time: 3.381 sec / Speedup: 2.367 / Efficiency: 79% / LogL: -22217
 Threads: 4 / Time: 4.385 sec / Speedup: 1.825 / Efficiency: 46% / LogL: -22217
 BEST NUMBER OF THREADS: 3
-",227.0,8.0,0.0
+",227.0,8.0,0.5
 Utilizing multi-core CPUs,Beginner’s tutorial,2.0,21.0,"Therefore, I would only use 3 cores for this example data. For later analysis with your same data set, you can stick to the determined number.",228.0,9.0,0.0
 Utilizing multi-core CPUs,Beginner’s tutorial,2.0,21.0,Depending on the compute system it might be required to set an upper limit of CPU cores that can automatically be assigned. Use the -ntmax option to do so. For instance,229.0,10.0,5.0
 Utilizing multi-core CPUs,Beginner’s tutorial,2.0,21.0,"iqtree -s example.phy -m TIM2+I+G -T AUTO -ntmax 8

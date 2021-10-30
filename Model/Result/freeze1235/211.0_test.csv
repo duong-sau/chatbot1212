@@ -20,7 +20,7 @@ begin sets;
     charset part2 = 101-384;
     charpartition mine = HKY+G:part1, GTR+I+G:part2;
 end;
-",12.0,12.0,0.0
+",12.0,12.0,0.5
 Partitioned analysis for multi-gene alignments,Advanced tutorial,1.0,1.0,"If your NEXUS file is called example.nex, then you can use the option -p to input the file as following:",13.0,13.0,0.0
 Partitioned analysis for multi-gene alignments,Advanced tutorial,1.0,1.0,"iqtree -s example.phy -p example.nex
 # for version 1.x change -p to -spp
@@ -130,7 +130,7 @@ Constrained tree search,Advanced tutorial,1.0,5.0,"           +---------------Hu
 |              +------Rat
 ",61.0,13.0,0.0
 Constrained tree search,Advanced tutorial,1.0,5.0,which shows the desired effect.,62.0,14.0,0.0
-Constrained tree search,Advanced tutorial,1.0,5.0,"NOTE: While this option helps to enforce the tree based on prior knowledge, it is advised to always perform tree topology tests to make sure that the resulting constrained tree is NOT significantly worse than an unconstrained tree! See tree topology tests and testing constrained tree below for a guide how to check this.",63.0,15.0,0.0
+Constrained tree search,Advanced tutorial,1.0,5.0,"NOTE: While this option helps to enforce the tree based on prior knowledge, it is advised to always perform tree topology tests to make sure that the resulting constrained tree is NOT significantly worse than an unconstrained tree! See tree topology tests and testing constrained tree below for a guide how to check this.",63.0,15.0,0.5
 Tree topology tests,Advanced tutorial,1.0,6.0,Tree topology tests,64.0,1.0,0.0
 Tree topology tests,Advanced tutorial,1.0,6.0,IQ-TREE can compute log-likelihoods of a set of trees passed via the -z option:,65.0,2.0,0.0
 Tree topology tests,Advanced tutorial,1.0,6.0,"iqtree -s example.phy -z example.treels -m GTR+G
@@ -146,7 +146,7 @@ Tree topology tests,Advanced tutorial,1.0,6.0,"Here, -zb specifies the number of
 Tree topology tests,Advanced tutorial,1.0,6.0,"If you also want to perform the weighted KH and weighted SH tests, simply add -zw option:",73.0,10.0,0.5
 Tree topology tests,Advanced tutorial,1.0,6.0,"iqtree -s example.phy -z example.treels -n 0 -zb 1000 -zw
 ",74.0,11.0,0.0
-Tree topology tests,Advanced tutorial,1.0,6.0,"Starting with version 1.4.0 IQ-TREE supports approximately unbiased (AU) test (Shimodaira, 2002) via -au option:",75.0,12.0,0.0
+Tree topology tests,Advanced tutorial,1.0,6.0,"Starting with version 1.4.0 IQ-TREE supports approximately unbiased (AU) test (Shimodaira, 2002) via -au option:",75.0,12.0,0.5
 Tree topology tests,Advanced tutorial,1.0,6.0,"iqtree -s example.phy -z example.treels -n 0 -zb 1000 -zw -au
 ",76.0,13.0,0.0
 Tree topology tests,Advanced tutorial,1.0,6.0,This will perform all above tests plus the AU test.,77.0,14.0,0.0
@@ -257,7 +257,7 @@ Inferring site-specific rates,Advanced tutorial,1.0,10.0,"If you already know th
 Inferring site-specific rates,Advanced tutorial,1.0,10.0,"iqtree -s example.phy -m GTR+R10 -n 0 --rate 
 # for version 1.x change --rate to -wsr
 ",121.0,11.0,0.0
-Inferring site-specific rates,Advanced tutorial,1.0,10.0,"Finally, IQ-TREE 2 allows to estimate rates by maximum likelihood via --mlrate option:",122.0,12.0,0.0
+Inferring site-specific rates,Advanced tutorial,1.0,10.0,"Finally, IQ-TREE 2 allows to estimate rates by maximum likelihood via --mlrate option:",122.0,12.0,0.5
 Inferring site-specific rates,Advanced tutorial,1.0,10.0,"iqtree -s example.phy -n 0 --mlrate 
 ",123.0,13.0,0.0
 Inferring site-specific rates,Advanced tutorial,1.0,10.0,This will print an output file example.phy.mlrate that looks like:,124.0,14.0,0.0
@@ -420,7 +420,7 @@ S4   4230120340
 "Binary, morphological and SNP data",Beginner’s tutorial,2.0,16.0,IQ-TREE will automatically determine the sequence type and the alphabet size. To run IQ-TREE on such alignments:,182.0,6.0,0.0
 "Binary, morphological and SNP data",Beginner’s tutorial,2.0,16.0,"iqtree -s morphology.phy
 ",183.0,7.0,0.0
-"Binary, morphological and SNP data",Beginner’s tutorial,2.0,16.0,or,184.0,8.0,0.5
+"Binary, morphological and SNP data",Beginner’s tutorial,2.0,16.0,or,184.0,8.0,0.0
 "Binary, morphological and SNP data",Beginner’s tutorial,2.0,16.0,"iqtree -s morphology.phy -st MORPH
 ",185.0,9.0,0.0
 "Binary, morphological and SNP data",Beginner’s tutorial,2.0,16.0,"IQ-TREE implements to two morphological ML models: MK and ORDERED. Morphological data typically do not have constant (uninformative) sites. In such cases, you should apply ascertainment bias correction model by e.g.:",186.0,10.0,0.0

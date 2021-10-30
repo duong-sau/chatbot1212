@@ -1,0 +1,6 @@
+test_index,sentence,intent_group_index
+1,How can I perform bootstrap analysis?,0.0
+2,What are models for morphological data?,0.0
+3,Show me how to adjust tree search parameters.,0.0
+4,Can I run bootstrap along with branch test?,1.0
+5,I want to compile IQ-TREE on my Mac PC core?,0.0

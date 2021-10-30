@@ -28,7 +28,7 @@ Partitioned analysis for multi-gene alignments,Advanced tutorial,1.0,1.0,"iqtree
 Partitioned analysis for multi-gene alignments,Advanced tutorial,1.0,1.0,"Here, IQ-TREE partitions the alignment example.phy into 2 sub-alignments named part1 and part2 containing sites (columns) 1-100 and 101-384, respectively. Moreover, IQ-TREE applies the subtitution models HKY+G and GTR+I+G to part1 and part2, respectively. Substitution model parameters and trees with branch lengths can be found in the result file example.nex.iqtree.",15.0,15.0,0.0
 Partitioned analysis for multi-gene alignments,Advanced tutorial,1.0,1.0,"Moreover, the CharSet command allows to specify non-consecutive sites with e.g.:",16.0,16.0,0.0
 Partitioned analysis for multi-gene alignments,Advanced tutorial,1.0,1.0,"charset part1 = 1-100 200-384;
-",17.0,17.0,0.5
+",17.0,17.0,0.0
 Partitioned analysis for multi-gene alignments,Advanced tutorial,1.0,1.0,"That means, part1 contains sites 1-100 and 200-384 of the alignment. Another example is:",18.0,18.0,0.0
 Partitioned analysis for multi-gene alignments,Advanced tutorial,1.0,1.0,"charset part1 = 1-100\3;
 ",19.0,19.0,0.0
@@ -88,10 +88,10 @@ Ultrafast bootstrapping with partition model,Advanced tutorial,1.0,4.0,"to resam
 Ultrafast bootstrapping with partition model,Advanced tutorial,1.0,4.0,"iqtree -s example.phy -p example.nex -B 1000 --sampling GENESITE
 # for version 1.x change -p to -spp and -B to -bb and --sampling to -bsam
 ",48.0,8.0,0.0
-Constrained tree search,Advanced tutorial,1.0,5.0,Constrained tree search,49.0,1.0,0.5
-Constrained tree search,Advanced tutorial,1.0,5.0,"IQ-TREE supports constrained tree search via -g option, so that the resulting tree must obey a constraint tree topology. The constraint tree can be multifurcating and need not to contain all species. To illustrate, let’s return to the first running example, where we want to force Human grouping with Seal whereas Cow with Whale. If you use the following constraint tree (NEWICK format):",50.0,2.0,0.0
+Constrained tree search,Advanced tutorial,1.0,5.0,Constrained tree search,49.0,1.0,0.0
+Constrained tree search,Advanced tutorial,1.0,5.0,"IQ-TREE supports constrained tree search via -g option, so that the resulting tree must obey a constraint tree topology. The constraint tree can be multifurcating and need not to contain all species. To illustrate, let’s return to the first running example, where we want to force Human grouping with Seal whereas Cow with Whale. If you use the following constraint tree (NEWICK format):",50.0,2.0,0.5
 Constrained tree search,Advanced tutorial,1.0,5.0,"((Human,Seal),(Cow,Whale));
-",51.0,3.0,0.5
+",51.0,3.0,0.0
 Constrained tree search,Advanced tutorial,1.0,5.0,Save this to a file example.constr0 and run:,52.0,4.0,0.0
 Constrained tree search,Advanced tutorial,1.0,5.0,"iqtree -s example.phy -m TIM2+I+G -g example.constr0 --prefix example.constr0
 # for version 1.x change --prefix to -pre
@@ -116,7 +116,7 @@ Constrained tree search,Advanced tutorial,1.0,5.0,Save this to example.constr1 a
 Constrained tree search,Advanced tutorial,1.0,5.0,"iqtree -s example.phy -m TIM2+I+G -g example.constr1 --prefix example.constr1
 # for version 1.x change --prefix to -pre
 ",59.0,11.0,0.0
-Constrained tree search,Advanced tutorial,1.0,5.0,The resulting part of the tree is then:,60.0,12.0,0.5
+Constrained tree search,Advanced tutorial,1.0,5.0,The resulting part of the tree is then:,60.0,12.0,0.0
 Constrained tree search,Advanced tutorial,1.0,5.0,"           +---------------Human
         +--|
         |  +------Seal
@@ -131,8 +131,8 @@ Constrained tree search,Advanced tutorial,1.0,5.0,"           +---------------Hu
 ",61.0,13.0,0.0
 Constrained tree search,Advanced tutorial,1.0,5.0,which shows the desired effect.,62.0,14.0,0.0
 Constrained tree search,Advanced tutorial,1.0,5.0,"NOTE: While this option helps to enforce the tree based on prior knowledge, it is advised to always perform tree topology tests to make sure that the resulting constrained tree is NOT significantly worse than an unconstrained tree! See tree topology tests and testing constrained tree below for a guide how to check this.",63.0,15.0,0.0
-Tree topology tests,Advanced tutorial,1.0,6.0,Tree topology tests,64.0,1.0,0.5
-Tree topology tests,Advanced tutorial,1.0,6.0,IQ-TREE can compute log-likelihoods of a set of trees passed via the -z option:,65.0,2.0,0.5
+Tree topology tests,Advanced tutorial,1.0,6.0,Tree topology tests,64.0,1.0,0.0
+Tree topology tests,Advanced tutorial,1.0,6.0,IQ-TREE can compute log-likelihoods of a set of trees passed via the -z option:,65.0,2.0,0.0
 Tree topology tests,Advanced tutorial,1.0,6.0,"iqtree -s example.phy -z example.treels -m GTR+G
 ",66.0,3.0,0.0
 Tree topology tests,Advanced tutorial,1.0,6.0,"assuming that example.treels is an existing file containing a set of trees in NEWICK format. IQ-TREE first reconstructs an ML tree. Then, it will compute the log-likelihood of the trees in example.treels based on the estimated parameters done for the ML tree. example.phy.iqtree will have a section called USER TREES that lists the tree IDs and the corresponding log-likelihoods. The trees with optimized branch lengths can be found in example.phy.treels.trees If you only want to evaluate the trees without reconstructing the ML tree, you can run:",67.0,4.0,0.0
@@ -143,7 +143,7 @@ Tree topology tests,Advanced tutorial,1.0,6.0,"IQ-TREE also supports several tre
 Tree topology tests,Advanced tutorial,1.0,6.0,"iqtree -s example.phy -z example.treels -n 0 -zb 1000
 ",71.0,8.0,0.0
 Tree topology tests,Advanced tutorial,1.0,6.0,"Here, -zb specifies the number of RELL replicates, where 1000 is the recommended minimum number. The USER TREES section of example.phy.iqtree will list the results of BP, KH, SH, and ELW methods.",72.0,9.0,0.0
-Tree topology tests,Advanced tutorial,1.0,6.0,"If you also want to perform the weighted KH and weighted SH tests, simply add -zw option:",73.0,10.0,0.5
+Tree topology tests,Advanced tutorial,1.0,6.0,"If you also want to perform the weighted KH and weighted SH tests, simply add -zw option:",73.0,10.0,0.0
 Tree topology tests,Advanced tutorial,1.0,6.0,"iqtree -s example.phy -z example.treels -n 0 -zb 1000 -zw
 ",74.0,11.0,0.0
 Tree topology tests,Advanced tutorial,1.0,6.0,"Starting with version 1.4.0 IQ-TREE supports approximately unbiased (AU) test (Shimodaira, 2002) via -au option:",75.0,12.0,0.5
@@ -152,7 +152,7 @@ Tree topology tests,Advanced tutorial,1.0,6.0,"iqtree -s example.phy -z example.
 Tree topology tests,Advanced tutorial,1.0,6.0,This will perform all above tests plus the AU test.,77.0,14.0,0.0
 Tree topology tests,Advanced tutorial,1.0,6.0,"Finally, note that IQ-TREE will automatically detect duplicated tree topologies and omit them during the evaluation.",78.0,15.0,0.0
 Tree topology tests,Advanced tutorial,1.0,6.0,"HINTS:The KH, SH and AU tests return p-values, thus a tree is rejected if its p-value < 0.05 (marked with a - sign).bp-RELL and c-ELW return posterior weights which are not p-value. The weights sum up to 1 across the trees tested.The KH test (Kishino and Hasegawa, 1989) was designed to test 2 trees and thus has no correction for multiple testing. The SH test (Shimodaira and Hasegawa, 1999) fixes this problem.However, the SH test becomes too conservative (i.e., rejecting fewer trees than expected) when testing many trees. The AU test (Shimodaira, 2002) fixes this problem and is thus recommended as replacement for both KH and SH tests.",79.0,16.0,0.0
-Testing constrained tree,Advanced tutorial,1.0,7.0,Testing constrained tree,80.0,1.0,0.5
+Testing constrained tree,Advanced tutorial,1.0,7.0,Testing constrained tree,80.0,1.0,0.0
 Testing constrained tree,Advanced tutorial,1.0,7.0,"We now illustrate an example to use the AU test (see above) to test trees from unconstrained versus constrained search, which is helpful to know if a constrained search is sensible or not. Thus:",81.0,2.0,0.0
 Testing constrained tree,Advanced tutorial,1.0,7.0,"Perform an unconstrained search: iqtree -s example.phy -m TIM2+I+G --prefix example.unconstr
  # for version 1.x change --prefix to -pre
@@ -200,7 +200,7 @@ Consensus construction and bootstrap value assignment,Advanced tutorial,1.0,8.0,
 ",88.0,3.0,0.0
 Consensus construction and bootstrap value assignment,Advanced tutorial,1.0,8.0,"To build a majority-rule consensus tree, simply set the minimum support threshold to 0.5:",89.0,4.0,0.0
 Consensus construction and bootstrap value assignment,Advanced tutorial,1.0,8.0,"iqtree -con mytrees -minsup 0.5
-",90.0,5.0,0.0
+",90.0,5.0,0.5
 Consensus construction and bootstrap value assignment,Advanced tutorial,1.0,8.0,"If you want to specify a burn-in (the number of beginning trees to ignore from the trees file), use -bi option:",91.0,6.0,0.0
 Consensus construction and bootstrap value assignment,Advanced tutorial,1.0,8.0,"iqtree -con mytrees -minsup 0.5 -bi 100
 ",92.0,7.0,0.0
@@ -229,7 +229,7 @@ User-defined substitution models,Advanced tutorial,1.0,9.0,"For amino-acid align
 User-defined substitution models,Advanced tutorial,1.0,9.0,"iqtree -s myprotein_alignment -m WAG+G+F
 ",109.0,12.0,0.0
 User-defined substitution models,Advanced tutorial,1.0,9.0,Note that all model specifications above can be used in the partition model NEXUS file.,110.0,13.0,0.0
-Inferring site-specific rates,Advanced tutorial,1.0,10.0,Inferring site-specific rates,111.0,1.0,0.5
+Inferring site-specific rates,Advanced tutorial,1.0,10.0,Inferring site-specific rates,111.0,1.0,0.0
 Inferring site-specific rates,Advanced tutorial,1.0,10.0,"IQ-TREE allows to infer site-specific evolutionary rates if a site-rate heterogeneity model such as Gamma or FreeRate is the best model. Here, IQ-TREE will estimate model parameters and then apply an empirical Bayesian approach to assign site-rates as the mean over rate categories, weighted by the posterior probability of the site falling into each category. This approach is provided in IQ-TREE because such empirical Bayesian approach was shown to be most accurate (Mayrose et al., 2004). An example run:",112.0,2.0,0.0
 Inferring site-specific rates,Advanced tutorial,1.0,10.0,"iqtree -s example.phy --rate
 # for version 1.x change --rate to -wsr
@@ -259,7 +259,7 @@ Inferring site-specific rates,Advanced tutorial,1.0,10.0,"iqtree -s example.phy 
 ",121.0,11.0,0.0
 Inferring site-specific rates,Advanced tutorial,1.0,10.0,"Finally, IQ-TREE 2 allows to estimate rates by maximum likelihood via --mlrate option:",122.0,12.0,5.0
 Inferring site-specific rates,Advanced tutorial,1.0,10.0,"iqtree -s example.phy -n 0 --mlrate 
-",123.0,13.0,5.0
+",123.0,13.0,0.5
 Inferring site-specific rates,Advanced tutorial,1.0,10.0,This will print an output file example.phy.mlrate that looks like:,124.0,14.0,0.0
 Inferring site-specific rates,Advanced tutorial,1.0,10.0,"# Site-specific subtitution rates determined by maximum likelihood
 # This file can be read in MS Excel or in R with command:
@@ -281,7 +281,7 @@ Site    Rate
 ",125.0,15.0,0.0
 Where to go from here?,Advanced tutorial,1.0,11.0,Where to go from here?,126.0,1.0,0.0
 Where to go from here?,Advanced tutorial,1.0,11.0,See Command Reference for a complete list of all options available in IQ-TREE.,127.0,2.0,0.0
-Input data,Beginner’s tutorial,2.0,12.0,Input data,128.0,1.0,0.5
+Input data,Beginner’s tutorial,2.0,12.0,Input data,128.0,1.0,0.0
 Input data,Beginner’s tutorial,2.0,12.0,"IQ-TREE takes as input a multiple sequence alignment and will reconstruct an evolutionary tree that is best explained by the input data. If you have raw (unaligned) sequences, you need to first run an alignment program like MAFFT or ClustalW to align the sequences, before feeding them into IQ-TREE.",129.0,2.0,0.0
 Input data,Beginner’s tutorial,2.0,12.0,The input alignment can be in various common formats. For example the PHYLIP format which may look like:,130.0,3.0,0.0
 Input data,Beginner’s tutorial,2.0,12.0,"7 28
@@ -317,7 +317,7 @@ First running example,Beginner’s tutorial,2.0,13.0,"iqtree -s example.phy
 ",138.0,4.0,0.0
 First running example,Beginner’s tutorial,2.0,13.0,-s is the option to specify the name of the alignment file that is always required by IQ-TREE to work. At the end of the run IQ-TREE will write several output files including:,139.0,5.0,0.0
 First running example,Beginner’s tutorial,2.0,13.0,"example.phy.iqtree: the main report file that is self-readable. You should look at this file to see the computational results. It also contains a textual representation of the final tree (see below).example.phy.treefile: the ML tree in NEWICK format, which can be visualized by any supported tree viewer programs like FigTree or iTOL.example.phy.log: log file of the entire run (also printed on the screen). To report bugs, please send this log file and the original alignment file to the authors.",140.0,6.0,0.0
-First running example,Beginner’s tutorial,2.0,13.0,For this example data the resulting maximum-likelihood tree may look like this (extracted from .iqtree file):,141.0,7.0,0.0
+First running example,Beginner’s tutorial,2.0,13.0,For this example data the resulting maximum-likelihood tree may look like this (extracted from .iqtree file):,141.0,7.0,0.5
 First running example,Beginner’s tutorial,2.0,13.0,"NOTE: Tree is UNROOTED although outgroup taxon 'LngfishAu' is drawn at root
 
 +--------------LngfishAu
@@ -368,7 +368,7 @@ First running example,Beginner’s tutorial,2.0,13.0,"iqtree -s example.phy --pr
 # for version 1.x change --prefix to -pre
 ",150.0,16.0,0.0
 First running example,Beginner’s tutorial,2.0,13.0,This prevents output files being overwritten when you perform multiple analyses on the same alignment within the same folder.,151.0,17.0,0.0
-Choosing the right substitution model,Beginner’s tutorial,2.0,14.0,Choosing the right substitution model,152.0,1.0,0.5
+Choosing the right substitution model,Beginner’s tutorial,2.0,14.0,Choosing the right substitution model,152.0,1.0,0.0
 Choosing the right substitution model,Beginner’s tutorial,2.0,14.0,NOTE: If you use model selection please cite the following paper:,153.0,2.0,0.0
 Choosing the right substitution model,Beginner’s tutorial,2.0,14.0,"S. Kalyaanamoorthy, B.Q. Minh, T.K.F. Wong, A. von Haeseler, and L.S. Jermiin (2017) ModelFinder: fast model selection for accurate phylogenetic estimates. Nat. Methods, 14:587–589. DOI: 10.1038/nmeth.4285",154.0,3.0,0.0
 Choosing the right substitution model,Beginner’s tutorial,2.0,14.0,"IQ-TREE supports a wide range of substitution models for DNA, protein, codon, binary and morphological alignments. If you do not know which model is appropriate for your data, you can use ModelFinder to determine the best-fit model:",155.0,4.0,0.0
@@ -420,7 +420,7 @@ S4   4230120340
 "Binary, morphological and SNP data",Beginner’s tutorial,2.0,16.0,IQ-TREE will automatically determine the sequence type and the alphabet size. To run IQ-TREE on such alignments:,182.0,6.0,0.0
 "Binary, morphological and SNP data",Beginner’s tutorial,2.0,16.0,"iqtree -s morphology.phy
 ",183.0,7.0,0.0
-"Binary, morphological and SNP data",Beginner’s tutorial,2.0,16.0,or,184.0,8.0,0.5
+"Binary, morphological and SNP data",Beginner’s tutorial,2.0,16.0,or,184.0,8.0,0.0
 "Binary, morphological and SNP data",Beginner’s tutorial,2.0,16.0,"iqtree -s morphology.phy -st MORPH
 ",185.0,9.0,0.0
 "Binary, morphological and SNP data",Beginner’s tutorial,2.0,16.0,"IQ-TREE implements to two morphological ML models: MK and ORDERED. Morphological data typically do not have constant (uninformative) sites. In such cases, you should apply ascertainment bias correction model by e.g.:",186.0,10.0,0.0
@@ -456,8 +456,8 @@ Assessing branch supports with standard nonparametric bootstrap,Beginner’s tut
 Assessing branch supports with standard nonparametric bootstrap,Beginner’s tutorial,2.0,19.0,"iqtree -s example.phy -m TIM2+I+G -b 100
 ",208.0,3.0,0.0
 Assessing branch supports with standard nonparametric bootstrap,Beginner’s tutorial,2.0,19.0,-b specifies the number of bootstrap replicates where 100 is the minimum recommended number. The output files are similar to those produced by the UFBoot procedure.,209.0,4.0,0.0
-Assessing branch supports with single branch tests,Beginner’s tutorial,2.0,20.0,Assessing branch supports with single branch tests,210.0,1.0,0.5
-Assessing branch supports with single branch tests,Beginner’s tutorial,2.0,20.0,"IQ-TREE provides an implementation of the SH-like approximate likelihood ratio test (Guindon et al., 2010). To perform this test, run:",211.0,2.0,0.0
+Assessing branch supports with single branch tests,Beginner’s tutorial,2.0,20.0,Assessing branch supports with single branch tests,210.0,1.0,0.0
+Assessing branch supports with single branch tests,Beginner’s tutorial,2.0,20.0,"IQ-TREE provides an implementation of the SH-like approximate likelihood ratio test (Guindon et al., 2010). To perform this test, run:",211.0,2.0,0.5
 Assessing branch supports with single branch tests,Beginner’s tutorial,2.0,20.0,"iqtree -s example.phy -m TIM2+I+G -alrt 1000
 ",212.0,3.0,0.0
 Assessing branch supports with single branch tests,Beginner’s tutorial,2.0,20.0,-alrt specifies the number of bootstrap replicates for SH-aLRT where 1000 is the minimum number recommended.,213.0,4.0,0.0

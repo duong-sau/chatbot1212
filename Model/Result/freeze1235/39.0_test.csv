@@ -12,7 +12,7 @@ DNA, part2 = 101-384
 Partitioned analysis for multi-gene alignments,Advanced tutorial,1.0,1.0,"If your partition file is called example.partitions, the partition analysis can be run with:",9.0,9.0,0.0
 Partitioned analysis for multi-gene alignments,Advanced tutorial,1.0,1.0,"iqtree -s example.phy -p example.partitions -m GTR+I+G
 # for version 1.x change -p to -spp
-",10.0,10.0,0.0
+",10.0,10.0,0.5
 Partitioned analysis for multi-gene alignments,Advanced tutorial,1.0,1.0,"Note that using RAxML-style partition file, all partitions will use the same rate heterogeneity model given in -m option (+I+G in this example). If you want to specify, say, +G for the first partition and +I+G for the second partition, then you need to create the more flexible NEXUS partition file. This file contains a SETS block with CharSet and CharPartition commands to specify individual genes and the partition, respectively. For example:",11.0,11.0,0.0
 Partitioned analysis for multi-gene alignments,Advanced tutorial,1.0,1.0,"#nexus
 begin sets;
@@ -73,7 +73,7 @@ Choosing the right partitioning scheme,Advanced tutorial,1.0,3.0,"To reduce the 
 Choosing the right partitioning scheme,Advanced tutorial,1.0,3.0,"iqtree -s example.phy -p example.nex -m MF+MERGE -rcluster 10
 # for version 1.x change -p to -spp
 ",39.0,11.0,5.0
-Choosing the right partitioning scheme,Advanced tutorial,1.0,3.0,to only examine the top 10% partition merging schemes (similar to the --rcluster-percent 10 option in PartitionFinder).,40.0,12.0,0.0
+Choosing the right partitioning scheme,Advanced tutorial,1.0,3.0,to only examine the top 10% partition merging schemes (similar to the --rcluster-percent 10 option in PartitionFinder).,40.0,12.0,0.5
 Ultrafast bootstrapping with partition model,Advanced tutorial,1.0,4.0,Ultrafast bootstrapping with partition model,41.0,1.0,0.0
 Ultrafast bootstrapping with partition model,Advanced tutorial,1.0,4.0,"IQ-TREE can perform the ultrafast bootstrap with partition models by e.g.,",42.0,2.0,0.0
 Ultrafast bootstrapping with partition model,Advanced tutorial,1.0,4.0,"iqtree -s example.phy -p example.nex -B 1000
@@ -83,11 +83,11 @@ Ultrafast bootstrapping with partition model,Advanced tutorial,1.0,4.0,"Here, IQ
 Ultrafast bootstrapping with partition model,Advanced tutorial,1.0,4.0,"IQ-TREE supports the partition-resampling strategy as suggested by (Nei et al., 2001):",45.0,5.0,0.0
 Ultrafast bootstrapping with partition model,Advanced tutorial,1.0,4.0,"iqtree -s example.phy -p example.nex -B 1000 --sampling GENE
 # for version 1.x change -p to -spp and -B to -bb and --sampling to -bsam
-",46.0,6.0,0.0
+",46.0,6.0,0.5
 Ultrafast bootstrapping with partition model,Advanced tutorial,1.0,4.0,"to resample partitions instead of sites. Moreover, IQ-TREE allows an even more complicated strategy: resampling partitions and then sites within resampled partitions (Gadagkar et al., 2005; Seo et al., 2005). This may help to reduce false positives (i.e. wrong branch receiving 100% support):",47.0,7.0,0.0
 Ultrafast bootstrapping with partition model,Advanced tutorial,1.0,4.0,"iqtree -s example.phy -p example.nex -B 1000 --sampling GENESITE
 # for version 1.x change -p to -spp and -B to -bb and --sampling to -bsam
-",48.0,8.0,0.0
+",48.0,8.0,0.5
 Constrained tree search,Advanced tutorial,1.0,5.0,Constrained tree search,49.0,1.0,0.0
 Constrained tree search,Advanced tutorial,1.0,5.0,"IQ-TREE supports constrained tree search via -g option, so that the resulting tree must obey a constraint tree topology. The constraint tree can be multifurcating and need not to contain all species. To illustrate, let’s return to the first running example, where we want to force Human grouping with Seal whereas Cow with Whale. If you use the following constraint tree (NEWICK format):",50.0,2.0,0.0
 Constrained tree search,Advanced tutorial,1.0,5.0,"((Human,Seal),(Cow,Whale));

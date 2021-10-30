@@ -1,39 +1,72 @@
 import React, { Component } from "react";
 import Button from '@mui/material/Button';
+import axios from 'axios';
+import HTMLRenderer from 'react-html-renderer'
 import {TextField} from "@mui/material";
+import Box from '@material-ui/core/Box'
+import Container from '@material-ui/core/Container';
+import { CountdownCircleTimer } from 'react-countdown-circle-timer';
+import Divider from '@material-ui/core/Divider';
+let Self
 class Welcome extends Component {
-
-    state = { answer: '<div>all in iqtree</div>', link: "" }
-    question = (question)=>{
-        const requestOptions = {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ question: question })
-        };
-        fetch('https://reqres.in/api/posts', requestOptions)
-            .then(response => this.setState({ answer: response }))
+    constructor(props) {
+        super(props);
+        Self = this;
     }
-
+    state = { answer: '<div>Every Things In Iqtree You Need</div>', link: "", question: "", play:false, key:0}
+    question = (question)=>{
+        Self.setState({key: this.state.key + 1, play:true})
+        axios
+            .get(this.state.link +'/question' + '?question='+question)
+            .then(function (response) {
+                console.log(response.data.ans);
+                Self.setState({answer:response.data.ans})
+            })
+            .catch(function (error) {
+                console.log(error);
+                Self.setState({key: Self.state.key + 1, play:false})
+            });
+    }
     componentDidMount = () =>{
-        let link = "https://drive.google.com/file/d/1-zMukGnnG5vqjR7G6bouYN7yf6b6eUTQ/view?usp=sharing"
-        fetch(link).then((r)=>{
-            if(r.status !== 200){
-                alert('init fail')
-            }
-            this.setState({link: r.text})
-        })
+        return;
     }
     render() {
         return (
-            <div>
-                <TextField id="standard-basic" label="Standard" variant="standard" ref="q"/>
-                <Button onClick={()=>{this.question(this.refs.q.getValue())}}>
-                    <h1>send </h1>
-                </Button>
-                <div>
-                    {this.state.answer}
-                </div>
-            </div>
+            <Container  display="flex" sx={{ flexDirection: 'column' }}>
+                <TextField id="server" label="Server URL" size="small"
+                           fullWidth={true} variant="standard" onChange={(e) => this.setState({link: e.target.value}) }/>
+                < Box display="flex" sx={{ alignItems: 'center', flexDirection: 'column' }}>
+                    <TextField id="message" autoFocus={true} fullWidth={true} multiline={true}
+                               label="Enter question here" variant="standard" onChange={(e) => this.setState({question: e.target.value}) }/>
+                    <Box display="flex" sx={{ flexDirection: 'row' }}>
+                        <Button onClick={()=>{this.question(this.state.question)}} sx={{ alignItems: 'center' }}>
+                            what
+                        </Button>
+                        <CountdownCircleTimer
+                            key={this.state.key}
+                            isPlaying={this.state.play}
+                            size = {50}
+                            duration={7}
+                            colors={[
+                                ['#004777', 0.33],
+                                ['#F7B801', 0.33],
+                                ['#A30000', 0.33],
+                            ]}
+                        >
+                            {({ remainingTime }) => remainingTime}
+                        </CountdownCircleTimer>
+                    </Box>
+                </Box>
+                <Box>
+                    <p></p>
+                    <br/>
+                    <br/>
+                </Box>
+                <Box display="flex" sx={{ alignItems: 'center', flexDirection: 'column' }}>
+                    <HTMLRenderer
+                    html={this.state.answer}/>
+                </Box>
+            </Container >
         );
     }
 }
