@@ -13,7 +13,7 @@ model.to('cpu')
 # tokenizer = T5Tokenizer.from_pretrained(MODEL['name'])
 # tokenConfig(tokenizer=tokenizer)
 tokenizer = BertTokenizerFast.from_pretrained('bert-base-uncased', do_lower_case=True)
-test_link = "https://raw.githubusercontent.com/duong-sau/chatbot1212/master/Model/Data/IntentClassification/test.csv"
+test_link = "https://raw.githubusercontent.com/duong-sau/chatbot1212/master/Model/Data/Test/test1.csv"
 
 test_df = pd.read_csv(test_link, header=0)
 columns = ["test_id", "expected", "actual"]
@@ -34,13 +34,13 @@ def get_prediction(text):
 
 for index, row in tqdm(test_df.iterrows(), leave=False, total=len(result_df)):
     test_sentence = row["sentence"]
-    # sentence = row["sentence"]
-    sentence = "text classification " + test_sentence
-    sentence_ids = tokenizer(sentence, return_tensors='pt', padding=True)
-    out_ids = model.generate(input_ids=sentence_ids['input_ids'], attention_mask=sentence_ids['attention_mask'],
-                             do_sample=False)
-    intent_group = tokenizer.batch_decode(out_ids, skip_special_tokens=True)[0]
-    # intent_group = get_prediction(sentence)
+    sentence = row["sentence"]
+    # sentence = "text classification " + test_sentence
+    # sentence_ids = tokenizer(sentence, return_tensors='pt', padding=True)
+    # out_ids = model.generate(input_ids=sentence_ids['input_ids'], attention_mask=sentence_ids['attention_mask'],
+    #                          do_sample=False)
+    # intent_group = tokenizer.batch_decode(out_ids, skip_special_tokens=True)[0]
+    intent_group = get_prediction(sentence)
     print(intent_group)
     try:
         actual = float(intent_group)

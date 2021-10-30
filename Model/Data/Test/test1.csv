@@ -1,4 +1,4 @@
-test_index,sentence,intent_group_index
+sentence_index,sentence,intent_group_index
 1,How can I perform bootstrap analysis?,0.0
 2,What are models for morphological data?,0.0
 3,Show me how to adjust tree search parameters.,0.0
