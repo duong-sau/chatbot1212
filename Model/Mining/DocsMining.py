@@ -64,7 +64,7 @@ if __name__ == '__main__':
                 content = f.read()
                 html = BeautifulSoup(content.strip("\n"), 'html.parser')
                 groupSoupByTag(html, tag.h2, tag.classify1)
-                head = html.find_all(tag.classify1.value)
+                head = html.find_all(tag.classify1)
                 for h in head:
                     sub_index = 0
                     elements = h.find_all(recursive=False)

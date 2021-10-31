@@ -18,7 +18,7 @@ for x in layer:
         else:
             not_match += 1
     # print(f"for negative method")
-    print(f" {Colors.OKGREEN}match case    :{match}")
+    print(f" {Colors.OK_GREEN}match case    :{match}")
     print(f"{Colors.WARNING}not match case: {not_match} \n")
     n = np.array([[x, match]])
     y = np.append(y, n, axis=0)

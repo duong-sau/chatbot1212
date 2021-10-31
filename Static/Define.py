@@ -1,7 +1,5 @@
-from enum import Enum
 
-
-class path_common(Enum):
+class path_common:
     work = "C:\\Users\\DuongSau\\Sau\\chatbot1211"
     model = work + "\\Model\\CheckPoint"
     data = work + "\\Model\\Data"
@@ -22,7 +20,7 @@ class path_common(Enum):
     learn_data_pos = classification + "\\Positive\\learn_data.csv"
 
 
-class tag(Enum):
+class tag:
     classify1 = "classify1"
     h2 = "h2"
 
