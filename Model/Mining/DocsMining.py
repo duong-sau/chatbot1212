@@ -63,7 +63,7 @@ if __name__ == '__main__':
             with open(file=path, mode='r', encoding='utf-8') as f:
                 content = f.read()
                 html = BeautifulSoup(content.strip("\n"), 'html.parser')
-                groupSoupByTag(html, tag.h2, tag.classify1, tag.sau)
+                groupSoupByTag(html, tag.h2, tag.classify1)
                 head = html.find_all(tag.classify1.value)
                 for h in head:
                     sub_index = 0

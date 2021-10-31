@@ -4,7 +4,7 @@ from bs4 import BeautifulSoup
 from Static.Define import tag
 
 
-def groupSoupByTag(soup: BeautifulSoup, tag_type: tag, group_type: tag, group_id: tag) -> None:
+def groupSoupByTag(soup: BeautifulSoup, tag_type: tag, group_type: tag) -> None:
     head_list = soup.find_all(tag_type.value)
     for e in head_list:
         els = [i for i in itertools.takewhile(lambda x: x.name not in [e.name, 'script'], e.next_siblings)]

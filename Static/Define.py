@@ -23,23 +23,17 @@ class path_common(Enum):
 
 
 class tag(Enum):
-    sau = "@id1211"
-    page = "page"
-    net_work_root = "div"
     classify1 = "classify1"
-    h1 = "h1"
     h2 = "h2"
-    p = "p"
-    code = "code"
 
 
 class Colors:
     HEADER = '\033[95m'
-    OKBLUE = '\033[94m'
-    OKCYAN = '\033[96m'
-    OKGREEN = '\033[92m'
+    OK_BLUE = '\033[94m'
+    OK_CYAN = '\033[96m'
+    OK_GREEN = '\033[92m'
     WARNING = '\033[93m'
     FAIL = '\033[91m'
-    ENDC = '\033[0m'
+    END = '\033[0m'
     BOLD = '\033[1m'
     UNDERLINE = '\033[4m'
