@@ -1,6 +1,6 @@
 import pandas as pd
 import torch
-
+from transformers import BertForSequenceClassification
 from Model.Common import toT5sentence
 from Static.Define import path_common
 
@@ -14,13 +14,13 @@ import torch.nn as nn
 from transformers import AutoModel
 
 
-class PosModel(nn.Module):
-    def __init__(self):
-        super(PosModel, self).__init__()
+class PosModel(BertForSequenceClassification):
+    def __init__(self, config):
+        super(PosModel, self).__init__(config)
 
         self.base_model = AutoModel.from_pretrained('t5-small')
         self.dropout = nn.Dropout(0.05)
-        self.linear = nn.Linear(512, 1)  # output features from bert is 768 and 2 is ur number of labels
+        self.linear = nn.Linear(512, 2)  # output features from bert is 768 and 2 is ur number of labels
 
     def forward(self, input_ids, attention_mask):
         outputs = self.base_model(input_ids, attention_mask=attention_mask, decoder_input_ids=torch.tensor([0]).unsqueeze(0))

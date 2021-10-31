@@ -2,9 +2,8 @@ from enum import Enum
 
 
 class path_common(Enum):
-    work = "C:\\Users\\DuongSau\\Sau\\chatbot1212"
-    # work = "W:\\Sau\\Chatboot1211"
-    model = work + "\\Model\\Save"
+    work = "C:\\Users\\DuongSau\\Sau\\chatbot1211"
+    model = work + "\\Model\\CheckPoint"
     data = work + "\\Model\\Data"
     mining = data + "\\Mining"
     classification = data + "\\IntentClassification"
@@ -20,11 +19,8 @@ class path_common(Enum):
     test = classification + "\\test.csv"
     train = classification + "\\train.csv"
 
-    learn_data_pos = classification + "\\POS\\learn_data.csv"
-    learn_data_neg = classification + "\\NEG\\learn_data.csv"
-    learn_data_hed = classification + "\\HED\\learn_data.csv"
-    learn_data_a =   classification + "\\A\\learn_data.csv"
-    learn_data_han = classification + "\\HAN\\learn_data.csv"
+    learn_data_pos = classification + "\\Positive\\learn_data.csv"
+
 
 class tag(Enum):
     sau = "@id1211"
