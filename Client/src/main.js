@@ -24,7 +24,8 @@ class Welcome extends Component {
         axios
             .get(this.state.link +'/question' + '?question='+question)
             .then(function (response) {
-                console.log(response.data.answer);
+                let a = response.data.answer
+                console.log(a[0])
                 Self.setState({answer:response.data.answer})
             })
             .catch(function (error) {

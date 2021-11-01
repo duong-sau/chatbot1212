@@ -10,8 +10,8 @@ sentence_df = pd.read_csv(PathCommon.sentence)
 # intent_group_df = pd.read_csv(PathCommon.intent_group, header=0)
 
 train, test = train_validate_test_split(sentence_df)
-test.to_csv(PathCommon.train, index=False)
-train.to_csv(PathCommon.test, index=False)
+test.to_csv(PathCommon.test, index=False)
+train.to_csv(PathCommon.train, index=False)
 
 train = pd.read_csv(PathCommon.train, header=0)
 
