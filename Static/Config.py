@@ -1,14 +1,21 @@
-### Config
+# Config
+import os
+from random import random
+
 import numpy as np
 import torch
 from transformers import TrainingArguments, Adafactor
 
 MODEL = {
     'name': 't5-small',
+    'classification_name': 'bert-base-uncased',
     'data_link': "https://raw.githubusercontent.com/duong-sau/chatbot1212/master/Model/Data/IntentClassification/POS"
                  "/learn_data.csv",
+    'max_length': 512,
+    'num_class': 2,
     'num_decoder_layers': 6,
-    'num_freeze': [2, 3, 4]
+    'num_freeze': [2, 3, 4],
+    'SEED': 1211
 }
 strategy = 'epoch'
 training_args = TrainingArguments(
@@ -54,7 +61,18 @@ def tokenizer_config(tokenizer):
     tokenizer.padding_side = "left"
 
 
+def seed():
+    torch.device("cuda")
+    random.seed(MODEL['SEED'])
+    os.environ['PYTHONHASHSEED'] = str(MODEL['SEED'])
+    np.random.seed(MODEL['SEED'])
+    torch.manual_seed(MODEL['SEED'])
+    torch.backends.cudnn.deterministic = True
+    torch.backends.cudnn.benchmark = True
+
+
 def train_validate_test_split(df, train_percent=.8):
+    seed()
     perm = np.random.permutation(df.index)
     m = len(df.index)
     train_end = int(train_percent * m)

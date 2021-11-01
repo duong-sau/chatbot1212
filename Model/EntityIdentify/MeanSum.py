@@ -1,7 +1,7 @@
 import pandas as pd
 from tqdm import tqdm
 
-from Model.Common import getSimilarity
+from Model.Common import get_similarity
 
 
 # temp_df = pd.read_csv(
@@ -15,8 +15,8 @@ def MeanSum(test_sentence, temp_df, depth, tokenizer, model, return_max=True):
         if r['sub_i'] > depth and not return_max:
             continue
         compare_sentences = r["sentence"]
-        similarity = getSimilarity(tokenizer=tokenizer, model=model, test_sentence=test_sentence,
-                                   compare_sentences=compare_sentences)
+        similarity = get_similarity(tokenizer=tokenizer, model=model, test_sentence=test_sentence,
+                                    compare_sentences=compare_sentences)
         temp_df.loc[i, "similarity"] = similarity
     mean_df = temp_df.groupby(["intent_index"])["similarity"].mean().reset_index().sort_values("similarity")
     if return_max:

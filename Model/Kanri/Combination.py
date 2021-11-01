@@ -1,7 +1,7 @@
 import pandas as pd
 from tqdm import tqdm
 
-from Model.Common import toT5sentence
+from Model.Common import to_sts_sentence
 from Static.Define import PathCommon
 
 
@@ -127,13 +127,13 @@ for first_index, first_row in tqdm(train.iterrows(), total=len(train.index)):
             stsb = stsb + 1
         if first_row["intent_index"] == second_row["intent_index"]:
             stsb = stsb + 4
-        source = toT5sentence(sentence1=first_row["sentence"], sentence2=second_row["sentence"])
+        source = to_sts_sentence(sentence1=first_row["sentence"], sentence2=second_row["sentence"])
         new = {"source": source, 'target': str(stsb)}
         learn_data_df = learn_data_df.append(new, ignore_index=True)
-    source = toT5sentence(sentence1=first_row["sentence"], sentence2=first_row["intent"])
+    source = to_sts_sentence(sentence1=first_row["sentence"], sentence2=first_row["intent"])
     new = {"source": source, 'target': '5'}
     learn_data_df = learn_data_df.append(new, ignore_index=True)
-    source = toT5sentence(sentence1=first_row["sentence"], sentence2=first_row["intent_group"])
+    source = to_sts_sentence(sentence1=first_row["sentence"], sentence2=first_row["intent_group"])
     new = {"source": source, 'target': '3'}
     learn_data_df = learn_data_df.append(new, ignore_index=True)
 learn_data_df.to_csv(PathCommon.learn_data_han.value, index=False)

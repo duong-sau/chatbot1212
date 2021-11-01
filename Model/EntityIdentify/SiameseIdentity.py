@@ -3,7 +3,7 @@ from tqdm.auto import tqdm
 from transformers import T5Tokenizer, T5ForConditionalGeneration
 from os import path, mkdir
 
-from Model.Common import getSimilarity
+from Model.Common import get_similarity
 from Static.Config import MODEL, tokenizer_config
 
 names = ['010111']
@@ -39,8 +39,8 @@ for name in names:
         test_sentence = row["sentence"]
         for i, r in temp_df.iterrows():
             compare_sentences = r["sentence"]
-            similarity = getSimilarity(tokenizer=tokenizer, model=model, test_sentence=test_sentence,
-                                       compare_sentences=compare_sentences)
+            similarity = get_similarity(tokenizer=tokenizer, model=model, test_sentence=test_sentence,
+                                        compare_sentences=compare_sentences)
             temp_df.loc[i, "similarity"] = similarity
         temp_df['similarity'] = pd.to_numeric(temp_df['similarity'], errors='coerce')
         mean_df = temp_df.groupby(["intent_index"])["similarity"].mean().reset_index().sort_values("similarity")

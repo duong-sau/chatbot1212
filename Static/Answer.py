@@ -3,7 +3,7 @@ import time
 import pandas as pd
 from tqdm import tqdm
 
-from Model.Common import getSimilarity
+from Model.Common import get_similarity
 
 
 def get_class(text, class_model, class_tokenizer):
@@ -22,8 +22,8 @@ def get_index(question, group, siamese_tokenizer, siamese_model):
     result_df = result_df[result_df['intent_group_index'] == group]
     for i, r in tqdm(result_df.iterrows()):
         compare_sentences = r["sentence"]
-        similarity = getSimilarity(tokenizer=siamese_tokenizer, model=siamese_model, test_sentence=question,
-                                   compare_sentences=compare_sentences)
+        similarity = get_similarity(tokenizer=siamese_tokenizer, model=siamese_model, test_sentence=question,
+                                    compare_sentences=compare_sentences)
         result_df.loc[i, "similarity"] = similarity
     result_df['similarity'] = pd.to_numeric(result_df['similarity'], errors='coerce')
     mean_df = result_df.groupby(["intent_index"])["similarity"].mean().reset_index().sort_values("similarity")
@@ -46,7 +46,7 @@ def estimate_time(siamese_model, siamese_tokenizer):
                "will then estimate the model parameters separately for every partition. Moreover, IQ-TREE provides " \
                "edge-linked or edge-unlinked branch lengths between partitions. "
     compare_sentences = "That means, part1 contains sites 1-100 and 200-384 of the alignment. Another example is"
-    similarity = getSimilarity(tokenizer=siamese_tokenizer, model=siamese_model, test_sentence=question,
-                               compare_sentences=compare_sentences)
+    similarity = get_similarity(tokenizer=siamese_tokenizer, model=siamese_model, test_sentence=question,
+                                compare_sentences=compare_sentences)
     end = time.time()
     return end - start

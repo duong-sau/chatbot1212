@@ -1,7 +1,7 @@
 import pandas as pd
 import torch
 from transformers import BertForSequenceClassification
-from Model.Common import toT5sentence
+from Model.Common import to_sts_sentence
 from Static.Define import PathCommon
 
 """
@@ -37,7 +37,7 @@ from transformers import T5Tokenizer
 tokenizer = T5Tokenizer.from_pretrained('t5-small')
 test_sentence = 'hello'
 compare_sentences = 'hi'
-T5_format_sentence = toT5sentence(sentence1=test_sentence, sentence2=compare_sentences)
+T5_format_sentence = to_sts_sentence(sentence1=test_sentence, sentence2=compare_sentences)
 enc = tokenizer(T5_format_sentence, return_tensors="pt")
 logits = model(**enc)[0]
 print(logits)

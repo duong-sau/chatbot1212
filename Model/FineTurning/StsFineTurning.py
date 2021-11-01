@@ -4,7 +4,7 @@ import pandas as pd
 from transformers import Trainer, AutoTokenizer, T5ForConditionalGeneration, T5Config
 
 
-from Model.FineTurning.DataSet import myDataset
+from Model.FineTurning.DataSet import SiameseDataset
 from Static.Config import tokenizer_config, MODEL, freeze_layer, training_args, train_validate_test_split
 
 tokenizer = AutoTokenizer.from_pretrained(MODEL['name'])
@@ -24,8 +24,8 @@ data = pd.read_csv(MODEL['data_link'], header=0)
 data = data.astype(str)
 
 train_data, val_data = train_validate_test_split(data)
-train_dataset = myDataset(df=train_data, tokenizer=tokenizer)
-val_dataset = myDataset(df=val_data, tokenizer=tokenizer)
+train_dataset = SiameseDataset(df=train_data, tokenizer=tokenizer)
+val_dataset = SiameseDataset(df=val_data, tokenizer=tokenizer)
 
 assert_data = train_dataset.__getitem__(121)
 assert_inputs = assert_data['input_ids']
