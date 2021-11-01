@@ -4,7 +4,7 @@ from bs4 import BeautifulSoup
 import pandas as pd
 from tqdm import tqdm
 
-from Model.Mining.Common import groupSoupByTag
+from Model.Mining.Common import group_by_tag
 from Static.Define import PathCommon, Tag
 
 """
@@ -57,22 +57,22 @@ if __name__ == '__main__':
     sentence_index = 0
     intent_index = 0
     intent_group_index = 0
-    for root, dirs, files in os.walk(PathCommon.data.value + "\\Document", topdown=True):
+    for root, dirs, files in os.walk(PathCommon.data + "\\Document", topdown=True):
         for file in tqdm(files):
             path = root + "\\" + file
             with open(file=path, mode='r', encoding='utf-8') as f:
                 content = f.read()
                 html = BeautifulSoup(content.strip("\n"), 'html.parser')
-                groupSoupByTag(html, Tag.h2, Tag.classify1)
+                group_by_tag(html, Tag.h2, Tag.classify1)
                 head = html.find_all(Tag.classify1)
                 for h in head:
-                    sub_index = 0
                     elements = h.find_all(recursive=False)
+                    first = elements[2].text
                     h2 = h.h2
                     intent_index = intent_index + 1
                     intent = h2.text
-                    new = {'answer': h, 'intent': intent, 'answer_index': intent_index, 'intent_index': intent_index, }
+                    new = {'answer': h, 'intent': intent, 'answer_index': intent_index, 'intent_index': intent_index, 'first': first}
                     answer_df = answer_df.append(new, ignore_index=True)
         break
-    answer_df.to_csv(PathCommon.answer.value, index=False, mode='w')
+    answer_df.to_csv(PathCommon.answer, index=False, mode='w')
     exit()

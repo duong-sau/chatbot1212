@@ -23,7 +23,7 @@ print('load siamese model success .to(' + str(device.type) + ')')
 class_tokenizer = BertTokenizerFast.from_pretrained('bert-base-uncased', do_lower_case=True)
 class_model = BertForSequenceClassification.from_pretrained('../Model/CheckPoint/Class')
 class_model.to(device)
-print('load classification model success .to(' + str(device.type) +')')
+print('load classification model success .to(' + str(device.type) + ')')
 
 answer_df = pd.read_csv('https://raw.githubusercontent.com/duong-sau/chatbot1212/master/Model/Data/Mining/answer_list'
                         '.csv')

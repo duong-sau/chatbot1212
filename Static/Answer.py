@@ -1,4 +1,5 @@
 # group classification
+import time
 import pandas as pd
 from tqdm import tqdm
 
@@ -26,14 +27,26 @@ def get_index(question, group, siamese_tokenizer, siamese_model):
         result_df.loc[i, "similarity"] = similarity
     result_df['similarity'] = pd.to_numeric(result_df['similarity'], errors='coerce')
     mean_df = result_df.groupby(["intent_index"])["similarity"].mean().reset_index().sort_values("similarity")
-    max = []
+    max_list = []
     try:
-        max = mean_df.iloc[-5:]['intent_index'].tolist()
-    except:
+        max_list = mean_df.iloc[-5:]['intent_index'].tolist()
+    except ValueError:
         index = -1
-    return max
+    return max_list
 
 
 def pandas_to_json(answer_df):
     js = answer_df.to_json(orient='columns')
     return js
+
+
+def estimate_time(siamese_model, siamese_tokenizer):
+    start = time.time()
+    question = "In the partition model, you can specify a substitution model for each gene/character set. IQ-TREE " \
+               "will then estimate the model parameters separately for every partition. Moreover, IQ-TREE provides " \
+               "edge-linked or edge-unlinked branch lengths between partitions. "
+    compare_sentences = "That means, part1 contains sites 1-100 and 200-384 of the alignment. Another example is"
+    similarity = getSimilarity(tokenizer=siamese_tokenizer, model=siamese_model, test_sentence=question,
+                               compare_sentences=compare_sentences)
+    end = time.time()
+    return end - start
