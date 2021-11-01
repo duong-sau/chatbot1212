@@ -20,7 +20,7 @@ def get_index(question, group, siamese_tokenizer, siamese_model):
         ".csv",
         header=0)
     result_df = result_df[result_df['intent_group_index'] == group]
-    for i, r in tqdm(result_df.iterrows()):
+    for i, r in tqdm(result_df.iterrows(), total=len(result_df)):
         compare_sentences = r["sentence"]
         similarity = get_similarity(tokenizer=siamese_tokenizer, model=siamese_model, test_sentence=question,
                                     compare_sentences=compare_sentences)

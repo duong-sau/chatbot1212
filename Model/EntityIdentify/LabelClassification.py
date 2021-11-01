@@ -3,7 +3,6 @@ from transformers import T5Tokenizer, T5ForConditionalGeneration, BertTokenizerF
 import pandas as pd
 
 from Model.Common import to_sts_sentence, get_similarity
-from Model.FineTurn.Define import MODEL, tokenConfig
 from Static.Define import PathCommon
 import time
 

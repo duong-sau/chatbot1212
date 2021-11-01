@@ -43,7 +43,7 @@ def get_answer(index):
 
 # run app
 app = Flask(__name__)
-run_with_ngrok(app)
+# run_with_ngrok(app)
 cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
 
@@ -62,7 +62,7 @@ def login():
         group = group_answer(question)
         index = get_index(question, group, siamese_tokenizer=siamese_tokenizer, siamese_model=siamese_model)
         answer = get_answer(index)
-        response = jsonify({'ans': answer})
+        response = jsonify({'answer': answer})
         return response
     else:
         return "<h1>Error occurred<h1>"

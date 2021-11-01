@@ -8,7 +8,7 @@ from Model.Common import get_similarity
 #     "https://raw.githubusercontent.com/duong-sau/chatbot1212/master/Model/Data/IntentClassification/sentence_list.csv",
 #     header=0)
 
-def MeanSum(test_sentence, temp_df, depth, tokenizer, model, return_max=True):
+def mean_sum(test_sentence, temp_df, depth, tokenizer, model, return_max=True):
     for i, r in temp_df.iterrows():
         if not pd.isnull(r['similarity']):
             continue

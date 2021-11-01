@@ -14,22 +14,25 @@ class Welcome extends Component {
         Self = this;
     }
     state = { answer: '<div>Every Things In Iqtree You Need</div>', link: "", question: "", play:false, key:0}
+
     question = (question)=>{
         Self.setState({key: this.state.key + 1, play:true})
+        if(this.state.link.trim() === ""){
+            this.state.link =  "http://127.0.0.1:5000";
+        }
+        console.log(this.state.link +'/question' + '?question='+question)
         axios
             .get(this.state.link +'/question' + '?question='+question)
             .then(function (response) {
                 console.log(response.data.answer);
-                Self.setState({answer:response.data.ans})
+                Self.setState({answer:response.data.answer})
             })
             .catch(function (error) {
                 console.log(error);
                 Self.setState({key: Self.state.key + 1, play:false})
             });
     }
-    componentDidMount = () =>{
-        return;
-    }
+
     render() {
         return (
             <Container  display="flex" sx={{ flexDirection: 'column' }}>
@@ -58,7 +61,7 @@ class Welcome extends Component {
                     </Box>
                 </Box>
                 <Box>
-                    <p></p>
+                    <br/>
                     <br/>
                     <br/>
                 </Box>
