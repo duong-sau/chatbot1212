@@ -25,15 +25,21 @@ class SiameseDataset(Dataset):
 
 
 class ClassificationDataset(Dataset):
-    def __init__(self, encodings, labels):
-        self.encodings = encodings
-        self.labels = labels
-
-    def __getitem__(self, idx):
-        item = {k: torch.tensor(v[idx]) for k, v in self.encodings.items()}
-        item["labels"] = torch.tensor([self.labels[idx]])
-        return item
+    def __init__(self, tokenizer, df, max_len=512):
+        self.data_column = df["source"].values
+        self.class_column = df['target'].values
+        self.max_len = max_len
+        self.tokenizer = tokenizer
 
     def __len__(self):
-        return len(self.labels)
+        return len(self.data_column)
 
+    def __getitem__(self, index):
+        tokenized_inputs = self.tokenizer.encode_plus(self.data_column[index], max_length=self.max_len,
+                                                      truncation=True, padding=True, return_tensors="pt")
+        source_ids = tokenized_inputs['input_ids']
+        attention_mask = tokenized_inputs['attention_mask']
+        token_type_ids = tokenized_inputs['token_type_ids']
+        label = torch.tensor([self.class_column[index]])
+        return {'source_ids': source_ids, 'attention_mask': attention_mask, 'token_type_ids': token_type_ids,
+                'label': label}

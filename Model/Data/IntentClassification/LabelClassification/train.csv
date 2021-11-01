@@ -1,4 +1,4 @@
-intent,intent_group,target,intent_index,source,sentence_index,sub_i
+intent,intent_group,intent_group_index,intent_index,sentence,sentence_index,sub_i
 Development team,Introduction,9.0,69.0,Past members:,578.0,11.0
 First running example,Polymorphism-aware models,11.0,78.0,You can now start to reconstruct a maximum-likelihood tree from this alignment by entering (assuming that example.cf is in the same folder):,639.0,2.0
 How to cite IQ-TREE?,Introduction,9.0,68.0,"D.T. Hoang, O. Chernomor, A. von Haeseler, B.Q. Minh, and L.S. Vinh (2018) UFBoot2: Improving the ultrafast bootstrap approximation. Mol. Biol. Evol., 35:518–522. https://doi.org/10.1093/molbev/msx281",557.0,10.0

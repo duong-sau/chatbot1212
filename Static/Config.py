@@ -1,7 +1,6 @@
 # Config
 import os
-from random import random
-
+import random
 import numpy as np
 import torch
 from transformers import TrainingArguments, Adafactor
@@ -62,7 +61,8 @@ def tokenizer_config(tokenizer):
 
 
 def seed():
-    torch.device("cuda")
+    device = get_device()
+    torch.device(device=device)
     random.seed(MODEL['SEED'])
     os.environ['PYTHONHASHSEED'] = str(MODEL['SEED'])
     np.random.seed(MODEL['SEED'])

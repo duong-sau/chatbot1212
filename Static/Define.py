@@ -17,6 +17,7 @@ class PathCommon:
     train = classification + "\\train.csv"
 
     learn_data_pos = classification + "\\Positive\\learn_data.csv"
+    learn_data_label = classification + "\\LabelClassification\\learn_data.csv"
 
 
 class Tag:

@@ -1,0 +1,319 @@
+intent,intent_group,intent_group_index,intent_index,sentence,sentence_index,sub_i
+Codon models,Substitution models,13.0,92.0,"Moreover, IQ-TREE supports combined empirical-mechanistic codon models using an underscore separator (_). For example:",774.0,9.0
+Inferring unrooted tree with outgroup,Rooting phylogenetic trees,12.0,87.0,"iqtree2 -s bovidae_outgroup.phy -p bovidae.nex -B 1000 -T AUTO --prefix rev_dna_outg
+",688.0,6.0
+Heterotachy models,Complex models,4.0,36.0,"iqtree -s data.fst -m GTR*H4
+",387.0,10.0
+Protein models,Substitution models,13.0,91.0,FreqTypeExplanation+Fempirical AA frequencies from the data.+FOML optimized AA frequencies from the data.+FQEqual AA frequencies.,762.0,19.0
+Inferring rooted trees without outgroup,Rooting phylogenetic trees,12.0,88.0,The resulting tree extracted from .iqtree file might look like this:,704.0,9.0
+Tree topology tests,Advanced tutorial,1.0,6.0,IQ-TREE can compute log-likelihoods of a set of trees passed via the -z option:,65.0,2.0
+Counts files,Polymorphism-aware models,11.0,77.0,"One headerline that specifies the file as counts file and states the number of populations (leaves on the tree) as well as the number of sites (separated by white space).A second headerline with white space separated headings: CRHOM (chromosome), POS (position) and sequence names.Many lines with counts of A, C, G and T bases and their respective positions.",630.0,4.0
+Choosing the right substitution model,Beginner’s tutorial,2.0,14.0,will test +R2 to +R15 instead of at most +R10.,167.0,16.0
+Bootstrap branch support,Polymorphism-aware models,11.0,85.0,"Bootstrapping works as expected with PoMo. The standard non-parametric bootstrap is invoked by the -b option, e.g., for 100 replicates:",675.0,2.0
+Partition models,Complex models,4.0,33.0,"#nexus
+begin sets;
+    charset part1 = 1-100;
+    charset part2 = 101-384;
+    charpartition mine = HKY+G:part1, GTR+I+G:part2;
+end;
+",314.0,10.0
+Site concordance factor (sCF),Concordance Factor,5.0,40.0,"--scf specifies the number of quartets (randomly sampled around each internal branch) for computing sCF. We recommend at least 100 quartets for stable sCF values. Note that running this command several times may lead to slightly different sCF due to randomness. To make it reproducible, you need to use -seed option to provide a random number generator seed.",413.0,4.0
+Tree topology tests,Advanced tutorial,1.0,6.0,"iqtree -s example.phy -z example.treels -m GTR+G
+",66.0,3.0
+Model Selection,Web server tutorial,14.0,97.0,"IQ-TREE supports a wide range of substitution models for DNA, protein, codon, binary and morphological alignments. In case you do not know which model is appropriate for your data, IQ-TREE can automatically determine the best-fit model for your alignment. Use the Model Selection tab if you only want to find the best-fit model without doing tree reconstruction.",803.0,2.0
+Assessing branch supports with ultrafast bootstrap approximation,Beginner’s tutorial,2.0,17.0,NOTE: UFBoot support values have a different interpretation to the standard bootstrap. Refer to FAQ: UFBoot support values interpretation for more information.,201.0,8.0
+Choosing the right substitution model,Beginner’s tutorial,2.0,14.0,"If you now look at example.phy.iqtree you will see that IQ-TREE selected TIM2+I+G4 as the best-fit model for this example data. Thus, for additional analyses you do not have to perform the model test again and can use the selected model:",161.0,10.0
+User support,Introduction,9.0,66.0,User support,541.0,1.0
+Using codon models,Beginner’s tutorial,2.0,15.0,"IQ-TREE supports a number of codon models. You need to input a protein-coding DNA alignment and specify codon data by option -st CODON (Otherwise, IQ-TREE applies DNA model because it detects that your alignment has DNA sequences):",172.0,2.0
+DNA models,Substitution models,13.0,90.0,Lie Markov models,738.0,15.0
+Choosing the right partitioning scheme,Advanced tutorial,1.0,3.0,To resemble PartitionFinder and save time:,36.0,8.0
+Partition models,Complex models,4.0,33.0,"One can also specify non-consecutive sites of a partition, e.g. under RAxML-style format:",317.0,13.0
+Choosing the right partitioning scheme,Advanced tutorial,1.0,3.0,Choosing the right partitioning scheme,29.0,1.0
+Testing root positions,Rooting phylogenetic trees,12.0,89.0,Testing root positions,716.0,1.0
+Inferring gene/locus trees,Concordance Factor,5.0,38.0,"We now construct a set of gene/locus trees. One can manually do a for-loop, but IQ-TREE 2 provides a new convenient option -S to compute individual locus trees given a partition file or a directory:",401.0,2.0
+Tree topology tests,Advanced tutorial,1.0,6.0,"If you also want to perform the weighted KH and weighted SH tests, simply add -zw option:",73.0,10.0
+Codon models,Substitution models,13.0,92.0,"To apply a codon model one should use the option -st CODON to tell IQ-TREE that the alignment contains protein coding sequences (otherwise, IQ-TREE thinks that it contains DNA sequences and will apply DNA models). This implicitly applies the standard genetic code. You can change to an other genetic code by appending the appropriate ID to the CODON keyword:",767.0,2.0
+Site concordance factor (sCF),Concordance Factor,5.0,40.0,"Finally, you can combine gCF and sCF within a single run:",416.0,7.0
+Rate heterogeneity across sites,Substitution models,13.0,95.0,"RateTypeExplanation+Iallowing for a proportion of invariable sites.+Gdiscrete Gamma model (Yang, 1994) with default 4 rate categories. The number of categories can be changed with e.g. +G8.+I+Ginvariable site plus discrete Gamma model (Gu et al., 1995).+RFreeRate model (Yang, 1995; Soubrier et al., 2012) that generalizes the +G model by relaxing the assumption of Gamma-distributed rates. The number of categories can be specified with e.g. +R6 (default 4 categories if not specified). The FreeRate model typically fits data better than the +G model and is recommended for analysis of large data sets.+I+Rinvariable site plus FreeRate model.",794.0,3.0
+Choosing the right substitution model,Beginner’s tutorial,2.0,14.0,"iqtree -s example.phy -m TIM2+I+G
+",162.0,11.0
+Partitioned analysis for multi-gene alignments,Advanced tutorial,1.0,1.0,If you used partition model in a publication please cite:,2.0,2.0
+Choosing the right partitioning scheme,Advanced tutorial,1.0,3.0,"ModelFinder implements a greedy strategy (Lanfear et al., 2012) that starts with the full partition model and subsequentially merges two genes until the model fit does not increase any further:",30.0,2.0
+"Binary, morphological and SNP data",Beginner’s tutorial,2.0,16.0,"Binary, morphological and SNP data",177.0,1.0
+What is the purpose of composition test?,Frequently asked questions,7.0,51.0,What is the purpose of composition test?,466.0,1.0
+Downloading source code,Compilation guide,3.0,24.0,Choose the source code (zip or tar.gz) of the IQ-TREE release you want to use from:,237.0,2.0
+What is the purpose of composition test?,Frequently asked questions,7.0,51.0,"Furthermore, please keep in mind, this test is performed at the very beginning, where IQ-TREE does not know anything about the models yet. That means:",473.0,8.0
+Counts files,Polymorphism-aware models,11.0,77.0,Lines before the first headerline starting with # are treated as comments.,632.0,6.0
+Codon models,Substitution models,13.0,92.0,IQ-TREE supports the following codon frequencies:,780.0,15.0
+Compiling 32-bit version,Compilation guide,3.0,28.0,For Windows you need to change Clang target with:,270.0,7.0
+Why does IQ-TREE complain about the use of +ASC model?,Frequently asked questions,7.0,54.0,"Constant sites: containing a single character state over all sequences. For example, all sequences show an A (Adenine) at a particular site in a DNA alignment.Partially constant sites: containing a single character, gap or unknown character. For example, at a particular site some sequences show a G (Guanine), some sequences have - (gap) and the other have N.Ambiguously constant sites: For example, some sequences show a C (Cytosine), some show a Y (meaning C or T) and some show a - (gap).",488.0,7.0
+Protein models,Substitution models,13.0,91.0,Protein models,744.0,1.0
+Assessing branch supports with single branch tests,Beginner’s tutorial,2.0,20.0,"IQ-TREE also supports other tests such as the aBayes test (Anisimova et al., 2011) and the local bootstrap test (Adachi and Hasegawa, 1996b). See single branch tests for more details.",214.0,5.0
+Why does IQ-TREE complain about the use of +ASC model?,Frequently asked questions,7.0,54.0,ERROR: Invaid use of +ASC because of ... invariant sites in the alignment,484.0,3.0
+Inferring rooted trees without outgroup,Rooting phylogenetic trees,12.0,88.0,We will now try the amino-acid model to see if that helps. We again use -st NT2AA option to conveniently perform this analysis:,710.0,15.0
+Constrained tree search,Advanced tutorial,1.0,5.0,which shows the desired effect.,62.0,14.0
+What are the differences between alignment columns/sites and patterns?,Frequently asked questions,7.0,56.0,"G A 
+G T 
+C T 
+C A
+",503.0,10.0
+Ultrafast bootstrapping with partition model,Advanced tutorial,1.0,4.0,"Here, IQ-TREE will resample the sites within partitions (i.e., the bootstrap replicates are generated per partition separately and then concatenated together). The same holds true if you do the standard nonparametric bootstrap.",44.0,4.0
+Codon models,Substitution models,13.0,92.0,"ModelExplanationMGNonsynonymous/synonymous (dn/ds) rate ratio (Muse and Gaut, 1994).MGKLike MG with additional transition/transversion (ts/tv) rate ratio.MG1KTS or MGKAP2Like MG with a transition rate (Kosiol et al., 2007).MG1KTV or MGKAP3Like MG with a transversion rate (Kosiol et al., 2007).MG2K or MGKAP4Like MG with a transition rate and a transversion rate (Kosiol et al., 2007).GYNonsynonymous/synonymous and transition/transversion rate ratios (Goldman and Yang, 1994).GY1KTS or GYKAP2Like GY with a transition rate (Kosiol et al., 2007).GY1KTV or GYKAP3Like GY with a transversion rate (Kosiol et al., 2007).GY2K or GYKAP4Like GY with a transition rate and a transversion rate (Kosiol et al., 2007).ECMK07 or KOSI07Empirical codon model (Kosiol et al., 2007).ECMrestRestricted version of ECMK07 that allows only one nucleotide exchange.ECMS05 or SCHN05Empirical codon model (Schneider et al., 2005).",772.0,7.0
+First running example,Beginner’s tutorial,2.0,13.0,"NOTE: Tree is UNROOTED although outgroup taxon 'LngfishAu' is drawn at root
+
++--------------LngfishAu
+|
+|        +--------------LngfishSA
++--------|
+|        +--------------LngfishAf
+|
+|      +-------------------Frog
++------|
+       |               +-----------------Turtle
+       |         +-----|
+       |         |     |      +-----------------------Sphenodon
+       |         |     |   +--|
+       |         |     |   |  +--------------------------Lizard
+       |         |     +---|
+       |         |         |      +---------------------Crocodile
+       |         |         +------|
+       |         |                +------------------Bird
+       +---------|
+                 |                  +----------------Human
+                 |               +--|
+                 |               |  |  +--------Seal
+                 |               |  +--|
+                 |               |     |   +-------Cow
+                 |               |     +---|
+                 |               |         +---------Whale
+                 |          +----|
+                 |          |    |         +------Mouse
+                 |          |    +---------|
+                 |          |              +--------Rat
+                 +----------|
+                            |   +----------------Platypus
+                            +---|
+                                +-------------Opossum
+",142.0,8.0
+"Binary, morphological and SNP data",Beginner’s tutorial,2.0,16.0,"iqtree -s morphology.phy -st MORPH -m MK+ASC
+",187.0,11.0
+How do I report bug?,Frequently asked questions,7.0,46.0,"For bug report, please send the following information to the IQ-TREE Google group:",447.0,2.0
+DNA models,Substitution models,13.0,90.0,"Another example is for model TIM2 that has the 6-digit code 010232. Thus, TIM2{4.39,5.30,12.1} means that A-C=A-T=4.39 (coded 0), A-G=5.30 (coded 1), C-T=12.1 (coded 3) and C-G=G-T=1.0 (coded 2). This is, in turn, equivalent to specifying GTR{4.39,5.30,4.39,1.0,12.1}.",732.0,9.0
+First running example,Beginner’s tutorial,2.0,13.0,-s is the option to specify the name of the alignment file that is always required by IQ-TREE to work. At the end of the run IQ-TREE will write several output files including:,139.0,5.0
+Protein models,Substitution models,13.0,91.0,LG+C20: Applying LG matrix instead of Poisson for all 20 classes of AA profiles and a Gamma rate heterogeneity.LG+C20+F: Applying LG matrix for 20 classes plus the 21th class of empirical AA profile (counted from the current data) and Gamma rate heterogeneity.JTT+CF4+G: Applying JTT matrix for all 5 classes of AA profiles and Gamma rate heteorogeneity.,752.0,9.0
+Downloading source code,Compilation guide,3.0,24.0,For IQ-TREE version 1 please clone:,243.0,8.0
+Where to go from here?,Advanced tutorial,1.0,11.0,Where to go from here?,126.0,1.0
+Partitioned analysis with mixed data,Advanced tutorial,1.0,2.0,"#nexus
+begin sets;
+    charset part1 = dna.phy: 1-100 201-300;
+    charset part2 = dna.phy: 101-200;
+    charset part3 = prot.phy: 1-400;
+    charset part4 = prot.phy: 401-600;
+    charset part5 = codon.phy:CODON, *;
+    charpartition mine = HKY:part1, GTR+G:part2, LG+G:part3, WAG+I+G:part4, GY:part5;
+end;
+",23.0,3.0
+Excluding outlier taxa/nodes,Phylogenetic Dating,10.0,75.0,"iqtree -s ALN_FILE --date DATE_FILE --date-outlier 3
+",620.0,3.0
+Compiling MPI version,Compilation guide,3.0,29.0,"Download source code of IQ-TREE version 1.5.1 or later.Install an MPI library (e.g., OpenMPI) if not available in your system. For Mac OS X, the easiest is to install Homebrew package manager, and then install OpenMPI library from the command line with:  brew install openmpi
+",274.0,3.0
+Why IQ-TREE?,Introduction,9.0,63.0,This trends motivated us to develop the IQ-TREE software with a strong emphasis on phylogenomic inference. Our goals are:,530.0,3.0
+Input data,Beginner’s tutorial,2.0,12.0,The input alignment can be in various common formats. For example the PHYLIP format which may look like:,130.0,3.0
+Inferring species tree,Concordance Factor,5.0,37.0,"where ALN_FILE and PARTITION_FILE are your input files. -T AUTO is to detect the best number of CPU cores. Here we use a prefix concat, so that all output files (concat.*) do not interfere with analyses below. If --prefix is omitted, all output files will be PARTITION_FILE.*.",396.0,5.0
+Choosing the right substitution model,Beginner’s tutorial,2.0,14.0,"Sometimes you only want to find the best-fit model without doing tree reconstruction, then run:",163.0,12.0
+Mixture models,Complex models,4.0,34.0,"Here, the NEXUS file contains a models block to define new models. More explicitly, we define four AA profiles Fclass1 to Fclass4, each containing 20 AA frequencies. Then, the frequency mixture is defined with",348.0,18.0
+Inferring rooted trees without outgroup,Rooting phylogenetic trees,12.0,88.0,"Rootstrap: To compute rootstrap supports, we conduct a bootstrap analysis to obtain a number of rooted bootstrap trees using non-reversible models. We define the rootstrap support for each branch in the maximum likelihood (ML) tree, as the proportion of rooted bootstrap trees that have the root on that branch. The rootstrap support values are computed for all the branches including external branches. The sum of the rootstrap support values along the tree are always smaller than or equal to one. A sum that is smaller than one can occur when one or more bootstrap replicates are rooted on a branch that does not occur in the ML tree.",709.0,14.0
+Utilizing multi-core CPUs,Beginner’s tutorial,2.0,21.0,Then while running IQ-TREE may print something like this on to the screen:,226.0,7.0
+Utilizing multi-core CPUs,Beginner’s tutorial,2.0,21.0,"Here, IQ-TREE will use 2 CPU cores to perform the analysis.",223.0,4.0
+Tree topology tests,Advanced tutorial,1.0,6.0,Tree topology tests,64.0,1.0
+User-defined substitution models,Advanced tutorial,1.0,9.0,"Users can specify any DNA model using a 6-letter code that defines which rates should be equal. For example, 010010 corresponds to the HKY model and 012345 to the GTR model. In fact, IQ-TREE uses this specification internally to simplify the coding. The 6-letter code is specified via the -m option, e.g.:",99.0,2.0
+About precompiled binaries,Compilation guide,3.0,31.0,"Windows binaries were statically compiled under Windows 7 using Clang 3.9.0 in combination with TDM-GCC 5.1.0, which provides the neccessary libraries for Clang.",299.0,7.0
+Site-specific frequency models,Complex models,4.0,35.0,This will omit the first phase and thus need much less RAM.,374.0,17.0
+Site-specific frequency models,Complex models,4.0,35.0,"H.C. Wang, B.Q. Minh, S. Susko and A.J. Roger (2018) Modeling site heterogeneity with posterior mean site frequency profiles accelerates accurate phylogenomic estimation. Syst. Biol., 67:216-235. https://doi.org/10.1093/sysbio/syx068",361.0,4.0
+Constrained tree search,Advanced tutorial,1.0,5.0,"This is the correct behavior: although Human and Seal are not monophyletic, this tree indeed satisfies the constraint, because the induced subtree separates (Human,Seal) from (Cow,Whale). This comes from the fact that the tree is unrooted. If you want them to be sister groups, then you need to include outgroup taxa into the constraint tree. For example:",56.0,8.0
+Compiling 32-bit version,Compilation guide,3.0,28.0,"cmake -G ""MinGW Makefiles"" -DCMAKE_C_FLAGS=--target=i686-pc-windows-gnu -DCMAKE_CXX_FLAGS=--target=i686-pc-windows-gnu -DCMAKE_MAKE_PROGRAM=mingw32-make ..
+",271.0,8.0
+User support,Introduction,9.0,66.0,"Please refer to the user documentation and frequently asked questions. If you have further questions, feedback, feature requests, and bug reports, please sign up the following Google group (if not done yet) and post a topic to the",542.0,2.0
+Tree topology tests,Advanced tutorial,1.0,6.0,"assuming that example.treels is an existing file containing a set of trees in NEWICK format. IQ-TREE first reconstructs an ML tree. Then, it will compute the log-likelihood of the trees in example.treels based on the estimated parameters done for the ML tree. example.phy.iqtree will have a section called USER TREES that lists the tree IDs and the corresponding log-likelihoods. The trees with optimized branch lengths can be found in example.phy.treels.trees If you only want to evaluate the trees without reconstructing the ML tree, you can run:",67.0,4.0
+Partitioned analysis for multi-gene alignments,Advanced tutorial,1.0,1.0,"charset part1 = 1-100 200-384;
+",17.0,17.0
+Tree topology tests,Advanced tutorial,1.0,6.0,"iqtree -s example.phy -z example.treels -n 0 -zb 1000 -zw
+",74.0,11.0
+Utilizing multi-core CPUs,Beginner’s tutorial,2.0,21.0,"iqtree -s example.phy -m TIM2+I+G -T AUTO -ntmax 8
+# for version 1.x change -T to -nt
+",230.0,11.0
+Inferring site-specific rates,Advanced tutorial,1.0,10.0,IQ-TREE will write an output file example.phy.rate that looks like:,114.0,4.0
+Assessing branch supports with single branch tests,Beginner’s tutorial,2.0,20.0,"iqtree -s example.phy -m TIM2+I+G -alrt 1000
+",212.0,3.0
+Compiling under Linux,Compilation guide,3.0,25.0,"Open a Terminal.Change to the source code folder: cd PATH_TO_EXTRACTED_SOURCE_CODE
+Create a subfolder, say, build and go into this subfolder: mkdir build
+ cd build
+Configure source code with CMake: cmake ..
+If cmake failed with message about Eigen3 not found, then install Eigen3 library and run cmake again. If this still failed, you have to manually specify the downloaded directory of Eigen3 with: cmake -DEIGEN3_INCLUDE_DIR=<eigen3_dir> ..
+Compile source code with make: make -j
+j option tells it to use all CPU cores to speed up the compilation. Without this option, make uses only one core, which might be slow.",248.0,3.0
+Testing root positions,Rooting phylogenetic trees,12.0,89.0,"The branches are sorted by log-likelihoods in descending order. The last column (p-AU) shows the p-values of the AU test. The branch ID 1 has an AU p-value of 0.9975595105, whereas all other branches has p-values < 0.01. To associate branch ID you can return to the FigTree window for nonrev_aa.rootstrap.nex file and select “Display” to “id” in the “Branch Labels” tab.",721.0,6.0
+Substitution models,Polymorphism-aware models,11.0,79.0,"TIP: For a quick overview of all available models in IQ-TREE, run the command iqtree -h and scroll to the heading POLYMORPHISM AWARE MODELS (PoMo).",651.0,4.0
+Ascertainment bias correction,Substitution models,13.0,94.0,"+ASC will correct the likelihood conditioned on variable sites. Without +ASC, the branch lengths might be overestimated.",791.0,4.0
+What is the purpose of composition test?,Frequently asked questions,7.0,51.0,"where k is the size of the alphabet (e.g. 4 for DNA, 20 for amino acids) and the values 1 to k correspond uniquely to one of the characters. O_i is the character frequency in the sequence tested. E_i is the overall character frequency from the entire alignment.",470.0,5.0
+"Binary, morphological and SNP data",Beginner’s tutorial,2.0,16.0,"iqtree -s morphology.phy -st MORPH
+",189.0,13.0
+Compiling under Mac OS X,Compilation guide,3.0,26.0,TIP: A ready made IQ-TREE package is provided by * Homebrew by simply running brew install homebrew/science/iqtree2.,252.0,2.0
+Assessing branch supports with ultrafast bootstrap approximation,Beginner’s tutorial,2.0,17.0,"-B specifies the number of bootstrap replicates where 1000 is the minimum number recommended. The section MAXIMUM LIKELIHOOD TREE in example.phy.iqtree shows a textual representation of the maximum likelihood tree with branch support values in percentage. The NEWICK format of the tree is printed to the file example.phy.treefile. In addition, IQ-TREE writes the following files:",199.0,6.0
+Counts files,Polymorphism-aware models,11.0,77.0,Example:,633.0,7.0
+IQ-TREE web server,Getting started,8.0,57.0,"The quickest is to try out the IQ-TREE web server, where you only need to upload an alignment, choose the options and start the analysis. There is a web server tutorial here.",505.0,2.0
+Mixture models,Complex models,4.0,34.0,"iqtree -s example.phy -m ""MIX{JC,HKY}""
+",338.0,8.0
+What is the interpretation of branch lengths when mixing codon and DNA data?,Frequently asked questions,7.0,50.0,"Note that if you mix codon, DNA and protein data, the branch lengths are then the number of character substitutions per site, where character is either nucleotide or amino-acid.",465.0,3.0
+Site-specific frequency models,Complex models,4.0,35.0,If you use this model in a publication please cite:,360.0,3.0
+Mixture models,Complex models,4.0,34.0,"Here, we specify two mixture components and four Gamma rate categories. Effectively, this means that there are eight mixture components. Each site has a probability belonging to either JC or HKY and to one of the four rate categories.",343.0,13.0
+Development team,Introduction,9.0,69.0,"Diep Thi Hoang, Developer, Improves ultrafast bootstrap.",576.0,9.0
+Setup an Xcode project in MacOS,Compilation guide,3.0,32.0,"Many developers in MacOS use Xcode to develop the code. To generate an XCode project for IQ-TREE, you need to run:",302.0,2.0
+Rate heterogeneity across sites,Substitution models,13.0,95.0,"TIP: The new ModelFinder (-m MFP option) tests the FreeRate model, whereas the standard procedure (-m TEST) does not.",795.0,4.0
+Choosing the right substitution model,Beginner’s tutorial,2.0,14.0,"iqtree -s example.phy -m MF
+# change -m MF to -m TESTONLY to resemble jModelTest/ProtTest
+",164.0,13.0
+Tree topology tests,Advanced tutorial,1.0,6.0,"Finally, note that IQ-TREE will automatically detect duplicated tree topologies and omit them during the evaluation.",78.0,15.0
+Tree topology tests,Advanced tutorial,1.0,6.0,"iqtree -s example.phy -z example.treels -n 0 -zb 1000 -zw -au
+",76.0,13.0
+Site concordance factor (sCF),Concordance Factor,5.0,40.0,Site concordance factor (sCF),410.0,1.0
+Tree Inference,Web server tutorial,14.0,96.0,"After that you can submit the job. If you provide an email address, a notification will be sent to you once the job is finished. In case you don’t specify an email address, you will receive a link in the next step; you can bookmark this link to retrieve your results after the job is finished.",801.0,4.0
+Why IQ-TREE?,Introduction,9.0,63.0,IQ-TREE has been developed since 2011 and freely available at http://www.iqtree.org/ as open-source software under the GNU-GPL license version 2. It is actively maintained by the core development team (see below) and a number of collabrators.,532.0,5.0
+Inferring unrooted tree with outgroup,Rooting phylogenetic trees,12.0,87.0,Inferring unrooted tree with outgroup,683.0,1.0
+How to cite IQ-TREE?,Introduction,9.0,68.0,"L.-T. Nguyen, H.A. Schmidt, A. von Haeseler, and B.Q. Minh (2015) IQ-TREE: A fast and effective stochastic algorithm for estimating maximum likelihood phylogenies. Mol. Biol. Evol., 32:268-274. https://doi.org/10.1093/molbev/msu300",563.0,16.0
+Downloading source code,Compilation guide,3.0,24.0,"git clone https://github.com/Cibiv/IQ-TREE.git
+",244.0,9.0
+Inferring gene/locus trees,Concordance Factor,5.0,38.0,"iqtree -s ALN_FILE -S PARTITION_FILE --prefix loci -T AUTO
+# or
+iqtree -S ALN_DIR --prefix loci -T AUTO
+",402.0,3.0
+Choosing the right partitioning scheme,Advanced tutorial,1.0,3.0,"After ModelFinder found the best partition, IQ-TREE will immediately start the tree reconstruction under the best-fit partition model. Sometimes you only want to find the best-fit partition model without doing tree reconstruction, then run:",34.0,6.0
+Inferring time tree with tip dates,Phylogenetic Dating,10.0,71.0,"hCoV-19/Wuhan-Hu-1         2019-12-31
+hCoV-19/China/WF0028       2020-02
+hCoV-19/USA/WA-S88         2020-03-01
+hCoV-19/USA/CA-CDPH-UC1	   2020
+hCoV-19/Italy/SPL1         2020-01-29
+hCoV-19/Spain/Valencia5	   2020-02-27
+hCoV-19/Australia/QLD01	   2020-01-28
+hCoV-19/Vietnam/CM295      2020-03-06
+hCoV-19/bat/Yunnan         2013-07-24
+hCoV-19/pangolin/Guangdong 2019-02-01:2019-12-31
+",586.0,3.0
+Partitioned analysis with mixed data,Advanced tutorial,1.0,2.0,"IQ-TREE also allows combining sub-alignments from different alignment files, which is helpful if you want to combine mixed data (e.g. DNA and protein) in a single analysis. Here is an example for mixing DNA, protein and codon models:",22.0,2.0
+"Binary, morphological and SNP data",Beginner’s tutorial,2.0,16.0,"4 10
+S1   0123401234
+S2   03---20432
+S3   3202-04--0
+S4   4230120340
+",181.0,5.0
+Full list of LSD2 options,Phylogenetic Dating,10.0,76.0,Full list of LSD2 options,622.0,1.0
+Consensus construction and bootstrap value assignment,Advanced tutorial,1.0,8.0,Consensus construction and bootstrap value assignment,86.0,1.0
+Model of substitution,Developer guide,6.0,43.0,"/**
+    General Time Reversible (GTR) model of substitution.
+    This works for all kind of data, not only DNA
+*/
+class ModelGTR : public ModelSubst, public EigenDecomposition
+{
+public:
+        /**
+                constructor
+                @param tree associated tree for the model
+        */
+    ModelGTR(PhyloTree *tree, bool count_rates = true);
+
+        /**
+                @return the number of dimensions
+        */
+        virtual int getNDim();
+    ...
+
+protected:
+    /**
+                rates between pairs of states of the unit rate matrix Q.
+                In order A-C, A-G, A-T, C-G, C-T (rate G-T = 1 always)
+        */
+        double *rates;
+    ....
+};
+",439.0,8.0
+Putting it all together,Concordance Factor,5.0,41.0,"# infer a concatenation-based species tree with 1000 ultrafast bootstrap and an edge-linked partition model
+iqtree -s ALN_FILE -p PARTITION_FILE --prefix concat -B 1000 -T AUTO
+
+# infer the locus trees
+iqtree -s ALN_FILE -S PARTITION_FILE --prefix loci -T AUTO
+
+# compute concordance factors
+iqtree -t concat.treefile --gcf loci.treefile -s ALN_FILE --scf 100 --prefix concord -T 10
+",423.0,5.0
+Inferring species tree,Concordance Factor,5.0,37.0,"First, you need to infer a reference tree (e.g. a species tree), on which the concordance factors will be annotated. The species tree can be reconstructed by a concatenation/supermatrix approach or a coalescent/reconciliation/supertree approach. Here, we will use the concatenation approach in IQ-TREE.",393.0,2.0
+Inferring time tree with tip dates,Phylogenetic Dating,10.0,71.0,Then run IQ-TREE:,599.0,16.0
+How to cite IQ-TREE?,Introduction,9.0,68.0,If you used ModelFinder please cite:,560.0,13.0
+Using codon models,Beginner’s tutorial,2.0,15.0,Using codon models,171.0,1.0
+How to cite IQ-TREE?,Introduction,9.0,68.0,If you used the polymorphism-aware models please cite:,552.0,5.0
+Inferring unrooted tree with outgroup,Rooting phylogenetic trees,12.0,87.0,"Finally, if you want you can also perform a non-partition analysis by removing the option -p.",695.0,13.0
+Assessing branch supports with single branch tests,Beginner’s tutorial,2.0,20.0,"From this figure, the branching patterns within reptiles are poorly supported (e.g. Sphenodon with SH-aLRT: 39%, UFBoot: 51% and Turtle with SH-aLRT: 85%, UFBoot: 72%) as well as the phylogenetic position of Seal within mammals (SH-aLRT: 68.3%, UFBoot: 75%). Other branches appear to be well supported.",219.0,10.0
+Compiling under Mac OS X,Compilation guide,3.0,26.0,(assuming that clang-3.7 and clang++-3.7 points to the installed Clang 3.7).,259.0,9.0
+Partition models,Complex models,4.0,33.0,"#nexus
+begin sets;
+    charset part1 = aln1.phy: 1-100\3 201-300;
+    charset part2 = aln1.phy: 101-200;
+    charset part3 = aln2.phy: *;
+    charpartition mine = HKY:part1, GTR+G:part2, WAG+I+G:part3;
+end;
+",323.0,19.0
+Choosing the right partitioning scheme,Advanced tutorial,1.0,3.0,"iqtree -s example.phy -p example.nex -m MF+MERGE
+# for version 1.x change -p to -spp
+",35.0,7.0
+How to cite IQ-TREE?,Introduction,9.0,68.0,"S. Naser-Khdour, B.Q. Minh, W. Zhang, E.A. Stone, R. Lanfear (2019) The prevalence and pmpact of model violations in phylogenetic analysis, Genome Biol. Evol., in press. https://doi.org/10.1093/gbe/evz193",551.0,4.0
+Installation,Getting started,8.0,58.0,Now you need to open a Terminal (or Console) to run IQ-TREE. See below the guide for Windows users and Mac OS X users.,515.0,9.0
+Constrained tree search,Advanced tutorial,1.0,5.0,"iqtree -s example.phy -m TIM2+I+G -g example.constr0 --prefix example.constr0
+# for version 1.x change --prefix to -pre
+",53.0,5.0
+Mixture models,Complex models,4.0,34.0,"Mixture models, like partition models, allow more than one substitution model along the sequences. However, while a partition model assigns each alignment site a given specific model, mixture models do not need this information. A mixture model will compute for each site its probability (or weight) of belonging to each of the mixture classes (also called categories or components). Since the site-to-class assignment is unknown, the site likelihood under mixture models is the weighted sum of site likelihoods per mixture class.",333.0,3.0
+Assessing branch supports with standard nonparametric bootstrap,Beginner’s tutorial,2.0,19.0,Assessing branch supports with standard nonparametric bootstrap,206.0,1.0
+Testing constrained tree,Advanced tutorial,1.0,7.0,Now look at the resulting .iqtree file:,83.0,4.0
+Protein models,Substitution models,13.0,91.0,IQ-TREE also supports a series of protein mixture models:,749.0,6.0
+How do I interpret ultrafast bootstrap (UFBoot) support values?,Frequently asked questions,7.0,47.0,"Moreover, it is recommended to also perform the SH-aLRT test (Guindon et al., 2010) by adding -alrt 1000 into the IQ-TREE command line. Each branch will then be assigned with SH-aLRT and UFBoot supports. One would typically start to rely on the clade if its SH-aLRT >= 80% and UFboot >= 95%.",452.0,3.0
+First running example,Beginner’s tutorial,2.0,13.0,"example.phy.iqtree: the main report file that is self-readable. You should look at this file to see the computational results. It also contains a textual representation of the final tree (see below).example.phy.treefile: the ML tree in NEWICK format, which can be visualized by any supported tree viewer programs like FigTree or iTOL.example.phy.log: log file of the entire run (also printed on the screen). To report bugs, please send this log file and the original alignment file to the authors.",140.0,6.0
+Installation,Getting started,8.0,58.0,Packages and bundles,509.0,3.0
+Choosing the right substitution model,Beginner’s tutorial,2.0,14.0,NOTE: If you use model selection please cite the following paper:,153.0,2.0
+DNA models,Substitution models,13.0,90.0,IQ-TREE includes all common DNA models (ordered by complexity):,726.0,3.0
+How to cite IQ-TREE?,Introduction,9.0,68.0,How to cite IQ-TREE?,548.0,1.0
+Site-specific frequency models,Complex models,4.0,35.0,"Starting with version 1.5.0, IQ-TREE provides a new posterior mean site frequency (PMSF) model as a rapid approximation to the time and memory consuming profile mixture models C10 to C60 (Le et al., 2008a; a variant of PhyloBayes’ CAT model). The PMSF are the amino-acid profiles for each alignment site computed from an input mixture model and a guide tree. The PMSF model is much faster and requires much less RAM than C10 to C60 (see table below), regardless of the number of mixture classes. Our extensive simulations and empirical phylogenomic data analyses demonstrate that the PMSF models can effectively ameliorate long branch attraction artefacts.",359.0,2.0
+Where to go from here?,Getting started,8.0,62.0,Please continue with the Beginner’s tutorial for further usages.,527.0,2.0
+About precompiled binaries,Compilation guide,3.0,31.0,"# 64-bit version
+cmake -G ""MinGW Makefiles"" -DIQTREE_FLAGS=static -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_FLAGS=--target=x86_64-pc-windows-gnu -DCMAKE_CXX_FLAGS=--target=x86_64-pc-windows-gnu -DCMAKE_MAKE_PROGRAM=mingw32-make ..
+
+#32-bit version
+cmake -G ""MinGW Makefiles"" -DIQTREE_FLAGS=static -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_FLAGS=--target=i686-pc-windows-gnu -DCMAKE_CXX_FLAGS=--target=i686-pc-windows-gnu -DCMAKE_MAKE_PROGRAM=mingw32-make ..
+",300.0,8.0
+Ultrafast bootstrapping with partition model,Advanced tutorial,1.0,4.0,Ultrafast bootstrapping with partition model,41.0,1.0
+Dating an existing tree,Phylogenetic Dating,10.0,73.0,"This will work with the scenarios above, i.e., IQ-TREE will date the user-defined tree instead of the ML tree. To further speed up the process: If you know the model already, you set can it via -m option; or in a partitioned analysis, you can provide a partition file with specified models.",613.0,4.0
+Development team,Introduction,9.0,69.0,"Olga Chernomor, Developer, Implements partition models.",572.0,5.0
+Partitioned analysis with mixed data,Advanced tutorial,1.0,2.0,"Because the alignment file names are now specified in this NEXUS file, you can omit the -s option:",26.0,6.0
+Codon models,Substitution models,13.0,92.0,"NOTE: Branch lengths under codon models are interpreted as number of nucleotide substitutions per codon site. Thus, they are typically 3 times longer than under DNA models.",778.0,13.0
+Ultrafast bootstrapping with partition model,Advanced tutorial,1.0,4.0,"IQ-TREE can perform the ultrafast bootstrap with partition models by e.g.,",42.0,2.0
+Inferring time tree with tip dates,Phylogenetic Dating,10.0,71.0,Now run IQ-TREE with:,590.0,7.0
+DNA models,Substitution models,13.0,90.0,"Finally, users can fix base frequencies with e.g. GTR+F{0.1,0.2,0.3,0.4} to fix the corresponding frequencies of A, C, G and T (must sum up to 1.0).",737.0,14.0
+Why does IQ-TREE complain about the use of +ASC model?,Frequently asked questions,7.0,54.0,"TIP: Starting with IQ-TREE version 1.5.0, an output alignment file with suffix .varsites is written in such cases, which contain only variable sites from the input alignment. The .varsites alignment can then be used with the +ASC model.",490.0,9.0
+"Binary, morphological and SNP data",Beginner’s tutorial,2.0,16.0,"Binary alignments contain sequences with characters 0 and 1, which can be in any common formats supported by IQ-TREE, for example, in PHYLIP format:",178.0,2.0
+Installation,Getting started,8.0,58.0,Debian Linux: sudo apt-get install iqtreeArch Linux (AUR)Anaconda: conda install -c bioconda iqtreeHomebrew: brew install brewsci/bio/iqtree2FreeBSD: pkg install iqtree,511.0,5.0
+Partitioned analysis for multi-gene alignments,Advanced tutorial,1.0,1.0,"DNA, part1 = 1-100
+DNA, part2 = 101-384
+",8.0,8.0
+Virtual population size,Polymorphism-aware models,11.0,80.0,Virtual population size,652.0,1.0
+Inferring rooted trees without outgroup,Rooting phylogenetic trees,12.0,88.0,"To speed up the analysis, we will perform two steps. The first step is the same as the run above to infer an unrooted tree using reversible models:",699.0,4.0
+Why does IQ-TREE complain about the use of +ASC model?,Frequently asked questions,7.0,54.0,"This is because your alignment contains invariant sites (columns), which violate the mathematical condition of the model. The invariant sites can be:",487.0,6.0
+Testing root positions,Rooting phylogenetic trees,12.0,89.0,TIP: These options --root-test -zb 1000 -au can be combined with the rootstrap run in the previous section to calculate the rootstrap support values and the rooting test p-values in one single analysis.,723.0,8.0
+Choosing the right substitution model,Beginner’s tutorial,2.0,14.0,"To reduce computational burden, one can use the option -mset to restrict the testing procedure to a subset of base models instead of testing the entire set of all available models. For example, -mset WAG,LG will test only models like WAG+... or LG+.... Another useful option in this respect is -msub for AA data sets. With -msub nuclear only general AA models are included, whereas with -msub viral only AA models for viruses are included.",168.0,17.0
+For Windows users,Getting started,8.0,59.0,Congratulations ;-) You have finished the first IQ-TREE analysis.,519.0,4.0
+Heterotachy models,Complex models,4.0,36.0,Heterotachy models,378.0,1.0
+First running example,Beginner’s tutorial,2.0,13.0,"This makes sense as the mammals (Human to Opossum) form a clade, whereas the reptiles (Turtle to Crocodile) and Bird form a separate sister clade. Here the tree is drawn at the outgroup Lungfish which is more accient than other species in this example. However, please note that IQ-TREE always produces an unrooted tree as it knows nothing about this biological background; IQ-TREE simply draws the tree this way as LngfishAu is the first sequence occuring in the alignment.",143.0,9.0
+DNA models,Substitution models,13.0,90.0,"NOTE: The digits in the codes do not necessarily have to have the same order as above. That means ‘101101’ describes the same matrix as ‘010010’. The last rate, which corresponds to G-T, (and all rates with the same digit) is always set equal to 1.0 for convenience because the rates are relative.",730.0,7.0
+Partition models,Complex models,4.0,33.0,"#nexus
+begin sets;
+    charset part1 = 1-100 250-384;
+    charset part2 = 101-249\3 102-249\3;
+    charset part3 = 103-249\3;
+end;
+",320.0,16.0

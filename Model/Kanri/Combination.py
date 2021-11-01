@@ -2,20 +2,22 @@ import pandas as pd
 from tqdm import tqdm
 
 from Model.Common import to_sts_sentence
+from Static.Config import train_validate_test_split
 from Static.Define import PathCommon
 
 
-sentence_df = pd.read_csv(PathCommon.sentence.value)
-intent_df = pd.read_csv(PathCommon.intent.value, header=0)
-intent_group_df = pd.read_csv(PathCommon.intent_group.value, header=0)
-"""
+sentence_df = pd.read_csv(PathCommon.sentence_list)
+# intent_df = pd.read_csv(PathCommon.intent, header=0)
+# intent_group_df = pd.read_csv(PathCommon.intent_group, header=0)
+
 train, test = train_validate_test_split(sentence_df)
-test.to_csv(path_common.test.value, index=False)
-train.to_csv(path_common.train.value, index=False)
+test.to_csv('../Data/IntentClassification/LabelClassification/test.csv', index=False)
+train.to_csv('../Data/IntentClassification/LabelClassification/train.csv', index=False)
+
 """
 train = pd.read_csv(PathCommon.train.value, header=0)
 
-"""
+
 learn_data_df = pd.DataFrame()
 for first_index, first_row in tqdm(train.iterrows(), total=len(train.index)):
     for second_index, second_row in train.iterrows():
@@ -118,23 +120,3 @@ for first_index, first_row in tqdm(train.iterrows(), total=len(train.index)):
     learn_data_df = learn_data_df.append(new, ignore_index=True)
 learn_data_df.to_csv(path_common.learn_data_han.value, index=False)
 """
-
-learn_data_df = pd.DataFrame()
-for first_index, first_row in tqdm(train.iterrows(), total=len(train.index)):
-    for second_index, second_row in train.iterrows():
-        stsb = 0
-        if first_row["intent_group_index"] == second_row["intent_group_index"]:
-            stsb = stsb + 1
-        if first_row["intent_index"] == second_row["intent_index"]:
-            stsb = stsb + 4
-        source = to_sts_sentence(sentence1=first_row["sentence"], sentence2=second_row["sentence"])
-        new = {"source": source, 'target': str(stsb)}
-        learn_data_df = learn_data_df.append(new, ignore_index=True)
-    source = to_sts_sentence(sentence1=first_row["sentence"], sentence2=first_row["intent"])
-    new = {"source": source, 'target': '5'}
-    learn_data_df = learn_data_df.append(new, ignore_index=True)
-    source = to_sts_sentence(sentence1=first_row["sentence"], sentence2=first_row["intent_group"])
-    new = {"source": source, 'target': '3'}
-    learn_data_df = learn_data_df.append(new, ignore_index=True)
-learn_data_df.to_csv(PathCommon.learn_data_han.value, index=False)
-exit()
