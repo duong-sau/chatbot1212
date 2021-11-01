@@ -5,7 +5,7 @@ import pandas as pd
 from tqdm import tqdm
 
 from Model.Mining.Common import groupSoupByTag
-from Static.Define import path_common, tag
+from Static.Define import PathCommon, Tag
 
 """
 if __name__ == '__main__':
@@ -57,14 +57,14 @@ if __name__ == '__main__':
     sentence_index = 0
     intent_index = 0
     intent_group_index = 0
-    for root, dirs, files in os.walk(path_common.data.value + "\\Document", topdown=True):
+    for root, dirs, files in os.walk(PathCommon.data.value + "\\Document", topdown=True):
         for file in tqdm(files):
             path = root + "\\" + file
             with open(file=path, mode='r', encoding='utf-8') as f:
                 content = f.read()
                 html = BeautifulSoup(content.strip("\n"), 'html.parser')
-                groupSoupByTag(html, tag.h2, tag.classify1)
-                head = html.find_all(tag.classify1)
+                groupSoupByTag(html, Tag.h2, Tag.classify1)
+                head = html.find_all(Tag.classify1)
                 for h in head:
                     sub_index = 0
                     elements = h.find_all(recursive=False)
@@ -74,5 +74,5 @@ if __name__ == '__main__':
                     new = {'answer': h, 'intent': intent, 'answer_index': intent_index, 'intent_index': intent_index, }
                     answer_df = answer_df.append(new, ignore_index=True)
         break
-    answer_df.to_csv(path_common.answer.value, index=False, mode='w')
+    answer_df.to_csv(PathCommon.answer.value, index=False, mode='w')
     exit()

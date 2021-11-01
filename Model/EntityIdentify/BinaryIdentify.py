@@ -3,7 +3,7 @@ from transformers import T5Tokenizer, T5ForConditionalGeneration
 import pandas as pd
 from Model.EntityIdentify.MeanSum import MeanSum
 from Model.FineTurn.Define import MODEL, tokenConfig
-from Static.Define import path_common
+from Static.Define import PathCommon
 
 model = T5ForConditionalGeneration.from_pretrained("../Save/Try/freeze3/")
 model.to('cpu')

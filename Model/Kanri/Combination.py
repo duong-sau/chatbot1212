@@ -2,18 +2,18 @@ import pandas as pd
 from tqdm import tqdm
 
 from Model.Common import toT5sentence
-from Static.Define import path_common
+from Static.Define import PathCommon
 
 
-sentence_df = pd.read_csv(path_common.sentence.value)
-intent_df = pd.read_csv(path_common.intent.value, header=0)
-intent_group_df = pd.read_csv(path_common.intent_group.value, header=0)
+sentence_df = pd.read_csv(PathCommon.sentence.value)
+intent_df = pd.read_csv(PathCommon.intent.value, header=0)
+intent_group_df = pd.read_csv(PathCommon.intent_group.value, header=0)
 """
 train, test = train_validate_test_split(sentence_df)
 test.to_csv(path_common.test.value, index=False)
 train.to_csv(path_common.train.value, index=False)
 """
-train = pd.read_csv(path_common.train.value, header=0)
+train = pd.read_csv(PathCommon.train.value, header=0)
 
 """
 learn_data_df = pd.DataFrame()
@@ -136,5 +136,5 @@ for first_index, first_row in tqdm(train.iterrows(), total=len(train.index)):
     source = toT5sentence(sentence1=first_row["sentence"], sentence2=first_row["intent_group"])
     new = {"source": source, 'target': '3'}
     learn_data_df = learn_data_df.append(new, ignore_index=True)
-learn_data_df.to_csv(path_common.learn_data_han.value, index=False)
+learn_data_df.to_csv(PathCommon.learn_data_han.value, index=False)
 exit()

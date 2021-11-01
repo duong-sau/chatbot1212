@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-import Button from '@mui/material/Button';
+import Button from '@material-ui/core/Button';
 import axios from 'axios';
 import HTMLRenderer from 'react-html-renderer'
-import {TextField} from "@mui/material";
+import TextField from "@material-ui/core/TextField";
 import Box from '@material-ui/core/Box'
 import Container from '@material-ui/core/Container';
 import { CountdownCircleTimer } from 'react-countdown-circle-timer';
-import Divider from '@material-ui/core/Divider';
+
 let Self
 class Welcome extends Component {
     constructor(props) {
@@ -19,7 +19,7 @@ class Welcome extends Component {
         axios
             .get(this.state.link +'/question' + '?question='+question)
             .then(function (response) {
-                console.log(response.data.ans);
+                console.log(response.data.answer);
                 Self.setState({answer:response.data.ans})
             })
             .catch(function (error) {

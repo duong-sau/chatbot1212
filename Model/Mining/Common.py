@@ -1,10 +1,10 @@
 import itertools
 from bs4 import BeautifulSoup
 # define
-from Static.Define import tag
+from Static.Define import Tag
 
 
-def groupSoupByTag(soup: BeautifulSoup, tag_type: tag, group_type: tag) -> None:
+def groupSoupByTag(soup: BeautifulSoup, tag_type: Tag, group_type: Tag) -> None:
     head_list = soup.find_all(tag_type)
     for e in head_list:
         els = [i for i in itertools.takewhile(lambda x: x.name not in [e.name, 'script'], e.next_siblings)]

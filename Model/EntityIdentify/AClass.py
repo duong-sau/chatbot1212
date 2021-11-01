@@ -4,7 +4,7 @@ import pandas as pd
 
 from Model.Common import toT5sentence, getSimilarity
 from Model.FineTurn.Define import MODEL, tokenConfig
-from Static.Define import path_common
+from Static.Define import PathCommon
 import time
 
 # model = T5ForConditionalGeneration.from_pretrained('../Save/Try/A/')

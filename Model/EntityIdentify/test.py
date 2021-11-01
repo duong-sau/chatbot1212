@@ -2,7 +2,7 @@ import pandas as pd
 import torch
 from transformers import BertForSequenceClassification
 from Model.Common import toT5sentence
-from Static.Define import path_common
+from Static.Define import PathCommon
 
 """
 train = pd.read_csv(path_common.train.value, header = 0)

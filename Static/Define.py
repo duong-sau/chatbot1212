@@ -1,6 +1,5 @@
-
-class path_common:
-    work = "C:\\Users\\DuongSau\\Sau\\chatbot1211"
+class PathCommon:
+    work = "D:\\chatbot1211"
     model = work + "\\Model\\CheckPoint"
     data = work + "\\Model\\Data"
     mining = data + "\\Mining"
@@ -20,7 +19,7 @@ class path_common:
     learn_data_pos = classification + "\\Positive\\learn_data.csv"
 
 
-class tag:
+class Tag:
     classify1 = "classify1"
     h2 = "h2"
 
