@@ -50,3 +50,7 @@ def estimate_time(siamese_model, siamese_tokenizer):
                                 compare_sentences=compare_sentences)
     end = time.time()
     return end - start
+
+
+if __name__ == '__main__':
+    a = 1

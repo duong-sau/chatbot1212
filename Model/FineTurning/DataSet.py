@@ -42,4 +42,4 @@ class ClassificationDataset(Dataset):
         token_type_ids = tokenized_inputs['token_type_ids']
         label = torch.tensor([self.class_column[index]])
         return {'source_ids': source_ids, 'attention_mask': attention_mask, 'token_type_ids': token_type_ids,
-                'label': label}
+                'labels': label}
