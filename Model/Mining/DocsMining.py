@@ -74,14 +74,21 @@ if __name__ == '__main__':
                 for h in head:
                     elements = h.find_all(recursive=False)
                     first = elements[2].text
+                    second = ''
+                    for i, e in enumerate(elements):
+                        if i <= 2:
+                            continue
+                        if e.name == 'p':
+                            second = e.text
+                            break
                     answer = 'http://www.iqtree.org/doc/' + page_links[intent_group_index] + '#' + elements[0]['id']
                     h2 = h.h2
                     intent_index = intent_index + 1
                     intent = h2.text
                     new = {'answer': answer, 'intent': intent, 'answer_index': intent_index,
                            'intent_index': intent_index,
-                           'first': first, 'label_index': intent_group_index}
+                           'first': first, 'second': second, 'label_index': intent_group_index}
                     answer_df = answer_df.append(new, ignore_index=True)
         break
-    answer_df.to_csv(PathCommon.answer, index=False, mode='w')
+    answer_df.to_csv(PathCommon.answer_list, index=False, mode='w')
     exit()

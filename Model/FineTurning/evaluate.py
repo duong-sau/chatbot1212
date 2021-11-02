@@ -46,4 +46,4 @@ def evaluate(name):
 
 
 if __name__ == '__main__':
-    evaluate('CommandRefrence')
+    evaluate('Label')
