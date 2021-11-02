@@ -3,6 +3,8 @@ import os
 from bs4 import BeautifulSoup
 import pandas as pd
 from tqdm import tqdm
+import re
+
 
 from Model.Mining.Common import group_by_tag
 from Static.Define import PathCommon, Tag
@@ -11,7 +13,7 @@ page_links = ['', 'Advanced-Tutorial', 'Assessing-Phylogenetic-Assumptions', 'Tu
               'Compilation-Guide', 'Complex-Models', 'Concordance-Factor', 'Developer-Guide',
               'Frequently-Asked-Questions', 'Quickstart', 'Home', 'Dating', 'Polymorphism-Aware-Models', 'Rootstrap',
               'Substitution-Models', 'Web-Server-Tutorial']
-"""
+
 if __name__ == '__main__':
     sentence_df = pd.DataFrame()
     intent_df = pd.DataFrame()
@@ -46,6 +48,11 @@ if __name__ == '__main__':
                             sub_index += 1
                             sentence_index = sentence_index + 1
                             sentence = e.text
+                            sentence = re.sub('[!@#$:\n\t]', '', sentence)
+                            sentence = re.sub('[ +]', ' ', sentence)
+                            sentence = re.sub('IQ-TREE', ' ', sentence)
+                            if '---' in sentence:
+                                continue
                             sentence_new = {'sentence_index': sentence_index, 'intent': intent, 'sentence': sentence,
                                             'intent_index': intent_index, "intent_group": intent_group,
                                             "intent_group_index": intent_group_index, 'sub_i': sub_index}
@@ -55,7 +62,7 @@ if __name__ == '__main__':
     sentence_df.to_csv(PathCommon.sentence_list, index=False, mode='w')
     intent_group_df.to_csv(PathCommon.intent_group_list, index=False, mode='w')
     exit()
-"""
+
 if __name__ == '__main__':
     answer_df = pd.DataFrame()
     sentence_index = 0

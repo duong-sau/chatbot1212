@@ -19,13 +19,8 @@ learn_data_df = pd.DataFrame()
 for first_index, first_row in tqdm(train.iterrows(), total=len(train.index)):
     for second_index, second_row in train.iterrows():
         stsb = 0
-        if first_row["intent_group_index"] == second_row["intent_group_index"]:
-            stsb = stsb + 0.5
         if first_row["intent_index"] == second_row["intent_index"]:
-            stsb = stsb + 4.5
-        if first_row["intent_index"] == second_row["intent_index"] + 1 and first_row["intent_group_index"] == \
-                second_row["intent_group_index"]:
-            stsb = stsb + 0.5
+            stsb = stsb + 5.0
         source = to_sts_sentence(sentence1=first_row["sentence"], sentence2=second_row["sentence"])
         new = {"source": source, 'target': str(stsb)}
         learn_data_df = learn_data_df.append(new, ignore_index=True)
