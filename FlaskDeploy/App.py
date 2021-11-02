@@ -36,9 +36,7 @@ def group_answer(question):
 
 def get_answer(index):
     r = answer_df[answer_df['intent_index'].isin(index)]
-    r.head()
-    answer = r['answer']
-    return pandas_to_json(answer_df=answer)
+    return pandas_to_json(answer_df=r)
 
 
 # run app

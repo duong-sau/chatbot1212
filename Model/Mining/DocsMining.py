@@ -7,6 +7,11 @@ from tqdm import tqdm
 from Model.Mining.Common import group_by_tag
 from Static.Define import PathCommon, Tag
 
+page_links = ['', 'Advanced-Tutorial', 'Assessing-Phylogenetic-Assumptions', 'Tutorial', 'Command-Reference',
+              'Compilation-Guide', 'Complex-Models', 'Concordance-Factor', 'Developer-Guide',
+              'Frequently-Asked-Questions', 'Quickstart', 'Home', 'Dating', 'Polymorphism-Aware-Models', 'Rootstrap',
+              'Substitution-Models', 'Web-Server-Tutorial']
+"""
 if __name__ == '__main__':
     sentence_df = pd.DataFrame()
     intent_df = pd.DataFrame()
@@ -50,7 +55,7 @@ if __name__ == '__main__':
     sentence_df.to_csv(PathCommon.sentence_list, index=False, mode='w')
     intent_group_df.to_csv(PathCommon.intent_group_list, index=False, mode='w')
     exit()
-
+"""
 if __name__ == '__main__':
     answer_df = pd.DataFrame()
     sentence_index = 0
@@ -60,18 +65,22 @@ if __name__ == '__main__':
         for file in tqdm(files):
             path = root + "\\" + file
             with open(file=path, mode='r', encoding='utf-8') as f:
+                intent_group_index += 1
                 content = f.read()
                 html = BeautifulSoup(content.strip("\n"), 'html.parser')
                 group_by_tag(html, Tag.h2, Tag.classify1)
+
                 head = html.find_all(Tag.classify1)
                 for h in head:
                     elements = h.find_all(recursive=False)
                     first = elements[2].text
+                    answer = 'http://www.iqtree.org/doc/' + page_links[intent_group_index] + '#' + elements[0]['id']
                     h2 = h.h2
                     intent_index = intent_index + 1
                     intent = h2.text
-                    new = {'answer': h, 'intent': intent, 'answer_index': intent_index, 'intent_index': intent_index,
-                           'first': first}
+                    new = {'answer': answer, 'intent': intent, 'answer_index': intent_index,
+                           'intent_index': intent_index,
+                           'first': first, 'label_index': intent_group_index}
                     answer_df = answer_df.append(new, ignore_index=True)
         break
     answer_df.to_csv(PathCommon.answer, index=False, mode='w')

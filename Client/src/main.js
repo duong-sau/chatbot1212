@@ -13,7 +13,7 @@ class Welcome extends Component {
         super(props);
         Self = this;
     }
-    state = { answer: '<div>Every Things In Iqtree You Need</div>', link: "", question: "", play:false, key:0}
+    state = { answer: ['Every Things In Iqtree You Need'], link: "", question: "", play:false, key:0}
 
     question = (question)=>{
         Self.setState({key: this.state.key + 1, play:true})
@@ -24,9 +24,9 @@ class Welcome extends Component {
         axios
             .get(this.state.link +'/question' + '?question='+question)
             .then(function (response) {
-                let a = response.data.answer
-                console.log(a[0])
-                Self.setState({answer:response.data.answer})
+                let json = JSON.parse(response.data.answer);
+                let list = Object.values(json);
+                Self.setState({answer:list})
             })
             .catch(function (error) {
                 console.log(error);
@@ -67,8 +67,17 @@ class Welcome extends Component {
                     <br/>
                 </Box>
                 <Box display="flex" sx={{ alignItems: 'center', flexDirection: 'column' }}>
-                    <HTMLRenderer
-                    html={this.state.answer}/>
+                    <div>
+                        {this.state.answer.map(station =>
+                            <div>
+                                <h2>
+                                    {station.intent}
+                                </h2>
+                                <div key={station}> {station.first} </div>
+                                <br/>
+                            </div>
+                        )}
+                    </div>
                 </Box>
             </Container >
         );

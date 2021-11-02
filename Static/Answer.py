@@ -36,7 +36,7 @@ def get_index(question, group, siamese_tokenizer, siamese_model):
 
 
 def pandas_to_json(answer_df):
-    js = answer_df.to_json(orient='columns')
+    js = answer_df.to_json(orient='index')
     return js
 
 

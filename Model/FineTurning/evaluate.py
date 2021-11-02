@@ -31,9 +31,8 @@ def gird_evaluate():
     matplotlib.pyplot.show()
 
 
-def evaluate():
-    result_df = pd.read_csv('./freeze135/test_identity_result.csv', header=0)
-    intent_df = pd.read_csv(PathCommon.intent_list.value, header=0)
+def evaluate(name):
+    result_df = pd.read_csv('../Result/' + name + '/result.csv', header=0)
     match = 0
     not_match = 0
     for i, row in result_df.iterrows():
@@ -41,7 +40,10 @@ def evaluate():
             match = match + 1
         else:
             not_match += 1
-    print(f"{Colors.ENDC}for positive method")
-    print(f"{Colors.OKGREEN}match case    :{match}")
+    print(f"{Colors.END}for positive method")
+    print(f"{Colors.OK_GREEN}match case    :{match}")
     print(f"{Colors.WARNING}not match case: {not_match} \n")
 
+
+if __name__ == '__main__':
+    evaluate('CommandRefrence')
