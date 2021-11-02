@@ -6,6 +6,7 @@ import TextField from "@material-ui/core/TextField";
 import Box from '@material-ui/core/Box'
 import Container from '@material-ui/core/Container';
 import { CountdownCircleTimer } from 'react-countdown-circle-timer';
+import './main.css'
 
 let Self
 class Welcome extends Component {
@@ -50,7 +51,7 @@ class Welcome extends Component {
                             key={this.state.key}
                             isPlaying={this.state.play}
                             size = {50}
-                            duration={7}
+                            duration={17}
                             colors={[
                                 ['#004777', 0.33],
                                 ['#F7B801', 0.33],
@@ -70,10 +71,15 @@ class Welcome extends Component {
                     <div>
                         {this.state.answer.map(station =>
                             <div>
-                                <h2>
-                                    {station.intent}
-                                </h2>
-                                <div key={station}> {station.first} </div>
+                                <a href={station.answer}>
+                                    <h2>
+                                        {station.intent}
+                                    </h2>
+                                </a>
+                                <div key={station}> {station.first + "..................."}<span  className={'highlight'}>
+                                    {station.highlight}
+                                </span> </div>
+
                                 <br/>
                             </div>
                         )}

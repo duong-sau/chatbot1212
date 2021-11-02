@@ -28,11 +28,17 @@ def get_index(question, group, siamese_tokenizer, siamese_model):
     result_df['similarity'] = pd.to_numeric(result_df['similarity'], errors='coerce')
     mean_df = result_df.groupby(["intent_index"])["similarity"].mean().reset_index().sort_values("similarity")
     max_list = []
+    max_sentence_list = []
     try:
         max_list = mean_df.iloc[-5:]['intent_index'].tolist()
+        max_list.reverse()
+        for max_id in max_list:
+            group_df = result_df[result_df['intent_index'] == max_id]
+            idx = group_df['similarity'].idxmax()
+            max_sentence_list.append(result_df.iloc[idx]['sentence'])
     except ValueError:
         index = -1
-    return max_list
+    return max_list, max_sentence_list
 
 
 def pandas_to_json(answer_df):

@@ -16,7 +16,7 @@ device = get_device()
 # import model
 siamese_tokenizer = AutoTokenizer.from_pretrained(MODEL['name'])
 tokenizer_config(tokenizer=siamese_tokenizer)
-siamese_model = T5ForConditionalGeneration.from_pretrained('../Model/CheckPoint/111000')
+siamese_model = T5ForConditionalGeneration.from_pretrained('../Model/CheckPoint/CommandRefrence')
 siamese_model.to(device)
 print('load siamese model success .to(' + str(device.type) + ')')
 
@@ -34,8 +34,16 @@ def group_answer(question):
     return float(group)
 
 
-def get_answer(index):
-    r = answer_df[answer_df['intent_index'].isin(index)]
+def get_answer(index_and_highlight):
+    index, highlight = index_and_highlight
+    r = pd.DataFrame()
+    for i, idx in enumerate(index):
+        row = answer_df[answer_df['intent_index'] == idx].iloc[0]
+        new = {'intent': row['intent'],'answer':row['answer'], 'first': row['first'], 'highlight': highlight[i]}
+        r = r.append(new, ignore_index=True)
+    # r = answer_df[answer_df['intent_index'].isin(index)]
+    # r['highlight'] = highlight
+
     return pandas_to_json(answer_df=r)
 
 
