@@ -8,13 +8,14 @@ class PathCommon:
     intent_list = mining + "\\intent_list.csv"
     sentence_list = mining + "\\sentence_list.csv"
     intent_group_list = mining + "\\intent_group_list.csv"
-    answer = mining + "\\answer_list.csv"
+    answer_list = mining + "\\answer_list.csv"
 
     intent = classification + "\\intent_list.csv"
     sentence = classification + "\\sentence_list.csv"
     intent_group = classification + "\\intent_group_list.csv"
     test = classification + "\\test.csv"
     train = classification + "\\train.csv"
+    answer = classification + "\\answer_list.csv"
 
     learn_data_pos = classification + "\\Positive\\learn_data.csv"
     learn_data_label = classification + "\\LabelClassification\\learn_data.csv"

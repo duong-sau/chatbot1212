@@ -19,4 +19,7 @@ if __name__ == '__main__':
     intent_group_df = intent_group_df[(intent_group_df.intent_group_index.isin(n_group))]
     intent_group_df.to_csv(PathCommon.intent_group, index=False)
 
+    answer_df = pd.read_csv(PathCommon.answer_list, header=0)
+    answer_df = answer_df[(answer_df.label_index.isin(n_group))]
+    answer_df = answer_df.to_csv(PathCommon.answer, index=False)
     exit()

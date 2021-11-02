@@ -6,7 +6,7 @@ from os import path, mkdir
 from Model.Common import get_similarity
 from Static.Config import MODEL, tokenizer_config
 
-names = ['CommandRefrence']
+names = ['Google']
 tqdm.pandas()
 for name in names:
     model_path = '../CheckPoint/' + name + "/"

@@ -89,7 +89,7 @@ for name in names:
     for index, row in tqdm(test_df.iterrows(), leave=False, total=len(test_df)):
         temp_df = pd.read_csv(
             "https://raw.githubusercontent.com/duong-sau/chatbot1212/master/Model/Data/Mining"
-            "/answer_list",
+            "/answer_list.csv",
             header=0)
         test_sentence = row["sentence"]
         for i, r in temp_df.iterrows():
@@ -98,11 +98,11 @@ for name in names:
                                         compare_sentences=compare_sentences)
             temp_df.loc[i, "similarity"] = similarity
         temp_df['similarity'] = pd.to_numeric(temp_df['similarity'], errors='coerce')
-        mean_df = temp_df.groupby(["intent_group_index"])["similarity"].mean().reset_index().sort_values("similarity")
+        mean_df = temp_df.groupby(["label_index"])["similarity"].mean().reset_index().sort_values("similarity")
         max1 = mean_df.iloc[-1]
         max2 = mean_df.iloc[-2]
         max3 = mean_df.iloc[-3]
-        new_row = {'test_id': row["sentence_index"], 'expected': row["intent_index"], 'actual': max1["intent_index"],
-                   'max2': max2["intent_index"], 'max3': max3["intent_index"]}
+        new_row = {'test_id': row["sentence_index"], 'expected': row["intent_group_index"], 'actual': max1["label_index"],
+                   'max2': max2["label_index"], 'max3': max3["label_index"]}
         result_df = result_df.append(new_row, ignore_index=True)
     result_df.to_csv(path_or_buf=result_path, mode='w', index=False)
