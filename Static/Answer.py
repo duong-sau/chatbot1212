@@ -6,11 +6,37 @@ from tqdm import tqdm
 from Model.Common import get_similarity
 
 
+# def get_class(text, class_model, class_tokenizer):
+#     inputs = class_tokenizer(text, padding=True, truncation=True, max_length=512, return_tensors="pt")
+#     outputs = class_model(**inputs)
+#     probability = outputs[0].softmax(1)
+#     return [1.0, 2.0][probability.argmax()]
+
 def get_class(text, class_model, class_tokenizer):
-    inputs = class_tokenizer(text, padding=True, truncation=True, max_length=512, return_tensors="pt")
-    outputs = class_model(**inputs)
-    probability = outputs[0].softmax(1)
-    return [1.0, 2.0][probability.argmax()]
+    temp_df = pd.read_csv(
+        "https://raw.githubusercontent.com/duong-sau/chatbot1212/master/Model/Data/IntentClassification"
+        "/answer_list.csv",
+        header=0)
+    for i, r in temp_df.iterrows():
+        compare_sentences = r["first"]
+        similarity1 = get_similarity(tokenizer=class_tokenizer, model=class_model, test_sentence=text,
+                                     compare_sentences=compare_sentences)
+        try:
+            compare_2 = r['second']
+            similarity2 = get_similarity(tokenizer=class_tokenizer, model=class_model, test_sentence=text,
+                                         compare_sentences=compare_2)
+            temp_df.loc[i, "similarity"] = (float(similarity1) + float(similarity2)) / 2
+        except:
+            temp_df.loc[i, "similarity"] = float(similarity1)
+
+    temp_df['similarity'] = pd.to_numeric(temp_df['similarity'], errors='coerce')
+    mean_df = temp_df.groupby(["label_index"])["similarity"].mean().reset_index().sort_values("similarity")
+    max_list = []
+    try:
+        max_list = mean_df.iloc[-2:]['label_index'].tolist()
+    except ValueError:
+        index = -1
+    return max_list
 
 
 # answer the question
@@ -19,7 +45,7 @@ def get_index(question, group, siamese_tokenizer, siamese_model):
         "https://raw.githubusercontent.com/duong-sau/chatbot1212/master/Model/Data/IntentClassification/sentence_list"
         ".csv",
         header=0)
-    # result_df = result_df[result_df['intent_group_index'] == group]
+    result_df = result_df[result_df['intent_group_index'].isin(group)]
     for i, r in tqdm(result_df.iterrows(), total=len(result_df)):
         compare_sentences = r["sentence"]
         similarity = get_similarity(tokenizer=siamese_tokenizer, model=siamese_model, test_sentence=question,
@@ -35,7 +61,7 @@ def get_index(question, group, siamese_tokenizer, siamese_model):
         for max_id in max_list:
             group_df = result_df[result_df['intent_index'] == max_id]
             idx = group_df['similarity'].idxmax()
-            max_sentence_list.append(result_df.iloc[idx]['sentence'])
+            max_sentence_list.append(result_df.iloc[idx]['sentence'][:300])
     except ValueError:
         index = -1
     return max_list, max_sentence_list

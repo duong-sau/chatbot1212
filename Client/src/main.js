@@ -51,7 +51,7 @@ class Welcome extends Component {
                             key={this.state.key}
                             isPlaying={this.state.play}
                             size = {50}
-                            duration={17}
+                            duration={20}
                             colors={[
                                 ['#004777', 0.33],
                                 ['#F7B801', 0.33],

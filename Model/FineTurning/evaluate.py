@@ -33,17 +33,24 @@ def gird_evaluate():
 
 def evaluate(name):
     result_df = pd.read_csv('../Result/' + name + '/result.csv', header=0)
-    match = 0
+    match_max1 = 0
+    match_max2 = 0
+    match_max3 = 0
     not_match = 0
     for i, row in result_df.iterrows():
         if row['expected'] == row['actual']:
-            match = match + 1
+            match_max1 = match_max1 + 1
+        if row['expected'] == row['actual'] or row['expected'] == row['max2']:
+            match_max2 = match_max2 + 1
+        if row['expected'] == row['actual'] or row['expected'] == row['max2'] or row['expected'] == row['max3']:
+            match_max3 = match_max3 + 1
         else:
             not_match += 1
-    print(f"{Colors.END}for positive method")
-    print(f"{Colors.OK_GREEN}match case    :{match}")
-    print(f"{Colors.WARNING}not match case: {not_match} \n")
+    print(f"{Colors.OK_GREEN}match_max1 case    :{match_max1}")
+    print(f"{Colors.OK_GREEN}match_max2 case    :{match_max2}")
+    print(f"{Colors.OK_GREEN}match_max3 case    :{match_max3}")
+    print(f"{Colors.WARNING }not match case     :{not_match }\n")
 
 
 if __name__ == '__main__':
-    evaluate('CommandRefrence')
+    evaluate('label')
