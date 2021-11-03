@@ -11,7 +11,8 @@ from Static.Config import tokenizer_config, get_device, MODEL
 
 tqdm.pandas()
 
-device = get_device()
+# device = get_device()
+device = 'cuda'
 
 # import model
 siamese_tokenizer = AutoTokenizer.from_pretrained(MODEL['name'])
