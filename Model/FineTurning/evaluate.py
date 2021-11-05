@@ -53,4 +53,4 @@ def evaluate(name):
 
 
 if __name__ == '__main__':
-    evaluate('label')
+    evaluate('Bm25')

@@ -1,9 +1,9 @@
 import './App.css';
-import Welcome from "./Object/main";
+import Main from "./Object/Main";
 
 function App() {
   return (
-    <Welcome/>
+    <Main/>
   );
 }
 
@@ -14,9 +14,8 @@ global.method = {
     select:'chose embedding',
     caption: 'use cosine method',
     key:[
-    'bert high embedding',
-    'bert low embedding',
-    'word to vector embedding',
+    'bert',
+    'bm25',
   ]},
   t5:{
     select:'chose top k',

@@ -12,7 +12,7 @@ from Model.Common import get_similarity
 #     probability = outputs[0].softmax(1)
 #     return [1.0, 2.0][probability.argmax()]
 
-def get_class(text, class_model, class_tokenizer):
+def get_class(text, t5_top_p, class_model, class_tokenizer):
     temp_df = pd.read_csv(
         "https://raw.githubusercontent.com/duong-sau/chatbot1212/master/Model/Data/IntentClassification"
         "/answer_list.csv",
@@ -33,14 +33,14 @@ def get_class(text, class_model, class_tokenizer):
     mean_df = temp_df.groupby(["label_index"])["similarity"].mean().reset_index().sort_values("similarity")
     max_list = []
     try:
-        max_list = mean_df.iloc[-2:]['label_index'].tolist()
+        max_list = mean_df.iloc[-t5_top_p:]['label_index'].tolist()
     except ValueError:
         index = -1
     return max_list
 
 
 # answer the question
-def get_index(question, group, siamese_tokenizer, siamese_model):
+def get_index(question, group, top_k, siamese_tokenizer, siamese_model):
     result_df = pd.read_csv(
         "https://raw.githubusercontent.com/duong-sau/chatbot1212/master/Model/Data/IntentClassification/sentence_list"
         ".csv",
@@ -56,7 +56,7 @@ def get_index(question, group, siamese_tokenizer, siamese_model):
     max_list = []
     max_sentence_list = []
     try:
-        max_list = mean_df.iloc[-5:]['intent_index'].tolist()
+        max_list = mean_df.iloc[-top_k:]['intent_index'].tolist()
         max_list.reverse()
         for max_id in max_list:
             group_df = result_df[result_df['intent_index'] == max_id]

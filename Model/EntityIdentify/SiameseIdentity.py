@@ -6,7 +6,13 @@ from os import path, mkdir
 from Model.Common import get_similarity
 from Static.Config import MODEL, tokenizer_config
 
-names = ['011100', '011001', '011001', '010100']
+names = []
+for i in range(64):
+    if i == 24:
+        continue
+    bString = bin(i)[2:].zfill(6)
+    names.append(bString)
+
 tqdm.pandas()
 for name in names:
     model_path = '../CheckPoint/' + name + "/"
@@ -15,10 +21,13 @@ for name in names:
     if not path.exists(result_dir):
         mkdir(result_dir)
     if path.exists(result_path):
-        print("result exist -> duplicate run time")
+        print("result exist -> duplicate run time: ", str(int(name, 2)))
         continue
+    else:
+        print('start run on runtime:               ', str(int(name, 2)))
     if not path.exists(model_path):
-        raise "model not exist"
+        print('Model not found in runtime:         ', str(int(name, 2)))
+        continue
 
     tokenizer = T5Tokenizer.from_pretrained(MODEL['name'])
     tokenizer_config(tokenizer=tokenizer)

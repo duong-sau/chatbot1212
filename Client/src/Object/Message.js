@@ -7,26 +7,22 @@ class Message extends Component {
     constructor(props){
         super(props);
         this.state = {
-            selection : ""
+            selection : "",
+            reload: false
         };
         this.handleChange = this.handleChange.bind(this);
-        console.log(this.props.method);
     }
     handleChange(event) {
-        //set selection to the value selected
         this.setState({ selection : event.target.value });
+        this.props.set(event.target.value);
 
     }
-    static defaultProps = {
-        caption: 'caption',
-        answer:[{
-            answer: 'answer',
-            intent: 'intent',
-            highlight: 'highlight sentence',
-            first: 'first sentence'
-        }]
+    componentWillReceiveProps(nextProps, nextContext) {
+        this.setState({reload:true})
     }
+
     render() {
+        console.log(this.props.answer)
         return (
             <Box  style={{ border: '2px solid black', borderRightColor: 'black', height:'100%', padding:5 }}>
                 <Box>{this.props.caption}</Box>
