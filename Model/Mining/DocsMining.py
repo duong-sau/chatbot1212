@@ -57,8 +57,8 @@ def train_mining():
                             if '---' in sentence:
                                 continue
                             sentence_new = {'sentence_index': sentence_index, 'sentence': sentence,
-                                            'label_index': label_index, 'label': label, "cluster": cluster,
-                                            "cluster_index": cluster_index}
+                                            'label_index': label_index, 'label': label, "cluster_index": cluster_index,
+                                            "cluster": cluster}
                             sentence_df = sentence_df.append(sentence_new, ignore_index=True)
         break
     label_df.to_csv(PathCommon.label_list, index=False, mode='w')

@@ -3,7 +3,7 @@ class PathCommon:
     model = work + "\\Model\\CheckPoint"
     data = work + "\\Model\\Data"
     mining = data + "\\Mining"
-    classification = data + "\\LabelClassification"
+    classification = data + "\\IntentClassification"
 
     label_list = mining + "\\Label_list.csv"
     sentence_list = mining + "\\sentence_list.csv"
