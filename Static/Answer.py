@@ -9,7 +9,8 @@ from Model.Common import get_similarity
 
 
 def get_cluster(input_query, top_p):
-    result_df = pd.read_csv("..\\Data\\IntentClassification\\sentence_list.csv", header=0)
+    result_df = pd.read_csv("https://raw.githubusercontent.com/duong-sau/chatbot1212/master/Model/Data"
+                            "/IntentClassification/sentence_list.csv", header=0)
     input_corpus = result_df['sentence'].tolist()
     docs = [input_query] + input_corpus
     docs = [word_token(d, lemma=True) for d in docs]
@@ -22,18 +23,15 @@ def get_cluster(input_query, top_p):
     try:
         max_list = mean_df.iloc[-top_p:]['cluster_index'].tolist()
         max_list.reverse()
-        for max_id in max_list:
-            group_df = result_df[result_df['cluster_index'] == max_id]
-            idx = group_df['similarity'].idxmax()
     except ValueError:
-        index = -1
+        print('exception')
     return max_list
 
 
 # answer the question
 def get_index(question, group, top_k, siamese_tokenizer, siamese_model):
     result_df = pd.read_csv(
-        "https://raw.githubusercontent.com/duong-sau/chatbot1212/master/Model/Data/labelClassification/sentence_list"
+        "https://raw.githubusercontent.com/duong-sau/chatbot1212/master/Model/Data/IntentClassification/sentence_list"
         ".csv",
         header=0)
     result_df = result_df[result_df['cluster_index'].isin(group)]

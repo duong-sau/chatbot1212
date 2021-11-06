@@ -23,23 +23,23 @@ def get_index_bert(query, group, top_k):
         "https://raw.githubusercontent.com/duong-sau/chatbot1212/master/Model/Data/IntentClassification/sentence_list"
         ".csv",
         header=0)
-    # result_df = pd.read_csv('C:\\Users\\Sau\\IdeaProjects\\chatbot1212\\Model\\Data\\IntentClassification\\Tutorial'
+    # result_df = pd.read_csv('C:\\Users\\Sau\\IdeaProjects\\chatbot1212\\Model\\Data\\labelClassification\\Tutorial'
     #                         '\\sentence_list.csv', header=0)
-    result_df = result_df[result_df['intent_group_index'].isin(group)]
+    result_df = result_df[result_df['cluster_index'].isin(group)]
     for i, r in tqdm(result_df.iterrows(), total=len(result_df)):
         compare_sentences = r["sentence"]
         emb_corpus = embed(compare_sentences)
         similarity = cosine_similarity([emb_query], [emb_corpus])[0][0]
         result_df.loc[i, "similarity"] = similarity
     result_df['similarity'] = pd.to_numeric(result_df['similarity'], errors='coerce')
-    mean_df = result_df.groupby(["intent_index"])["similarity"].mean().reset_index().sort_values("similarity")
+    mean_df = result_df.groupby(["label_index"])["similarity"].mean().reset_index().sort_values("similarity")
     max_list = []
     max_sentence_list = []
     try:
-        max_list = mean_df.iloc[-top_k:]['intent_index'].tolist()
+        max_list = mean_df.iloc[-top_k:]['label_index'].tolist()
         max_list.reverse()
         for max_id in max_list:
-            group_df = result_df[result_df['intent_index'] == max_id]
+            group_df = result_df[result_df['label_index'] == max_id]
             idx = group_df['similarity'].idxmax()
             max_sentence_list.append(result_df.iloc[idx]['sentence'][:300])
     except ValueError:

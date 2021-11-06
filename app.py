@@ -98,14 +98,14 @@ def login():
                     pass
                 group = group_answer(question, t5_top_p)
                 t5_answer = answer_t5(question=question, top_k=top_k, group=group)
-                answer.ans = t5_answer
+                answer[ans] = t5_answer
             elif method == 'Cosine':
                 if parameter == 'BM25':
                     cosine_answer = answer_bm25(question=question, top_k=top_k)
                 else:
                     group = group_answer(question, 2)
                     cosine_answer = answer_cosine(question=question, top_k=top_k, group=group)
-                answer.ans = cosine_answer
+                answer[ans] = cosine_answer
         response = jsonify({'answer': answer})
         return response
     else:

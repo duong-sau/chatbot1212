@@ -69,7 +69,7 @@ class Message extends Component {
                         <div>
                             <a href={a.answer}>
                                 <h2>
-                                    {a.intent}
+                                    {a.label}
                                 </h2>
                             </a>
                             <div key={a}> {a.first + "..................."}<span  className={'highlight'}>
