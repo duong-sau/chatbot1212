@@ -8,7 +8,6 @@ Flask~=2.0.2
 scikit-learn~=1.0.1
 torch~=1.10.0
 nltk~=3.6.5
-torchvision==0.9.1+cpu
 flask
 joblib==0.16.0
 sentencepiece==0.1.91
