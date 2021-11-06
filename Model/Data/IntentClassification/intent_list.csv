@@ -1,14 +1,30 @@
 intent_index,intent,intent_group,intent_group_index
-1.0,Partitioned analysis for multi-gene alignments,Advanced tutorial,1.0
-2.0,Partitioned analysis with mixed data,Advanced tutorial,1.0
-3.0,Choosing the right partitioning scheme,Advanced tutorial,1.0
-4.0,Ultrafast bootstrapping with partition model,Advanced tutorial,1.0
-5.0,Constrained tree search,Advanced tutorial,1.0
-6.0,Tree topology tests,Advanced tutorial,1.0
-7.0,Testing constrained tree,Advanced tutorial,1.0
-8.0,Consensus construction and bootstrap value assignment,Advanced tutorial,1.0
-9.0,User-defined substitution models,Advanced tutorial,1.0
-10.0,Inferring site-specific rates,Advanced tutorial,1.0
-11.0,Where to go from here?,Advanced tutorial,1.0
-12.0,Tests of symmetry,Assessing phylogenetic assumptions,2.0
-13.0,Likelihood mapping,Assessing phylogenetic assumptions,2.0
+14.0,Input data,Beginner’s tutorial,3.0
+15.0,First running example,Beginner’s tutorial,3.0
+16.0,Choosing the right substitution model,Beginner’s tutorial,3.0
+17.0,Using codon models,Beginner’s tutorial,3.0
+18.0,"Binary, morphological and SNP data",Beginner’s tutorial,3.0
+19.0,Assessing branch supports with ultrafast bootstrap approximation,Beginner’s tutorial,3.0
+20.0,Reducing impact of severe model violations with UFBoot,Beginner’s tutorial,3.0
+21.0,Assessing branch supports with standard nonparametric bootstrap,Beginner’s tutorial,3.0
+22.0,Assessing branch supports with single branch tests,Beginner’s tutorial,3.0
+23.0,Utilizing multi-core CPUs,Beginner’s tutorial,3.0
+24.0,Where to go from here?,Beginner’s tutorial,3.0
+25.0,General options,Command reference,4.0
+26.0,Checkpointing to resume stopped run,Command reference,4.0
+27.0,Likelihood mapping analysis,Command reference,4.0
+28.0,Automatic model selection,Command reference,4.0
+29.0,Specifying substitution models,Command reference,4.0
+30.0,Rate heterogeneity,Command reference,4.0
+31.0,Partition model options,Command reference,4.0
+32.0,Site-specific frequency model options,Command reference,4.0
+33.0,Tree search parameters,Command reference,4.0
+34.0,Ultrafast bootstrap parameters,Command reference,4.0
+35.0,Nonparametric bootstrap,Command reference,4.0
+36.0,Single branch tests,Command reference,4.0
+37.0,Ancestral sequence reconstruction,Command reference,4.0
+38.0,Tree topology tests,Command reference,4.0
+39.0,Constructing consensus tree,Command reference,4.0
+40.0,Computing Robinson-Foulds distance,Command reference,4.0
+41.0,Generating random trees,Command reference,4.0
+42.0,Miscellaneous options,Command reference,4.0

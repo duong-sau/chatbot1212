@@ -23,6 +23,8 @@ def get_index_bert(query, group, top_k):
         "https://raw.githubusercontent.com/duong-sau/chatbot1212/master/Model/Data/IntentClassification/sentence_list"
         ".csv",
         header=0)
+    # result_df = pd.read_csv('C:\\Users\\Sau\\IdeaProjects\\chatbot1212\\Model\\Data\\IntentClassification\\Tutorial'
+    #                         '\\sentence_list.csv', header=0)
     result_df = result_df[result_df['intent_group_index'].isin(group)]
     for i, r in tqdm(result_df.iterrows(), total=len(result_df)):
         compare_sentences = r["sentence"]
