@@ -2,7 +2,6 @@
 import pandas as pd
 from tqdm.auto import tqdm
 from transformers import AutoTokenizer, T5ForConditionalGeneration, BertTokenizerFast, BertForSequenceClassification
-from flask_ngrok import run_with_ngrok
 from flask import Flask, request, jsonify
 from flask_cors import CORS, cross_origin
 
