@@ -10,5 +10,5 @@ torch~=1.10.0
 nltk~=3.6.5
 flask
 joblib==0.16.0
-sentencepiece==0.1.91
+sentencepiece==0.1.94
 urllib3==1.25.10
