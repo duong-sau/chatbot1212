@@ -14,11 +14,11 @@ global.method = {
     select:'chose embedding',
     caption: 'use cosine method',
     key:[
-    'bert',
-    'bm25',
+    'Bert',
+    'BM25',
   ]},
   t5:{
-    select:'chose top k',
+    select:'number cluster',
     caption: 'use t5 method',
     key:[
       1,

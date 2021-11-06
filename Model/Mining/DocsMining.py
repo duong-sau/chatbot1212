@@ -43,7 +43,8 @@ def train_mining():
                                  "cluster": cluster}
                     label_df = label_df.append(label_new, ignore_index=True)
                     answer = 'http://www.iqtree.org/doc/' + page_links[cluster_index] + '#' + elements[0]['id']
-                    new = {'answer_index': label_index, 'answer': answer, 'label_index': label_index, 'label': label,
+                    new = {'answer_index': label_index, 'answer': answer, 'first': elements[2].text,
+                           'label_index': label_index, 'label': label,
                            'cluster_index': cluster_index, "cluster": cluster, }
                     answer_df = answer_df.append(new, ignore_index=True)
                     for e in elements:

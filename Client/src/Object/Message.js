@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Box from "@material-ui/core/Box";
 import {MenuItem, Select} from "@material-ui/core";
+import {Alert} from "@mui/lab";
 
 
 class Message extends Component {
@@ -16,7 +17,7 @@ class Message extends Component {
     }
     handleChange(event) {
         this.setState({ selection : event.target.value });
-        this.props.setParameter(event.target.value);
+        this.props.setParameter(event.target.value, this.props.position);
 
     }
     componentWillReceiveProps(nextProps, nextContext) {
@@ -29,21 +30,27 @@ class Message extends Component {
         console.log(this.props.answer)
         if(this.state.reset){
             this.state.reset = false;
-            return ( <Box>{this.props.select}</Box>)
         }
         if(this.state.error){
             this.state.error = false;
-            return(<div>an error </div>)
+            Alert("An error occurred")
         }
         return (
             <Box  style={{ border: '2px solid black', borderRightColor: 'black', height:'100%', padding:5 }}>
-                <Box>{this.props.caption}</Box>
-                <Box display="flex" sx={{ padding: 10, flexDirection: 'row' }}>
+                <Box display="flex" alignItems="center"  sx={{ padding: 5, flexDirection: 'row' }}>
+                    <Box>{this.props.caption}</Box>
+                    <Select value={this.props.value} label="left method selection" onChange={this.props.method_change} style={{ padding:5, width:120}}>
+                        <MenuItem value={'T5'}>T5</MenuItem>
+                        <MenuItem value={'Cosine'}>Cosine</MenuItem>
+                    </Select>
+                </Box>
+                <Box display="flex" alignItems="center" sx={{ padding: 10, flexDirection: 'row' }}>
                     <Box>{this.props.select}</Box>
                     <Select
                         value={this.state.selection}
                         label="selection"
                         onChange={this.handleChange}
+                        style={{ padding:5, width:120}}
                     >
                     {
                         this.props.method.map(v=>

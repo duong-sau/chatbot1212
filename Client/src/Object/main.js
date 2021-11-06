@@ -8,6 +8,10 @@ import Message from "./Message";
 import {AppBar, Grid, Typography} from "@material-ui/core";
 import Controller from "./Controller";
 let Self
+const left = 'left'
+const right = 'right'
+const T5 = 'T5'
+const Cosine = 'Cosine'
 class Main extends Component {
     constructor(props) {
         super(props);
@@ -18,8 +22,9 @@ class Main extends Component {
         this.left_child = React.createRef();
         this.right_child = React.createRef();
         this.controller = React.createRef();
+        this.state = { left: global.method.t5,right: global.method.cosine,
+        left_answer: [],right_answer:[], link: "", question: ""}
     }
-    state = { left_answer: [],right_answer:[], link: "", question: ""}
 
     question = (question, top_k, left_method, right_method, left_parameter, right_parameter)=>{
         this.controller.current.setState({loading:true})
@@ -53,19 +58,19 @@ class Main extends Component {
             });
     }
 
-    top_k = 5
-    left_method = 'T5'
-    right_method = 'BM25'
+    top_k = 1
+    left_method = T5
+    right_method = Cosine
     left_parameter = global.method.t5.key[0]
     right_parameter = global.method.cosine.key[0]
     setTopK(top_k){
         Self.top_k = top_k;
     }
     setMethod(method, position){
-        if(position === 'left'){
+        if(position === left){
             Self.left_method = method;
         }
-        else if(position === 'right'){
+        else if(position === right){
             Self.right_method = method;
         }
         else {
@@ -73,14 +78,43 @@ class Main extends Component {
         }
     }
     setParameter(parameter, position){
-        if(position === 'left'){
+        if(position === left){
             Self.left_parameter = parameter;
         }
-        else if(position === 'right'){
+        else if(position === right){
             Self.right_parameter = parameter;
         }
         else {
             console.log('set parameter error')
+        }
+    }
+    left_change(event) {
+        let l = Self.get_method_parameter(event.target.value)
+        Self.setState({left:l});
+        Self.setMethod(event.target.value, left)
+    }
+    right_change(event){
+        let r = Self.get_method_parameter(event.target.value)
+        Self.setState({right:r});
+        Self.setMethod(event.target.value, right)
+    }
+    get_method_parameter(method){
+        if(method === T5){
+            return {
+                select:'number cluster',
+                caption: 'use t5 method',
+                key:[1,2,3],
+            }
+        }
+        if(method === Cosine){
+            return {
+                select:'chose embedding',
+                caption: 'use cosine method',
+                key:[
+                    'Bert',
+                    'BM25',
+                ]
+            }
         }
     }
     render() {
@@ -104,10 +138,10 @@ class Main extends Component {
                     < Box display="flex" sx={{ alignItems: 'center', flexDirection: 'column' }}>
                         <Grid container spacing={2} direction="row">
                             <Grid item xs={6} direction="column">
-                                <Message ref={this.left_child} answer={Self.state.left_answer} name={'left'} method={global.method.t5.key} caption={global.method.t5.caption} select={global.method.t5.select} setMethod={Self.setMethod} setParameter={Self.setParameter}/>
+                                <Message position={left} ref={this.left_child} answer={Self.state.left_answer} method_change={this.left_change} value={Self.left_method} method={Self.state.left.key} caption={Self.state.left.caption} select={Self.state.left.select} setParameter={Self.setParameter}/>
                             </Grid>
                             <Grid item xs={6} direction="row">
-                                <Message ref={this.right_child} answer={Self.state.right_answer} name={'right'} method={global.method.cosine.key} caption={global.method.cosine.caption} select={global.method.cosine.select} setMethod={Self.setMethod} setParameter={Self.setParameter}/>
+                                <Message position={right} ref={this.right_child} answer={Self.state.right_answer} method_change={this.right_change} value={Self.right_method} method={Self.state.right.key} caption={Self.state.right.caption} select={Self.state.right.select} setParameter={Self.setParameter}/>
                             </Grid>
                         </Grid>
                     </Box>
