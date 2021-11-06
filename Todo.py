@@ -1,7 +1,7 @@
 # Todo
-# -> so sánh với google với các model không có dêp lửaining trên cùn 1 trình duyệt
-# ->
-# ->
+# -> demo với bộ câu trên google group -> pdf
+# -> demo online
+# -> bên trái bên phải đều có thể T5
 # ->
 # ->
 exit()
