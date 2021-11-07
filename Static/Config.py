@@ -3,7 +3,7 @@ import os
 import random
 import numpy as np
 import torch
-from transformers import TrainingArguments, Adafactor
+from transformers import TrainingArguments
 
 MODEL = {
     'name': 't5-small',
@@ -40,8 +40,8 @@ training_args = TrainingArguments(
 )
 
 
-def get_optimizer(model):
-    return Adafactor(model.parameters(), lr=1e-3, relative_step=False, warmup_init=False)
+# def get_optimizer(model):
+#     return Adafactor(model.parameters(), lr=1e-3, relative_step=False, warmup_init=False)
 
 
 def freeze_layer(model, freeze):
