@@ -1,3 +1,2 @@
-stopwords
 corpora
-reuters
+stopwords
