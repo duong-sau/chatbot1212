@@ -18,7 +18,7 @@ device = get_device()
 # import model
 siamese_tokenizer = AutoTokenizer.from_pretrained(MODEL['name'])
 tokenizer_config(tokenizer=siamese_tokenizer)
-siamese_model = T5ForConditionalGeneration.from_pretrained('Model/CheckPoint/CommandRefrence')
+siamese_model = T5ForConditionalGeneration.from_pretrained('t5-small')
 siamese_model.to(device)
 print('load siamese model success .to(' + str(device.type) + ')')
 
