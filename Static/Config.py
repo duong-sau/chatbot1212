@@ -2,7 +2,7 @@
 # import os
 # import random
 # import numpy as np
-# import torch
+import torch
 # from transformers import TrainingArguments
 
 MODEL = {
@@ -16,6 +16,8 @@ MODEL = {
     'num_freeze': [2, 3, 4],
     'SEED': 1211
 }
+
+
 # strategy = 'epoch'
 # training_args = TrainingArguments(
 #     output_dir="/content/drive/MyDrive",
@@ -55,9 +57,9 @@ MODEL = {
 #                 param.requires_grad = False
 #
 #
-# def tokenizer_config(tokenizer):
-#     assert tokenizer
-#     tokenizer.padding_side = "left"
+def tokenizer_config(tokenizer):
+    assert tokenizer
+    tokenizer.padding_side = "left"
 #
 #
 # def seed():
@@ -81,6 +83,6 @@ MODEL = {
 #     return train, test
 #
 #
-# def get_device():
-#     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-#     return device
+def get_device():
+    device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+    return device
