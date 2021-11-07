@@ -4,4 +4,6 @@
 # -> bên trái bên phải đều có thể T5
 # ->
 # ->
-exit()
+
+if __name__ == '__main__':
+    a = 1

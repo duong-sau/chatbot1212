@@ -1,29 +1,19 @@
 # import
 import pandas as pd
-from tqdm.auto import tqdm
-from transformers import AutoTokenizer, T5ForConditionalGeneration, BertTokenizerFast, BertForSequenceClassification
-from flask_ngrok import run_with_ngrok
 from flask import Flask, request, jsonify
 from flask_cors import CORS, cross_origin
 
 from FlaskDeploy.BM25 import get_index_bm25
 from FlaskDeploy.Cosine import get_index_bert
-from Static.Answer import get_index, pandas_to_json, get_cluster
-from Static.Config import tokenizer_config, get_device, MODEL
-
-tqdm.pandas()
-
-device = get_device()
-
-# import model
-siamese_tokenizer = AutoTokenizer.from_pretrained(MODEL['name'])
-tokenizer_config(tokenizer=siamese_tokenizer)
-siamese_model = T5ForConditionalGeneration.from_pretrained('t5-small')
-siamese_model.to(device)
-print('load siamese model success .to(' + str(device.type) + ')')
+from FlaskDeploy.T5 import get_index, get_cluster
 
 answer_df = pd.read_csv('https://raw.githubusercontent.com/duong-sau/chatbot1212/master/Model/Data/Mining/answer_list'
                         '.csv')
+
+
+def pandas_to_json(answers):
+    js = answers.to_json(orient='index')
+    return js
 
 
 def group_answer(question, t5_top_p):
@@ -38,11 +28,11 @@ def get_answer(index_and_highlight):
         row = answer_df[answer_df['label_index'] == idx].iloc[0]
         new = {'label': row['label'], 'answer': row['answer'], 'first': row['first'], 'highlight': highlight[i]}
         r = r.append(new, ignore_index=True)
-    return pandas_to_json(answer_df=r)
+    return pandas_to_json(answers=r)
 
 
 def answer_t5(question, top_k, group):
-    index = get_index(question, group, top_k, siamese_tokenizer=siamese_tokenizer, siamese_model=siamese_model)
+    index = get_index(question, group, top_k)
     answer = get_answer(index)
     return answer
 

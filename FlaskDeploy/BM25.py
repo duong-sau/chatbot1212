@@ -2,7 +2,7 @@ import pandas as pd
 from rank_bm25 import BM25Okapi
 import re
 from nltk.corpus import stopwords
-from nltk.tokenize import sent_tokenize, word_tokenize
+from nltk.tokenize import word_tokenize
 from nltk.stem import WordNetLemmatizer
 
 stop_words = list(stopwords.words('english'))
