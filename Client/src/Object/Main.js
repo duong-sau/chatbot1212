@@ -32,7 +32,7 @@ class Main extends Component {
         this.right_child.current.reset();
         if(this.state.link.trim() === ""){
             // eslint-disable-next-line react/no-direct-mutation-state
-            this.state.link =  "https://chatbot1211.herokuapp.com/";
+            this.state.link =  "http://127.0.0.1:5000/";
         }
         axios
             .get(this.state.link +'/question', {

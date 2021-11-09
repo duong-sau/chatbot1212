@@ -13,7 +13,7 @@ device = get_device()
 # import model
 siamese_tokenizer = AutoTokenizer.from_pretrained(MODEL['name'])
 tokenizer_config(tokenizer=siamese_tokenizer)
-siamese_model = T5ForConditionalGeneration.from_pretrained('duongsau/iqtree-similarity')
+siamese_model = T5ForConditionalGeneration.from_pretrained('D:\chatbot1212\Model\CheckPoint\CommandRefrence')
 siamese_model.to(device)
 
 
