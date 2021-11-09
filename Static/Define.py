@@ -1,5 +1,5 @@
 class PathCommon:
-    work = "C:\\Users\\Sau\\IdeaProjects\\chatbot1212"
+    work = "D:\\chatbot1212"
     model = work + "\\Model\\CheckPoint"
     data = work + "\\Model\\Data"
     mining = data + "\\Mining"

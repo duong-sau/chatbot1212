@@ -6,13 +6,13 @@ if __name__ == '__main__':
 
     from Model.Common import get_similarity
     from Static.Config import MODEL, tokenizer_config
-    names = []
-    for i in range(64):
-        if i == 24:
-            continue
-        bString = bin(i)[2:].zfill(6)
-        names.append(bString)
-
+    # names = []
+    # for i in range(64):
+    #     if i == 24:
+    #         continue
+    #     bString = bin(i)[2:].zfill(6)
+    #     names.append(bString)
+    names = ['CommandRefrence2']
     tqdm.pandas()
     for name in names:
         model_path = '../CheckPoint/' + name + "/"
@@ -21,12 +21,13 @@ if __name__ == '__main__':
         if not path.exists(result_dir):
             mkdir(result_dir)
         if path.exists(result_path):
-            print("result exist -> duplicate run time: ", str(int(name, 2)))
+            # print("result exist -> duplicate run time: ", str(int(name, 2)))
             continue
         else:
-            print('start run on runtime:               ', str(int(name, 2)))
+            print('start')
+            # print('start run on runtime:               ', str(int(name, 2)))
         if not path.exists(model_path):
-            print('Model not found in runtime:         ', str(int(name, 2)))
+            # print('Model not found in runtime:         ', str(int(name, 2)))
             continue
 
         tokenizer = T5Tokenizer.from_pretrained(MODEL['name'])
@@ -34,7 +35,7 @@ if __name__ == '__main__':
         model = T5ForConditionalGeneration.from_pretrained(model_path)
         model.cpu()
 
-        test_link = "C:\\Users\\Sau\\IdeaProjects\\chatbot1212\\Model\\Data\\IntentClassification\\Tutorial\\test.csv"
+        test_link = "D:\\chatbot1212\\Model\\Data\\IntentClassification\\test.csv"
 
         test_df = pd.read_csv(test_link, header=0)
         columns = ["test_id", "expected", "actual", "max2", "max3"]
@@ -42,7 +43,7 @@ if __name__ == '__main__':
 
         for index, row in tqdm(test_df.iterrows(), leave=False, total=len(test_df)):
             temp_df = pd.read_csv(
-                "C:\\Users\\Sau\\IdeaProjects\\chatbot1212\\Model\\Data\\IntentClassification\\Tutorial\\sentence_list.csv",
+                "D:\\chatbot1212\\Model\\Data\\IntentClassification\\sentence_list.csv",
                 header=0)
             test_sentence = row["sentence"]
             for i, r in temp_df.iterrows():
@@ -51,11 +52,11 @@ if __name__ == '__main__':
                                             compare_sentences=compare_sentences)
                 temp_df.loc[i, "similarity"] = similarity
             temp_df['similarity'] = pd.to_numeric(temp_df['similarity'], errors='coerce')
-            mean_df = temp_df.groupby(["intent_index"])["similarity"].mean().reset_index().sort_values("similarity")
+            mean_df = temp_df.groupby(["label_index"])["similarity"].mean().reset_index().sort_values("similarity")
             max1 = mean_df.iloc[-1]
             max2 = mean_df.iloc[-2]
             max3 = mean_df.iloc[-3]
-            new_row = {'test_id': row["sentence_index"], 'expected': row["intent_index"], 'actual': max1["intent_index"],
-                       'max2': max2["intent_index"], 'max3': max3["intent_index"]}
+            new_row = {'test_id': row["sentence_index"], 'expected': row["label_index"], 'actual': max1["label_index"],
+                       'max2': max2["label_index"], 'max3': max3["label_index"]}
             result_df = result_df.append(new_row, ignore_index=True)
         result_df.to_csv(path_or_buf=result_path, mode='w', index=False)
