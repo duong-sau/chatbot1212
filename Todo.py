@@ -13,6 +13,8 @@ def plot():
     fig, ax = plt.subplots()
     ax.plot([1, 2, 3], [1, 2, 3])
     plt.show()
+    while True:
+        print('')
 
 
 def main():
