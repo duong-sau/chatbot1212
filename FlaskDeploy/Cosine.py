@@ -20,8 +20,7 @@ def embed(sentence):
 def get_index_bert(query, group, top_k):
     emb_query = embed(query)
     result_df = pd.read_csv(
-        "https://raw.githubusercontent.com/duong-sau/chatbot1212/master/Model/Data/IntentClassification/sentence_list"
-        ".csv",
+        "https://raw.githubusercontent.com/duong-sau/chatbot1212/master/Model/Data/IntentClassification/sentence_list.csv",
         header=0)
     # result_df = pd.read_csv('C:\\Users\\Sau\\IdeaProjects\\chatbot1212\\Model\\Data\\labelClassification\\Tutorial'
     #                         '\\sentence_list.csv', header=0)

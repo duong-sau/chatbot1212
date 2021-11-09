@@ -23,8 +23,7 @@ def word_token(tokens, lemma=False):
 
 def get_index_bm25(input_query, top_k):
     result_df = pd.read_csv(
-        "https://raw.githubusercontent.com/duong-sau/chatbot1212/master/Model/Data/IntentClassification/sentence_list"
-        ".csv",
+        "https://raw.githubusercontent.com/duong-sau/chatbot1212/master/Model/Data/IntentClassification/sentence_list.csv",
         header=0)
 
     # result_df = pd.read_csv('C:\\Users\\Sau\\IdeaProjects\\chatbot1212\\Model\\Data\\IntentClassification\\Tutorial'

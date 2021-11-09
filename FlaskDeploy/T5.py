@@ -18,8 +18,7 @@ siamese_model.to(device)
 
 
 def get_cluster(input_query, top_p):
-    result_df = pd.read_csv("https://raw.githubusercontent.com/duong-sau/chatbot1212/master/Model/Data"
-                            "/IntentClassification/sentence_list.csv", header=0)
+    result_df = pd.read_csv("https://raw.githubusercontent.com/duong-sau/chatbot1212/master/Model/Data/IntentClassification/sentence_list.csv", header=0)
     input_corpus = result_df['sentence'].tolist()
     docs = [input_query] + input_corpus
     docs = [word_token(d, lemma=True) for d in docs]
