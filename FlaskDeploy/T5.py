@@ -13,12 +13,14 @@ device = get_device()
 # import model
 siamese_tokenizer = AutoTokenizer.from_pretrained(MODEL['name'])
 tokenizer_config(tokenizer=siamese_tokenizer)
-siamese_model = T5ForConditionalGeneration.from_pretrained('D:\chatbot1212\Model\CheckPoint\CommandRefrence')
+siamese_model = T5ForConditionalGeneration.from_pretrained('D:\chatbot1212\Model\CheckPoint\Command')
 siamese_model.to(device)
 
 
 def get_cluster(input_query, top_p):
-    result_df = pd.read_csv("https://raw.githubusercontent.com/duong-sau/chatbot1212/master/Model/Data/IntentClassification/sentence_list.csv", header=0)
+    result_df = pd.read_csv(
+        "https://raw.githubusercontent.com/duong-sau/chatbot1212/master/Model/Data/IntentClassification/sentence_list.csv",
+        header=0)
     input_corpus = result_df['sentence'].tolist()
     docs = [input_query] + input_corpus
     docs = [word_token(d, lemma=True) for d in docs]
@@ -37,7 +39,7 @@ def get_cluster(input_query, top_p):
 
 
 # answer the question
-def get_index(question, group, top_k):
+def get_index(question, group, top_k, x_values, y_values):
     result_df = pd.read_csv(
         "https://raw.githubusercontent.com/duong-sau/chatbot1212/master/Model/Data/IntentClassification/sentence_list"
         ".csv",
@@ -47,6 +49,8 @@ def get_index(question, group, top_k):
         compare_sentences = r["sentence"]
         similarity = get_similarity(tokenizer=siamese_tokenizer, model=siamese_model, test_sentence=question,
                                     compare_sentences=compare_sentences)
+        x_values.append(i)
+        y_values.append(similarity)
         result_df.loc[i, "similarity"] = similarity
     result_df['similarity'] = pd.to_numeric(result_df['similarity'], errors='coerce')
     mean_df = result_df.groupby(["label_index"])["similarity"].mean().reset_index().sort_values("similarity")

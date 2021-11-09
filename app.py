@@ -2,13 +2,30 @@
 import pandas as pd
 from flask import Flask, request, jsonify
 from flask_cors import CORS, cross_origin
-
+from matplotlib import pyplot as plt
+import matplotlib
+matplotlib.use('TkAgg')
+from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
+from threading import Thread
 from FlaskDeploy.BM25 import get_index_bm25
 from FlaskDeploy.Cosine import get_index_bert
 from FlaskDeploy.T5 import get_index, get_cluster
 
+plt.style.use('fivethirtyeight')
+fig = plt.figure()
+x_values = []
+y_values = []
 answer_df = pd.read_csv('https://raw.githubusercontent.com/duong-sau/chatbot1212/master/Model/Data/Mining/answer_list'
                         '.csv')
+def repaint():
+    plt.show()
+    while True:
+        a = 1
+
+
+def init():
+    x_values.clear()
+    y_values.clear()
 
 
 def pandas_to_json(answers):
@@ -32,7 +49,9 @@ def get_answer(index_and_highlight):
 
 
 def answer_t5(question, top_k, group):
-    index = get_index(question, group, top_k)
+    index = get_index(question, group, top_k, x_values, y_values)
+    fig.canvas.draw()
+    fig.canvas.flush_events()
     answer = get_answer(index)
     return answer
 
@@ -59,6 +78,7 @@ app.config['CORS_HEADERS'] = 'Content-Type'
 @app.route("/")
 @cross_origin()
 def home():
+    plt.show()
     return "<h1>Welcome to iqtree chatbot server!</h1>"
 
 
@@ -103,3 +123,4 @@ def login():
 
 
 app.run()
+

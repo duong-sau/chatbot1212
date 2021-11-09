@@ -6,13 +6,13 @@ if __name__ == '__main__':
 
     from Model.Common import get_similarity
     from Static.Config import MODEL, tokenizer_config
-    # names = []
-    # for i in range(64):
-    #     if i == 24:
-    #         continue
-    #     bString = bin(i)[2:].zfill(6)
-    #     names.append(bString)
-    names = ['CommandRefrence2']
+    names = []
+    for i in range(64):
+        if i == 24:
+            continue
+        bString = bin(i)[2:].zfill(6)
+        names.append(bString)
+    # names = ['CommandRefrence2']
     tqdm.pandas()
     for name in names:
         model_path = '../CheckPoint/' + name + "/"
@@ -21,13 +21,13 @@ if __name__ == '__main__':
         if not path.exists(result_dir):
             mkdir(result_dir)
         if path.exists(result_path):
-            # print("result exist -> duplicate run time: ", str(int(name, 2)))
+            print("result exist -> duplicate run time: ", str(int(name, 2)))
             continue
         else:
             print('start')
-            # print('start run on runtime:               ', str(int(name, 2)))
+            print('start run on runtime:               ', str(int(name, 2)))
         if not path.exists(model_path):
-            # print('Model not found in runtime:         ', str(int(name, 2)))
+            print('Model not found in runtime:         ', str(int(name, 2)))
             continue
 
         tokenizer = T5Tokenizer.from_pretrained(MODEL['name'])
