@@ -76,7 +76,7 @@ import random
 
 random.seed(1211)
 isDrop_list = [0, 1]
-drop_probability = (20, 90)
+drop_probability = (90, 20)
 
 sentences = pd.read_csv(PathCommon.train, header=0)
 input_corpus = sentences['sentence'].tolist()
@@ -102,7 +102,18 @@ for first_index, first_row in tqdm(train.iterrows(), total=len(train.index)):
 
         if first_row["label_index"] == second_row["label_index"] + 1 and first_row["cluster_index"] == \
                 second_row["cluster_index"]:
-            stsb = stsb + 0.5
+            stsb = stsb + 3
+        if first_row["label_index"] == second_row["label_index"] - 1 and first_row["cluster_index"] == \
+                second_row["cluster_index"]:
+            stsb = stsb + 3
+
+        if first_row["label_index"] == second_row["label_index"] + 2 and first_row["cluster_index"] == \
+                second_row["cluster_index"]:
+            stsb = stsb + 2
+
+        if first_row["label_index"] == second_row["label_index"] - 2 and first_row["cluster_index"] == \
+                second_row["cluster_index"]:
+            stsb = stsb + 2
 
         if (stsb == 0 or stsb == 0.4) and isDrop:
             continue

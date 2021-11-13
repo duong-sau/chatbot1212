@@ -1,4 +1,4 @@
-intent,intent_group,intent_group_index,intent_index,sentence,sentence_index
+label,cluster,cluster_index,label_index,sentence,sentence_index
 Assessing branch supports with ultrafast bootstrap approximation,Beginner’s tutorial,2.0,17.0,Assessing branch supports with ultrafast bootstrap approximation,194.0
 Input data,Beginner’s tutorial,2.0,12.0,"IQ-TREE takes as input a multiple sequence alignment and will reconstruct an evolutionary tree that is best explained by the input data. If you have raw (unaligned) sequences, you need to first run an alignment program like MAFFT or ClustalW to align the sequences, before feeding them into IQ-TREE.",129.0
 Utilizing multi-core CPUs,Beginner’s tutorial,2.0,21.0,"Therefore, I would only use 3 cores for this example data. For later analysis with your same data set, you can stick to the determined number.",228.0
