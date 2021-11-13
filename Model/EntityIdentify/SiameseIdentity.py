@@ -1,3 +1,5 @@
+import socket
+
 if __name__ == '__main__':
     import pandas as pd
     from tqdm.auto import tqdm
@@ -6,29 +8,38 @@ if __name__ == '__main__':
 
     from Model.Common import get_similarity
     from Static.Config import MODEL, tokenizer_config
-    names = []
-    for i in range(64):
-        if i == 24:
-            continue
-        bString = bin(i)[2:].zfill(6)
-        names.append(bString)
-    # names = ['CommandRefrence2']
+
+    HOST = '127.0.0.1'
+    PORT = 8000
+
+    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    server_address = (HOST, PORT)
+    print('connecting to %s port ' + str(server_address))
+    s.connect(server_address)
+
+    # names = []
+    # for i in range(64):
+    #     if i == 24:
+    #         continue
+    #     bString = bin(i)[2:].zfill(6)
+    #     names.append(bString)
+    names = ['Command']
     tqdm.pandas()
     for name in names:
         model_path = '../CheckPoint/' + name + "/"
         result_dir = '../Result/' + name
         result_path = result_dir + '/result.csv'
-        if not path.exists(result_dir):
-            mkdir(result_dir)
-        if path.exists(result_path):
-            print("result exist -> duplicate run time: ", str(int(name, 2)))
-            continue
-        else:
-            print('start')
-            print('start run on runtime:               ', str(int(name, 2)))
-        if not path.exists(model_path):
-            print('Model not found in runtime:         ', str(int(name, 2)))
-            continue
+        # if not path.exists(result_dir):
+        #     mkdir(result_dir)
+        # if path.exists(result_path):
+        #     print("result exist -> duplicate run time: ", str(int(name, 2)))
+        #     continue
+        # else:
+        #     print('start')
+        #     print('start run on runtime:               ', str(int(name, 2)))
+        # if not path.exists(model_path):
+        #     print('Model not found in runtime:         ', str(int(name, 2)))
+        #     continue
 
         tokenizer = T5Tokenizer.from_pretrained(MODEL['name'])
         tokenizer_config(tokenizer=tokenizer)
@@ -42,6 +53,7 @@ if __name__ == '__main__':
         result_df = pd.DataFrame(columns=columns)
 
         for index, row in tqdm(test_df.iterrows(), leave=False, total=len(test_df)):
+            s.sendall(bytes('clear-t5', "utf8"))
             temp_df = pd.read_csv(
                 "D:\\chatbot1212\\Model\\Data\\IntentClassification\\sentence_list.csv",
                 header=0)
@@ -50,6 +62,7 @@ if __name__ == '__main__':
                 compare_sentences = r["sentence"]
                 similarity = get_similarity(tokenizer=tokenizer, model=model, test_sentence=test_sentence,
                                             compare_sentences=compare_sentences)
+                s.sendall(bytes('t5_'+str(similarity), "utf8"))
                 temp_df.loc[i, "similarity"] = similarity
             temp_df['similarity'] = pd.to_numeric(temp_df['similarity'], errors='coerce')
             mean_df = temp_df.groupby(["label_index"])["similarity"].mean().reset_index().sort_values("similarity")
