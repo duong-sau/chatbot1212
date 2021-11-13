@@ -12,14 +12,14 @@ export default App;
 global.method = {
   cosine:{
     select:'Embedding method',
-    caption: 'Cosine similarity method',
+    caption: 'Method',
     key:[
     'Bert',
     'BM25',
   ]},
   t5:{
     select:'Number cluster',
-    caption: 'T5 similarity method',
+    caption: 'Method',
     key:[
       1,
       2,

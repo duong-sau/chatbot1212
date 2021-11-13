@@ -1,28 +1,38 @@
-# Todo
-# -> demo với bộ câu trên google group -> pdf
-# -> demo online
-# -> bên trái bên phải đều có thể T5
-# ->
-# ->
-
 import matplotlib.pyplot as plt
-from threading import Thread
+import multiprocessing as mp
+import random
+import numpy
+import time
 
 
-def plot():
-    fig, ax = plt.subplots()
-    ax.plot([1, 2, 3], [1, 2, 3])
-    plt.show()
+def worker(q):
+    # plt.ion()
+    fig = plt.figure()
+    ax = fig.add_subplot(111)
+    ln, = ax.plot([], [])
+    fig.canvas.draw()  # draw and show it
+    plt.show(block=False)
+
     while True:
-        print('')
+        obj = q.get()
+        n = obj + 0
+        print("sub : got:", n)
 
+        ln.set_xdata(numpy.append(ln.get_xdata(), n))
+        ln.set_ydata(numpy.append(ln.get_ydata(), n))
+        ax.relim()
 
-def main():
-    thread = Thread(target=plot)
-    thread.setDaemon(True)
-    thread.start()
-    print('Done')
+        ax.autoscale_view(True, True, True)
+        fig.canvas.draw()
 
 
 if __name__ == '__main__':
-    main()
+    queue = mp.Queue()
+    p = mp.Process(target=worker, args=(queue,))
+    p.start()
+
+    while True:
+        n = random.random() * 5
+        print("main: put:", n)
+        queue.put(n)
+        time.sleep(1.0)
