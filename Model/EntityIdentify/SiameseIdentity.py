@@ -23,7 +23,7 @@ if __name__ == '__main__':
     #         continue
     #     bString = bin(i)[2:].zfill(6)
     #     names.append(bString)
-    names = ['000001']
+    names = ['Balance']
     tqdm.pandas()
     for name in names:
         model_path = '../CheckPoint/' + name + "/"
@@ -43,7 +43,7 @@ if __name__ == '__main__':
 
         tokenizer = T5Tokenizer.from_pretrained(MODEL['name'])
         tokenizer_config(tokenizer=tokenizer)
-        model = T5ForConditionalGeneration.from_pretrained(model_path)
+        model = T5ForConditionalGeneration.from_pretrained('t5-small')
         model.cpu()
 
         test_link = "D:\\chatbot1212\\Model\\Data\\IntentClassification\\Tutorial\\test.csv"
@@ -53,7 +53,8 @@ if __name__ == '__main__':
         result_df = pd.DataFrame(columns=columns)
 
         for index, row in tqdm(test_df.iterrows(), leave=False, total=len(test_df)):
-            s.sendall(bytes('clear-t5', "utf8"))
+            s.sendall(bytes('clr-t5', "utf8"))
+            s.sendall(bytes('clr-ln', "utf8"))
             temp_df = pd.read_csv(
                 "D:\\chatbot1212\\Model\\Data\\IntentClassification\\Tutorial\\sentence_list.csv",
                 header=0)
@@ -69,6 +70,7 @@ if __name__ == '__main__':
             max1 = mean_df.iloc[-1]
             max2 = mean_df.iloc[-2]
             max3 = mean_df.iloc[-3]
+            ls = temp_df[temp_df['label_index'] == max1['label_index']]['sentence_index'].tolist()
             new_row = {'test_id': row["sentence_index"], 'expected': row["label_index"], 'actual': max1["label_index"],
                        'max2': max2["label_index"], 'max3': max3["label_index"]}
             result_df = result_df.append(new_row, ignore_index=True)

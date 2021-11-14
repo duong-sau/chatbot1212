@@ -1,3 +1,6 @@
+import socket
+import time
+
 import pandas as pd
 from rank_bm25 import BM25Okapi
 from tqdm import tqdm
@@ -7,11 +10,11 @@ from Model.Common import to_sts_sentence
 from Static.Config import train_validate_test_split
 from Static.Define import PathCommon
 
-sentence_df = pd.read_csv(PathCommon.sentence)
-
-train, test = train_validate_test_split(sentence_df)
-test.to_csv(PathCommon.test, index=False)
-train.to_csv(PathCommon.train, index=False)
+# sentence_df = pd.read_csv(PathCommon.sentence)
+#
+# train, test = train_validate_test_split(sentence_df)
+# test.to_csv(PathCommon.test, index=False)
+# train.to_csv(PathCommon.train, index=False)
 
 train = pd.read_csv(PathCommon.train, header=0)
 
@@ -71,7 +74,13 @@ for first_index, first_row in tqdm(train.iterrows(), total=len(train.index)):
     learn_data_df = learn_data_df.append(new, ignore_index=True)
 learn_data_df.to_csv(PathCommon.learn_data_hed , index=False)
 """
+HOST = '127.0.0.1'
+PORT = 8000
 
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+server_address = (HOST, PORT)
+print('connecting to %s port ' + str(server_address))
+# s.connect(server_address)
 import random
 
 random.seed(1211)
@@ -83,7 +92,7 @@ input_corpus = sentences['sentence'].tolist()
 
 learn_data_df = pd.DataFrame()
 for first_index, first_row in tqdm(train.iterrows(), total=len(train.index)):
-
+    # s.sendall(bytes('clr-t5', "utf8"))
     docs = [first_row['sentence']] + input_corpus
     docs = [word_token(d, lemma=True) for d in docs]
     tokenized_corpus = [doc.split(' ') for doc in docs]
@@ -102,26 +111,30 @@ for first_index, first_row in tqdm(train.iterrows(), total=len(train.index)):
 
         if first_row["label_index"] == second_row["label_index"] + 1 and first_row["cluster_index"] == \
                 second_row["cluster_index"]:
-            stsb = stsb + 3
+            stsb = stsb + 2.2
         if first_row["label_index"] == second_row["label_index"] - 1 and first_row["cluster_index"] == \
                 second_row["cluster_index"]:
-            stsb = stsb + 3
+            stsb = stsb + 2.2
 
         if first_row["label_index"] == second_row["label_index"] + 2 and first_row["cluster_index"] == \
                 second_row["cluster_index"]:
-            stsb = stsb + 2
+            stsb = stsb + 1
 
         if first_row["label_index"] == second_row["label_index"] - 2 and first_row["cluster_index"] == \
                 second_row["cluster_index"]:
-            stsb = stsb + 2
+            stsb = stsb + 1
 
         if (stsb == 0 or stsb == 0.4) and isDrop:
             continue
-
-        stsb += score
+        if first_row["cluster_index"] == second_row["cluster_index"]:
+            stsb += min(score, 10) / 1.75
+        else:
+            stsb += min(score, 10) / 3.5
         if stsb >= 5.0:
             stsb = 5.0
         stsb = str(round(stsb, 1))
+        # time.sleep(0.075)
+        # s.sendall(bytes('t5_' + stsb, "utf8"))
         source = to_sts_sentence(sentence1=first_row["sentence"], sentence2=second_row["sentence"])
         new = {"source": source, 'target': str(stsb)}
         learn_data_df = learn_data_df.append(new, ignore_index=True)

@@ -7,7 +7,6 @@ from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 from nltk.stem import WordNetLemmatizer
 
-
 stop_words = list(stopwords.words('english'))
 lemmatizer = WordNetLemmatizer()
 
@@ -25,7 +24,7 @@ def word_token(tokens, lemma=False):
 
 
 def get_index_bm25(input_query, top_k, s):
-    s.sendall(bytes('clear-bm', "utf8"))
+    s.sendall(bytes('clr-bm', "utf8"))
     result_df = pd.read_csv(
         "https://raw.githubusercontent.com/duong-sau/chatbot1212/master/Model/Data/IntentClassification/sentence_list.csv",
         header=0)
@@ -46,7 +45,7 @@ def get_index_bm25(input_query, top_k, s):
     result_list = bm25.get_scores(input_query).tolist()
     for similarity in result_list:
         time.sleep(0.075)
-        s.sendall(bytes('bm_'+str(similarity/5), "utf8"))
+        s.sendall(bytes('bm_' + str(format(similarity / 5, '.1f')), "utf8"))
     result_df['similarity'] = result_list
     mean_df = result_df.groupby(["label_index"])["similarity"].mean().reset_index().sort_values("similarity")
     max_list = []
