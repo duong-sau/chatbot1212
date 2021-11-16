@@ -31,10 +31,11 @@ def all_evaluate():
             else:
                 not_match += 1
         name = item
-        # try:
-        #     name = int(name, 2)
-        # except ValueError:
-        #     print(name)
+        try:
+            name = int(name, 2)
+            continue
+        except ValueError:
+            print(name)
         new_row = {'name': name, 'match_1': match_max1, 'match_2': match_max2, 'match_3': match_max3}
         out_df = out_df.append(new_row, ignore_index=True)
     out_df.to_csv('../Result/all_result.csv', index=False)

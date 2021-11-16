@@ -12,12 +12,11 @@ tokenizer_config(tokenizer=tokenizer)
 assert tokenizer
 
 config = T5Config.from_pretrained(MODEL['name'])
-# config.num_decoder_layers = MODEL['num_decoder_layers']
 model = T5ForConditionalGeneration.from_pretrained(MODEL['name'], config=config)
 freeze_layer(model, MODEL['num_freeze'])
 # optimizer = getOptimizer(model)
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-model.cuda()
+model.to(device)
 assert model
 
 data = pd.read_csv(MODEL['data_link'], header=0)

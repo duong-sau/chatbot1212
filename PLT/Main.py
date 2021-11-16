@@ -16,7 +16,7 @@ y_bm = [0]
 fig, ax = plt.subplots(2, 1)
 
 line_t5, = ax[0].plot(x_t5, y_t5, 'r-')
-ax[0].set_ylim(0, 10)
+ax[0].set_ylim(0, 5.5)
 ax[0].set_xlim(0, 275)
 fill_between_col = ax[0].fill_betweenx(y_t5, line[0], line[-1])
 line_bm, = ax[1].plot(x_bm, y_bm, 'r-')
@@ -64,7 +64,7 @@ while True:
                 plt.pause(0.01)
             if str_data.startswith('t5_'):
                 try:
-                    i = float(str_data[3:])*1.8
+                    i = float(str_data[3:])
                 except ValueError:
                     i = 0
                 x_t5.append(x_t5[-1] + 1)

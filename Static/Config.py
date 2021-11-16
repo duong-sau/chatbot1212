@@ -5,21 +5,19 @@ import random
 import numpy as np
 from transformers import TrainingArguments
 
+from Static.Define import PathCommon
+
 MODEL = {
-    'name': 't5-small',
-    'classification_name': 'bert-base-uncased',
-    'data_link': "https://raw.githubusercontent.com/duong-sau/chatbot1212/master/Model/Data/IntentClassification/POS"
-                 "/learn_data.csv",
-    'max_length': 512,
-    'num_class': 2,
-    'num_decoder_layers': 6,
-    'num_freeze': [2, 3, 4],
+    'name': 't5-base',
+    'data_link': "https://raw.githubusercontent.com/duong-sau/chatbot1212/b60061a15109adce2c441e71c97929f7206ed6d8"
+                 "/Model/Data/IntentClassification/Positive/learn_data.csv",
+    'num_freeze': [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
     'SEED': 1211
 }
 
 strategy = 'epoch'
 training_args = TrainingArguments(
-    output_dir="/content/drive/MyDrive",
+    output_dir=PathCommon.model + "\\Save",
     overwrite_output_dir=True,
     save_strategy=strategy,
     disable_tqdm=False,
@@ -28,7 +26,7 @@ training_args = TrainingArguments(
     per_device_train_batch_size=4,
     per_device_eval_batch_size=4,
     gradient_accumulation_steps=16,
-    evaluation_strategy=strategy,
+    evaluation_strategy='epoch',
     # logging_steps = 16,
     # eval_steps=16,
     fp16=False,
@@ -43,13 +41,15 @@ training_args = TrainingArguments(
 
 def freeze_layer(model, freeze):
     for index, layer in enumerate(model.base_model.encoder.block):
-        if index + 1 not in freeze:
+        if freeze[index] == 0:
             print('not freeze layer:' + str(index + 1))
             continue
-        else:
+        elif freeze[index] == 1:
             print('freeze layer     :' + str(index + 1))
             for param in layer.parameters():
                 param.requires_grad = False
+        else:
+            raise "freeze layer invalid format"
 
 
 def tokenizer_config(tokenizer):

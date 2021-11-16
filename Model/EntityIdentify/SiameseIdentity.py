@@ -23,14 +23,14 @@ if __name__ == '__main__':
     #         continue
     #     bString = bin(i)[2:].zfill(6)
     #     names.append(bString)
-    names = ['Balance']
+    names = ['BASE']
     tqdm.pandas()
     for name in names:
         model_path = '../CheckPoint/' + name + "/"
         result_dir = '../Result/' + name
         result_path = result_dir + '/result.csv'
-        # if not path.exists(result_dir):
-        #     mkdir(result_dir)
+        if not path.exists(result_dir):
+            mkdir(result_dir)
         # if path.exists(result_path):
         #     print("result exist -> duplicate run time: ", str(int(name, 2)))
         #     continue
@@ -43,7 +43,7 @@ if __name__ == '__main__':
 
         tokenizer = T5Tokenizer.from_pretrained(MODEL['name'])
         tokenizer_config(tokenizer=tokenizer)
-        model = T5ForConditionalGeneration.from_pretrained('t5-small')
+        model = T5ForConditionalGeneration.from_pretrained('t5-base')
         model.cpu()
 
         test_link = "D:\\chatbot1212\\Model\\Data\\IntentClassification\\Tutorial\\test.csv"
