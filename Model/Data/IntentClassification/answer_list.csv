@@ -1,3 +1,3 @@
-answer_index,answer,label_index,label,cluster_index,cluster
-3.0,http://www.iqtree.org/doc/Advanced-Tutorial#choosing-the-right-partitioning-scheme,3.0,Choosing the right partitioning scheme,1.0,Advanced tutorial
-4.0,http://www.iqtree.org/doc/Advanced-Tutorial#ultrafast-bootstrapping-with-partition-model,4.0,Ultrafast bootstrapping with partition model,1.0,Advanced tutorial
+answer,answer_index,cluster,cluster_index,first,label,label_index
+http://www.iqtree.org/doc/Advanced-Tutorial#choosing-the-right-partitioning-scheme,3.0,Advanced tutorial,1.0,"ModelFinder implements a greedy strategy (Lanfear et al., 2012) that starts with the full partition model and subsequentially merges two genes until the model fit does not increase any further:",Choosing the right partitioning scheme,3.0
+http://www.iqtree.org/doc/Advanced-Tutorial#ultrafast-bootstrapping-with-partition-model,4.0,Advanced tutorial,1.0,"IQ-TREE can perform the ultrafast bootstrap with partition models by e.g.,",Ultrafast bootstrapping with partition model,4.0

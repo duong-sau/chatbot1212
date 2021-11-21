@@ -1,5 +1,6 @@
 import os
 
+import nltk
 from bs4 import BeautifulSoup
 import pandas as pd
 from tqdm import tqdm
@@ -35,6 +36,7 @@ def train_mining():
                 group_by_tag(html, Tag.h2, Tag.classify1)
                 head = html.find_all(Tag.classify1)
                 for h in head:
+                    es = nltk.sent_tokenize(h.text)
                     elements = h.find_all(recursive=False)
                     h2 = h.h2
                     label_index = label_index + 1
@@ -47,20 +49,26 @@ def train_mining():
                            'label_index': label_index, 'label': label,
                            'cluster_index': cluster_index, "cluster": cluster, }
                     answer_df = answer_df.append(new, ignore_index=True)
-                    for e in elements:
-                        value = e.text
+                    count = 0
+                    sentence = ""
+                    for index, value in enumerate(es):
                         if not value == "":
-                            sentence_index = sentence_index + 1
-                            sentence = e.text
-                            sentence = re.sub('[!@#$:\n\t]', '', sentence)
-                            sentence = re.sub('[ +]', ' ', sentence)
-                            sentence = re.sub('IQ-TREE', ' ', sentence)
-                            if '---' in sentence:
-                                continue
-                            sentence_new = {'sentence_index': sentence_index, 'sentence': sentence,
-                                            'label_index': label_index, 'label': label, "cluster_index": cluster_index,
-                                            "cluster": cluster}
-                            sentence_df = sentence_df.append(sentence_new, ignore_index=True)
+                            count += 1
+                            sentence = sentence + value
+                            if count == 3 or index == len(es)-1:
+                                sentence_index = sentence_index + 1
+                                sentence = re.sub('[!@#$:\n\t]', '', sentence)
+                                sentence = re.sub('[ +]', ' ', sentence)
+                                sentence = re.sub('IQ-TREE', ' ', sentence)
+                                if '---' in sentence:
+                                    continue
+                                sentence_new = {'sentence_index': sentence_index, 'sentence': sentence,
+                                                'label_index': label_index, 'label': label,
+                                                "cluster_index": cluster_index,
+                                                "cluster": cluster}
+                                sentence_df = sentence_df.append(sentence_new, ignore_index=True)
+                                count = 0
+                                sentence = ""
         break
     label_df.to_csv(PathCommon.label_list, index=False, mode='w')
     sentence_df.to_csv(PathCommon.sentence_list, index=False, mode='w')

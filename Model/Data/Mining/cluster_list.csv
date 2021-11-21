@@ -1,17 +1,17 @@
-cluster_index,cluster
-1.0,Advanced tutorial
-2.0,Assessing phylogenetic assumptions
-3.0,Beginner’s tutorial
-4.0,Command reference
-5.0,Compilation guide
-6.0,Complex models
-7.0,Concordance Factor
-8.0,Developer guide
-9.0,Frequently asked questions
-10.0,Getting started
-11.0,Introduction
-12.0,Phylogenetic Dating
-13.0,Polymorphism-aware models
-14.0,Rooting phylogenetic trees
-15.0,Substitution models
-16.0,Web server tutorial
+cluster,cluster_index
+Advanced tutorial,1.0
+Assessing phylogenetic assumptions,2.0
+Beginner’s tutorial,3.0
+Command reference,4.0
+Compilation guide,5.0
+Complex models,6.0
+Concordance Factor,7.0
+Developer guide,8.0
+Frequently asked questions,9.0
+Getting started,10.0
+Introduction,11.0
+Phylogenetic Dating,12.0
+Polymorphism-aware models,13.0
+Rooting phylogenetic trees,14.0
+Substitution models,15.0
+Web server tutorial,16.0
