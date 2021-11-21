@@ -2,6 +2,7 @@ import nltk
 from sklearn.metrics import accuracy_score
 from statistics import mean
 
+
 def to_sts_sentence(sentence1, sentence2):
     prefix = 'stsb '
     s1 = 'sentence1: '
@@ -34,6 +35,7 @@ def get_similarity(tokenizer, model, test_sentence, compare_sentences):
         return float(ss[0])
     except ValueError:
         return 0
+
 
 def compute_metrics(pred):
     labels = pred.label_ids
