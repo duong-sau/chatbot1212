@@ -15,9 +15,9 @@ device = get_device()
 # import model
 siamese_tokenizer = AutoTokenizer.from_pretrained(MODEL['name'])
 tokenizer_config(tokenizer=siamese_tokenizer)
-# siamese_model = T5ForConditionalGeneration.from_pretrained('D:\\chatbot1212\\Model\\CheckPoint\\Blance')
-# siamese_model = T5ForConditionalGeneration.from_pretrained('t5-base')
-siamese_model = T5ForConditionalGeneration.from_pretrained('t5-small')
+# siamese_model = T5ForConditionalGeneration.from_pretrained('D:\\chatbot1212\\Model\\CheckPoint\\checkpoint-213')
+siamese_model = T5ForConditionalGeneration.from_pretrained('t5-base')
+# siamese_model = T5ForConditionalGeneration.from_pretrained('t5-small')
 siamese_model.to(device)
 
 

@@ -23,7 +23,7 @@ if __name__ == '__main__':
     #         continue
     #     bString = bin(i)[2:].zfill(6)
     #     names.append(bString)
-    names = ['NhuHoa']
+    names = ['checkpoint-213']
     tqdm.pandas()
     for name in names:
         model_path = '../CheckPoint/' + name + "/"

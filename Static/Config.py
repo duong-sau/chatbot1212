@@ -8,10 +8,10 @@ from transformers import TrainingArguments
 from Static.Define import PathCommon
 
 MODEL = {
-    'name': 't5-base',
+    'name': 't5-small',
     'data_link': "https://raw.githubusercontent.com/duong-sau/chatbot1212/master/Model/Data/IntentClassification"
                  "/Positive/learn_data.csv",
-    'num_freeze': [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+    'num_freeze': [1, 1, 1, 0, 1, 0],
     'SEED': 1211
 }
 

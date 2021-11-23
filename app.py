@@ -15,7 +15,7 @@ server_address = (HOST, PORT)
 print('connecting to %s port ' + str(server_address))
 s.connect(server_address)
 
-answer_df = pd.read_csv('https://raw.githubusercontent.com/duong-sau/chatbot1212/master/Model/Data/Mining/answer_list'
+answer_df = pd.read_csv('https://raw.githubusercontent.com/duong-sau/chatbot1212/master/Model/Data/IntentClassification/answer_list'
                         '.csv')
 
 
