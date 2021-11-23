@@ -9,15 +9,15 @@ from Static.Define import PathCommon
 
 MODEL = {
     'name': 't5-base',
-    'data_link': "https://raw.githubusercontent.com/duong-sau/chatbot1212/b60061a15109adce2c441e71c97929f7206ed6d8"
-                 "/Model/Data/IntentClassification/Positive/learn_data.csv",
+    'data_link': "https://raw.githubusercontent.com/duong-sau/chatbot1212/master/Model/Data/IntentClassification"
+                 "/Positive/learn_data.csv",
     'num_freeze': [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
     'SEED': 1211
 }
 
 strategy = 'epoch'
 training_args = TrainingArguments(
-    output_dir=PathCommon.model + "\\Save",
+    output_dir="D:\\chatbot1212\\Model\\CheckPoint",
     overwrite_output_dir=True,
     save_strategy=strategy,
     disable_tqdm=False,
@@ -30,7 +30,7 @@ training_args = TrainingArguments(
     # logging_steps = 16,
     # eval_steps=16,
     fp16=False,
-    warmup_steps=100,
+    warmup_steps=10,
     learning_rate=1e-3,
     adam_epsilon=1e-3,
     weight_decay=0.01,

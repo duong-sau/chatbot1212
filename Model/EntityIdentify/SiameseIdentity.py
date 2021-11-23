@@ -23,7 +23,7 @@ if __name__ == '__main__':
     #         continue
     #     bString = bin(i)[2:].zfill(6)
     #     names.append(bString)
-    names = ['BASE']
+    names = ['abcs']
     tqdm.pandas()
     for name in names:
         model_path = '../CheckPoint/' + name + "/"
@@ -43,10 +43,10 @@ if __name__ == '__main__':
 
         tokenizer = T5Tokenizer.from_pretrained(MODEL['name'])
         tokenizer_config(tokenizer=tokenizer)
-        model = T5ForConditionalGeneration.from_pretrained('t5-base')
+        model = T5ForConditionalGeneration.from_pretrained(model_path)
         model.cpu()
 
-        test_link = "D:\\chatbot1212\\Model\\Data\\IntentClassification\\Tutorial\\test.csv"
+        test_link = "D:\\chatbot1212\\Model\\Data\\IntentClassification\\test.csv"
 
         test_df = pd.read_csv(test_link, header=0)
         columns = ["test_id", "expected", "actual", "max2", "max3"]
@@ -56,7 +56,7 @@ if __name__ == '__main__':
             s.sendall(bytes('clr-t5', "utf8"))
             s.sendall(bytes('clr-ln', "utf8"))
             temp_df = pd.read_csv(
-                "D:\\chatbot1212\\Model\\Data\\IntentClassification\\Tutorial\\sentence_list.csv",
+                "D:\\chatbot1212\\Model\\Data\\IntentClassification\\sentence_list.csv",
                 header=0)
             test_sentence = row["sentence"]
             for i, r in temp_df.iterrows():
