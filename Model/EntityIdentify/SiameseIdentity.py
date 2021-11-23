@@ -23,7 +23,7 @@ if __name__ == '__main__':
     #         continue
     #     bString = bin(i)[2:].zfill(6)
     #     names.append(bString)
-    names = ['abcs']
+    names = ['NhuHoa']
     tqdm.pandas()
     for name in names:
         model_path = '../CheckPoint/' + name + "/"
@@ -41,7 +41,7 @@ if __name__ == '__main__':
         #     print('Model not found in runtime:         ', str(int(name, 2)))
         #     continue
 
-        tokenizer = T5Tokenizer.from_pretrained(MODEL['name'])
+        tokenizer = T5Tokenizer.from_pretrained(model_path)
         tokenizer_config(tokenizer=tokenizer)
         model = T5ForConditionalGeneration.from_pretrained(model_path)
         model.cpu()
