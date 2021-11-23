@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<!-- saved from url=(0032)http://www.iqtree.org/doc/Dating -->
+<html lang="en" class="csstransforms csstransforms3d csstransitions"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content=""><meta name="author" content=""><title>Phylogenetic Dating</title><link href="./Phylogenetic Dating_files/bootstrap.min.css" rel="stylesheet"><link href="./Phylogenetic Dating_files/style.css" rel="stylesheet"><link href="./Phylogenetic Dating_files/font-awesome.min.css" rel="stylesheet"><link rel="stylesheet" href="./Phylogenetic Dating_files/cookiealert.css"><script async="" src="./Phylogenetic Dating_files/async-ads.js.download"></script><script async="" src="./Phylogenetic Dating_files/analytics.js.download"></script><script src="./Phylogenetic Dating_files/cse_element__en.js.download" type="text/javascript"></script><link type="text/css" rel="stylesheet" href="./Phylogenetic Dating_files/default+en.css"><link type="text/css" rel="stylesheet" href="./Phylogenetic Dating_files/default.css"><style type="text/css">.gsc-control-cse{font-family:times new roman, arial, serif}.gsc-control-cse .gsc-table-result{font-family:times new roman, arial, serif}.gsc-refinementsGradient{background:linear-gradient(to left,rgba(255,255,255,1),rgba(255,255,255,0))}.gsc-control-cse{border-color:#337AB7;background-color:#337AB7}input.gsc-input,.gsc-input-box,.gsc-input-box-hover,.gsc-input-box-focus{border-color:#FFFFFF}.gsc-search-button-v2,.gsc-search-button-v2:hover,.gsc-search-button-v2:focus{border-color:#4CAE4C;background-color:#5CB85C;background-image:none;filter:none}.gsc-search-button-v2 svg{fill:#FFFFFF}.gsc-tabHeader.gsc-tabhActive,.gsc-refinementHeader.gsc-refinementhActive{color:#CCCCCC;border-color:#CCCCCC;background-color:#FFFFFF}.gsc-tabHeader.gsc-tabhInactive,.gsc-refinementHeader.gsc-refinementhInactive{color:#CCCCCC;border-color:#CCCCCC;background-color:#FFFFFF}.gsc-webResult.gsc-result,.gsc-results .gsc-imageResult{border-color:#F5F5F5;background-color:#F5F5F5}.gsc-webResult.gsc-result:hover{border-color:#F5F5F5;background-color:#F5F5F5}.gs-webResult.gs-result a.gs-title:link,.gs-webResult.gs-result a.gs-title:link b,.gs-imageResult a.gs-title:link,.gs-imageResult a.gs-title:link b{color:#0000CC}.gs-webResult.gs-result a.gs-title:visited,.gs-webResult.gs-result a.gs-title:visited b,.gs-imageResult a.gs-title:visited,.gs-imageResult a.gs-title:visited b{color:#0000CC}.gs-webResult.gs-result a.gs-title:hover,.gs-webResult.gs-result a.gs-title:hover b,.gs-imageResult a.gs-title:hover,.gs-imageResult a.gs-title:hover b{color:#0000CC}.gs-webResult.gs-result a.gs-title:active,.gs-webResult.gs-result a.gs-title:active b,.gs-imageResult a.gs-title:active,.gs-imageResult a.gs-title:active b{color:#0000CC}.gsc-cursor-page{color:#0000CC}a.gsc-trailing-more-results:link{color:#0000CC}.gs-webResult:not(.gs-no-results-result):not(.gs-error-result) .gs-snippet,.gs-fileFormatType{color:#000000}.gs-webResult div.gs-visibleUrl{color:#008000}.gs-webResult div.gs-visibleUrl-short{color:#008000}.gsc-cursor-box{border-color:#F5F5F5}.gsc-results .gsc-cursor-box .gsc-cursor-page{border-color:#CCCCCC;background-color:#FFFFFF;color:#CCCCCC}.gsc-results .gsc-cursor-box .gsc-cursor-current-page{border-color:#CCCCCC;background-color:#FFFFFF;color:#CCCCCC}.gsc-webResult.gsc-result.gsc-promotion{border-color:#336699;background-color:#FFFFFF}.gsc-completion-title{color:#0000CC}.gsc-completion-snippet{color:#000000}.gs-promotion a.gs-title:link,.gs-promotion a.gs-title:link *,.gs-promotion .gs-snippet a:link{color:#0000CC}.gs-promotion a.gs-title:visited,.gs-promotion a.gs-title:visited *,.gs-promotion .gs-snippet a:visited{color:#0000CC}.gs-promotion a.gs-title:hover,.gs-promotion a.gs-title:hover *,.gs-promotion .gs-snippet a:hover{color:#0000CC}.gs-promotion a.gs-title:active,.gs-promotion a.gs-title:active *,.gs-promotion .gs-snippet a:active{color:#0000CC}.gs-promotion .gs-snippet,.gs-promotion .gs-title .gs-promotion-title-right,.gs-promotion .gs-title .gs-promotion-title-right *{color:#000000}.gs-promotion .gs-visibleUrl,.gs-promotion .gs-visibleUrl-short{color:#008000}.gcsc-find-more-on-google{color:#0000CC}.gcsc-find-more-on-google-magnifier{fill:#0000CC}</style><style type="text/css">.gscb_a{display:inline-block;font:27px/13px arial,sans-serif}.gsst_a .gscb_a{color:#a1b9ed;cursor:pointer}.gsst_a:hover .gscb_a,.gsst_a:focus .gscb_a{color:#36c}.gsst_a{display:inline-block}.gsst_a{cursor:pointer;padding:0 4px}.gsst_a:hover{text-decoration:none!important}.gsst_b{font-size:16px;padding:0 2px;position:relative;user-select:none;-webkit-user-select:none;white-space:nowrap}.gsst_e{vertical-align:middle;opacity:0.55;}.gsst_a:hover .gsst_e,.gsst_a:focus .gsst_e{opacity:0.72;}.gsst_a:active .gsst_e{opacity:1;}.gsst_f{background:white;text-align:left}.gsst_g{background-color:white;border:1px solid #ccc;border-top-color:#d9d9d9;box-shadow:0 2px 4px rgba(0,0,0,0.2);-webkit-box-shadow:0 2px 4px rgba(0,0,0,0.2);margin:-1px -3px;padding:0 6px}.gsst_h{background-color:white;height:1px;margin-bottom:-1px;position:relative;top:-1px}.gsib_a{width:100%;padding:4px 6px 0}.gsib_a,.gsib_b{vertical-align:top}.gssb_c{border:0;position:absolute;z-index:989}.gssb_e{border:1px solid #ccc;border-top-color:#d9d9d9;box-shadow:0 2px 4px rgba(0,0,0,0.2);-webkit-box-shadow:0 2px 4px rgba(0,0,0,0.2);cursor:default}.gssb_f{visibility:hidden;white-space:nowrap}.gssb_k{border:0;display:block;position:absolute;top:0;z-index:988}.gsdd_a{border:none!important}.gsq_a{padding:0}.gssb_a{padding:0 7px}.gssb_a,.gssb_a td{white-space:nowrap;overflow:hidden;line-height:22px}#gssb_b{font-size:11px;color:#36c;text-decoration:none}#gssb_b:hover{font-size:11px;color:#36c;text-decoration:underline}.gssb_g{text-align:center;padding:8px 0 7px;position:relative}.gssb_h{font-size:15px;height:28px;margin:0.2em;-webkit-appearance:button}.gssb_i{background:#eee}.gss_ifl{visibility:hidden;padding-left:5px}.gssb_i .gss_ifl{visibility:visible}a.gssb_j{font-size:13px;color:#36c;text-decoration:none;line-height:100%}a.gssb_j:hover{text-decoration:underline}.gssb_l{height:1px;background-color:#e5e5e5}.gssb_m{color:#000;background:#fff}.gssb_a{padding:0 9px}.gsib_a{padding:5px 9px 4px 9px}.gscb_a{line-height:27px}.gssb_e{border:0}.gssb_l{margin:5px 0}input.gsc-input::-webkit-input-placeholder{font-size:14px}input.gsc-input:-moz-placeholder{font-size:14px}input.gsc-input::-moz-placeholder{font-size:14px}input.gsc-input:-ms-input-placeholder{font-size:14px}input.gsc-input:focus::-webkit-input-placeholder{color:transparent}input.gsc-input:focus:-moz-placeholder{color:transparent}input.gsc-input:focus::-moz-placeholder{color:transparent}input.gsc-input:focus:-ms-input-placeholder{color:transparent}.gssb_c .gsc-completion-container{position:static}.gssb_c{z-index:5000}.gsc-completion-container table{background:transparent;font-size:inherit;font-family:inherit}.gssb_c > tbody > tr,.gssb_c > tbody > tr > td,.gssb_d,.gssb_d > tbody > tr,.gssb_d > tbody > tr > td,.gssb_e,.gssb_e > tbody > tr,.gssb_e > tbody > tr > td{padding:0;margin:0;border:0}.gssb_a table,.gssb_a table tr,.gssb_a table tr td{padding:0;margin:0;border:0}</style></head><body style=""><div class="navbar navbar-default navbar-fixed-top" role="navigation"><div class="container"><div class="navbar-header"> <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button> <a class="navbar-brand" href="http://www.iqtree.org/">IQ-TREE</a></div><div class="navbar-collapse collapse navbar-right"><ul class="nav navbar-nav"><li><a data-toggle="collapse" data-target=".navbar-collapse" href="http://www.iqtree.org/#download">Download</a></li><li><a href="http://www.iqtree.org/news/">News</a></li><li class="dropdown"> <a class="dropdown-toggle" data-toggle="dropdown" href="http://www.iqtree.org/doc/Dating#">Web server <span class="caret"></span></a><ul class="dropdown-menu"><li><a href="http://iqtree.cibiv.univie.ac.at/" target="_blank">CIBIV, Austria</a></li><li><a href="https://www.hiv.lanl.gov/content/sequence/IQTREE/iqtree.html" target="_blank">Los Alamos Lab, USA</a></li><li><a href="https://www.phylo.org/" target="_blank">CIPRES Gateway, USA</a></li></ul></li><li><a href="http://www.iqtree.org/doc/">Docs</a></li><li><a href="http://www.iqtree.org/workshop/">Workshop</a></li><li><a href="http://www.iqtree.org/about/">About</a></li></ul></div></div></div><div id="blue"><div class="container"><div class="row"><div class="col-sm-6"><h3> Tutorial</h3></div><div class="col-sm-6"> <script type="text/javascript" async="" src="./Phylogenetic Dating_files/f.txt"></script><script> (function() { var cx = '003669294240048101214:pace-yz0kou'; var gcse = document.createElement('script'); gcse.type = 'text/javascript'; gcse.async = true; gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//cse.google.com/cse.js?cx=' + cx; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(gcse, s); })(); </script> <div id="___gcse_0"><div class="gsc-control-cse gsc-control-cse-en"><div class="gsc-control-wrapper-cse" dir="ltr"><form class="gsc-search-box gsc-search-box-tools" accept-charset="utf-8"><table cellspacing="0" cellpadding="0" class="gsc-search-box"><tbody><tr><td class="gsc-input"><div class="gsc-input-box" id="gsc-iw-id1"><table cellspacing="0" cellpadding="0" id="gs_id50" class="gstl_50 gsc-input" style="width: 100%; padding: 0px;"><tbody><tr><td id="gs_tti50" class="gsib_a"><input autocomplete="off" type="text" size="10" class="gsc-input" name="search" title="search" id="gsc-i-id1" dir="ltr" spellcheck="false" style="width: 100%; padding: 0px; border: none; margin: 0px; height: auto; background: url(&quot;https://www.google.com/cse/static/images/1x/en/branding.png&quot;) left center no-repeat rgb(255, 255, 255); outline: none;"></td><td class="gsib_b"><div class="gsst_b" id="gs_st50" dir="ltr"><a class="gsst_a" href="javascript:void(0)" style="display: none;" title="Clear search box" role="button"><span class="gscb_a" id="gs_cb50" aria-hidden="true">×</span></a></div></td></tr></tbody></table></div></td><td class="gsc-search-button"><button class="gsc-search-button gsc-search-button-v2"><svg width="13" height="13" viewBox="0 0 13 13"><title>search</title><path d="m4.8495 7.8226c0.82666 0 1.5262-0.29146 2.0985-0.87438 0.57232-0.58292 0.86378-1.2877 0.87438-2.1144 0.010599-0.82666-0.28086-1.5262-0.87438-2.0985-0.59352-0.57232-1.293-0.86378-2.0985-0.87438-0.8055-0.010599-1.5103 0.28086-2.1144 0.87438-0.60414 0.59352-0.8956 1.293-0.87438 2.0985 0.021197 0.8055 0.31266 1.5103 0.87438 2.1144 0.56172 0.60414 1.2665 0.8956 2.1144 0.87438zm4.4695 0.2115 3.681 3.6819-1.259 1.284-3.6817-3.7 0.0019784-0.69479-0.090043-0.098846c-0.87973 0.76087-1.92 1.1413-3.1207 1.1413-1.3553 0-2.5025-0.46363-3.4417-1.3909s-1.4088-2.0686-1.4088-3.4239c0-1.3553 0.4696-2.4966 1.4088-3.4239 0.9392-0.92727 2.0864-1.3969 3.4417-1.4088 1.3553-0.011889 2.4906 0.45771 3.406 1.4088 0.9154 0.95107 1.379 2.0924 1.3909 3.4239 0 1.2126-0.38043 2.2588-1.1413 3.1385l0.098834 0.090049z"></path></svg></button></td><td class="gsc-clear-button"><div class="gsc-clear-button" title="clear results">&nbsp;</div></td></tr></tbody></table></form><div class="gsc-results-wrapper-overlay"><div class="gsc-results-close-btn" tabindex="0"></div><div class="gsc-positioningWrapper"><div class="gsc-tabsAreaInvisible"><div aria-label="refinement" role="tab" class="gsc-tabHeader gsc-inline-block gsc-tabhActive">Custom Search</div><span class="gs-spacer"> </span></div></div><div class="gsc-positioningWrapper"><div class="gsc-tabsAreaInvisible"></div></div><div class="gsc-above-wrapper-area-invisible"><table cellspacing="0" cellpadding="0" class="gsc-above-wrapper-area-container"><tbody><tr><td class="gsc-result-info-container"><div class="gsc-result-info-invisible"></div></td><td class="gsc-orderby-container"><div class="gsc-orderby-invisible"><div class="gsc-orderby-label gsc-inline-block">Sort by:</div><div class="gsc-option-menu-container gsc-inline-block"><div class="gsc-selected-option-container gsc-inline-block"><div class="gsc-selected-option">Relevance</div><div class="gsc-option-selector"></div></div><div class="gsc-option-menu-invisible"><div class="gsc-option-menu-item gsc-option-menu-item-highlighted"><div class="gsc-option">Relevance</div></div><div class="gsc-option-menu-item"><div class="gsc-option">Date</div></div></div></div></div></td></tr></tbody></table></div><div class="gsc-adBlockInvisible"></div><div class="gsc-wrapper"><div class="gsc-adBlockInvisible"></div><div class="gsc-resultsbox-invisible"><div class="gsc-resultsRoot gsc-tabData gsc-tabdActive"><div><div class="gsc-expansionArea"></div></div></div></div></div></div><div class="gsc-modal-background-image" tabindex="0"></div></div></div></div></div></div></div></div><div class="container mtb"><div class="row"><div class="col-md-9"><p><em>Last update: Mar 11, 2021, Contributors: Minh Bui, Rob Lanfear</em></p><h1 id="phylogenetic-dating">Phylogenetic Dating</h1><p>Since IQ-TREE 2.0.3, we integrate the least square dating (LSD2) method to build a time tree when you have date information for tips or ancestral nodes. So if you use this feature please cite:</p><p><strong>Thu-Hien To, Matthieu Jung, Samantha Lycett, Olivier Gascuel</strong> (2016) Fast dating using least-squares criteria and algorithms. <em>Syst. Biol.</em> 65:82-97. <a href="https://doi.org/10.1093/sysbio/syv068">https://doi.org/10.1093/sysbio/syv068</a></p><p>We will now walk through examples but the full options are:</p><pre><code>TIME TREE RECONSTRUCTION:
+  --date FILE          Dates of tips or ancestral nodes
+  --date TAXNAME       Extract dates from taxon names after last '|'
+  --date-tip STRING    Tip dates as a real number or YYYY-MM-DD
+  --date-root STRING   Root date as a real number or YYYY-MM-DD
+  --date-ci NUM        Number of replicates to compute confidence interval
+  --clock-sd NUM       Std-dev for lognormal relaxed clock (default: 0.2)
+  --date-outlier NUM   Z-score cutoff to exclude outlier nodes (e.g. 3)
+  --date-options ".."  Extra options passing directly to LSD2
+</code></pre><blockquote><p><strong>DISCLAIMER</strong>: Please download version 2.0.6 with new options like <code>--date-ci</code>.</p><p>This feature is new and might still have bugs. So suggestions and bug reports are much welcome.</p></blockquote><h2 id="inferring-time-tree-with-tip-dates">Inferring time tree with tip dates</h2><p>This is a common scenario e.g. in virus datasets where you have sampling time for many sequences. You need first to prepare a <em>date file</em>, which comprises several lines, each with a taxon name (from your sequence alignment) and its date separated by spaces, tabs or blanks. Note that it is not required to have dates for all tips. For example, this date file is part of the new corona virus dataset:</p><pre><code>hCoV-19/Wuhan-Hu-1         2019-12-31
+hCoV-19/China/WF0028       2020-02
+hCoV-19/USA/WA-S88         2020-03-01
+hCoV-19/USA/CA-CDPH-UC1	   2020
+hCoV-19/Italy/SPL1         2020-01-29
+hCoV-19/Spain/Valencia5	   2020-02-27
+hCoV-19/Australia/QLD01	   2020-01-28
+hCoV-19/Vietnam/CM295      2020-03-06
+hCoV-19/bat/Yunnan         2013-07-24
+hCoV-19/pangolin/Guangdong 2019-02-01:2019-12-31
+</code></pre><p>The date information here can be uncertain. For example, <code>hCoV-19/China/WF0028</code> was sampled in Feb 2020, <code>hCoV-19/USA/CA-CDPH-UC1</code> was sampled in 2020, and <code>hCoV-19/pangolin/Guangdong</code> was sample between 1st Feb 2019 and 31st Dec 2019. For such data range you can use “NA” to mean that the lower or upper bound is missing, e.g.:</p><pre><code>TaxonA  2018-02-01:NA
+TaxonB  NA:2018-03-31
+</code></pre><p>which means that <code>TaxonA</code> was sampled after 1st Feb 2018 and TaxonB was sampled before 31st Mar 2018.</p><p>Now run IQ-TREE with:</p><pre><code>iqtree -s ALN_FILE --date DATE_FILE
+</code></pre><p>where <code>ALN_FILE</code> is the sequence alignment and <code>DATE_FILE</code> is the date file. This single command line will perform three steps: (1) find the best-fit model using ModelFinder, (2) find the maximum likelihood (ML) tree with branch lengths in number of substitutions per site, and (3) rescale the branch lengths of the ML tree to build a time tree with dated ancestral node. As output IQ-TREE will additional print three files:</p><ul><li><code>ALN_FILE.timetree.lsd</code>: The report of LSD.</li><li><code>ALN_FILE.timetree.nex</code>: Time tree file in NEXUS format, that can be viewed nicely in FigTree (Click on “Node Labels” on the left tab and choose “Display” as “date” in FigTree, see figure below).</li><li><code>ALN_FILE.timetree.nwk</code>: Time tree file in NEWICK format.</li></ul><p><img src="./Phylogenetic Dating_files/dating-figtree.png" alt="Node dates in FigTree"></p><p>This command will automatically detect the best root position (according to LSD criterion). However, if the root is incorrectly inferred, it may produce wrong dates. Therefore, it is advisable to provide outgroup taxa if possible. In this example, we have this information, so you can use <code>-o</code> option:</p><pre><code>iqtree -s ALN_FILE --date DATE_FILE -o "hCoV-19/bat/Yunnan,hCoV-19/pangolin/Guangdong"
+</code></pre><p>to instruct IQ-TREE that the root is on the branch separating <code>bat</code> and <code>pangolin</code> sequences from the rest.</p><p>Alternatively you can also append the dates into the sequence names of the alignment file using the <code>|</code> separator, such as (assuming a FASTA file here):</p><pre><code>&gt;hCoV-19/Wuhan-Hu-1|2019-12-31
+......
+&gt;hCoV-19/China/WF0028|2020-02
+......
+&gt;hCoV-19/USA/WA-S88|2020-03-01
+......
+&gt;hCoV-19/USA/CA-CDPH-UC1|2020
+......
+&gt;hCoV-19/Italy/SPL1|2020-01-29
+......
+&gt;hCoV-19/Spain/Valencia5|2020-02-27
+......
+&gt;hCoV-19/Australia/QLD01|2020-01-28
+......
+&gt;hCoV-19/Vietnam/CM295|2020-03-06
+......
+&gt;hCoV-19/bat/Yunnan|2013-07-24
+......
+&gt;hCoV-19/pangolin/Guangdong|2019
+......
+</code></pre><p>Then run IQ-TREE:</p><pre><code>iqtree -s ALN_FILE --date TAXNAME -o "hCoV-19/bat/Yunnan,hCoV-19/pangolin/Guangdong"
+</code></pre><p>The special keyword <code>TAXNAME</code> for the <code>--date</code> option instructs IQ-TREE to automatically extract the dates from the taxon names.</p><h2 id="calibrating-tree-using-ancestral-dates">Calibrating tree using ancestral dates</h2><p>Another scenario is that we have sequences from present day and want to calibrate the dates of the ancestral nodes. This will only work if you have fossil date record of at least one ancestral node in the tree. Then you again need to prepare a date file which looks like:</p><pre><code>taxon1,taxon2	      -50
+taxon3,taxon4,taxon5  -100
+taxon6                -10
+</code></pre><p>which, for example, mean that the most recent common ancestor (MRCA) of <code>taxon1</code> and <code>taxon2</code> was 50 mya (million year ago) and the MRCA of <code>taxon3</code>, <code>taxon4</code>, <code>taxon5</code> was 100 mya. Note that <strong>no empty space</strong> should be added to the comma-separated list of taxa, as empty space is used as a separator between taxon list and dates.</p><p>Now run IQ-TREE:</p><pre><code>iqtree -s ALN_FILE --date DATE_FILE --date-tip 0
+</code></pre><p>This means that except for <code>taxon6</code>, all other taxa have the date of 0 for presence.</p><p>If you know the root date, then you can set it via <code>--date-root</code> option.</p><h2 id="dating-an-existing-tree">Dating an existing tree</h2><p>If you already have a tree, you can use option <code>-te TREE_FILE</code> to ask IQ-TREE to load and fix this tree topology:</p><pre><code>iqtree -s ALN_FILE --date DATE_FILE -te TREE_FILE
+</code></pre><p>This will work with the scenarios above, i.e., IQ-TREE will date the user-defined tree instead of the ML tree. To further speed up the process: If you know the model already, you set can it via <code>-m</code> option; or in a partitioned analysis, you can provide a partition file with specified models.</p><h2 id="obtaining-confidence-intervals">Obtaining confidence intervals</h2><p>To infer the confidence interval of the estimated dates, use <code>--date-ci</code> option:</p><pre><code>iqtree -s ALN_FILE --date DATE_FILE --date-ci 100
+</code></pre><p>which will resample branch lengths 100 times to infer the confidence intervals. Note that this is not bootstrap and the method is much faster but unpublished. Roughly speaking, it is based on a mixture of Poisson and lognormal distributions for a relaxed clock model. You can control the standard deviation of the lognormal distribution via <code>--clock-sd</code> option. The default is 0.2. If you set a higher value, the confidence interval will become wider.</p><h2 id="excluding-outlier-taxanodes">Excluding outlier taxa/nodes</h2><p>Long branches may cause biased date estimates. To detect and exclude outlier taxa or nodes prior to dating, use <code>--date-outlier</code> option:</p><pre><code>iqtree -s ALN_FILE --date DATE_FILE --date-outlier 3
+</code></pre><p>that specifies a z-score threshold to detect outliers. The higher this value is, the more outliers will be removed from the resulting time tree.</p><h2 id="full-list-of-lsd2-options">Full list of LSD2 options</h2><p>The main options in IQ-TREE provide easy access to the key LSD2 functions. If you would like more control of what LSD2 is doing, you can use the <code>--date-options "..."</code> command to pass any valid options to LSD2. For example, to control the way that LSD2 treats outliers, you can do this:</p><pre><code>iqtree -s ALN_FILE --date DATE_FILE --date-options "-e 2"
+</code></pre><p>A full list of the options for LSD2 can be obtained by downloading LSD2 and running <code>lsd2 -h</code>, the output of that command is reproduced here for convenience:</p><pre><code>LSD: LEAST-SQUARES METHODS TO ESTIMATE RATES AND DATES - v.1.8
+
+DESCRIPTION
+	This program estimates the rate and the dates of the input phylogenies given some temporal constraints.
+	It minimizes the square errors of the branch lengths under normal distribution model.
+
+SYNOPSIS
+	./lsd [-i inputFile] [-d inputDateFile] [-o outputFile] [-s sequenceLength] [-g outgroupFile] [-f nbSamplings] 
+OPTIONS
+	-a rootDate
+	   To specify the root date if there's any. If the root date is not a number, but a string (ex: 2020-01-10, or b(2019,2020)) then it should
+	   be put between the quotes.
+	-b varianceParameter
+	   The parameter (between 0 and 1) to compute the variances in option -v. It is the pseudo positive constant to add to the branch lengths
+	   when calculating variances, to adjust the dependency of variances to branch lengths. By default b is the maximum between median branch length
+	   and 10/seqlength; but it should be adjusted  based on how/whether the input tree is relaxed or strict. The smaller it is the more variances
+	   would be linear to branch lengths, which is relevant for strict clock. The bigger it is the less effect of branch lengths on variances, 
+	   which might be better for relaxed clock.
+	-d inputDateFile
+	   This options is used to read the name of the input date file which contains temporal constraints of internal nodes
+	   or tips. An internal node can be defined either by its label (given in the input tree) or by a subset of tips that have it as 
+	   the most recent common ancestor (mrca). A date could be a real or a string or format year-month-day.
+	   The first line of this file is the number of temporal constraints. A temporal constraint can be fixed date, or a 
+	   lower bound l(value), or an upper bound u(value), or an interval b(v1,v2)
+	   For example, if the input tree has 4 taxa a,b,c,d, and an internal node named n, then following is a possible date file:
+	    6
+	    a l(2003.12)
+	    b u(2007.07)
+	    c 2005
+	    d b(2001.2,2007.11)
+	    mrca(a,b,c,d) b(2000,2001)
+	    n l(2004.3)
+	   If this option is omitted, and option -a, -z are also omitted, the program will estimate relative dates by giving T[root]=0 and T[tips]=1.
+	-D outDateFormat
+	    Specify output date format: 1 for real, 2 for year-month-day. By default the program will guess the format of input dates and uses it for
+	    output dates.
+	-e ZscoreOutlier
+	   This option is used to estimate and exclude outlier nodes before dating process.
+	   LSD2 normalize the branch residus and decide a node is outlier if its related residus is great than the ZscoreOutlier.
+	   A normal value of ZscoreOutliercould be 3, but you can adjust it bigger/smaller depending if you want to have
+	   less/more outliers. Note that for now, some functionalities could not be combined with outliers estimation, for example 
+	   estimating multiple rates, imprecise date constraints.
+	-f samplingNumberCI
+	   This option calculates the confidence intervals of the estimated rate and dates. The branch lengths of the esimated
+	   tree are sampled samplingNumberCI times to generate a set of simulated trees. To generate simulated lengths
+	   for each branch, we use a Poisson distribution whose mean equals to the estimated one multiplied by the sequence length, which is 
+	   1000 by default if nothing was specified via option -s. Long sequence length tends to give small confidence intervals. To avoid 
+	   over-estimate the confidence intervals in the case of very long sequence length but not necessarily strict molecular clock, you 
+	   could use a smaller sequence length than the actual ones. Confidence intervals are written in the nexus tree with label CI_height,
+	   and can be visualzed with Figtree under Node bar feature.
+	-g outgroupFile
+	   If your data contain outgroups, then specify the name of the outgroup file here. The program will use the outgroups to root the trees.
+	   If you use this combined with options -G, then the outgroups will be removed. The format of this file should be:
+	        n
+	        OUTGROUP1
+	        OUTGROUP2
+	        ...
+	        OUTGROUPn
+	-F 
+	   By default without this option, we impose the constraints that the date of every node is equal or smaller then the
+	   dates of its descendants, so the running time is quasi-linear. Using this option we ignore this temporal constraints, and
+	   the the running time becomes linear, much faster.
+	-h help
+	   Print this message.
+	-i inputTreesFile
+	   The name of the input trees file. It contains tree(s) in newick format, each tree on one line. Note that the taxa sets of all
+	   trees must be the same.
+	-j
+	   Verbose mode for output messages.
+	-G
+	   Use this option to remove the outgroups (given in option -g) in the estimated tree. If this option is not used, the outgroups 
+	   will be kept and the root position in estimated on the branch defined by the outgroups.
+	-l nullBlen
+	   A branch in the input tree is considered informative if its length is greater this value. By default it is 0.5/seq_length. Only 
+	   informative branches are forced to be bigger than a minimum branch length (see option -u for more information about this).
+	-m samplingNumberOutlier
+	   The number of dated nodes to be sampled when detecting outlier nodes. This should be smaller than the number of dated nodes,
+	   and is 10 by default.
+	-n datasetNumber
+	   The number of trees that you want to read and analyse.
+	-o outputFile
+	   The base name of the output files to write the results and the time-scale trees.
+	-p partitionFile
+	   The file that defines the partition of branches into multiple subsets in the case that you know each subset has a different rate.
+	   In the partition file, each line contains the name of the group, the prior proportion of the group rate compared to the main rate
+	   (selecting an appropriate value for this helps to converge faster), and a list of subtrees whose branches are supposed to have the 
+	   same substitution rate. All branches that are not assigned to any subtree form a group having another rate.
+	   A subtree is defined between {}: its first node corresponds to the root of the subtree, and the following nodes (if there any) 
+	   correspond to the tips of the subtree. If the first node is a tip label then it takes the mrca of all tips as the root of the subtree.
+	   If the tips of the subtree are not defined (so there's only the defined root), then by 
+	   default this subtree is extended down to the tips of the full tree. For example the input tree is 
+	   ((A:0.12,D:0.12)n1:0.3,((B:0.3,C:0.5)n2:0.4,(E:0.5,(F:0.2,G:0.3)n3:0.33)n4:0.22)n5:0.2)root;
+	   and you have the following partition file:
+	         group1 1 {n1} {n5 n4}
+	         group2 1 {n3}
+	   then there are 3 rates: the first one includes the branches (n1,A), (n1,D), (n5,n4), (n5,n2), (n2,B), (n2,C); the second one 
+	   includes the branches (n3,F), (n3,G), and the last one includes all the remaining branches. If the internal nodes don't have labels,
+	   then they can be defined by mrca of at least two tips, for example n1 is mrca(A,D)
+	-q standardDeviationRelaxedClock
+	   This value is involved in calculating confidence intervals to simulate a lognormal relaxed clock. We multiply the simulated branch lengths
+	   with a lognormal distribution with mean 1, and standard deviation q. By default q is 0.2. The bigger q is, the more your tree is relaxed
+	   and give you bigger confidence intervals.
+	-r rootingMethod
+	   This option is used to specify the rooting method to estimate the position of the root for unrooted trees, or
+	   re-estimate the root for rooted trees. The principle is to search for the position of the root that minimizes
+	   the objective function.
+	   Use -r l if your tree is rooted, and you want to re-estimate the root locally around the given root.
+	   Use -r a if you want to estimate the root on all branches (ignoring the given root if the tree is rooted).
+	       In this case, if the constrained mode is chosen (option -c), method "a" first estimates the root without using the constraints.
+	       After that, it uses the constrained mode to improve locally the position of the root around this pre-estimated root.
+	   Use -r as if you want to estimate to root using constrained mode on all branches.
+	   Use -r k if you want to re-estimate the root position on the same branche of the given root.
+	       If combined with option -g, the root will be estimated on the branche defined by the outgroups.
+	-R round_time
+	   This value is used to round the minimum branch length of the time scaled tree. The purpose of this is to make the minimum branch length
+	   a meaningful time unit, such as day, week, year ... By default this value is 365, so if the input dates are year, the minimum branch
+	   length is rounded to day. The rounding formula is round(R*minblen)/R.
+	-s sequenceLength
+	   This option is used to specify the sequence length when estimating confidence intervals (option -f). It is used to generate 
+	   integer branch lengths (number of substitutions) by multiplying this with the estimated branch lengths. By default it is 1000.
+	-S minSupport
+	   Together with collapsing internal short branches (see option -l), users can also collapse internal branches having weak support values (if
+	   provided in the input tree) by using this option. The program will collapse all internal branches having support &lt;= the specifed value.
+	-t rateLowerBound
+	   This option corresponds to the lower bound for the estimating rate. It is 1e-10 by default.
+	-u minBlen
+	   By default without this option, lsd2 forces every branch of the time scaled tree to be greater than 1/(seq_length*rate) where rate is
+	   an pre-estimated median rate. This value is rounded to the number of days or weeks or years, depending on the rounding parameter -R.
+	   By using option -u, the program will not estimate the minimum branch length but use the specified value instead.
+	-U minExBlen
+	   Similar to option -u but applies for external branches if specified. If it's not specified then the minimum branch length of external
+	   branches is set the same as the one of internal branch.
+	-v variance
+	   Use this option to specify the way you want to apply variances for the branch lengths. Variances are used to recompense big errors on
+	   long estimated branch lengths. The variance of the branch Bi is Vi = (Bi+b) where b is specified by option -b.
+	   If variance=0, then we don't use variance. If variance=1, then LSD uses the input branch lengths to calculate variances.
+	   If variance=2, then LSD runs twice where the second time it calculates the variances based on the estimated branch
+	   lengths of the first run. By default variance=1.
+	-V 
+	   Get the actual version.
+	-w givenRte
+	   This option is used to specify the name of the file containing the substitution rates.
+	   In this case, the program will use the given rates to estimate the dates of the nodes.
+	   This file should have the following format
+	        RATE1
+	        RATE2
+	        ...
+	  where RATEi is the rate of the tree i in the inputTreesFile.
+	-z tipsDate
+	   To specify the tips date if they are all equal. If the tips date is not a number, but a string (ex: 2020-01-10, or b(2019,2020))
+	   then it should be put between the quotes.
+</code></pre><div class="spacing"></div></div><div class="col-md-3"><div class="well well-sm"> <a href="http://www.iqtree.org/doc/iqtree-doc.pdf"><i class="fa fa-file-pdf-o fa-lg" aria-hidden="true"></i> Download Tutorials and Manual in one PDF</a></div><div class="well well-sm" id="sidebar"><h4>Documentation</h4><p> <a href="http://www.iqtree.org/doc/Home"> <i class="fa fa-info-circle"></i> Introduction </a></p><p> <a href="http://www.iqtree.org/doc/Quickstart"> <i class="fa fa-info-circle"></i> Getting Started </a></p><p> <a href="http://www.iqtree.org/doc/Web-Server-Tutorial"> <i class="fa fa-info-circle"></i> Web Server Tutorial </a></p><p> <a href="http://www.iqtree.org/doc/Tutorial"> <i class="fa fa-info-circle"></i> Beginner's Tutorial </a></p><p> <a href="http://www.iqtree.org/doc/Advanced-Tutorial"> <i class="fa fa-info-circle"></i> Advanced Tutorial </a></p><p> <a href="http://www.iqtree.org/doc/Assessing-Phylogenetic-Assumptions"> <i class="fa fa-info-circle"></i> Assessing Phylogenetic Assumptions </a></p><p> <a href="http://www.iqtree.org/doc/Concordance-Factor"> <i class="fa fa-info-circle"></i> Concordance Factor </a></p><p> <i class="fa fa-info-circle"></i> Phylogenetic Dating</p><ul><li><a href="http://www.iqtree.org/doc/Dating#inferring-time-tree-with-tip-dates">Inferring time tree with tip dates</a></li><li><a href="http://www.iqtree.org/doc/Dating#calibrating-tree-using-ancestral-dates">Calibrating tree using ancestral dates</a></li><li><a href="http://www.iqtree.org/doc/Dating#dating-an-existing-tree">Dating an existing tree</a></li><li><a href="http://www.iqtree.org/doc/Dating#obtaining-confidence-intervals">Obtaining confidence intervals</a></li><li><a href="http://www.iqtree.org/doc/Dating#excluding-outlier-taxanodes">Excluding outlier taxa/nodes</a></li><li><a href="http://www.iqtree.org/doc/Dating#full-list-of-lsd2-options">Full list of LSD2 options</a></li></ul><p> <a href="http://www.iqtree.org/doc/Rootstrap"> <i class="fa fa-info-circle"></i> Rooting phylogenies </a></p><p> <a href="http://www.iqtree.org/doc/Frequently-Asked-Questions"> <i class="fa fa-question-circle"></i> Frequently Asked Questions </a></p><p> <a href="http://www.iqtree.org/doc/Substitution-Models"> <i class="fa fa-book"></i> Substitution Models </a></p><p> <a href="http://www.iqtree.org/doc/Complex-Models"> <i class="fa fa-book"></i> Complex Models </a></p><p> <a href="http://www.iqtree.org/doc/Polymorphism-Aware-Models"> <i class="fa fa-book"></i> Polymorphism-Aware Models </a></p><p> <a href="http://www.iqtree.org/doc/Command-Reference"> <i class="fa fa-book"></i> Command Reference </a></p><p> <a href="http://www.iqtree.org/doc/Compilation-Guide"> <i class="fa fa-book"></i> Compilation Guide </a></p><p> <a href="http://www.iqtree.org/doc/Developer-Guide"> <i class="fa fa-codepen"></i> Developer Guide </a></p><p> <a href="http://www.iqtree.org/doc/Analyzing-Big-Data"> <i class="fa fa-info-circle"></i> Analyzing Big Data </a></p></div></div></div></div><div id="footerwrap"><div class="container"><div class="row"><div class="col-sm-4"><h4>Software</h4><p> <a href="http://www.iqtree.org/release/">IQ-TREE release notes</a><br> <a href="https://github.com/Cibiv/IQ-TREE">GitHub repository</a><br> <a href="http://www.iqtree.org/about/">Development team</a><br> <a href="http://www.somsubhra.com/github-release-stats/?username=Cibiv&amp;repository=IQ-TREE">Download statistics</a><br></p></div><div class="col-sm-4"><h4>User support</h4><p> <a href="http://www.iqtree.org/doc/Frequently-Asked-Questions">Frequently asked questions</a><br> <a href="http://www.iqtree.org/doc/">User documentation</a><br> <a href="https://groups.google.com/d/forum/iqtree">IQ-TREE Google group</a><br> <a href="http://iqtree.cibiv.univie.ac.at/" target="_blank">IQ-TREE online web service</a><br></p></div><div class="col-sm-4"><h4>Links</h4><p> <a href="https://cs.anu.edu.au/">Research School of Computer Science, ANU</a><br> <a href="http://www.cibiv.at/">Center for Integrative Bioinformatics Vienna</a><br> <a href="http://validator.w3.org/check/referer">Link Checker</a><br></p></div></div></div></div><div class="alert alert-dismissible text-center cookiealert" role="alert"><div class="cookiealert-container"> We use cookies to ensure you get the best experience on our website <button type="button" class="btn btn-primary btn-sm acceptcookies" aria-label="Close"> I agree </button></div></div><script src="./Phylogenetic Dating_files/jquery.min.js.download"></script> <script src="./Phylogenetic Dating_files/bootstrap.min.js.download"></script> <script src="./Phylogenetic Dating_files/retina-1.1.0.js.download"></script> <script src="./Phylogenetic Dating_files/jquery.hoverdir.js.download"></script> <script src="./Phylogenetic Dating_files/jquery.isotope.min.js.download"></script> <script src="./Phylogenetic Dating_files/cookiealert-standalone.js.download"></script> <script> (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){ (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o), m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m) })(window,document,'script','//www.google-analytics.com/analytics.js','ga'); ga('create', 'UA-38693379-1', 'auto'); ga('send', 'pageview'); </script> <script> // Portfolio (function($) { "use strict"; var $container = $('.portfolio'), $items = $container.find('.portfolio-item'), portfolioLayout = 'fitRows'; if( $container.hasClass('portfolio-centered') ) { portfolioLayout = 'masonry'; } $container.isotope({ filter: '*', animationEngine: 'best-available', layoutMode: portfolioLayout, animationOptions: { duration: 750, easing: 'linear', queue: false }, masonry: { } }, refreshWaypoints()); function refreshWaypoints() { setTimeout(function() { }, 1000); } $('nav.portfolio-filter ul a').on('click', function() { var selector = $(this).attr('data-filter'); $container.isotope({ filter: selector }, refreshWaypoints()); $('nav.portfolio-filter ul a').removeClass('active'); $(this).addClass('active'); return false; }); function getColumnNumber() { var winWidth = $(window).width(), columnNumber = 1; if (winWidth > 1200) { columnNumber = 5; } else if (winWidth > 950) { columnNumber = 4; } else if (winWidth > 600) { columnNumber = 3; } else if (winWidth > 400) { columnNumber = 2; } else if (winWidth > 250) { columnNumber = 1; } return columnNumber; } function setColumns() { var winWidth = $(window).width(), columnNumber = getColumnNumber(), itemWidth = Math.floor(winWidth / columnNumber); $container.find('.portfolio-item').each(function() { $(this).css( { width : itemWidth + 'px' }); }); } function setPortfolio() { setColumns(); $container.isotope('reLayout'); } $container.imagesLoaded(function () { setPortfolio(); }); $(window).on('resize', function () { setPortfolio(); }); })(jQuery); </script>
+<table cellspacing="0" cellpadding="0" class="gstl_50 gssb_c" style="width: 423px; display: none; top: 94px; position: absolute; left: 710px;"><tbody><tr><td class="gssb_f"></td><td class="gssb_e" style="width: 100%;"></td></tr></tbody></table></body></html>

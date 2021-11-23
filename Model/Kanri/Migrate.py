@@ -22,4 +22,5 @@ if __name__ == '__main__':
     answer_df = pd.read_csv(PathCommon.answer_list, header=0)
     answer_df = answer_df[(answer_df.cluster_index.isin(n_group))]
     answer_df = answer_df.to_csv(PathCommon.answer, index=False)
+    print(sentence_df.label_index.value_counts())
     exit()
