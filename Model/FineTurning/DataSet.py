@@ -3,9 +3,11 @@ from torch.utils.data import Dataset
 
 
 class SiameseDataset(Dataset):
-    def __init__(self, tokenizer, df, max_len=512):
-        self.data_column = df["source"].values + '</s>'
-        self.class_column = df['target'].values + '</s>'
+    def __init__(self, tokenizer, df, max_len=2048):
+        self.data_column = [(lambda x: "classification: " + df.iloc[x]["sentence"] + '</s>')
+                            (x) for x in range(len(df))]
+        self.class_column = [(lambda x:  str(int(float(df.iloc[x]["label_index"]))) + '</s>')
+                             (x) for x in range(len(df))]
         self.max_len = max_len
         self.tokenizer = tokenizer
 

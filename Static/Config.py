@@ -5,24 +5,22 @@ import random
 import numpy as np
 from transformers import TrainingArguments
 
-from Static.Define import PathCommon
-
 MODEL = {
     'name': 't5-small',
     'data_link': "https://raw.githubusercontent.com/duong-sau/chatbot1212/master/Model/ClassData/IntentClassification"
-                 "/Positive/learn_data.csv",
+                 "/train.csv",
     'num_freeze': [1, 1, 1, 0, 1, 0],
     'SEED': 1211
 }
 
 strategy = 'epoch'
 training_args = TrainingArguments(
-    output_dir="D:\\chatbot1212\\Model\\CheckPoint",
+    output_dir="D:\\chatbot1212\\Model\\CheckPoint\\Class",
     overwrite_output_dir=True,
     save_strategy=strategy,
     disable_tqdm=False,
     debug="underflow_overflow",
-    num_train_epochs=1,
+    num_train_epochs=100,
     per_device_train_batch_size=4,
     per_device_eval_batch_size=4,
     gradient_accumulation_steps=16,
