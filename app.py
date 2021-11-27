@@ -34,7 +34,8 @@ def get_answer(index_and_highlight):
     r = pd.DataFrame()
     for i, idx in enumerate(index):
         row = answer_df[answer_df['label_index'] == idx].iloc[0]
-        new = {'label': row['label'], 'answer': row['answer'], 'first': row['first'], 'highlight': highlight[i]}
+        # new = {'label': row['label'], 'answer': row['answer'], 'first': row['first'], 'highlight': highlight[i]}
+        new = {'label': row['label'], 'answer': row['answer'], 'first': row['first'], 'highlight': ""}
         r = r.append(new, ignore_index=True)
     return pandas_to_json(answers=r)
 
