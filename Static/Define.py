@@ -1,7 +1,7 @@
 class PathCommon:
     work = "D:\\chatbot1212"
     model = work + "\\Model\\CheckPoint"
-    data = work + "\\Model\\ClassData"
+    data = work + "\\Model\\Data"
     mining = data + "\\Mining"
     classification = data + "\\IntentClassification"
 

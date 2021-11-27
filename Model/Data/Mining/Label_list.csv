@@ -9,111 +9,106 @@ Advanced tutorial,1.0,Testing constrained tree,7.0
 Advanced tutorial,1.0,Consensus construction and bootstrap value assignment,8.0
 Advanced tutorial,1.0,User-defined substitution models,9.0
 Advanced tutorial,1.0,Inferring site-specific rates,10.0
-Advanced tutorial,1.0,Where to go from here?,11.0
-Assessing phylogenetic assumptions,2.0,Tests of symmetry,12.0
-Assessing phylogenetic assumptions,2.0,Likelihood mapping,13.0
-Beginner’s tutorial,3.0,Input data,14.0
-Beginner’s tutorial,3.0,First running example,15.0
-Beginner’s tutorial,3.0,Choosing the right substitution model,16.0
-Beginner’s tutorial,3.0,Using codon models,17.0
-Beginner’s tutorial,3.0,"Binary, morphological and SNP data",18.0
-Beginner’s tutorial,3.0,Assessing branch supports with ultrafast bootstrap approximation,19.0
-Beginner’s tutorial,3.0,Reducing impact of severe model violations with UFBoot,20.0
-Beginner’s tutorial,3.0,Assessing branch supports with standard nonparametric bootstrap,21.0
-Beginner’s tutorial,3.0,Assessing branch supports with single branch tests,22.0
-Beginner’s tutorial,3.0,Utilizing multi-core CPUs,23.0
-Beginner’s tutorial,3.0,Where to go from here?,24.0
-Command reference,4.0,General options,25.0
-Command reference,4.0,Checkpointing to resume stopped run,26.0
-Command reference,4.0,Likelihood mapping analysis,27.0
-Command reference,4.0,Automatic model selection,28.0
-Command reference,4.0,Specifying substitution models,29.0
-Command reference,4.0,Rate heterogeneity,30.0
-Command reference,4.0,Partition model options,31.0
-Command reference,4.0,Site-specific frequency model options,32.0
-Command reference,4.0,Tree search parameters,33.0
-Command reference,4.0,Ultrafast bootstrap parameters,34.0
-Command reference,4.0,Nonparametric bootstrap,35.0
-Command reference,4.0,Single branch tests,36.0
-Command reference,4.0,Ancestral sequence reconstruction,37.0
-Command reference,4.0,Tree topology tests,38.0
-Command reference,4.0,Constructing consensus tree,39.0
-Command reference,4.0,Computing Robinson-Foulds distance,40.0
-Command reference,4.0,Generating random trees,41.0
-Command reference,4.0,Miscellaneous options,42.0
-Compilation guide,5.0,General requirements,43.0
-Compilation guide,5.0,Downloading source code,44.0
-Compilation guide,5.0,Compiling under Linux,45.0
-Compilation guide,5.0,Compiling under Mac OS X,46.0
-Compilation guide,5.0,Compiling under Windows,47.0
-Compilation guide,5.0,Compiling 32-bit version,48.0
-Compilation guide,5.0,Compiling MPI version,49.0
-Compilation guide,5.0,Compiling Xeon Phi Knights Landing version,50.0
-Compilation guide,5.0,About precompiled binaries,51.0
-Compilation guide,5.0,Setup an Xcode project in MacOS,52.0
-Complex models,6.0,Partition models,53.0
-Complex models,6.0,Mixture models,54.0
-Complex models,6.0,Site-specific frequency models,55.0
-Complex models,6.0,Heterotachy models,56.0
-Concordance Factor,7.0,Inferring species tree,57.0
-Concordance Factor,7.0,Inferring gene/locus trees,58.0
-Concordance Factor,7.0,Gene concordance factor (gCF),59.0
-Concordance Factor,7.0,Site concordance factor (sCF),60.0
-Concordance Factor,7.0,Putting it all together,61.0
-Developer guide,8.0,Alignment class,62.0
-Developer guide,8.0,Model of substitution,63.0
-Developer guide,8.0,PhyloTree class (phylogenetic tree),64.0
-Frequently asked questions,9.0,How do I get help?,65.0
-Frequently asked questions,9.0,How do I report bug?,66.0
-Frequently asked questions,9.0,How do I interpret ultrafast bootstrap (UFBoot) support values?,67.0
-Frequently asked questions,9.0,How does IQ-TREE treat gap/missing/ambiguous characters?,68.0
-Frequently asked questions,9.0,Can I mix DNA and protein data in a partitioned analysis?,69.0
-Frequently asked questions,9.0,What is the interpretation of branch lengths when mixing codon and DNA data?,70.0
-Frequently asked questions,9.0,What is the purpose of composition test?,71.0
-Frequently asked questions,9.0,What is the good number of CPU cores to use?,72.0
-Frequently asked questions,9.0,How do I save time for standard bootstrap?,73.0
-Frequently asked questions,9.0,Why does IQ-TREE complain about the use of +ASC model?,74.0
-Frequently asked questions,9.0,How does IQ-TREE treat identical sequences?,75.0
-Frequently asked questions,9.0,What are the differences between alignment columns/sites and patterns?,76.0
-Getting started,10.0,IQ-TREE web server,77.0
-Getting started,10.0,Installation,78.0
-Getting started,10.0,For Windows users,79.0
-Getting started,10.0,For Mac OS X users,80.0
-Getting started,10.0,Minimal command-line examples,81.0
-Getting started,10.0,Where to go from here?,82.0
-Introduction,11.0,Why IQ-TREE?,83.0
-Introduction,11.0,Key features,84.0
-Introduction,11.0,Free web server,85.0
-Introduction,11.0,User support,86.0
-Introduction,11.0,Documentation,87.0
-Introduction,11.0,How to cite IQ-TREE?,88.0
-Introduction,11.0,Development team,89.0
-Introduction,11.0,Credits and acknowledgements,90.0
-Phylogenetic Dating,12.0,Inferring time tree with tip dates,91.0
-Phylogenetic Dating,12.0,Calibrating tree using ancestral dates,92.0
-Phylogenetic Dating,12.0,Dating an existing tree,93.0
-Phylogenetic Dating,12.0,Obtaining confidence intervals,94.0
-Phylogenetic Dating,12.0,Excluding outlier taxa/nodes,95.0
-Phylogenetic Dating,12.0,Full list of LSD2 options,96.0
-Polymorphism-aware models,13.0,Counts files,97.0
-Polymorphism-aware models,13.0,First running example,98.0
-Polymorphism-aware models,13.0,Substitution models,99.0
-Polymorphism-aware models,13.0,Virtual population size,100.0
-Polymorphism-aware models,13.0,Level of polymorphism,101.0
-Polymorphism-aware models,13.0,Sampling method,102.0
-Polymorphism-aware models,13.0,State frequency type,103.0
-Polymorphism-aware models,13.0,Rate heterogeneity,104.0
-Polymorphism-aware models,13.0,Bootstrap branch support,105.0
-Polymorphism-aware models,13.0,Interpretation of branch lengths,106.0
-Rooting phylogenetic trees,14.0,Inferring unrooted tree with outgroup,107.0
-Rooting phylogenetic trees,14.0,Inferring rooted trees without outgroup,108.0
-Rooting phylogenetic trees,14.0,Testing root positions,109.0
-Substitution models,15.0,DNA models,110.0
-Substitution models,15.0,Protein models,111.0
-Substitution models,15.0,Codon models,112.0
-Substitution models,15.0,Binary and morphological models,113.0
-Substitution models,15.0,Ascertainment bias correction,114.0
-Substitution models,15.0,Rate heterogeneity across sites,115.0
-Web server tutorial,16.0,Tree Inference,116.0
-Web server tutorial,16.0,Model Selection,117.0
-Web server tutorial,16.0,Analysis Results,118.0
+Assessing phylogenetic assumptions,2.0,Tests of symmetry,11.0
+Assessing phylogenetic assumptions,2.0,Likelihood mapping,12.0
+Beginner’s tutorial,3.0,Input data,13.0
+Beginner’s tutorial,3.0,Choosing the right substitution model,14.0
+Beginner’s tutorial,3.0,Using codon models,15.0
+Beginner’s tutorial,3.0,"Binary, morphological and SNP data",16.0
+Beginner’s tutorial,3.0,Assessing branch supports with ultrafast bootstrap approximation,17.0
+Beginner’s tutorial,3.0,Reducing impact of severe model violations with UFBoot,18.0
+Beginner’s tutorial,3.0,Assessing branch supports with standard nonparametric bootstrap,19.0
+Beginner’s tutorial,3.0,Assessing branch supports with single branch tests,20.0
+Beginner’s tutorial,3.0,Utilizing multi-core CPUs,21.0
+Command reference,4.0,General options,22.0
+Command reference,4.0,Checkpointing to resume stopped run,23.0
+Command reference,4.0,Likelihood mapping analysis,24.0
+Command reference,4.0,Automatic model selection,25.0
+Command reference,4.0,Specifying substitution models,26.0
+Command reference,4.0,Rate heterogeneity,27.0
+Command reference,4.0,Partition model options,28.0
+Command reference,4.0,Site-specific frequency model options,29.0
+Command reference,4.0,Tree search parameters,30.0
+Command reference,4.0,Ultrafast bootstrap parameters,31.0
+Command reference,4.0,Nonparametric bootstrap,32.0
+Command reference,4.0,Single branch tests,33.0
+Command reference,4.0,Ancestral sequence reconstruction,34.0
+Command reference,4.0,Tree topology tests,35.0
+Command reference,4.0,Constructing consensus tree,36.0
+Command reference,4.0,Computing Robinson-Foulds distance,37.0
+Command reference,4.0,Generating random trees,38.0
+Command reference,4.0,Miscellaneous options,39.0
+Compilation guide,5.0,General requirements,40.0
+Compilation guide,5.0,Downloading source code,41.0
+Compilation guide,5.0,Compiling under Linux,42.0
+Compilation guide,5.0,Compiling under Mac OS X,43.0
+Compilation guide,5.0,Compiling under Windows,44.0
+Compilation guide,5.0,Compiling 32-bit version,45.0
+Compilation guide,5.0,Compiling MPI version,46.0
+Compilation guide,5.0,Compiling Xeon Phi Knights Landing version,47.0
+Compilation guide,5.0,About precompiled binaries,48.0
+Compilation guide,5.0,Setup an Xcode project in MacOS,49.0
+Complex models,6.0,Partition models,50.0
+Complex models,6.0,Mixture models,51.0
+Complex models,6.0,Site-specific frequency models,52.0
+Complex models,6.0,Heterotachy models,53.0
+Concordance Factor,7.0,Inferring species tree,54.0
+Concordance Factor,7.0,Inferring gene/locus trees,55.0
+Concordance Factor,7.0,Gene concordance factor (gCF),56.0
+Concordance Factor,7.0,Site concordance factor (sCF),57.0
+Concordance Factor,7.0,Putting it all together,58.0
+Developer guide,8.0,Alignment class,59.0
+Developer guide,8.0,Model of substitution,60.0
+Developer guide,8.0,PhyloTree class (phylogenetic tree),61.0
+Frequently asked questions,9.0,How do I get help?,62.0
+Frequently asked questions,9.0,How do I report bug?,63.0
+Frequently asked questions,9.0,How do I interpret ultrafast bootstrap (UFBoot) support values?,64.0
+Frequently asked questions,9.0,How does IQ-TREE treat gap/missing/ambiguous characters?,65.0
+Frequently asked questions,9.0,Can I mix DNA and protein data in a partitioned analysis?,66.0
+Frequently asked questions,9.0,What is the interpretation of branch lengths when mixing codon and DNA data?,67.0
+Frequently asked questions,9.0,What is the purpose of composition test?,68.0
+Frequently asked questions,9.0,What is the good number of CPU cores to use?,69.0
+Frequently asked questions,9.0,How do I save time for standard bootstrap?,70.0
+Frequently asked questions,9.0,Why does IQ-TREE complain about the use of +ASC model?,71.0
+Frequently asked questions,9.0,How does IQ-TREE treat identical sequences?,72.0
+Frequently asked questions,9.0,What are the differences between alignment columns/sites and patterns?,73.0
+Getting started,10.0,IQ-TREE web server,74.0
+Getting started,10.0,Installation,75.0
+Getting started,10.0,For Windows users,76.0
+Getting started,10.0,For Mac OS X users,77.0
+Getting started,10.0,Minimal command-line examples,78.0
+Introduction,11.0,Why IQ-TREE?,79.0
+Introduction,11.0,Key features,80.0
+Introduction,11.0,Free web server,81.0
+Introduction,11.0,User support,82.0
+Introduction,11.0,Documentation,83.0
+Introduction,11.0,How to cite IQ-TREE?,84.0
+Introduction,11.0,Development team,85.0
+Introduction,11.0,Credits and acknowledgements,86.0
+Phylogenetic Dating,12.0,Inferring time tree with tip dates,87.0
+Phylogenetic Dating,12.0,Calibrating tree using ancestral dates,88.0
+Phylogenetic Dating,12.0,Dating an existing tree,89.0
+Phylogenetic Dating,12.0,Obtaining confidence intervals,90.0
+Phylogenetic Dating,12.0,Excluding outlier taxa/nodes,91.0
+Phylogenetic Dating,12.0,Full list of LSD2 options,92.0
+Polymorphism-aware models,13.0,Counts files,93.0
+Polymorphism-aware models,13.0,Substitution models,94.0
+Polymorphism-aware models,13.0,Virtual population size,95.0
+Polymorphism-aware models,13.0,Level of polymorphism,96.0
+Polymorphism-aware models,13.0,Sampling method,97.0
+Polymorphism-aware models,13.0,State frequency type,98.0
+Polymorphism-aware models,13.0,Rate heterogeneity,99.0
+Polymorphism-aware models,13.0,Bootstrap branch support,100.0
+Polymorphism-aware models,13.0,Interpretation of branch lengths,101.0
+Rooting phylogenetic trees,14.0,Inferring unrooted tree with outgroup,102.0
+Rooting phylogenetic trees,14.0,Inferring rooted trees without outgroup,103.0
+Rooting phylogenetic trees,14.0,Testing root positions,104.0
+Substitution models,15.0,DNA models,105.0
+Substitution models,15.0,Protein models,106.0
+Substitution models,15.0,Codon models,107.0
+Substitution models,15.0,Binary and morphological models,108.0
+Substitution models,15.0,Ascertainment bias correction,109.0
+Substitution models,15.0,Rate heterogeneity across sites,110.0
+Web server tutorial,16.0,Tree Inference,111.0
+Web server tutorial,16.0,Model Selection,112.0
+Web server tutorial,16.0,Analysis Results,113.0

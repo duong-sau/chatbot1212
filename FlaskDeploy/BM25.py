@@ -26,8 +26,7 @@ def word_token(tokens, lemma=False):
 def get_index_bm25(input_query, top_k, s):
     s.sendall(bytes('clr-bm', "utf8"))
     result_df = pd.read_csv(
-        "https://raw.githubusercontent.com/duong-sau/chatbot1212/a2007130e121653f617cf4695fe5391b382636c1/Model/Data"
-        "/IntentClassification/sentence_list.csv",
+        "D:\\chatbot1212\\Model\\Data\\IntentClassification\\sentence_list.csv",
         header=0)
     input_corpus = result_df['sentence'].tolist()
     docs = [input_query] + input_corpus
