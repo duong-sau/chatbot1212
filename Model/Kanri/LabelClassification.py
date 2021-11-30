@@ -12,12 +12,12 @@ sentence_df = pd.read_csv('D:\\chatbot1212\\Model\\Cluster\\Mining\\sentence_lis
 from Static.Config import train_validate_test_split
 from Static.Define import PathCommon
 
-# train, test = train_validate_test_split(sentence_df)
-# test.to_csv(PathCommon.test, index=False)
-# train.to_csv(PathCommon.train, index=False)
+train, test = train_validate_test_split(sentence_df)
+test.to_csv(PathCommon.test, index=False)
+train.to_csv(PathCommon.train, index=False)
 
-test = pd.read_csv(PathCommon.test, header=0)
-train = pd.read_csv(PathCommon.train, header=0)
+# test = pd.read_csv(PathCommon.test, header=0)
+# train = pd.read_csv(PathCommon.train, header=0)
 
 stop_words = list(stopwords.words('english'))
 lemmatizer = WordNetLemmatizer()
@@ -58,9 +58,9 @@ def get_index_bm25(input_query, top_k):
     return max_list
 
 
-for i, r in tqdm(train.iterrows(), total=1035):
-    max_l = get_index_bm25(r['sentence'], 2)
-    t = str(r.cluster_index) + " " + str(max_l[0]) + " " + str(max_l[1])
-    train.at[i, 'target'] = t
+# for i, r in tqdm(train.iterrows(), total=1035):
+#     max_l = get_index_bm25(r['sentence'], 2)
+#     t = str(r.cluster_index) + " " + str(max_l[0]) + " " + str(max_l[1])
+#     train.at[i, 'target'] = t
 
 train.to_csv(PathCommon.learn_data, index=False)

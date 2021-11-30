@@ -45,3 +45,4 @@ class ClassificationDataset(Dataset):
         label = torch.tensor([self.class_column[index]])
         return {'source_ids': source_ids, 'attention_mask': attention_mask, 'token_type_ids': token_type_ids,
                 'labels': label}
+

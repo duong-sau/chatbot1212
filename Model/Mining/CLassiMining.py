@@ -67,8 +67,11 @@ def train_mining():
             with open(file=path, mode='r', encoding='utf-8') as f:
                 content = f.read()
                 html = BeautifulSoup(content.strip("\n"), 'html.parser')
-                cluster_index = cluster_index + 1
                 cluster = html.h1.text
+                if cluster in ['Web server tutorial', 'Developer guide', 'Assessing phylogenetic assumptions', 'Getting started', 'Rooting phylogenetic trees',
+                               'Concordance Factor']:
+                    continue
+                cluster_index = cluster_index + 1
                 cluster_new = {"cluster_index": cluster_index, "cluster": cluster}
                 cluster_df = cluster_df.append(cluster_new, ignore_index=True)
                 group_by_tag(html, Tag.h2, Tag.classify1)
