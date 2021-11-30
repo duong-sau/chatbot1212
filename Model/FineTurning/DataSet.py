@@ -6,7 +6,7 @@ class SiameseDataset(Dataset):
     def __init__(self, tokenizer, df, max_len=2048):
         self.data_column = [(lambda x: "classification: " + df.iloc[x]["sentence"] + '</s>')
                             (x) for x in range(len(df))]
-        self.class_column = [(lambda x:  str(int(float(df.iloc[x]["label_index"]))) + '</s>')
+        self.class_column = [(lambda x: str(int(float(df.iloc[x]["label_index"]))) + '</s>')
                              (x) for x in range(len(df))]
         self.max_len = max_len
         self.tokenizer = tokenizer
@@ -24,25 +24,4 @@ class SiameseDataset(Dataset):
         src_mask = tokenized_inputs["attention_mask"].squeeze()
         return {"input_ids": source_ids, "attention_mask": src_mask,
                 "label": target_ids}
-
-
-class ClassificationDataset(Dataset):
-    def __init__(self, tokenizer, df, max_len=512):
-        self.data_column = df["source"].values
-        self.class_column = df['target'].values
-        self.max_len = max_len
-        self.tokenizer = tokenizer
-
-    def __len__(self):
-        return len(self.data_column)
-
-    def __getitem__(self, index):
-        tokenized_inputs = self.tokenizer.encode_plus(self.data_column[index], max_length=self.max_len,
-                                                      truncation=True, padding=True, return_tensors="pt")
-        source_ids = tokenized_inputs['input_ids']
-        attention_mask = tokenized_inputs['attention_mask']
-        token_type_ids = tokenized_inputs['token_type_ids']
-        label = torch.tensor([self.class_column[index]])
-        return {'source_ids': source_ids, 'attention_mask': attention_mask, 'token_type_ids': token_type_ids,
-                'labels': label}
 
