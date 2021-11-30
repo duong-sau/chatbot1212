@@ -39,9 +39,25 @@ def get_answer(index_and_highlight):
     return pandas_to_json(answers=r)
 
 
+direct_df = pd.read_csv(
+    "https://raw.githubusercontent.com/duong-sau/chatbot1212/1c1bf2900a2e319d28f91ab6e313df2e9bfc3258/Model"
+    "/DirectClassification/IntentClassification/answer_list.csv")
+
+
+def get_answer_direct(index_and_highlight):
+    index, highlight = index_and_highlight
+    r = pd.DataFrame()
+    for i, idx in enumerate(index):
+        row = direct_df[direct_df['label_index'] == idx].iloc[0]
+        # new = {'label': row['label'], 'answer': row['answer'], 'first': row['first'], 'highlight': highlight[i]}
+        new = {'label': row['label'], 'answer': row['answer'], 'first': row['first'], 'highlight': ""}
+        r = r.append(new, ignore_index=True)
+    return pandas_to_json(answers=r)
+
+
 def answer_t5(question, top_k, group):
     index = get_index(question, group, top_k, s)
-    answer = get_answer(index)
+    answer = get_answer_direct(index)
     return answer
 
 
