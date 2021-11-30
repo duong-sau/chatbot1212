@@ -10,7 +10,6 @@ Original file is located at
 import torch
 import pandas as pd
 import numpy as np
-from sklearn.metrics import accuracy_score
 from transformers import TrainingArguments, Trainer, AutoTokenizer, T5ForConditionalGeneration, T5Config
 from transformers.optimization import AdamW, AdafactorSchedule
 from torch.utils.data import Dataset
@@ -120,7 +119,8 @@ model.cpu()
 assert model
 
 train_data, val_data = train_validate_test_split(data)
-train_data = train_data[0:100]
+train_data = train_data[0:2]
+val_data = val_data[0:10]
 train_dataset = SiameseDataset(df=train_data, tokenizer=tokenizer)
 val_dataset = SiameseDataset(df=val_data, tokenizer=tokenizer)
 assert_data = train_dataset.__getitem__(1)
@@ -134,10 +134,54 @@ def model_init():
     return T5ForConditionalGeneration.from_pretrained(MODEL['name'], config=config)
 
 
+def get_labels(labels_str_ids):
+    result = []
+    for label_ids in labels_str_ids:
+        r = []
+        ss = label_ids.split()
+        for s in ss:
+            k = 0
+            try:
+                k = float(s)
+            except ValueError:
+                k = -1
+            r.append(k)
+        while len(r) < 3:
+            r.append(-1)
+        result.append(r[0:3])
+    return torch.tensor(result)
+
+
+def hamming_score(y_true, y_pred):
+    acc_list = []
+    for i in range(y_true.shape[0]):
+        set_true = set(np.where(y_true[i])[0])
+        set_pred = set(np.where(y_pred[i])[0])
+        tmp_a = None
+        if len(set_true) == 0 and len(set_pred) == 0:
+            tmp_a = 1
+        else:
+            tmp_a = len(set_true.intersection(set_pred)) / \
+                    float(len(set_true.union(set_pred)))
+        acc_list.append(tmp_a)
+
+    return np.mean(acc_list)
+
+
 def compute_metrics(eval_pred):
     predictions, labels = eval_pred
-    predictions = predictions.argmax(axis=-1)
-    return accuracy_score(predictions=predictions, references=labels)
+    predictions = predictions[0].argmax(axis=-1)
+    labels_str = tokenizer.batch_decode(labels, skip_special_tokens=True)
+    l0 = get_labels(labels_str_ids=labels_str)
+    predictions_str = tokenizer.batch_decode(predictions, skip_special_tokens=True)
+    p = get_labels(labels_str_ids=predictions_str)
+    acc = hamming_score(y_pred=p, y_true=l0)
+    return {
+        'accuracy': acc,
+        'f1': acc,
+        'precision': acc,
+        'recall': acc
+    }
 
 def hyperparameter_space(trial):
     return {
@@ -158,4 +202,3 @@ trainer = Trainer(
     model_init=model_init
 )
 trainer.hyperparameter_search(direction="maximize", hp_space=hyperparameter_space)
-

@@ -12,7 +12,7 @@ data = pd.read_csv(
     'https://raw.githubusercontent.com/duong-sau/chatbot1212/master/Model/Cluster/IntentClassification/Positive'
     '/learn_data.csv',
     header=0)
-
+num_class = len(data['cluster_index'].value_counts())
 tokenizer = BertTokenizerFast.from_pretrained(MODEL['classification_name'], do_lower_case=True)
 model = BertForSequenceClassification.from_pretrained(MODEL['classification_name'], num_labels=MODEL['num_class'])
 device = get_device()

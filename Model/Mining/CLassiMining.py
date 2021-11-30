@@ -108,6 +108,22 @@ def train_mining():
                                         'label_index': label_index, 'label': label, "cluster_index": cluster_index,
                                         "cluster": cluster}
                         sentence_df = sentence_df.append(sentence_new, ignore_index=True)
+                    if cluster_index in [9.0, 4.0, 7.0, 6.0, 8.0, 10.0]:
+                        ss = sentence_concat(text, 4)
+                        for s in ss:
+                            sentence_index += 1
+                            sentence_new = {'sentence_index': sentence_index, 'sentence': s,
+                                            'label_index': label_index, 'label': label, "cluster_index": cluster_index,
+                                            "cluster": cluster}
+                            sentence_df = sentence_df.append(sentence_new, ignore_index=True)
+
+                        ss = sentence_concat(text, 2)
+                        for s in ss:
+                            sentence_index += 1
+                            sentence_new = {'sentence_index': sentence_index, 'sentence': s,
+                                            'label_index': label_index, 'label': label, "cluster_index": cluster_index,
+                                            "cluster": cluster}
+                            sentence_df = sentence_df.append(sentence_new, ignore_index=True)
 
         break
     label_df.to_csv(PathCommon.label_list, index=False, mode='w')
