@@ -13,16 +13,10 @@ from Static.Config import get_device, MODEL, tokenizer_config
 device = get_device()
 
 # import model
-# siamese_tokenizer = AutoTokenizer.from_pretrained(MODEL['name'])
-# tokenizer_config(tokenizer=siamese_tokenizer)
-# # siamese_model = T5ForConditionalGeneration.from_pretrained('D:\\chatbot1212\\Model\\CheckPoint\\checkpoint-213')
-# siamese_model = T5ForConditionalGeneration.from_pretrained('t5-base')
-# # siamese_model = T5ForConditionalGeneration.from_pretrained('t5-small')
-# siamese_model.to(device)
-
-direct_tokenizer = AutoTokenizer.from_pretrained(MODEL['name'])
-tokenizer_config(tokenizer=direct_tokenizer)
-direct_model = T5ForConditionalGeneration.from_pretrained('D:\\chatbot1212\\Model\\CheckPoint\\DirectClass')
+siamese_tokenizer = AutoTokenizer.from_pretrained(MODEL['name'])
+tokenizer_config(tokenizer=siamese_tokenizer)
+siamese_model = T5ForConditionalGeneration.from_pretrained('D:\\chatbot1212\\Model\\CheckPoint\\CommandSmooth')
+siamese_model.to(device)
 
 
 def get_cluster(input_query, top_p):
@@ -46,52 +40,52 @@ def get_cluster(input_query, top_p):
     return max_list
 
 
-# # answer the question
-# def get_index(question, group, top_k, s):
-#     s.sendall(bytes('clr-t5', "utf8"))
-#     s.sendall(bytes('clr-ln', "utf8"))
-#     result_df = pd.read_csv(
-#         "https://raw.githubusercontent.com/duong-sau/chatbot1212/master/Model/Data/IntentClassification/sentence_list"
-#         ".csv",
-#         header=0)
-#     result_df = result_df[result_df['cluster_index'].isin(group)].reset_index()
-#     for i, r in tqdm(result_df.iterrows(), total=len(result_df)):
-#         compare_sentences = r["sentence"]
-#         similarity = get_similarity(tokenizer=siamese_tokenizer, model=siamese_model, test_sentence=question,
-#                                     compare_sentences=compare_sentences)
-#         s.sendall(bytes('t5_' + str(format(similarity, '.1f')), "utf8"))
-#         result_df.loc[i, "similarity"] = similarity
-#     result_df['similarity'] = pd.to_numeric(result_df['similarity'], errors='coerce')
-#     mean_df = result_df.groupby(["label_index"])["similarity"].mean().reset_index().sort_values("similarity")
-#     max_list = []
-#     max_sentence_list = []
-#     try:
-#         max_list = mean_df.iloc[-top_k:]['label_index'].tolist()
-#         max_list.reverse()
-#         for max_id in max_list:
-#             group_df = result_df[result_df['label_index'] == max_id]
-#             idx = group_df['similarity'].idxmax()
-#             max_sentence_list.append(result_df.iloc[idx]['sentence'][:300])
-#         ls = result_df[result_df['label_index'] == max_list[0]]['sentence_index'].tolist()
-#         for l in ls:
-#             s.sendall(bytes('l' + "{:05.1f}".format(l-152), "utf8"))
-#             time.sleep(0.075)
-#         s.sendall(bytes('ln-fil', "utf8"))
-#     except ValueError:
-#         index = -1
-#     return max_list, max_sentence_list
-
 # answer the question
 def get_index(question, group, top_k, s):
-    classify_sentence = "classification: " + question
-    inputs = direct_tokenizer(classify_sentence, return_tensors="pt", padding=True)
-    output_sequences = direct_model.generate(input_ids=inputs['input_ids'], attention_mask=inputs['attention_mask'],
-                                             do_sample=False)
-    ss = direct_tokenizer.batch_decode(output_sequences, skip_special_tokens=True)
+    s.sendall(bytes('clr-t5', "utf8"))
+    s.sendall(bytes('clr-ln', "utf8"))
+    result_df = pd.read_csv(
+        "https://raw.githubusercontent.com/duong-sau/chatbot1212/master/Model/Data/IntentClassification/sentence_list"
+        ".csv",
+        header=0)
+    result_df = result_df[result_df['cluster_index'].isin(group)].reset_index()
+    for i, r in tqdm(result_df.iterrows(), total=len(result_df)):
+        compare_sentences = r["sentence"]
+        similarity = get_similarity(tokenizer=siamese_tokenizer, model=siamese_model, test_sentence=question,
+                                    compare_sentences=compare_sentences)
+        s.sendall(bytes('t5_' + str(format(similarity, '.1f')), "utf8"))
+        result_df.loc[i, "similarity"] = similarity
+    result_df['similarity'] = pd.to_numeric(result_df['similarity'], errors='coerce')
+    mean_df = result_df.groupby(["label_index"])["similarity"].mean().reset_index().sort_values("similarity")
     max_list = []
+    max_sentence_list = []
     try:
-        max_list.append(float(ss[0]))
+        max_list = mean_df.iloc[-top_k:]['label_index'].tolist()
+        max_list.reverse()
+        for max_id in max_list:
+            group_df = result_df[result_df['label_index'] == max_id]
+            idx = group_df['similarity'].idxmax()
+            max_sentence_list.append(result_df.iloc[idx]['sentence'][:300])
+        ls = result_df[result_df['label_index'] == max_list[0]]['sentence_index'].tolist()
+        for l in ls:
+            s.sendall(bytes('l' + "{:05.1f}".format(l - 152), "utf8"))
+            time.sleep(0.075)
+        s.sendall(bytes('ln-fil', "utf8"))
     except ValueError:
-        max_list = []
-        print("not found")
-    return max_list, []
+        index = -1
+    return max_list, max_sentence_list
+
+# # answer the question
+# def get_index(question, group, top_k, s):
+#     classify_sentence = "classification: " + question
+#     inputs = direct_tokenizer(classify_sentence, return_tensors="pt", padding=True)
+#     output_sequences = direct_model.generate(input_ids=inputs['input_ids'], attention_mask=inputs['attention_mask'],
+#                                              do_sample=False)
+#     ss = direct_tokenizer.batch_decode(output_sequences, skip_special_tokens=True)
+#     max_list = []
+#     try:
+#         max_list.append(float(ss[0]))
+#     except ValueError:
+#         max_list = []
+#         print("not found")
+#     return max_list, []

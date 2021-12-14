@@ -2,14 +2,14 @@ import torch
 import torch.nn as nn
 import pandas as pd
 from torch.utils.data import DataLoader
-from transformers import BertModel, BertTokenizer
+from transformers import T5ForConditionalGeneration, T5Tokenizer
 
 
 class SiameseNetwork(nn.Module):
 
     def __init__(self):
         super(SiameseNetwork, self).__init__()
-        self.t5 = BertModel.from_pretrained('bert').base_model
+        self.t5 = T5ForConditionalGeneration.from_pretrained('t5-small').encoder
         self.liner = nn.Sequential(nn.Linear(512, 512), nn.Sigmoid())
         self.out = nn.Linear(512, 1)
 
@@ -25,7 +25,7 @@ class SiameseNetwork(nn.Module):
         dis = torch.abs(out1 - out2)
         out = self.out(dis)
         #  return self.sigmoid(out)
-        return out
+        return out1, out2
 
 
 class ContrastiveLoss(torch.nn.Module):
@@ -55,8 +55,8 @@ class SiameseDataset(torch.utils.data.Dataset):
         # used to prepare the labels and images path
         train_df = pd.read_csv('https://raw.githubusercontent.com/duong-sau/chatbot1212/master/Model/Data'
                                '/IntentClassification/Positive/learn_data.csv', header=0)
-        self.tokenizer = BertTokenizer.from_pretrained('bert')
-        self.data_column = [(lambda x: "stsb: " + train_df.iloc[x]["source"] + '</s>')
+        self.tokenizer = T5Tokenizer.from_pretrained('t5-small')
+        self.data_column = [(lambda x: train_df.iloc[x]["source"] + '</s>')
                             (x) for x in range(len(train_df))]
         self.class_column = [(lambda x: int(float(train_df.iloc[x]["target"])))
                              (x) for x in range(len(train_df))]
@@ -66,9 +66,9 @@ class SiameseDataset(torch.utils.data.Dataset):
         s = self.data_column[index]
         index1 = s.rfind('sentence1')
         index2 = s.rfind('sentence2')
-        sentence1 = self.tokenizer.encode_plus(s[index1:index2 - 9], max_length=self.max_len, padding='longest',
+        sentence1 = self.tokenizer.encode_plus(s[index1 + 11:index2], max_length=self.max_len, padding='longest',
                                                return_tensors="pt")
-        sentence2 = self.tokenizer.encode_plus(s[index2:], max_length=self.max_len, padding='longest',
+        sentence2 = self.tokenizer.encode_plus(s[index2+11:], max_length=self.max_len, padding='longest',
                                                return_tensors="pt")
         target_ids = torch.tensor(self.class_column[index], dtype=torch.int32)
         return {"ids1": sentence1,
@@ -80,7 +80,7 @@ class SiameseDataset(torch.utils.data.Dataset):
 
 
 siamese_dataset = SiameseDataset()
-train_dataloader = DataLoader(siamese_dataset, shuffle=True, num_workers=8, batch_size=4)
+train_dataloader = DataLoader(siamese_dataset, shuffle=True, num_workers=4, batch_size=4)
 
 
 def train():
@@ -104,13 +104,12 @@ def train():
     return net
 
 
-# set the device to cuda
-device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-model = train()
-torch.save(model.state_dict(), "output/model.pt")
-print("Model Saved Successfully")
-# for test
 if __name__ == '__main__':
-    net = SiameseNetwork().cuda()
+    net = SiameseNetwork().cpu()
     criterion = ContrastiveLoss()
     optimizer = torch.optim.Adam(net.parameters(), lr=1e-3, weight_decay=0.0005)
+    # set the device to cuda
+    device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+    model = train()
+    torch.save(model.state_dict(), "output/model.pt")
+    print("Model Saved Successfully")
