@@ -1,0 +1,28 @@
+cluster,cluster_index,label,label_index
+Beginner’s tutorial,3.0,Input data,13.0
+Beginner’s tutorial,3.0,Choosing the right substitution model,14.0
+Beginner’s tutorial,3.0,Using codon models,15.0
+Beginner’s tutorial,3.0,"Binary, morphological and SNP data",16.0
+Beginner’s tutorial,3.0,Assessing branch supports with ultrafast bootstrap approximation,17.0
+Beginner’s tutorial,3.0,Reducing impact of severe model violations with UFBoot,18.0
+Beginner’s tutorial,3.0,Assessing branch supports with standard nonparametric bootstrap,19.0
+Beginner’s tutorial,3.0,Assessing branch supports with single branch tests,20.0
+Beginner’s tutorial,3.0,Utilizing multi-core CPUs,21.0
+Command reference,4.0,General options,22.0
+Command reference,4.0,Checkpointing to resume stopped run,23.0
+Command reference,4.0,Likelihood mapping analysis,24.0
+Command reference,4.0,Automatic model selection,25.0
+Command reference,4.0,Specifying substitution models,26.0
+Command reference,4.0,Rate heterogeneity,27.0
+Command reference,4.0,Partition model options,28.0
+Command reference,4.0,Site-specific frequency model options,29.0
+Command reference,4.0,Tree search parameters,30.0
+Command reference,4.0,Ultrafast bootstrap parameters,31.0
+Command reference,4.0,Nonparametric bootstrap,32.0
+Command reference,4.0,Single branch tests,33.0
+Command reference,4.0,Ancestral sequence reconstruction,34.0
+Command reference,4.0,Tree topology tests,35.0
+Command reference,4.0,Constructing consensus tree,36.0
+Command reference,4.0,Computing Robinson-Foulds distance,37.0
+Command reference,4.0,Generating random trees,38.0
+Command reference,4.0,Miscellaneous options,39.0

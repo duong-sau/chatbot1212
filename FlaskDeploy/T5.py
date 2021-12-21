@@ -21,7 +21,7 @@ siamese_model.to(device)
 
 def get_cluster(input_query, top_p):
     result_df = pd.read_csv(
-        "https://raw.githubusercontent.com/duong-sau/chatbot1212/master/Model/Data/IntentClassification/sentence_list.csv",
+        "D:\\chatbot1212\\Model\\Data\\STSB\\sentence_list.csv",
         header=0)
     input_corpus = result_df['sentence'].tolist()
     docs = [input_query] + input_corpus
@@ -45,8 +45,7 @@ def get_index(question, group, top_k, s):
     s.sendall(bytes('clr-t5', "utf8"))
     s.sendall(bytes('clr-ln', "utf8"))
     result_df = pd.read_csv(
-        "https://raw.githubusercontent.com/duong-sau/chatbot1212/master/Model/Data/IntentClassification/sentence_list"
-        ".csv",
+        "D:\\chatbot1212\\Model\\Data\\STSB\\sentence_list.csv",
         header=0)
     result_df = result_df[result_df['cluster_index'].isin(group)].reset_index()
     for i, r in tqdm(result_df.iterrows(), total=len(result_df)):

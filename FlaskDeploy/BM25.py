@@ -26,7 +26,7 @@ def word_token(tokens, lemma=False):
 def get_index_bm25(input_query, top_k, s):
     s.sendall(bytes('clr-bm', "utf8"))
     result_df = pd.read_csv(
-        "D:\\chatbot1212\\Model\\Data\\IntentClassification\\sentence_list.csv",
+        "D:\\chatbot1212\\Model\\Data\\STSB\\sentence_list.csv",
         header=0)
     input_corpus = result_df['sentence'].tolist()
     docs = [input_query] + input_corpus
@@ -36,7 +36,7 @@ def get_index_bm25(input_query, top_k, s):
     input_query = tokenized_corpus[0]
     result_list = bm25.get_scores(input_query).tolist()
     for similarity in result_list:
-        time.sleep(0.075)
+        time.sleep(0.015)
         s.sendall(bytes('bm_' + str(format(similarity / 5, '.1f')), "utf8"))
     result_df['similarity'] = result_list
     mean_df = result_df.groupby(["label_index"])["similarity"].mean().reset_index().sort_values("similarity")

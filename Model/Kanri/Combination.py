@@ -15,43 +15,28 @@ sentence_df = pd.read_csv(PathCommon.sentence)
 train, test = train_validate_test_split(sentence_df)
 test.to_csv(PathCommon.test, index=False)
 train.to_csv(PathCommon.train, index=False)
-#
+
 # train = pd.read_csv(PathCommon.train, header=0)
-#
-# learn_data_df = pd.DataFrame()
-# for first_index, first_row in tqdm(train.iterrows(), total=len(train.index)):
-#     for second_index, second_row in train.iterrows():
-#         stsb = 0
-#         if first_row["label_index"] == second_row["label_index"]:
-#             stsb = stsb + 5.0
-#         else:
-#             pass
-#         source = to_sts_sentence(sentence1=first_row["sentence"], sentence2=second_row["sentence"])
-#         new = {"source": source, 'target': str(stsb)}
-#         learn_data_df = learn_data_df.append(new, ignore_index=True)
-#     source = to_sts_sentence(sentence1=first_row["sentence"], sentence2=first_row["label"])
-#     new = {"source": source, 'target': '5.0'}
-#     learn_data_df = learn_data_df.append(new, ignore_index=True)
-#     source = to_sts_sentence(sentence1=first_row["sentence"], sentence2=first_row["cluster"])
-#     new = {"source": source, 'target': '3.8'}
-#     learn_data_df = learn_data_df.append(new, ignore_index=True)
-# learn_data_df.to_csv(PathCommon.learn_data, index=False)
-"""
+
 learn_data_df = pd.DataFrame()
 for first_index, first_row in tqdm(train.iterrows(), total=len(train.index)):
     for second_index, second_row in train.iterrows():
         stsb = 0
         if first_row["label_index"] == second_row["label_index"]:
             stsb = stsb + 5.0
-        source =  to_sts_sentence(sentence1=first_row["sentence"], sentence2=second_row["sentence"])
+        else:
+            pass
+        source = to_sts_sentence(sentence1=first_row["sentence"], sentence2=second_row["sentence"])
         new = {"source": source, 'target': str(stsb)}
         learn_data_df = learn_data_df.append(new, ignore_index=True)
-    source =  to_sts_sentence(sentence1=first_row["sentence"], sentence2=first_row["label"])
+    source = to_sts_sentence(sentence1=first_row["sentence"], sentence2=first_row["label"])
     new = {"source": source, 'target': '5.0'}
     learn_data_df = learn_data_df.append(new, ignore_index=True)
-learn_data_df.to_csv(PathCommon.learn_data_neg , index=False)
-"""
-"""
+    source = to_sts_sentence(sentence1=first_row["sentence"], sentence2=first_row["cluster"])
+    new = {"source": source, 'target': '5.0'}
+    learn_data_df = learn_data_df.append(new, ignore_index=True)
+learn_data_df.to_csv(PathCommon.learn_data_negative, index=False)
+
 learn_data_df = pd.DataFrame()
 for first_index, first_row in tqdm(train.iterrows(), total=len(train.index)):
     for second_index, second_row in train.iterrows():
@@ -72,8 +57,8 @@ for first_index, first_row in tqdm(train.iterrows(), total=len(train.index)):
     source =  to_sts_sentence(sentence1=first_row["sentence"], sentence2=("title: " + first_row["cluster"]))
     new = {"source": source, 'target': '3.8'}
     learn_data_df = learn_data_df.append(new, ignore_index=True)
-learn_data_df.to_csv(PathCommon.learn_data_hed , index=False)
-"""
+learn_data_df.to_csv(PathCommon.learn_data_positive , index=False)
+
 # HOST = '127.0.0.1'
 # PORT = 8000
 #

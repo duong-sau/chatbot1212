@@ -15,7 +15,7 @@ server_address = (HOST, PORT)
 print('connecting to %s port ' + str(server_address))
 s.connect(server_address)
 
-answer_df = pd.read_csv('D:\\chatbot1212\\Model\\Data\\IntentClassification\\answer_list.csv')
+answer_df = pd.read_csv('D:\\chatbot1212\\Model\\Data\\STSB\\answer_list.csv')
 
 
 def pandas_to_json(answers):

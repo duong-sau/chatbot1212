@@ -3,7 +3,7 @@ class PathCommon:
     model = work + "\\Model\\CheckPoint"
     data = work + "\\Model\\Data"
     mining = data + "\\Mining"
-    classification = data + "\\IntentClassification"
+    classification = data + "\\STSB"
 
     label_list = mining + "\\Label_list.csv"
     sentence_list = mining + "\\sentence_list.csv"
@@ -17,7 +17,8 @@ class PathCommon:
     train = classification + "\\train.csv"
     answer = classification + "\\answer_list.csv"
 
-    learn_data = classification + "\\Positive\\learn_data.csv"
+    learn_data_positive = classification + "\\Positive\\learn_data.csv"
+    learn_data_negative = classification + "\\Negative\\learn_data.csv"
 
 
 class Tag:

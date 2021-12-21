@@ -1,36 +1,23 @@
 import pandas as pd
-from sklearn.metrics.pairwise import cosine_similarity
-from tqdm.auto import tqdm
-from transformers import BertModel, BertTokenizer
-import torch
-
-tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
-model = BertModel.from_pretrained('bert-base-uncased')
-model.eval()
+from sentence_transformers import SentenceTransformer, util
+import  time
+embedder = SentenceTransformer('all-MiniLM-L6-v2')
+corpus_df = pd.read_csv("D:\\chatbot1212\\Model\\Data\\STSB\\sentence_list.csv",header=0)
+corpus_embeddings = embedder.encode(corpus_df['sentence'], convert_to_tensor=True)
 
 
-def embed(sentence):
-    input_ids = torch.tensor(tokenizer.encode(sentence.lower(), add_special_tokens=True)[:512]).unsqueeze(0)
-    with torch.no_grad():
-        outputs = model(input_ids)[0]
-        res = torch.mean(outputs, dim=1).detach().cpu().numpy()
-    return res[0]
-
-
-def get_index_bert(query, group, top_k):
-    emb_query = embed(query)
+def get_index_bert(query, group, top_k, s):
+    s.sendall(bytes('clr-bm', "utf8"))
+    query_embedding = embedder.encode(query, convert_to_tensor=True)
     result_df = pd.read_csv(
-        "https://raw.githubusercontent.com/duong-sau/chatbot1212/master/Model/Data/IntentClassification/sentence_list.csv",
+        "D:\\chatbot1212\\Model\\Data\\STSB\\sentence_list.csv",
         header=0)
-    # result_df = pd.read_csv('C:\\Users\\Sau\\IdeaProjects\\chatbot1212\\Model\\Data\\labelClassification\\Tutorial'
-    #                         '\\sentence_list.csv', header=0)
-    result_df = result_df[result_df['cluster_index'].isin(group)]
-    for i, r in tqdm(result_df.iterrows(), total=len(result_df)):
-        compare_sentences = r["sentence"]
-        emb_corpus = embed(compare_sentences)
-        similarity = cosine_similarity([emb_query], [emb_corpus])[0][0]
-        result_df.loc[i, "similarity"] = similarity
-    result_df['similarity'] = pd.to_numeric(result_df['similarity'], errors='coerce')
+    cos_scores = util.pytorch_cos_sim(query_embedding, corpus_embeddings)[0]
+    result_list = cos_scores
+    for similarity in result_list:
+        time.sleep(0.05)
+        s.sendall(bytes('bm_' + str(format(similarity*10, '.1f')), "utf8"))
+    result_df['similarity'] = cos_scores
     mean_df = result_df.groupby(["label_index"])["similarity"].mean().reset_index().sort_values("similarity")
     max_list = []
     max_sentence_list = []
@@ -44,3 +31,4 @@ def get_index_bert(query, group, top_k):
     except ValueError:
         index = -1
     return max_list, max_sentence_list
+
