@@ -48,6 +48,7 @@ class Message extends Component {
                             <Select value={this.props.value} label="left method selection" onChange={this.props.method_change} style={{ padding:2, width:120}}>
                                 <MenuItem value={'T5'}>T5</MenuItem>
                                 <MenuItem value={'Cosine'}>Cosine</MenuItem>
+                                <MenuItem value={'bert'}>Bert</MenuItem>
                             </Select>
                         </Grid>
                     </Grid>

@@ -25,4 +25,9 @@ global.method = {
       2,
       3,
     ]},
+  bert:{
+    select: "No parameter",
+    caption: 'Methods',
+    key: []
+  }
 }

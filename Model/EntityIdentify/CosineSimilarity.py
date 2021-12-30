@@ -1,7 +1,7 @@
 import pandas as pd
 from tqdm.auto import tqdm
 from os import path, mkdir
-from FlaskDeploy.Cosine import get_index_bert
+from FlaskDeploy.Cosine import get_index_sbert
 import socket
 
 HOST = '127.0.0.1'
@@ -31,7 +31,7 @@ for i in range(30):
 for index, row in tqdm(test_df.iterrows(), leave=False, total=len(test_df)):
     test_sentence = row['sentence']
 
-    max_list = get_index_bert(test_sentence, group=group, top_k=3, s=s)[0]
+    max_list = get_index_sbert(test_sentence, group=group, top_k=3, s=s)[0]
     new_row = {'test_id': row["sentence_index"], 'expected': row["label_index"], 'actual': max_list[0],
                'max2': max_list[1], 'max3': max_list[2]}
     result_df = result_df.append(new_row, ignore_index=True)

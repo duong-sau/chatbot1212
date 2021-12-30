@@ -41,7 +41,7 @@ def get_cluster(input_query, top_p):
 
 
 # answer the question
-def get_index(question, group, top_k, s):
+def get_index_t5(question, group, top_k, s):
     s.sendall(bytes('clr-t5', "utf8"))
     s.sendall(bytes('clr-ln', "utf8"))
     result_df = pd.read_csv(
@@ -74,17 +74,3 @@ def get_index(question, group, top_k, s):
         index = -1
     return max_list, max_sentence_list
 
-# # answer the question
-# def get_index(question, group, top_k, s):
-#     classify_sentence = "classification: " + question
-#     inputs = direct_tokenizer(classify_sentence, return_tensors="pt", padding=True)
-#     output_sequences = direct_model.generate(input_ids=inputs['input_ids'], attention_mask=inputs['attention_mask'],
-#                                              do_sample=False)
-#     ss = direct_tokenizer.batch_decode(output_sequences, skip_special_tokens=True)
-#     max_list = []
-#     try:
-#         max_list.append(float(ss[0]))
-#     except ValueError:
-#         max_list = []
-#         print("not found")
-#     return max_list, []

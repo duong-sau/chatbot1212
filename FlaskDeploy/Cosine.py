@@ -1,14 +1,15 @@
 import pandas as pd
 from sentence_transformers import SentenceTransformer, util
-import  time
-embedder = SentenceTransformer('all-MiniLM-L6-v2')
-corpus_df = pd.read_csv("D:\\chatbot1212\\Model\\Data\\STSB\\sentence_list.csv",header=0)
-corpus_embeddings = embedder.encode(corpus_df['sentence'], convert_to_tensor=True)
+import time
+
+SBERT = SentenceTransformer('all-MiniLM-L6-v2')
+corpus_df = pd.read_csv("D:\\chatbot1212\\Model\\Data\\STSB\\sentence_list.csv", header=0)
+corpus_embeddings = SBERT.encode(corpus_df['sentence'], convert_to_tensor=True)
 
 
-def get_index_bert(query, group, top_k, s):
+def get_index_sbert(query, group, top_k, s):
     s.sendall(bytes('clr-bm', "utf8"))
-    query_embedding = embedder.encode(query, convert_to_tensor=True)
+    query_embedding = SBERT.encode(query, convert_to_tensor=True)
     result_df = pd.read_csv(
         "D:\\chatbot1212\\Model\\Data\\STSB\\sentence_list.csv",
         header=0)
@@ -16,7 +17,7 @@ def get_index_bert(query, group, top_k, s):
     result_list = cos_scores
     for similarity in result_list:
         time.sleep(0.05)
-        s.sendall(bytes('bm_' + str(format(similarity*10, '.1f')), "utf8"))
+        s.sendall(bytes('bm_' + str(format(similarity * 10, '.1f')), "utf8"))
     result_df['similarity'] = cos_scores
     mean_df = result_df.groupby(["label_index"])["similarity"].mean().reset_index().sort_values("similarity")
     max_list = []
@@ -31,4 +32,3 @@ def get_index_bert(query, group, top_k, s):
     except ValueError:
         index = -1
     return max_list, max_sentence_list
-

@@ -1,9 +1,11 @@
 import pandas as pd
 from flask import Flask, request, jsonify
 from flask_cors import CORS, cross_origin
+
+from FlaskDeploy.BERT import get_index_bert
 from FlaskDeploy.BM25 import get_index_bm25
-from FlaskDeploy.Cosine import get_index_bert
-from FlaskDeploy.T5 import get_index, get_cluster
+from FlaskDeploy.Cosine import get_index_sbert
+from FlaskDeploy.T5 import get_index_t5, get_cluster
 
 import socket
 
@@ -33,11 +35,10 @@ def get_answer(index_and_highlight):
     r = pd.DataFrame()
     for i, idx in enumerate(index):
         row = answer_df[answer_df['label_index'] == idx].iloc[0]
-        # new = {'label': row['label'], 'answer': row['answer'], 'first': row['first'], 'highlight': highlight[i]}
-        new = {'label': row['label'], 'answer': row['answer'], 'first': row['first'], 'highlight': ""}
+        new = {'label': row['label'], 'answer': row['answer'], 'first': row['first'], 'highlight': highlight[i]}
+        # new = {'label': row['label'], 'answer': row['answer'], 'first': row['first'], 'highlight': ""}
         r = r.append(new, ignore_index=True)
     return pandas_to_json(answers=r)
-
 
 direct_df = pd.read_csv(
     "https://raw.githubusercontent.com/duong-sau/chatbot1212/1c1bf2900a2e319d28f91ab6e313df2e9bfc3258/Model"
@@ -56,13 +57,13 @@ def get_answer_direct(index_and_highlight):
 
 
 def answer_t5(question, top_k, group):
-    index = get_index(question, group, top_k, s)
+    index = get_index_t5(question, group, top_k, s)
     answer = get_answer_direct(index)
     return answer
 
 
 def answer_cosine(question, top_k, group):
-    index = get_index_bert(question, group, top_k)
+    index = get_index_sbert(question, group, top_k, s)
     answer = get_answer(index)
     return answer
 
@@ -72,6 +73,10 @@ def answer_bm25(question, top_k):
     answer = get_answer(index)
     return answer
 
+def answer_bert(question, top_k):
+    index = get_index_bert(question, top_k, s)
+    answer = get_answer(index)
+    return answer
 
 # run app
 app = Flask(__name__)
@@ -121,6 +126,9 @@ def login():
                     group = group_answer(question, 2)
                     cosine_answer = answer_cosine(question=question, top_k=top_k, group=group)
                 answer[ans] = cosine_answer
+            elif method == 'bert':
+                bert_answer = answer_bert(question=question, top_k=top_k)
+                answer[ans] = bert_answer
         response = jsonify({'answer': answer})
         return response
     else:

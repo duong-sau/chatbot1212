@@ -12,6 +12,7 @@ const left = 'left'
 const right = 'right'
 const T5 = 'T5'
 const Cosine = 'Cosine'
+const bert = 'bert'
 class Main extends Component {
     constructor(props) {
         super(props);
@@ -104,6 +105,9 @@ class Main extends Component {
         }
         if(method === Cosine){
             return global.method.cosine;
+        }
+        if(method === bert){
+            return global.method.bert;
         }
     }
     render() {
